@@ -1,78 +1,81 @@
 body {
-    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, serif;
+    background: white;
 }
 
-
-
-.main-head{
-    height: 150px;
-    background: #FFF;
-
+.navbar {
+    background-color: aqua;
 }
 
-.sidenav {
-    height: 100%;
-    background-color: #000;
-    overflow-x: hidden;
-    padding-top: 20px;
-    background: #CB3B3B;
+.box {
+    margin: 0;
+    height: 80%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    text-align: center;
+    /*box-shadow: 7px 7px 5px grey;*/
 }
 
-
-.main {
-    padding: 0 10px;
+.box > h1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
+.box input[type = "text"], .box input[type = "password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.box input[type = "text"]:focus, .box input[type = "password"]:focus {
+    width: 250px;
+    border-color: aqua;
+    transition: 0.25s;
+}
+
+.box input[type = "submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 40px;
+    outline: none;
+    color: grey;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.navbar {
+    background-color: #CB3B3B;
+    height: 20%;
+}
+
+.footer {
+    bottom: 0;
+    z-index: 1;
+    position: absolute;
+}
+
+/*@media screen and (max-width: 600px){
+    .navbar {
+        height: 100px;
     }
-}
-
-@media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
-
-    .register-form{
-        margin-top: 10%;
-    }
-}
-
-@media screen and (min-width: 768px){
-    .main{
-        margin-left: 40%;
-    }
-
-    .sidenav{
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form{
-        margin-top: 80%;
-    }
-
-    .register-form{
-        margin-top: 20%;
-    }
-}
-
-
-.login-main-text{
-    margin-top: 20%;
-    padding: 60px;
-    color: #fff;
-}
-
-.login-main-text h2{
-    font-weight: 300;
-}
-
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
-}
+}*/
