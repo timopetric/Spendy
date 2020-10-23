@@ -5,8 +5,8 @@
     <title>Spendy</title>
     <link rel="icon" href="media/logo.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
-    <link href="css/main.css" rel="stylesheet">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+    <link href="css/navbar.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 
@@ -17,35 +17,35 @@
 
             <li class="logo">
                 <a class="nav-link" href="#">
-                    <img src="media/logo.png" class="logo-img" alt="" />
+                    <img src="media/logo.png" class="logo-img" alt="logo" />
                     <span class="logo-text">Spendy</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="media/dashboard.svg" alt=""/>
+                    <img src="media/dashboard.svg" alt="dashboard"/>
                     <span class="link-text">Dashboard</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="media/graph.svg" alt=""/>
+                    <img src="media/graph.svg" alt="graph"/>
                     <span class="link-text">Graphical</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="media/analysis.svg" alt=""/>
+                    <img src="media/analysis.svg" alt="analysis"/>
                     <span class="link-text">Analysis</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="media/expenses.svg" alt=""/>
+                    <img src="media/expenses.svg" alt="expenses"/>
                     <span class="link-text">Expenses</span>
                 </a>
             </li>
@@ -57,6 +57,17 @@
     <main>
         <h1>Spendy 0.0.1</h1>
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-6 col-sm-6 my-col" style="border: #1C0808 solid">
+                    Row 1 col 1
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 my-col" style="border: #1C0808 solid">
+                    Row 1 col 2
+                </div>
+            </div>
+        </div>
+        
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ipsum magna, lacinia eget porta sed, elementum eu orci. Nunc efficitur nunc ornare, bibendum metus ac, sagittis lectus. Duis eu iaculis neque. Phasellus malesuada dolor in diam bibendum, sed aliquam magna rutrum. Sed non vehicula nulla. Phasellus fermentum sit amet augue a tempus. Suspendisse ornare accumsan ligula venenatis iaculis. Nunc volutpat porta scelerisque. Sed lobortis, ex ac bibendum consequat, enim lacus varius est, ac sollicitudin nisl tellus ac urna. Nulla aliquam dolor eros, eget blandit lorem tincidunt sed. Maecenas venenatis eget tellus eget dapibus.</p>
 
         <p>Aenean at placerat augue, a dapibus enim. Proin sit amet consectetur magna. Proin interdum nulla sed urna venenatis, vel dapibus felis pulvinar. Sed tempus laoreet augue vitae tempor. Phasellus tristique est at purus rhoncus, nec pharetra quam vulputate. Vestibulum ultrices nec arcu et gravida. Phasellus vel purus in mauris facilisis lacinia.</p>
@@ -87,7 +98,7 @@
 
 
     <!-- auto refresh on change when developing "python3 -m http.server" -->
-    <script type="text/javascript" src="http://livejs.com/live.js"></script>
+<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
 
 </body>
 
