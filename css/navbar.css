@@ -3,17 +3,17 @@
   /*font-family: 'Open Sans';*/
   --transition-speed: 350ms;
   /* theme colors: todo: checkout how to set, use */
-  --text-primary: #1C0808;      /* --variable ~= to set the theme */
+  --text-primary: #1c0808; /* --variable ~= to set the theme */
   --text-secondary: #ffffff;
-  --bg-primary: #CB3B3B;
+  --bg-primary: #cb3b3b;
   --bg-secondary: #731c1c;
 }
 
 body {
   color: black;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   margin: 0;
-  padding: 0;
+  padding-bottom: 4rem;
 }
 
 /* main text in body */
@@ -24,28 +24,29 @@ main {
 
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
-  width: 0.30rem;
+  width: 0.3rem;
 }
 body::-webkit-scrollbar-track {
   background: #1e1e24;
 }
 body::-webkit-scrollbar-thumb {
-  background: #CB3B3B;
+  background: #cb3b3b;
 }
 
 /* ---------------------- navbar ---------------------- */
 /*navbar <nav> container*/
-.navbar {
+.sidebar .navbar {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 400ms ease;
   overflow: auto;
   padding: 0;
   margin: 0;
+  z-index: 10;
 }
 
 /*<ul> list directily in <nav>*/
-.navbar-nav {
+.sidebar .navbar-nav {
   list-style: none;
   /*padding: 0;*/
   /*margin: 0;*/
@@ -56,33 +57,36 @@ body::-webkit-scrollbar-thumb {
   height: 100%; /* todo: why does this work for aligning to top*/
 }
 
-.nav-item {
+.sidebar .nav-item {
   width: 100%;
   /*padding-bottom: 3rem;*/
 }
 
 /* each icon and text tuple in navbar */
-.nav-link {
+.sidebar .navbar .nav-link {
   display: flex;
   align-items: center;
   height: 5rem;
   color: var(--text-primary);
   text-decoration: none;
-  filter: grayscale(0%) opacity(0.70);
+  filter: grayscale(0%) opacity(0.7);
   transition: var(--transition-speed);
 }
 
-.nav-link:hover {
+.sidebar .navbar .nav-link:hover {
   filter: grayscale(0%) opacity(1);
   background: var(--bg-secondary);
   color: var(--text-secondary);
   /*margin-left: 0.5rem;*/
 }
+.sidebar .navbar .nav-item :hover img {
+  filter: invert(1);
+}
 
 /* icon text is hidden when collapsed, on hover its shown inline */
 .link-text {
   display: none;
-  margin-left: 1rem;  /*1 rem from the icon on the left*/
+  margin-left: 1rem; /*1 rem from the icon on the left*/
 }
 
 .logo-text {
@@ -90,12 +94,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*sizes of nav icons*/
-.nav-link img {
-  width: 2.5rem;    /* icon size */
+.sidebar .nav-link img {
+  width: 2.5rem; /* icon size */
   margin: 0 1.25rem; /*top/bottom = 0; left/right = 1.25*/
   /* 1.25(left margin) + 2.5(icon) + 1.25(right margin) = sidebar collapsed size is 5 */
 }
-
 
 .logo-text {
   font-size: 1.5rem;
@@ -110,27 +113,25 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
 }
 
-
-
 /* Small screens */
 @media only screen and (max-width: 800px) {
-  .navbar {
+  .sidebar .navbar {
     bottom: 0;
     width: 100vw;
     height: 5rem;
   }
 
   /* hide logo link in bottom row */
-  .logo {
+  .sidebar .logo {
     /*display: none;*/
   }
 
-  .navbar-nav {
+  .sidebar .navbar-nav {
     flex-direction: row;
     width: 100%; /* todo: why does this work for aligning to top*/
   }
 
-  .nav-link {
+  .sidebar .nav-link {
     justify-content: center;
   }
 
@@ -141,26 +142,27 @@ body::-webkit-scrollbar-thumb {
 
 /* Medium screens */
 @media only screen and (min-width: 801px) and (max-width: 1400px) {
-  .navbar {
+  .sidebar .navbar {
     top: 0;
     width: 5rem;
     height: 100vh;
   }
 
-  .navbar:hover {
+  .sidebar .navbar:hover {
     width: 18rem;
     /*padding-bottom: 3rem;*/
   }
 
-  .navbar:hover .nav-item {
+  .sidebar .navbar:hover .nav-item {
     width: 18rem;
   }
 
-  .navbar:hover .link-text, .navbar:hover .logo-text {
+  .sidebar .navbar:hover .link-text,
+  .sidebar .navbar:hover .logo-text {
     display: inline;
   }
 
-  .logo {
+  .sidebar .logo {
     height: 5rem;
     width: 100%;
     margin-top: 1rem;
@@ -168,7 +170,7 @@ body::-webkit-scrollbar-thumb {
     transition: var(--transition-speed) ease;
   }
 
-  .navbar:hover .logo {
+  .sidebar .navbar:hover .logo {
     /*height: 10rem;*/
     margin-top: 3rem;
     /*margin-left: 1rem;*/
@@ -177,42 +179,41 @@ body::-webkit-scrollbar-thumb {
   }
 
   /* rotate and enlarge logo on hover */
-  .logo-img {
+  .sidebar .logo-img {
     transform: rotate(0deg);
     transition: var(--transition-speed);
   }
-  .navbar:hover .logo-img  {
+  .sidebar .navbar:hover .logo-img {
     transform: rotate(360deg);
     width: 8rem;
     /*margin-top: 10rem;*/
   }
 
-  .navbar:hover .logo-img
-  {
+  .sidebar .navbar:hover .logo-img {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     /*margin-top: 3rem;*/
   }
 }
 
-
 /* Large screens */
 @media only screen and (min-width: 1401px) {
-  .navbar {
+  .sidebar .navbar {
     top: 0;
     width: 18rem;
     height: 100vh;
   }
 
-  .navbar .nav-item {
+  .sidebar .navbar .nav-item {
     width: 18rem;
   }
 
-  .navbar .link-text, .navbar .logo-text {
+  .sidebar .navbar .link-text,
+  .sidebar .navbar .logo-text {
     display: inline;
   }
 
-  .logo {
+  .sidebar .logo {
     width: 100%;
     /*height: 10rem;*/
     margin-top: 3rem;
@@ -220,7 +221,7 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 3rem;
   }
 
-  .logo .nav-link img {
+  .sidebar .logo .nav-link img {
     width: 8rem;
     transform: rotate(0deg);
     transition: var(--transition-speed);
@@ -228,11 +229,11 @@ body::-webkit-scrollbar-thumb {
     /*margin-right: 0.5rem;*/
   }
 
-  .nav-link:hover img {
-     transform: rotate(360deg);
+  .sidebar .nav-link:hover img {
+    transform: rotate(360deg);
   }
 
-  .navbar .logo-img {
+  .sidebar .navbar .logo-img {
     /*width: 100%;*/
     /*margin-left: 11rem;*/
     margin-left: 0.5rem;
@@ -243,13 +244,7 @@ body::-webkit-scrollbar-thumb {
     margin-left: 18rem;
     /*padding: 1rem;*/
   }
-
 }
-
-
-
-
-
 
 /* font awesome svg 2 color animation color fill: */
 /*.fa-primary {*/
@@ -262,3 +257,11 @@ body::-webkit-scrollbar-thumb {
 /*.fa-secondary {*/
 /*  transition: var(--transition-speed);*/
 /*}*/
+.avatar {
+  width: 4rem;
+}
+.nevem {
+  font-family: "Muli", sans-serif;
+  font-weight: 300;
+  color: #111b54;
+}
