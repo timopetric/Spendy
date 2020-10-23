@@ -230,7 +230,7 @@ body::-webkit-scrollbar-thumb {
     /*margin-right: 0.5rem;*/
   }
 
-  .nav-link.navbar-spendy:hover img.navbar-spendy {
+  .nav-link.navbar-spendy:hover img.logo-img.navbar-spendy {
      transform: rotate(360deg);
   }
 
