@@ -8,6 +8,11 @@
   --bg-primary: #CB3B3B;
   --bg-secondary: #731c1c;
 }
+.nevem {
+  font-family: "Muli", sans-serif;
+  font-weight: 300;
+  color: #111b54;
+}
 
 body {
   color: black;
@@ -15,8 +20,18 @@ body {
   margin: 0;
   padding: 0;
 }
+.prihodek {
+  background-color: lightgreen;
+}
+
+.odhodek {
+  background-color: lightcoral;
+}
 
 
+.search {
+  max-width: 80%;
+}
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
   width: 0.30rem;
