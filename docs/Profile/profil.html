@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+    <link rel="icon" href="../../media/logo.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
+    <link href="../../css/navbar.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
+
+<body>
+<!-- ################ navbar ################ -->
+<nav class="navbar navbar-spendy">
+    <ul class="navbar-nav navbar-spendy">
+
+        <li class="logo navbar-spendy">
+            <a class="nav-link navbar-spendy" href="#">
+                <img src="../../media/logo.png" class="logo-img navbar-spendy" alt="logo" />
+                <span class="logo-text navbar-spendy">Spendy</span>
+            </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+            <a class="nav-link navbar-spendy" href="#">
+                <img src="../../media/dashboard.svg" class="navbar-spendy" alt="dashboard"/>
+                <span class="link-text navbar-spendy">Dashboard</span>
+            </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+            <a class="nav-link navbar-spendy" href="#">
+                <img src="../../media/graph.svg" class="navbar-spendy" alt="graph"/>
+                <span class="link-text navbar-spendy">Graphical</span>
+            </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+            <a class="nav-link navbar-spendy" href="#">
+                <img src="../../media/analysis.svg" class="navbar-spendy" alt="analysis"/>
+                <span class="link-text navbar-spendy">Analysis</span>
+            </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+            <a class="nav-link navbar-spendy" href="#">
+                <img src="../../media/expenses.svg" class="navbar-spendy" alt="expenses"/>
+                <span class="link-text navbar-spendy">Expenses</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+<!-- ################ main body ################ -->
+<main>
+
+    <!--        <div class="container">-->
+    <!--            <div class="row justify-content-center">-->
+    <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+    <!--                    Row 1 col 1-->
+    <!--                </div>-->
+    <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+    <!--                    Row 1 col 2-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-sm-10"><h1>janeznovak</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"><!--left col-->
+                <div class="image-upload">
+                    <label for="file-input">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"  type="file" class="avatar img-circle img-thumbnail" alt="avatar">
+                    </label>
+                    <input id="file-input" type="file" />
+                    <!--<h6>Upload a different photo...</h6>-->
+                    <!--<input type="file" class="text-center center-block file-upload">-->
+                </div>
+                <br>
+
+
+                <!--<div class="panel panel-default">
+                    <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+                </div>-->
+
+
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Pregled <i class="fa fa-dashboard fa-1x"></i></li>
+                    <li class="list-group-item text-right" id="stSkupin"><span class="pull-left"><strong>Število skupin</strong></span> 125</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                </ul>
+
+
+
+            </div><!--/col-3-->
+            <div class="col-sm-9">
+                <ul class="nav nav-tabs">
+                    <li><a data-toggle="tab" href="#messages" id="info" style="color: white; text-decoration: none">Podatki</a></li>
+                    <li><a data-toggle="tab" href="#settings" id="nastavitve">Nastavitve</a></li>
+                </ul>
+
+
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="messages">
+
+                        <h2></h2>
+
+
+                        <form class="form" action="##" method="post" id="registrationForm1">
+                            <div class="form-group">
+
+                                <div class="col-xl-3">
+                                    <label for="first_name"><h4>Ime</h4></label>
+                                    <h6>Janez</h6>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                <div class="col-xl-3">
+                                    <label for="last_name"><h4>Priimek</h4></label>
+                                    <h6>Novak</h6>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="phone"><h4>Telefon</h4></label>
+                                   <p>++38631000000</p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="email"><h4>Email</h4></label>
+                                    <p>janeznovak@gmail.com</p>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="tab-pane" id="settings">
+
+
+
+                        <form class="form" action="##" method="post" id="registrationForm">
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="first_name"><h4>Ime</h4></label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="last_name"><h4>Priimek</h4></label>
+                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="phone"><h4>Telefon</h4></label>
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="email"><h4>Email</h4></label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password"><h4>Geslo</h4></label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password2"><h4>Ponovite geslo</h4></label>
+                                    <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-lg btn-success pull-right" type="submit" id="gumb"><i class="glyphicon glyphicon-ok-sign"></i>Shrani</button>
+                                    <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div><!--/tab-pane-->
+            </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+
+</main>
+
+<!-- load scripts at the end -->
+<script src="../../js/jquery-3.4.1.slim.min.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+
+
+<!-- auto refresh on change when developing "python3 -m http.server" -->
+<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+
+</body>
+
+</html>
