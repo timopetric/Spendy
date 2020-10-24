@@ -1,6 +1,13 @@
+@import "main.css";
+
 :root {
+  font-size: 22px;
   --first-page-navbar-width: 33%;
   --first-page-navbar-logo-text-size: 2rem;
+}
+
+.navbar {
+  z-index: 10;
 }
 
 /* Large and medium screens */
@@ -30,7 +37,7 @@
   /*   transform: rotate(360deg);*/
   /*}*/
 
-  .first-page-text {
+  .first-page-titles-text {
     font-size: var(--first-page-navbar-logo-text-size);
     letter-spacing: 0.3ch;
     text-align: center;
@@ -49,7 +56,7 @@
 
   main {
     margin: 0 0 0 var(--first-page-navbar-width);
-    padding: 5rem;
+    /*padding: min(5%, 5rem);*/
   }
 
 }
@@ -67,7 +74,7 @@
     height: 5rem;
   }
 
-  .first-page-text {
+  .first-page-titles-text {
     font-size: 1rem;
     letter-spacing: 0.3ch;
     text-align: center;
@@ -80,7 +87,7 @@
     text-transform: uppercase;
     /*margin: auto;*/
     align-content: center;
-    padding: 0 3rem;
+    padding: 0 min(3%, 3rem);
   }
 
   /* hide logo link in bottom row */
@@ -99,6 +106,6 @@
 
   main {
     margin: 0 0 5rem 0;
-    /*padding: 1rem;*/
+    /*padding: 16px;*/
   }
 }

@@ -1,20 +1,4 @@
-:root {
-  font-size: 16px;
-  /*font-family: 'Open Sans';*/
-  --transition-speed: 350ms;
-  /* theme colors: todo: checkout how to set, use */
-  --text-primary: #1C0808;      /* --variable ~= to set the theme */
-  --text-secondary: #ffffff;
-  --bg-primary: #CB3B3B;
-  --bg-secondary: #731c1c;
-}
-
-/*body {*/
-/*  color: black;*/
-/*  background-color: #FAFAFA;*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*}*/
+@import "main.css";
 
 /* main text in body */
 main {
@@ -34,6 +18,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* ---------------------- navbar ---------------------- */
+.navbar {
+  z-index: 10;
+}
+
 /*navbar <nav> container*/
 .navbar.navbar-spendy{
   position: fixed;
