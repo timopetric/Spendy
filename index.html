@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spendy</title>
+    <link rel="icon" href="media/logo.ico">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
+
+<body>
+    <!-- ################ navbar ################ -->
+    <nav class="navbar navbar-spendy">
+        <ul class="navbar-nav navbar-spendy">
+
+            <li class="logo navbar-spendy">
+                <a class="nav-link navbar-spendy" href="#">
+                    <img src="media/logo.png" class="logo-img navbar-spendy" alt="logo" />
+                    <span class="logo-text navbar-spendy">Spendy</span>
+                </a>
+            </li>
+
+            <li class="nav-item navbar-spendy">
+                <a class="nav-link navbar-spendy" href="#">
+                    <img src="media/dashboard.svg" class="navbar-spendy" alt="dashboard"/>
+                    <span class="link-text navbar-spendy">Pregled</span>
+                </a>
+            </li>
+
+            <li class="nav-item navbar-spendy">
+                <a class="nav-link navbar-spendy" href="#">
+                    <img src="media/graph.svg" class="navbar-spendy" alt="graph"/>
+                    <span class="link-text navbar-spendy">Grafično</span>
+                </a>
+            </li>
+
+            <li class="nav-item navbar-spendy">
+                <a class="nav-link navbar-spendy" href="#">
+                    <img src="media/analysis.svg" class="navbar-spendy" alt="analysis"/>
+                    <span class="link-text navbar-spendy">Analiza</span>
+                </a>
+            </li>
+
+            <li class="nav-item navbar-spendy">
+                <a class="nav-link navbar-spendy" href="#">
+                    <img src="media/expenses.svg" class="navbar-spendy" alt="expenses"/>
+                    <span class="link-text navbar-spendy">Stroški</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- ################ main body ################ -->
+    <main>
+        <h1>Spendy 0.0.1</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ipsum magna, lacinia eget porta sed, elementum eu orci. Nunc efficitur nunc ornare, bibendum metus ac, sagittis lectus. Duis eu iaculis neque. Phasellus malesuada dolor in diam bibendum, sed aliquam magna rutrum. Sed non vehicula nulla. Phasellus fermentum sit amet augue a tempus. Suspendisse ornare accumsan ligula venenatis iaculis. Nunc volutpat porta scelerisque. Sed lobortis, ex ac bibendum consequat, enim lacus varius est, ac sollicitudin nisl tellus ac urna. Nulla aliquam dolor eros, eget blandit lorem tincidunt sed. Maecenas venenatis eget tellus eget dapibus.</p>
+
+    </main>
+
+    <!-- load scripts at the end -->
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- auto refresh on change when developing "python3 -m http.server" -->
+    <script src="http://livejs.com/live.js"></script>
+
+</body>
+
+</html>

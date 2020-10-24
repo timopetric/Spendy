@@ -1,0 +1,29 @@
+:root {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  --transition-speed: 350ms;
+  /* theme colors: todo: checkout how to set, use */
+  --text-primary: #1C0808;      /* --variable ~= to set the theme */
+  --text-secondary: #ffffff;
+  --bg-primary: #CB3B3B;
+  --bg-secondary: #731c1c;
+}
+
+body {
+  color: black;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------------------- scrollbar ---------------------- */
+body::-webkit-scrollbar {
+  width: 0.30rem;
+}
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+body::-webkit-scrollbar-thumb {
+  background: #CB3B3B;
+}
