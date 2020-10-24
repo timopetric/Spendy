@@ -64,7 +64,26 @@ nav {
     color: #CB3B3B;
 }
 
+.btn > a {
+    padding: 0px 0px;
+}
+
 .box input[type = "email"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.box input[type = "text"] {
     border: 0;
     background: none;
     display: block;
@@ -167,6 +186,8 @@ img {
 
 #Registracija {
     width: 75px;
+    border-radius: 20px;
+
 }
 
 .card-footer > p {
