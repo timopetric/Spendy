@@ -116,7 +116,7 @@ body::-webkit-scrollbar-thumb {
   .navbar.navbar-spendy {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: 4rem;
   }
 
   /* hide logo link in bottom row */
@@ -142,7 +142,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   main {
-    margin: 0 0 5rem 0;
+    margin: 0 0 4rem 0;
     padding: 1rem;
   }
 }

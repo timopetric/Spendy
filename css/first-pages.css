@@ -3,7 +3,7 @@
 :root {
   font-size: 22px;
   --first-page-navbar-width: 33%;
-  --first-page-navbar-logo-text-size: 2rem;
+  --first-page-navbar-logo-text-size: 1.5rem;
 }
 
 .navbar {
@@ -25,7 +25,7 @@
   }
 
   .navbar.navbar-spendy .logo-img.navbar-spendy.navbar-first-page {
-    width: 75%;
+    width: 85%;
     padding: 0;
     margin: auto;
     display: block;
@@ -67,11 +67,11 @@
   .navbar.navbar-spendy {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: 3rem;
   }
 
   .navbar.navbar-spendy .logo-img.navbar-spendy.navbar-first-page {
-    height: 5rem;
+    height: 3rem;
   }
 
   .first-page-titles-text {
@@ -105,7 +105,7 @@
   }
 
   main {
-    margin: 0 0 5rem 0;
+    margin: 0 0 3rem 0;
     /*padding: 16px;*/
   }
 }
