@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Spendy</title>
-    <link rel="icon" href="media/logo.ico">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
-    <link href="css/navbar.css" rel="stylesheet">
+    <link rel="icon" href="media/logo.ico" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- must be before other css imports -->
+    <link href="css/navbar.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
@@ -15,45 +16,59 @@
   <body>
     <!-- ################ navbar ################ -->
     <nav class="navbar navbar-spendy">
-        <ul class="navbar-nav navbar-spendy">
+      <ul class="navbar-nav navbar-spendy">
+        <li class="logo navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              src="media/logo.png"
+              class="logo-img navbar-spendy"
+              alt="logo"
+            />
+            <span class="logo-text navbar-spendy">Spendy</span>
+          </a>
+        </li>
 
-            <li class="logo navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/logo.png" class="logo-img navbar-spendy" alt="logo" />
-                    <span class="logo-text navbar-spendy">Spendy</span>
-                </a>
-            </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              src="media/dashboard.svg"
+              class="navbar-spendy"
+              alt="dashboard"
+            />
+            <span class="link-text navbar-spendy">Pregled</span>
+          </a>
+        </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/dashboard.svg" class="navbar-spendy" alt="dashboard"/>
-                    <span class="link-text navbar-spendy">Pregled</span>
-                </a>
-            </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img src="media/graph.svg" class="navbar-spendy" alt="graph" />
+            <span class="link-text navbar-spendy">Grafično</span>
+          </a>
+        </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/graph.svg" class="navbar-spendy" alt="graph"/>
-                    <span class="link-text navbar-spendy">Grafično</span>
-                </a>
-            </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              src="media/analysis.svg"
+              class="navbar-spendy"
+              alt="analysis"
+            />
+            <span class="link-text navbar-spendy">Analiza</span>
+          </a>
+        </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/analysis.svg" class="navbar-spendy" alt="analysis"/>
-                    <span class="link-text navbar-spendy">Analiza</span>
-                </a>
-            </li>
-
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/expenses.svg" class="navbar-spendy" alt="expenses"/>
-                    <span class="link-text navbar-spendy">Stroški</span>
-                </a>
-            </li>
-        </ul>
-      </nav>
-    </div>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              src="media/expenses.svg"
+              class="navbar-spendy"
+              alt="expenses"
+            />
+            <span class="link-text navbar-spendy">Stroški</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <!-- ################ main body ################ -->
     <main>
@@ -342,7 +357,5 @@
 
     <!-- auto refresh on change when developing "python3 -m http.server" -->
     <script src="http://livejs.com/live.js"></script>
-
-</body>
-
+  </body>
 </html>
