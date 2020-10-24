@@ -17,10 +17,15 @@
     color: white;
 }
 
-.nav > li {
-    color: white!important;
+.nav > li > a {
+    color: white;
     margin-left: 5px;
     margin-right: 20px;
+}
+
+#nastavitve:hover, #podatki:hover {
+    color: black!important;
+    text-decoration: none;
 }
 
 #podatki {
@@ -38,6 +43,36 @@
     margin-left: 5px;
 }
 
+.col-sm-9 > .nav > li > a:hover {
+    text-decoration-color: black;
+}
+
+#gumb {
+    background-color: #5252fa;
+}
+
+#stSkupin {
+    text-align: center;
+}
+
+.col-sm-9 {
+    /*border: solid #000 1px;
+    border-color: grey;*/
+    padding: 0;
+    border-radius: 10px;
+}
+
+html {
+    background-color: ghostwhite;
+}
+
+main {
+    background-color: ghostwhite;
+}
+.col-xl-3 {
+    padding-left: 0;
+}
+
 
 body {
     background-color: #efe8e8;
@@ -48,6 +83,7 @@ body {
     padding: 8px;
     border-color: black;
     border-width: thin medium thick 10px;
+    border-radius: 25px;
 }
 
 .nav, .tab-content {
