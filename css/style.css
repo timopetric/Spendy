@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, serif;
+    background: white;
+}
+
+nav {
+    width: 100%;
+    background-color: #CB3B3B;
+}
+
+.box {
+    margin: 0;
+    height: 80%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*background: white;*/
+    text-align: center;
+    /*box-shadow: 7px 7px 5px grey;*/
+}
+
+.box > h1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.box input[type = "password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.btn {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+    width: 250px;
+}
+
+#PrijavaGumb {
+    color: #CB3B3B;
+}
+
+.btn > a {
+    padding: 0px 0px;
+}
+
+.box input[type = "email"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.box input[type = "text"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin:  10px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: #CB3B3B;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.box input[type = "email"]:focus, .box input[type = "password"]:focus {
+    width: 250px;
+    border-color: grey;
+    transition: 0.25s;
+}
+
+.box input[type = "submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #CB3B3B;
+    padding: 14px 40px;
+    outline: none;
+    color: grey;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+button > a {
+    color: #CB3B3B;
+}
+
+button > a:hover {
+    color: #CB3B3B;
+}
+
+.navbar {
+    background-color: #CB3B3B;
+    color: #CB3B3B;
+    height: 10%;
+    top: 0;
+    position: fixed;
+    left: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: #CB3B3B;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    margin-right: 0;
+}
+
+
+
+.footer > p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    width:50px;
+    height:50px;
+}
+
+.card {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    border-color: #CB3B3B;
+    border: 0;
+}
+
+.card-footer {
+    background: #CB3B3B;
+    text-align: center;
+}
+
+#Spendy {
+    width: 75px;
+    padding-right: 5px;
+}
+
+#Prijava {
+    width: 75px;
+}
+
+#Registracija {
+    width: 75px;
+    border-radius: 20px;
+
+}
+
+.card-footer > p {
+    color: black;
+    bottom: 0;
+}
+
+.collapse > a {
+    z-index: 1;
+}
+
+.navbar {
+    z-index: 1;
+    height: 75px;
+}
+
+#Spendy:active, #Prijava:active, #Registracija:active {
+    color: #CB3B3B;
+}
+
+/*@media screen and (max-width: 600px){
+    .navbar {
+        height: 100px;
+    }
+}*/
