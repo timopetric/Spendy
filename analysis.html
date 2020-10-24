@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <title>Grafi</title>
+    <link rel="icon" href="media/logo.ico" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- must be before other css imports -->
+
+    <link href="css/navbar.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
+
+<body>
+<!-- ################ navbar ################ -->
+<div class="sidebar">
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+                <a class="nav-link" href="#">
+                    <img src="media/logo.png" class="logo-img" alt="logo" />
+                    <span class="logo-text">Spendy</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="media/dashboard.svg" alt="dashboard" />
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="media/graph.svg" alt="graph" />
+                    <span class="link-text">Graphical</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="media/analysis.svg" alt="analysis" />
+                    <span class="link-text">Analysis</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="media/expenses.svg" alt="expenses" />
+                    <span class="link-text">Expenses</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- ################ main body ################ -->
+<main>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="mr-auto"></div>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+                <a
+                        class="nav-link text-dark dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                >
+                    <img
+                            src="media/user-1.png"
+                            class="img-fluid rounded-circle avatar mr-2"
+                            alt="https://generated.photos/"
+                    />
+                    Janez Novak
+                </a>
+                <div
+                        class="dropdown-menu dropdown-menu-right"
+                        aria-labelledby="navbarDropdown"
+                >
+                    <a class="dropdown-item" href="#">Moj profil</a>
+                    <a class="dropdown-item" href="#">Nastavitve</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Odjava</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content" class="container-fluid bg-grey px-3">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Grafično</h1>
+                        <p class="lead text-muted">Grafični prikazi prihodkov, odhodkov in stanja</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body row">
+
+                        <canvas id="expensesChart" class="col-sm-12 col-lg-6 " width="50%" height="40%"></canvas>
+                        <canvas id="incomeChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
+                        <canvas id="balanceChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
+                        <canvas id="vsChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+</main>
+
+<!-- load scripts at the end -->
+<script src="js/jquery-3.4.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script>
+    var ctx = document.getElementById('expensesChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            datasets: [{
+                label: 'Expenses',
+                data: [12, 30, 36, 54, 12, 44, 100, 66, 0, 22, 60, 70],
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.0)',
+
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<script>
+    var ctx = document.getElementById('incomeChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            datasets: [{
+                label: 'Income',
+                data: [40,40,40,40,40,70,80,80,40,40,40,60],
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.0)',
+
+                ],
+                borderColor: [
+                    'rgba(92, 184, 92, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<script>
+    var ctx = document.getElementById('balanceChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            datasets: [{
+                label: 'Stanje',
+                data: [50, 80, 160, 170, 100, 70, 50, 100, 120, 180, 150, 100],
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.0)',
+
+                ],
+                borderColor: [
+                    'rgba(92, 184, 92, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<script>
+    var ctx = document.getElementById('vsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Prihodki', 'Odhodki'],
+            datasets: [{
+                label: 'Expenses',
+                data: [480, 420],
+                backgroundColor: [
+                    'rgba(92, 184, 92, 1)',
+                    'rgba(217, 83, 79,1)',
+
+                ],
+                borderColor: [
+                    'rgba(92, 184, 92, 1)',
+                    'rgba(217, 83, 79,1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+
+    });
+</script>
+
+
+
+
+<!-- auto refresh on change when developing "python3 -m http.server" -->
+<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+</body>
+</html>
