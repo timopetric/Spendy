@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*navbar <nav> container*/
-.navbar.navbar-spendy{
+.navbar.navbar-spendy {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 400ms ease;
@@ -67,7 +67,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--text-secondary);
   /*margin-left: 0.5rem;*/
 }
-.sidebar .navbar .nav-item :hover img {
+.navbar-spendy .nav-item:hover img {
   filter: invert(1);
 }
 
@@ -83,11 +83,10 @@ body::-webkit-scrollbar-thumb {
 
 /*sizes of nav icons*/
 .nav-link.navbar-spendy img.navbar-spendy {
-  width: 2.5rem;    /* icon size */
+  width: 2.5rem; /* icon size */
   margin: 0 1.25rem; /*top/bottom = 0; left/right = 1.25*/
   /* 1.25(left margin) + 2.5(icon) + 1.25(right margin) = sidebar collapsed size is 5 */
 }
-
 
 .logo-text.navbar-spendy {
   font-size: 1.5rem;
@@ -112,8 +111,6 @@ body::-webkit-scrollbar-thumb {
   /*font-weight: bold;*/
   /*text-transform: uppercase;*/
 }
-
-
 
 /* Small screens */
 @media only screen and (max-width: 800px) {
@@ -194,14 +191,13 @@ body::-webkit-scrollbar-thumb {
     transform: rotate(0deg);
     transition: var(--transition-speed);
   }
-  .navbar.navbar-spendy:hover .logo-img.navbar-spendy  {
+  .navbar.navbar-spendy:hover .logo-img.navbar-spendy {
     transform: rotate(360deg);
     width: 8rem;
     /*margin-top: 10rem;*/
   }
 
-  .navbar.navbar-spendy:hover .logo-img.navbar-spendy
-  {
+  .navbar.navbar-spendy:hover .logo-img.navbar-spendy {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     /*margin-top: 3rem;*/
@@ -242,7 +238,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   .nav-link.navbar-spendy:hover img.logo-img.navbar-spendy {
-     transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 
   .navbar.navbar-spendy .logo-img.navbar-spendy {
