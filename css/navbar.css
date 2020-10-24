@@ -110,6 +110,17 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
 }
 
+.link-text.navbar-spendy {
+  font-size: 1.25rem;
+  /*letter-spacing: 0.3ch;*/
+  text-align: center;
+  text-decoration: none;
+  filter: grayscale(0%) opacity(0.65);
+  transition: var(--transition-speed);
+  /*font-weight: bold;*/
+  /*text-transform: uppercase;*/
+}
+
 
 
 /* Small screens */
@@ -134,8 +145,16 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
   }
 
+  .nav-link.navbar-spendy img.navbar-spendy {
+    margin: 0;
+  }
+
+  .nav-link.navbar-spendy img.navbar-spendy.logo-img {
+    margin: 0 0.5rem;
+  }
+
   main {
-    margin-bottom: 5rem;
+    margin: 0 0 5rem 0;
     padding: 1rem;
   }
 }
@@ -243,8 +262,10 @@ body::-webkit-scrollbar-thumb {
   }
 
   main {
-    margin-left: 18rem;
+    /*margin-left: 18rem;*/
     /*padding: 1rem;*/
+    margin: 0 0 0 18rem;
+    padding: 5rem;
   }
 
 }
