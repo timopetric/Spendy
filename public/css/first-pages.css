@@ -17,6 +17,7 @@
     width: var(--first-page-navbar-width);
     /*height: 100vh;*/
   }
+
   .container.navbar-first-page {
     display: flex;
     justify-content: space-between;
@@ -36,7 +37,6 @@
   /*.navbar.navbar-spendy .logo-img.navbar-spendy.navbar-first-page:hover {*/
   /*   transform: rotate(360deg);*/
   /*}*/
-
   .first-page-titles-text {
     font-size: var(--first-page-navbar-logo-text-size);
     letter-spacing: 0.3ch;

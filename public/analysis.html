@@ -1,138 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8" />
-    <title>Grafi</title>
-    <link rel="icon" href="media/logo.ico" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- must be before other css imports -->
+  <meta charset="UTF-8"/>
+  <title>Grafi</title>
+  <link href="media/logo.ico" rel="icon"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- must be before other css imports -->
 
-    <link href="css/navbar.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="css/navbar.css" rel="stylesheet"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 
 <body>
 <!-- ################ navbar ################ -->
-    <nav class="navbar navbar-spendy">
-        <ul class="navbar-nav navbar-spendy">
+<nav class="navbar navbar-spendy">
+  <ul class="navbar-nav navbar-spendy">
 
-            <li class="logo navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/logo.png" class="logo-img navbar-spendy" alt="logo" />
-                    <span class="logo-text navbar-spendy">Spendy</span>
-                </a>
-            </li>
+    <li class="logo navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img alt="logo" class="logo-img navbar-spendy" src="media/logo.png"/>
+        <span class="logo-text navbar-spendy">Spendy</span>
+      </a>
+    </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="index.html">
-                    <img src="media/dashboard.svg" class="navbar-spendy" alt="dashboard"/>
-                    <span class="link-text navbar-spendy">Pregled</span>
-                </a>
-            </li>
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="index.html">
+        <img alt="dashboard" class="navbar-spendy" src="media/dashboard.svg"/>
+        <span class="link-text navbar-spendy">Pregled</span>
+      </a>
+    </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/graph.svg" class="navbar-spendy" alt="graph"/>
-                    <span class="link-text navbar-spendy">Grafično</span>
-                </a>
-            </li>
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img alt="graph" class="navbar-spendy" src="media/graph.svg"/>
+        <span class="link-text navbar-spendy">Grafično</span>
+      </a>
+    </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/analysis.svg" class="navbar-spendy" alt="analysis"/>
-                    <span class="link-text navbar-spendy">Analiza</span>
-                </a>
-            </li>
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img alt="analysis" class="navbar-spendy" src="media/analysis.svg"/>
+        <span class="link-text navbar-spendy">Analiza</span>
+      </a>
+    </li>
 
-            <li class="nav-item navbar-spendy">
-                <a class="nav-link navbar-spendy" href="#">
-                    <img src="media/expenses.svg" class="navbar-spendy" alt="expenses"/>
-                    <span class="link-text navbar-spendy">Stroški</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img alt="expenses" class="navbar-spendy" src="media/expenses.svg"/>
+        <span class="link-text navbar-spendy">Stroški</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 <!-- ################ main body ################ -->
 <main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown">
-                <a
-                        class="nav-link text-dark dropdown-toggle"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                >
-                    <img
-                            src="media/user-1.png"
-                            class="img-fluid rounded-circle avatar mr-2"
-                            alt="https://generated.photos/"
-                    />
-                    Janez Novak
-                </a>
-                <div
-                        class="dropdown-menu dropdown-menu-right"
-                        aria-labelledby="navbarDropdown"
-                >
-                    <a class="dropdown-item" href="#">Moj profil</a>
-                    <a class="dropdown-item" href="#">Nastavitve</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Odjava</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="mr-auto"></div>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item dropdown">
+        <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="nav-link text-dark dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+        >
+          <img
+                alt="https://generated.photos/"
+                class="img-fluid rounded-circle avatar mr-2"
+                src="media/user-1.png"
+          />
+          Janez Novak
+        </a>
+        <div
+              aria-labelledby="navbarDropdown"
+              class="dropdown-menu dropdown-menu-right"
+        >
+          <a class="dropdown-item" href="#">Moj profil</a>
+          <a class="dropdown-item" href="#">Nastavitve</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Odjava</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
 
-    <div id="content" class="container-fluid bg-grey px-3">
-        <section class="bg-light py-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9 col-md-8">
-                        <h1 class="font-weight-bold mb-0">Grafično</h1>
-                        <p class="lead text-muted">Grafični prikazi prihodkov, odhodkov in stanja</p>
+  <div class="container-fluid bg-grey px-3" id="content">
+    <section class="bg-light py-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9 col-md-8">
+            <h1 class="font-weight-bold mb-0">Grafično</h1>
+            <p class="lead text-muted">Grafični prikazi prihodkov, odhodkov in stanja</p>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section class="bg-mix py-3">
-            <div class="container-fluid">
-                <div class="card rounded-0">
-                    <div class="card-body row">
+    <section class="bg-mix py-3">
+      <div class="container-fluid">
+        <div class="card rounded-0">
+          <div class="card-body row">
 
-                        <canvas id="expensesChart" class="col-sm-12 col-lg-6 " width="50%" height="40%"></canvas>
-                        <canvas id="incomeChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
-                        <canvas id="balanceChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
-                        <canvas id="vsChart" class="col-sm-12 col-lg-6" width="50%" height="40%"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <canvas class="col-sm-12 col-lg-6 " height="40%" id="expensesChart" width="50%"></canvas>
+            <canvas class="col-sm-12 col-lg-6" height="40%" id="incomeChart" width="50%"></canvas>
+            <canvas class="col-sm-12 col-lg-6" height="40%" id="balanceChart" width="50%"></canvas>
+            <canvas class="col-sm-12 col-lg-6" height="40%" id="vsChart" width="50%"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-
-    </div>
+  </div>
 </main>
 
 <!-- load scripts at the end -->
 <script src="js/jquery-3.4.1.slim.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script crossorigin="anonymous"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script>
     var ctx = document.getElementById('expensesChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            labels: ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'],
             datasets: [{
                 label: 'Expenses',
                 data: [12, 30, 36, 54, 12, 44, 100, 66, 0, 22, 60, 70],
@@ -174,10 +175,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            labels: ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'],
             datasets: [{
                 label: 'Income',
-                data: [40,40,40,40,40,70,80,80,40,40,40,60],
+                data: [40, 40, 40, 40, 40, 70, 80, 80, 40, 40, 40, 60],
                 backgroundColor: [
                     'rgba(0, 0, 0, 0.0)',
 
@@ -216,7 +217,7 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Januar', 'Februar', 'Marec', 'April','Maj','Junij','Julij','Avgust', 'September', 'Oktober', 'November','December'],
+            labels: ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'],
             datasets: [{
                 label: 'Stanje',
                 data: [50, 80, 160, 170, 100, 70, 50, 100, 120, 180, 150, 100],
@@ -277,8 +278,6 @@
 
     });
 </script>
-
-
 
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->
