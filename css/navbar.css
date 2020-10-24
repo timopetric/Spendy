@@ -8,13 +8,13 @@ main {
 
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
-  width: 0.30rem;
+  width: 0.3rem;
 }
 body::-webkit-scrollbar-track {
   background: #1e1e24;
 }
 body::-webkit-scrollbar-thumb {
-  background: #CB3B3B;
+  background: #cb3b3b;
 }
 
 /* ---------------------- navbar ---------------------- */
@@ -30,6 +30,7 @@ body::-webkit-scrollbar-thumb {
   overflow: auto;
   padding: 0;
   margin: 0;
+  z-index: 10;
 }
 
 /*<ul> list directily in <nav>*/
@@ -56,7 +57,7 @@ body::-webkit-scrollbar-thumb {
   height: 5rem;
   color: var(--text-primary);
   text-decoration: none;
-  filter: grayscale(0%) opacity(0.70);
+  filter: grayscale(0%) opacity(0.7);
   transition: var(--transition-speed);
 }
 
@@ -66,11 +67,14 @@ body::-webkit-scrollbar-thumb {
   color: var(--text-secondary);
   /*margin-left: 0.5rem;*/
 }
+.sidebar .navbar .nav-item :hover img {
+  filter: invert(1);
+}
 
 /* icon text is hidden when collapsed, on hover its shown inline */
 .link-text.navbar-spendy {
   display: none;
-  margin-left: 1rem;  /*1 rem from the icon on the left*/
+  margin-left: 1rem; /*1 rem from the icon on the left*/
 }
 
 .logo-text.navbar-spendy {
@@ -204,7 +208,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-
 /* Large screens */
 @media only screen and (min-width: 1401px) {
   .navbar.navbar-spendy {
@@ -255,13 +258,7 @@ body::-webkit-scrollbar-thumb {
     margin: 0 0 0 18rem;
     padding: 5rem;
   }
-
 }
-
-
-
-
-
 
 /* font awesome svg 2 color animation color fill: */
 /*.fa-primary {*/
@@ -274,3 +271,11 @@ body::-webkit-scrollbar-thumb {
 /*.fa-secondary {*/
 /*  transition: var(--transition-speed);*/
 /*}*/
+.avatar {
+  width: 4rem;
+}
+.nevem {
+  font-family: "Muli", sans-serif;
+  font-weight: 300;
+  color: #111b54;
+}
