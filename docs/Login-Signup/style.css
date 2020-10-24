@@ -183,6 +183,10 @@ img {
     height: 75px;
 }
 
+#Spendy:active, #Prijava:active, #Registracija:active {
+    color: #CB3B3B;
+}
+
 /*@media screen and (max-width: 600px){
     .navbar {
         height: 100px;
