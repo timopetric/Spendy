@@ -78,17 +78,17 @@
               href="#"
               id="navbarDropdown"
               role="button"
-        >
-          <img
+            >
+              <img
                 alt="https://generated.photos/"
                 class="img-fluid rounded-circle avatar mr-2"
                 src="media/user-1.png"
-          />
-          Janez Novak
-        </a>
-        <div
+              />
+              Janez Novak
+            </a>
+            <div
               aria-labelledby="navbarDropdown"
-              class="dropdown-menu dropdown-menu-right"
+              class="dropdown-menu dropdown-menu-right position-absolute"
         >
           <a class="dropdown-item" href="profil.html">Moj profil</a>
           <a class="dropdown-item" href="settings.html">Nastavitve</a>
@@ -160,42 +160,71 @@
                   <div class="valid-feedback">
                     Looks good!
                   </div>
-                </div>
-                <div class="form-group col-sm-12 col-md-6">
-                  <select class="custom-select" required>
-                    <option value="">Skupina</option>
-                    <option value="1">Služba</option>
-                    <option value="2">Družina Kovač</option>
-
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <input id="defaultCheck1" type="checkbox" value="">
-                <label for="defaultCheck1">
-                  Ponavljujoči se mesečni prihodek/odhodek
-                </label>
+                  <div class="row">
+                    <div class="form-group col-sm-12 col-md-6">
+                      <label for="vrednostPrihodkaOdhodka"
+                        >Vnesite vrednost v €</label
+                      >
+                      <input
+                        id="vrednostPrihodkaOdhodka"
+                        min="0"
+                        placeholder="Vrednost v €"
+                        required
+                        step="0.01"
+                        type="number"
+                      />
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                      Datum veljave
+                      <input required type="date" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-12 col-md-6">
+                      <select class="custom-select" required>
+                        <option value="">Izberi odhodek/prihodek</option>
+                        <option value="1">Hrana</option>
+                        <option value="2">Avto</option>
+                        <option value="3">Treningi</option>
+                        <option value="4">Igrice</option>
+                        <option value="5">Žepnina</option>
+                        <option value="6">Plača</option>
+                      </select>
+                      <div class="valid-feedback">Looks good!</div>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                      <select class="custom-select" required>
+                        <option value="">Skupina</option>
+                        <option value="1">Služba</option>
+                        <option value="2">Družina Kovač</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input id="defaultCheck1" type="checkbox" value="" />
+                    <label for="defaultCheck1">
+                      Ponavljujoči se mesečni prihodek/odhodek
+                    </label>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Shrani</button>
+                </form>
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button class="btn btn-primary " type="submit">Shrani</button>
               </div>
             </form>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
 
+    <!-- load scripts at the end -->
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-  </div>
-</main>
-
-<!-- load scripts at the end -->
-<script src="js/jquery-3.4.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
-<!-- auto refresh on change when developing "python3 -m http.server" -->
-<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
-</body>
+    <!-- auto refresh on change when developing "python3 -m http.server" -->
+    <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+  </body>
 </html>

@@ -13,38 +13,62 @@
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 
-<body>
-<!-- ################ navbar ################ -->
-<nav class="navbar navbar-spendy">
-  <ul class="navbar-nav navbar-spendy">
+  <body>
+    <!-- ################ navbar ################ -->
+    <nav class="navbar navbar-spendy">
+      <ul class="navbar-nav navbar-spendy">
+        <li class="logo navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              alt="logo"
+              class="logo-img navbar-spendy"
+              src="media/logo.png"
+            />
+            <span class="logo-text navbar-spendy">Spendy</span>
+          </a>
+        </li>
 
-    <li class="logo navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
-        <img alt="logo" class="logo-img navbar-spendy" src="media/logo.png"/>
-        <span class="logo-text navbar-spendy">Spendy</span>
-      </a>
-    </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="index.html">
+            <img
+              alt="dashboard"
+              class="navbar-spendy"
+              src="media/dashboard.svg"
+            />
+            <span class="link-text navbar-spendy">Pregled</span>
+          </a>
+        </li>
 
-    <li class="nav-item navbar-spendy">
-      <a class="nav-link navbar-spendy" href="index.html">
-        <img alt="dashboard" class="navbar-spendy" src="media/dashboard.svg"/>
-        <span class="link-text navbar-spendy">Pregled</span>
-      </a>
-    </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img alt="graph" class="navbar-spendy" src="media/graph.svg" />
+            <span class="link-text navbar-spendy">Grafično</span>
+          </a>
+        </li>
 
-    <li class="nav-item navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
-        <img alt="graph" class="navbar-spendy" src="media/graph.svg"/>
-        <span class="link-text navbar-spendy">Grafično</span>
-      </a>
-    </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              alt="analysis"
+              class="navbar-spendy"
+              src="media/analysis.svg"
+            />
+            <span class="link-text navbar-spendy">Analiza</span>
+          </a>
+        </li>
 
-    <li class="nav-item navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
-        <img alt="analysis" class="navbar-spendy" src="media/analysis.svg"/>
-        <span class="link-text navbar-spendy">Analiza</span>
-      </a>
-    </li>
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="#">
+            <img
+              alt="expenses"
+              class="navbar-spendy"
+              src="media/expenses.svg"
+            />
+            <span class="link-text navbar-spendy">Stroški</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <li class="nav-item navbar-spendy">
       <a class="nav-link navbar-spendy" href="#">
@@ -431,44 +455,38 @@
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-
-                    }
-                }]
-            }
-        }
-    });
-</script>
-<script>
-    var ctx = document.getElementById('vsChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Prihodki', 'Odhodki'],
-            datasets: [{
-                label: 'Expenses',
-                data: [480, 420],
-                backgroundColor: [
-                    'rgba(92, 184, 92, 1)',
-                    'rgba(217, 83, 79,1)',
-
-                ],
-                borderColor: [
-                    'rgba(92, 184, 92, 1)',
-                    'rgba(217, 83, 79,1)',
-                ],
-                borderWidth: 1
-            }]
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
         },
+      });
+    </script>
+    <script>
+      var ctx = document.getElementById("vsChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Prihodki", "Odhodki"],
+          datasets: [
+            {
+              label: "Expenses",
+              data: [480, 420],
+              backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+              borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+    </script>
 
-    });
-</script>
-
-
-<!-- auto refresh on change when developing "python3 -m http.server" -->
-<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
-</body>
+    <!-- auto refresh on change when developing "python3 -m http.server" -->
+    <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+  </body>
 </html>
