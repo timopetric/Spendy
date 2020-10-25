@@ -18,6 +18,7 @@ ter ustrezni grafi za ceno Bitcoina, Etheriuma ter Nashdaqovih delnic skozi čas
 
 [Dodajanje štroškov/prihodkov](/public/add_expenses.html): Na tej strani lahko uporabnik doda bodisi stroške bodisi prihodke. Ko je preusmerjen na stran lahko na dolgem gumbu najprej označi, ali bo vpisal Odhodek ali Prihodek z pritiskom na gumb.
 Nato označi vrednost tega prihodka oziroma odhodka. Označi še datum veljave. Nato izbere kategorijo, v katero sodi določen strošek oziroma odhodek (izbira lahko med različnimi, na primer za odhodek Avto ter za prihodek Plača).
+Uporabnik tudi označi, v katero skupino naj se strošek vpiše. Če na primer strošek dodamo v družino Kovač, bodo ta strošek videli vsi člani družine Kovač.
 Na koncu lahko še označi, ali gre za mesečni strošek/dohodek in potrdi svoj vpis z gumbom na shrani. Important: vsa okna morajo biti obvezno izpolnjena!
 
 
