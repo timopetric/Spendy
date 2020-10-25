@@ -1,82 +1,84 @@
 <!DOCTYPE html>
-<html lang="sl">
+<html lang="en">
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-  <title>Prijava</title>
-  <meta content="width=devicewidth, initial-scale=1, shrink-to-fit=yes" name="viewport">
-  <!-- Prevedeni in minimizirani slogi CSS verzije 4.3.1 -->
-  <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        rel="stylesheet">
-
-  <!-- Podporni knjižnici jQuery in Proper -->
-  <script crossorigin="anonymous"
-          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-          src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script crossorigin="anonymous"
-          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-  <!-- Prevedena in minimizirana JavaScript koda verzije 4.3.1 -->
-  <script crossorigin="anonymous"
-          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-          src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <!-- Personalised css -->
-  <link href="css/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Registracija</title>
+  <link href="media/logo.ico" rel="icon">
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
+  <link href="css/navbar.css" rel="stylesheet">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/style-profil.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
-<body>
-<div class="container">
-  <!--<div class="navbar col-sm-12">
-      <a href="#">
-          <img src="Resources/logo.png" alt="Logo">
-      </a>
-  </div>-->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="first_page.html">
-      <img alt="Logo" src="media/logo.png">
-    </a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#" id="Spendy">Spendy</a>
-        </li>
-        <a class="nav-link" href="login.html" id="Prijava">Prijava</a>
-        <li class="nav-item">
-          <a class="nav-link" href="#" id="Registracija">Registrcija</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<body>
+<!-- ################ navbar ################ -->
+<nav class="navbar navbar-spendy">
+  <ul class="navbar-nav navbar-spendy">
+
+    <li class="logo navbar-spendy">
+      <a class="nav-link navbar-spendy" href="first_page.html">
+        <img alt="logo" class="logo-img navbar-spendy" src="media/logo.png"/>
+        <span class="logo-text navbar-spendy">Spendy</span>
+      </a>
+    </li>
+
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="login.html">
+        <img alt="dashboard" class="navbar-spendy" src="media/kisspng-computer-icons-user-clip-art-consignee-5b2d2510d5ef84.7577508315296852648763.png"/>
+        <span class="link-text navbar-spendy">Prijava</span>
+      </a>
+    </li>
+
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img alt="Prijava" class="navbar-spendy" src="media/edit.svg"/>
+        <span class="link-text navbar-spendy">Registracija</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- ################ main body ################ -->
+<main>
+
+  <!--        <div class="container">-->
+  <!--            <div class="row justify-content-center">-->
+  <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+  <!--                    Row 1 col 1-->
+  <!--                </div>-->
+  <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+  <!--                    Row 1 col 2-->
+  <!--                </div>-->
+  <!--            </div>-->
+  <!--        </div>-->
   <div class="main">
     <form action="login.html" class="box col-sm-12 col-xl-6" method="post">
       <div class="form-group"></div>
-      <h1>Prijava</h1>
+      <h1>Registracija</h1>
       <input placeholder="Ime" type="text">
       <input placeholder="Priimek" type="text">
       <input placeholder="Epoštni Naslov" type="email">
       <input placeholder="Geslo" type="password">
+      <input placeholder="Ponovite geslo" type="password">
       <button class="btn btn-primary" type="submit"><a class="nav-link" href="signup.html">Registracija</a></button>
     </form>
   </div>
-  <!--<div class="besedilo col-sm-12 col-xl-6">
-      <p>Ste prvič pri nas.</p>
-  </div>-->
-  <div id="content">Content Here.</div>
-  <!--<div class="footer">
-      <p>Spendy 2020 &#169;</p>
-  </div>-->
-  <div class="card text-center">
-    <div class="card-footer text-muted">
-      <p>Spendy 2020 &#169 </p>
-    </div>
-  </div>
-</div>
+
+</main>
+
+<!-- load scripts at the end -->
+<script src="js/jquery-3.4.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- auto refresh on change when developing "python3 -m http.server" -->
+<!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+
 </body>
+
 </html>
