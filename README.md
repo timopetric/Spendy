@@ -20,6 +20,7 @@ ter ustrezni grafi za ceno Bitcoina, Etheriuma ter Nashdaqovih delnic skozi čas
 Nato označi vrednost tega prihodka oziroma odhodka. Označi še datum veljave. Nato izbere kategorijo, v katero sodi določen strošek oziroma odhodek (izbira lahko med različnimi, na primer za odhodek Avto ter za prihodek Plača).
 Na koncu lahko še označi, ali gre za mesečni strošek/dohodek in potrdi svoj vpis z gumbom na shrani. Important: vsa okna morajo biti obvezno izpolnjena!
 
+[Prva stran](/public/first_page.html): Vstopna stran, kjer uporabnik izve osnovne informacije o strani. Na dnu strani je povezava na prijavno stran.
 
 ## 2. LP
 
