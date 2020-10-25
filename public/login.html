@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  <title>Prijava</title>
+  <meta content="width=devicewidth, initial-scale=1, shrink-to-fit=yes" name="viewport">
+  <!-- Prevedeni in minimizirani slogi CSS verzije 4.3.1 -->
+  <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        rel="stylesheet">
+
+  <!-- Podporni knjižnici jQuery in Proper -->
+  <script crossorigin="anonymous"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script crossorigin="anonymous"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Prevedena in minimizirana JavaScript koda verzije 4.3.1 -->
+  <script crossorigin="anonymous"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Personalised css -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <!--<div class="navbar col-sm-12">
+      <a href="#">
+          <img src="Resources/logo.png" alt="Logo">
+      </a>
+  </div>-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="first_page.html">
+      <img alt="Logo" src="media/logo.png">
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" id="Spendy">Spendy</a>
+        </li>
+        <a class="nav-link" href="#" id="Prijava">Prijava</a>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html" id="Registracija">Registrcija</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="main">
+    <form action="login.html" class="box col-sm-12 col-xl-6" method="post">
+      <div class="form-group"></div>
+      <h1>Prijava</h1>
+      <input placeholder="Epoštni Naslov" type="email">
+      <input placeholder="Geslo" type="password">
+      <button class="btn btn-primary" id="PrijavaGumb" type="submit"><a class="nav-link" href="index.html">Prijava</a>
+      </button>
+      <button class="btn btn-primary" type="submit"><a class="nav-link" href="signup.html">Registracija</a></button>
+    </form>
+  </div>
+  <!--<div class="besedilo col-sm-12 col-xl-6">
+      <p>Ste prvič pri nas.</p>
+  </div>-->
+  <div id="content">Content Here.</div>
+  <!--<div class="footer">
+      <p>Spendy 2020 &#169;</p>
+  </div>-->
+  <div class="card text-center">
+    <div class="card-footer text-muted">
+      <p>Spendy 2020 &#169 </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

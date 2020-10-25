@@ -3,11 +3,12 @@
   font-family: 'Open Sans', sans-serif;
   --transition-speed: 350ms;
   /* theme colors: todo: checkout how to set, use */
-  --text-primary: #1C0808;      /* --variable ~= to set the theme */
+  --text-primary: #1C0808; /* --variable ~= to set the theme */
   --text-secondary: #ffffff;
   --bg-primary: #CB3B3B;
   --bg-secondary: #731c1c;
 }
+
 .nevem {
   font-family: "Muli", sans-serif;
   font-weight: 300;
@@ -20,6 +21,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .prihodek {
   background-color: lightgreen;
 }
@@ -32,13 +34,16 @@ body {
 .search {
   max-width: 80%;
 }
+
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
   width: 0.30rem;
 }
+
 body::-webkit-scrollbar-track {
   background: #1e1e24;
 }
+
 body::-webkit-scrollbar-thumb {
   background: #CB3B3B;
 }
