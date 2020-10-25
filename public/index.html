@@ -1,82 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Spendy</title>
-    <link href="media/logo.ico" rel="icon" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- must be before other css imports -->
-    <link href="css/navbar.css" rel="stylesheet" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<head>
+  <meta charset="UTF-8"/>
+  <title>Spendy</title>
+  <link href="media/logo.ico" rel="icon"/>
+  <link href="css/main.css" rel="stylesheet"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- must be before other css imports -->
+  <link href="css/navbar.css" rel="stylesheet"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-  </head>
+  <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
 
-  <body>
-    <!-- ################ navbar ################ -->
-    <nav class="navbar navbar-spendy">
-      <ul class="navbar-nav navbar-spendy">
-        <li class="logo navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img
+<body>
+<!-- ################ navbar ################ -->
+<nav class="navbar navbar-spendy">
+  <ul class="navbar-nav navbar-spendy">
+    <li class="logo navbar-spendy">
+      <a class="nav-link navbar-spendy" href="#">
+        <img
               alt="logo"
               class="logo-img navbar-spendy"
               src="media/logo.png"
-            />
-            <span class="logo-text navbar-spendy">Spendy</span>
-          </a>
-        </li>
+        />
+        <span class="logo-text navbar-spendy">Spendy</span>
+      </a>
+    </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img
+    <li class="nav-item navbar-spendy">
+      <a id="current-page" class="nav-link navbar-spendy" href="#">
+        <img
               alt="dashboard"
               class="navbar-spendy"
               src="media/dashboard.svg"
-            />
-            <span class="link-text navbar-spendy">Pregled</span>
-          </a>
-        </li>
+        />
+        <span class="link-text navbar-spendy">Pregled</span>
+      </a>
+    </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img alt="graph" class="navbar-spendy" src="media/graph.svg" />
-            <span class="link-text navbar-spendy">Grafično</span>
-          </a>
-        </li>
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="graphs.html">
+        <img alt="graph" class="navbar-spendy" src="media/graph.svg"/>
+        <span class="link-text navbar-spendy">Grafično</span>
+      </a>
+    </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="analysis.html">
-            <img
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="analysis.html">
+        <img
               alt="analysis"
               class="navbar-spendy"
               src="media/analysis.svg"
-            />
-            <span class="link-text navbar-spendy">Analiza</span>
-          </a>
-        </li>
+        />
+        <span class="link-text navbar-spendy">Analiza</span>
+      </a>
+    </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="search.html">
+        <img
               alt="expenses"
               class="navbar-spendy"
               src="media/expenses.svg"
-            />
-            <span class="link-text navbar-spendy">Stroški</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+        />
+        <span class="link-text navbar-spendy">Stroški</span>
+      </a>
+    </li>
 
-    <!-- ################ main body ################ -->
-    <main>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item dropdown">
-            <a
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="groups.html">
+        <img
+              alt="groups"
+              class="navbar-spendy"
+              src="media/groups.svg"
+        />
+        <span class="link-text navbar-spendy">Skupine</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ################ main body ################ -->
+<main>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="mr-auto"></div>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item dropdown">
+        <a
               aria-expanded="false"
               aria-haspopup="true"
               class="nav-link text-dark dropdown-toggle"
@@ -84,278 +96,280 @@
               href="#"
               id="navbarDropdown"
               role="button"
-            >
-              <img
+        >
+          <img
                 alt="https://generated.photos/"
                 class="img-fluid rounded-circle avatar mr-2"
                 src="media/user-1.png"
-              />
-              Janez Novak
-            </a>
-            <div
+          />
+          Janez Novak
+        </a>
+        <div
               aria-labelledby="navbarDropdown"
-              class="dropdown-menu dropdown-menu-right position-absolute"
-            >
-              <a class="dropdown-item" href="#">Moj profil</a>
-              <a class="dropdown-item" href="settings.html">Nastavitve</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="first_page.html">Odjava</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
+              class="dropdown-menu dropdown-menu-right"
+        >
+          <a class="dropdown-item" href="#">Moj profil</a>
+          <a class="dropdown-item" href="settings.html">Nastavitve</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="first_page.html">Odjava</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
 
-      <div class="container-fluid bg-grey px-3" id="content">
-        <section class="bg-light py-3">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Janez Novak</h1>
-                <p class="lead text-muted">Dashboard ter osnovni podatki</p>
-              </div>
-            </div>
+  <div class="container-fluid bg-grey px-3" id="content">
+    <section class="bg-light py-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9 col-md-8">
+            <h1 class="font-weight-bold mb-0">Janez Novak</h1>
+            <p class="lead text-muted">Dashboard ter osnovni podatki</p>
           </div>
-        </section>
-
-        <section class="bg-mix py-3">
-          <div class="container-fluid">
-            <div class="card rounded-0">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                    <div class="mx-auto">
-                      <h6 class="text-muted">Stanje</h6>
-                      <h3 class="font-weight-bold">50000 €</h3>
-                      <h6 class="text-success">
-                        <i class="icon ion-md-arrow-dropup-circle"></i> 50.50%
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                    <div class="mx-auto">
-                      <h6 class="text-muted">Poraba danes</h6>
-                      <h3 class="font-weight-bold">100 €</h3>
-                      <h6 class="text-success">
-                        <i class="icon ion-md-arrow-dropup-circle"></i> 25.50%
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                    <div class="mx-auto">
-                      <h6 class="text-muted">Budget</h6>
-                      <h3 class="font-weight-bold">2500 €</h3>
-                      <h6 class="text-success">
-                        <i class="icon ion-md-arrow-dropup-circle"></i> 75.50%
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 d-flex my-3">
-                    <div class="mx-auto">
-                      <h6 class="text-muted">Tedneska poraba</h6>
-                      <h3 class="font-weight-bold">500 €</h3>
-                      <h6 class="text-success">
-                        <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-8 my-3">
-                <div class="card rounded-0">
-                  <div class="card-header bg-light">
-                    <h6 class="font-weight-bold mb-0">
-                      Graficni prikaz porabe
-                    </h6>
-                  </div>
-                  <div class="card-body">
-                    <canvas height="150" id="myChart" width="300"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 my-3">
-                <div class="card rounded-0">
-                  <div class="card-header bg-light">
-                    <h6 class="font-weight-bold mb-0">Zadnja dejavnost</h6>
-                  </div>
-                  <div class="card-body pt-0">
-                    <div class="d-flex border-bottom py-2 odhodek">
-                      <div class="d-flex mr-3">
-                        <h2 class="align-self-center mb-0">
-                          <i class="icon ion-md-pricetag"></i>
-                        </h2>
-                      </div>
-                      <div class="align-self-center">
-                        <h5 class="d-inline-block mb-0">- $250</h5>
-                        <h5 class="d-inline-block ml-2">
-                          <span class="badge badge-info">Nogavice</span>
-                        </h5>
-                        <small class="d-block text-muted">opis nakupa</small>
-                      </div>
-                    </div>
-                    <div class="d-flex border-bottom py-2 odhodek">
-                      <div class="d-flex mr-3">
-                        <h2 class="align-self-center mb-0">
-                          <i class="icon ion-md-pricetag"></i>
-                        </h2>
-                      </div>
-                      <div class="align-self-center">
-                        <h5 class="d-inline-block mb-0">- $250</h5>
-                        <h5 class="d-inline-block ml-2">
-                          <span class="badge badge-info">Nogavice</span>
-                        </h5>
-                        <small class="d-block text-muted">opis nakupa</small>
-                      </div>
-                    </div>
-                    <div class="d-flex border-bottom py-2 prihodek">
-                      <div class="d-flex mr-3">
-                        <h2 class="align-self-center mb-0">
-                          <i class="icon ion-md-pricetag"></i>
-                        </h2>
-                      </div>
-                      <div class="align-self-center">
-                        <h5 class="d-inline-block mb-0">$250</h5>
-                        <h5 class="d-inline-block ml-2">
-                          <span class="badge badge-info">Nogavice</span>
-                        </h5>
-                        <small class="d-block text-muted">opis nakupa</small>
-                      </div>
-                    </div>
-                    <div class="d-flex border-bottom py-2 prihodek">
-                      <div class="d-flex mr-3">
-                        <h2 class="align-self-center mb-0">
-                          <i class="icon ion-md-pricetag"></i>
-                        </h2>
-                      </div>
-                      <div class="align-self-center">
-                        <h5 class="d-inline-block mb-0">$250</h5>
-                        <h5 class="d-inline-block ml-2">
-                          <span class="badge badge-info">Nogavice</span>
-                        </h5>
-                        <small class="d-block text-muted">opis nakupa</small>
-                      </div>
-                    </div>
-                    <div class="d-flex border-bottom py-2 mb-4 prihodek">
-                      <div class="d-flex mr-3"></div>
-                      <div class="align-self-center">
-                        <h5 class="d-inline-block mb-0">$250</h5>
-                        <h5 class="d-inline-block ml-2">
-                          <span class="badge badge-info">Nogavice</span>
-                        </h5>
-                        <small class="d-block text-muted">opis nakupa</small>
-                      </div>
-                    </div>
-                    <a class="btn btn-primary w-100" href="search.html">
-                      Oglej si aktivnosti
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <!-- load scripts at the end -->
-    <script src="js/jquery-3.4.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script
+    <section class="bg-mix py-3">
+      <div class="container-fluid">
+        <div class="card rounded-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Stanje</h6>
+                  <h3 class="font-weight-bold">50000 €</h3>
+                  <h6 class="text-success">
+                    <i class="icon ion-md-arrow-dropup-circle"></i> 50.50%
+                  </h6>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Poraba danes</h6>
+                  <h3 class="font-weight-bold">100 €</h3>
+                  <h6 class="text-success">
+                    <i class="icon ion-md-arrow-dropup-circle"></i> 25.50%
+                  </h6>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Budget</h6>
+                  <h3 class="font-weight-bold">2500 €</h3>
+                  <h6 class="text-success">
+                    <i class="icon ion-md-arrow-dropup-circle"></i> 75.50%
+                  </h6>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 d-flex my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Tedneska poraba</h6>
+                  <h3 class="font-weight-bold">500 €</h3>
+                  <h6 class="text-success">
+                    <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 my-3">
+            <div class="card rounded-0">
+              <div class="card-header bg-light">
+                <h6 class="font-weight-bold mb-0">
+                  Graficni prikaz porabe
+                </h6>
+              </div>
+              <div class="card-body">
+                <canvas height="150" id="myChart" width="300"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 my-3">
+            <div class="card rounded-0">
+              <div class="card-header bg-light">
+                <h6 class="font-weight-bold mb-0">Zadnja dejavnost</h6>
+              </div>
+              <div class="card-body pt-0">
+                <div class="d-flex border-bottom py-2 odhodek">
+                  <div class="d-flex mr-3">
+                    <h2 class="align-self-center mb-0">
+                      <i class="icon ion-md-pricetag"></i>
+                    </h2>
+                  </div>
+                  <div class="align-self-center">
+                    <h5 class="d-inline-block mb-0">- $250</h5>
+                    <h5 class="d-inline-block ml-2">
+                      <span class="badge badge-info">Nogavice</span>
+                    </h5>
+                    <small class="d-block text-muted">opis nakupa</small>
+                  </div>
+                </div>
+                <div class="d-flex border-bottom py-2 odhodek">
+                  <div class="d-flex mr-3">
+                    <h2 class="align-self-center mb-0">
+                      <i class="icon ion-md-pricetag"></i>
+                    </h2>
+                  </div>
+                  <div class="align-self-center">
+                    <h5 class="d-inline-block mb-0">- $250</h5>
+                    <h5 class="d-inline-block ml-2">
+                      <span class="badge badge-info">Nogavice</span>
+                    </h5>
+                    <small class="d-block text-muted">opis nakupa</small>
+                  </div>
+                </div>
+                <div class="d-flex border-bottom py-2 prihodek">
+                  <div class="d-flex mr-3">
+                    <h2 class="align-self-center mb-0">
+                      <i class="icon ion-md-pricetag"></i>
+                    </h2>
+                  </div>
+                  <div class="align-self-center">
+                    <h5 class="d-inline-block mb-0">$250</h5>
+                    <h5 class="d-inline-block ml-2">
+                      <span class="badge badge-info">Nogavice</span>
+                    </h5>
+                    <small class="d-block text-muted">opis nakupa</small>
+                  </div>
+                </div>
+                <div class="d-flex border-bottom py-2 prihodek">
+                  <div class="d-flex mr-3">
+                    <h2 class="align-self-center mb-0">
+                      <i class="icon ion-md-pricetag"></i>
+                    </h2>
+                  </div>
+                  <div class="align-self-center">
+                    <h5 class="d-inline-block mb-0">$250</h5>
+                    <h5 class="d-inline-block ml-2">
+                      <span class="badge badge-info">Nogavice</span>
+                    </h5>
+                    <small class="d-block text-muted">opis nakupa</small>
+                  </div>
+                </div>
+                <div class="d-flex border-bottom py-2 mb-4 prihodek">
+                  <div class="d-flex mr-3"></div>
+                  <div class="align-self-center">
+                    <h5 class="d-inline-block mb-0">$250</h5>
+                    <h5 class="d-inline-block ml-2">
+                      <span class="badge badge-info">Nogavice</span>
+                    </h5>
+                    <small class="d-block text-muted">opis nakupa</small>
+                  </div>
+                </div>
+                <button class="btn btn-primary w-100">
+                  Oglej si aktivnosti
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- load scripts at the end -->
+<script src="js/jquery-3.4.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
       crossorigin="anonymous"
       integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
       src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-    ></script>
-    <script>
-      var ctx = document.getElementById("myChart").getContext("2d");
-      var myChart = new Chart(ctx, {
+></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
         type: "bar",
 
         data: {
-          labels: [
-            "Jan 2020",
-            "Feb 2020",
-            "Mar 2020",
-            "Apr 2020",
-            "Maj 2020",
-            "Jun 2020",
-            "Jul 2020",
-            "Aug 2020",
-            "Sep 2020",
-            "Okt 2020",
-            "Nov 2020",
-            "Dec 2020",
-          ],
-          datasets: [
-            {
-              label: "Prihodki",
-              data: [
-                450,
-                100,
-                750,
-                400,
-                800,
-                652,
-                777,
-                4545,
-                878,
-                998,
-                1000,
-                450,
-                6000,
-              ],
-              backgroundColor: "lightgreen",
-              borderColor: "darkgreen",
-              borderWidth: 0.7,
-              maxBarThickness: 30,
-              maxBarLength: 2,
-            },
-            {
-              label: "Odhodki",
-              data: [
-                470,
-                2300,
-                750,
-                400,
-                3850,
-                652,
-                777,
-                3545,
-                878,
-                998,
-                690,
-                450,
-                5580,
-              ],
-              backgroundColor: "lightcoral",
-              borderColor: "darkred",
-              borderWidth: 0.7,
-              maxBarThickness: 30,
-              maxBarLength: 2,
-            },
-          ],
+            labels: [
+                "Jan 2020",
+                "Feb 2020",
+                "Mar 2020",
+                "Apr 2020",
+                "Maj 2020",
+                "Jun 2020",
+                "Jul 2020",
+                "Aug 2020",
+                "Sep 2020",
+                "Okt 2020",
+                "Nov 2020",
+                "Dec 2020",
+            ],
+            datasets: [
+                {
+                    label: "Prihodki",
+                    data: [
+                        450,
+                        100,
+                        750,
+                        400,
+                        800,
+                        652,
+                        777,
+                        4545,
+                        878,
+                        998,
+                        1000,
+                        450,
+                        6000,
+                    ],
+                    backgroundColor: "lightgreen",
+                    borderColor: "darkgreen",
+                    borderWidth: 0.7,
+                    maxBarThickness: 30,
+                    maxBarLength: 2,
+                },
+                {
+                    label: "Odhodki",
+                    data: [
+                        470,
+                        2300,
+                        750,
+                        400,
+                        3850,
+                        652,
+                        777,
+                        3545,
+                        878,
+                        998,
+                        690,
+                        450,
+                        5580,
+                    ],
+                    backgroundColor: "lightcoral",
+                    borderColor: "darkred",
+                    borderWidth: 0.7,
+                    maxBarThickness: 30,
+                    maxBarLength: 2,
+                },
+            ],
         },
         options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
         },
-      });
-    </script>
+    });
+</script>
 
-    <!-- auto refresh on change when developing "python3 -m http.server" -->
-    <script src="http://livejs.com/live.js"></script>
-  </body>
+<!-- auto refresh on change when developing "python3 -m http.server" -->
+<script src="http://livejs.com/live.js"></script>
+
+</body>
+
 </html>
