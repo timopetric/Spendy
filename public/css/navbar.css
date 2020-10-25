@@ -121,7 +121,7 @@ body::-webkit-scrollbar-thumb {
 
   /* hide logo link in bottom row */
   .logo.navbar-spendy {
-    /*display: none;*/
+    display: none;
   }
 
   .navbar-nav.navbar-spendy {
@@ -131,6 +131,7 @@ body::-webkit-scrollbar-thumb {
 
   .nav-link.navbar-spendy {
     justify-content: center;
+    height: 4rem;
   }
 
   .nav-link.navbar-spendy img.navbar-spendy {
