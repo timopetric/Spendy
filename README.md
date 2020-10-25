@@ -72,6 +72,8 @@ Uporabnik tudi označi, v katero skupino naj se strošek vpiše. Če na primer s
 Na koncu lahko še označi, ali gre za mesečni strošek/dohodek in potrdi svoj vpis z gumbom na shrani. Important: vsa okna morajo biti obvezno izpolnjena!
 
 [Prva stran](/public/first_page.html): Vstopna stran, kjer uporabnik izve osnovne informacije o strani. Na dnu strani je povezava na prijavno stran.
+![alt text](/docs/first_page.png "Pregled")
+
 
 ## 2. LP
 

@@ -4,7 +4,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['Januar', 'Februar', 'Marec', 'April', 'Maj', 'Junij', 'Julij', 'Avgust', 'September', 'Oktober', 'November', 'December'],
         datasets: [{
-            label: 'Expenses',
+            label: 'Stroški',
             data: [12, 30, 36, 54, 12, 44, 100, 66, 0, 22, 60, 70],
             backgroundColor: [
                 'rgba(0, 0, 0, 0.0)',
