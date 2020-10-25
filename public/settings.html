@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Settings</title>
-  <link href="media/logo.ico" rel="icon"/>
-  <link href="css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- must be before other css imports -->
-  <link href="css/navbar.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <title>Profil</title>
+  <link href="media/logo.ico" rel="icon">
+  <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- must be before other css imports -->
+  <link href="css/navbar.css" rel="stylesheet">
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/style-profil.css" rel="stylesheet">
   <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 
 <body>
 <!-- ################ navbar ################ -->
-<!-- ################ navbar ################ -->
 <nav class="navbar navbar-spendy">
   <ul class="navbar-nav navbar-spendy">
 
     <li class="logo navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
+      <a class="nav-link navbar-spendy" href="index.html">
         <img alt="logo" class="logo-img navbar-spendy" src="media/logo.png"/>
         <span class="logo-text navbar-spendy">Spendy</span>
       </a>
@@ -33,7 +32,7 @@
     </li>
 
     <li class="nav-item navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
+      <a class="nav-link navbar-spendy" href="graphs.html">
         <img alt="graph" class="navbar-spendy" src="media/graph.svg"/>
         <span class="link-text navbar-spendy">Grafično</span>
       </a>
@@ -47,96 +46,197 @@
     </li>
 
     <li class="nav-item navbar-spendy">
-      <a class="nav-link navbar-spendy" href="#">
+      <a class="nav-link navbar-spendy" href="search.html">
         <img alt="expenses" class="navbar-spendy" src="media/expenses.svg"/>
         <span class="link-text navbar-spendy">Stroški</span>
       </a>
     </li>
+
+    <li class="nav-item navbar-spendy">
+      <a class="nav-link navbar-spendy" href="groups.html">
+        <img alt="groups" class="navbar-spendy" src="media/groups.svg"/>
+        <span class="link-text navbar-spendy">Skupine</span>
+      </a>
+    </li>
+
   </ul>
 </nav>
 
+
 <!-- ################ main body ################ -->
 <main>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="mr-auto"></div>
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item dropdown">
-        <a
-              aria-expanded="false"
-              aria-haspopup="true"
-              class="nav-link text-dark dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-        >
-          <img
-                alt="https://generated.photos/"
-                class="img-fluid rounded-circle avatar mr-2"
-                src="media/user-1.png"
-          />
-          Janez Novak
-        </a>
-        <div
-              aria-labelledby="navbarDropdown"
-              class="dropdown-menu dropdown-menu-right"
-        >
-          <a class="dropdown-item" href="#">Moj profil</a>
-          <a class="dropdown-item" href="#">Nastavitve</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="first_page.html">Odjava</a>
+
+  <!--        <div class="container">-->
+  <!--            <div class="row justify-content-center">-->
+  <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+  <!--                    Row 1 col 1-->
+  <!--                </div>-->
+  <!--                <div class="col-lg-6 col-md-6 col-sm-6" style="border: #1C0808 solid">-->
+  <!--                    Row 1 col 2-->
+  <!--                </div>-->
+  <!--            </div>-->
+  <!--        </div>-->
+  <div class="container bootstrap snippet">
+    <div class="row">
+      <div class="col-sm-10"><h1>janeznovak</h1></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"><!--left col-->
+        <div class="image-upload">
+          <label for="file-input">
+            <img alt="avatar" class="avatar img-circle img-thumbnail"
+                 src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" type="file">
+          </label>
+          <input id="file-input" type="file"/>
+          <!--<h6>Upload a different photo...</h6>-->
+          <!--<input type="file" class="text-center center-block file-upload">-->
         </div>
-      </li>
-    </ul>
-  </nav>
+        <br>
 
-  <div class="container-fluid bg-grey px-3" id="content">
-    <section class="bg-light py-3">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-9 col-md-8">
-            <h1 class="font-weight-bold mb-0">Nastavitve</h1>
 
-          </div>
-        </div>
-      </div>
-    </section>
+        <!--<div class="panel panel-default">
+            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+        </div>-->
 
-    <section class="bg-mix py-3">
-      <div class="container-fluid">
-        <div class="card rounded-0">
-          <div class="card-body">
-            <form>
 
-              <div class="form-group row">
+        <ul class="list-group">
+          <li class="list-group-item text-muted">Pregled <i class="fa fa-dashboard fa-1x"></i></li>
+          <li class="list-group-item text-right" id="stSkupin"><span
+                  class="pull-left"><strong>Število skupin</strong></span> 125
+          </li>
+        </ul>
 
-                <div class="form-group  col-sm-12 col-lg-6">
-                  <label for="spremeniGeslo">Spremeni geslo: </label>
-                  <input id="spremeniGeslo"
-                         placeholder="Vnesite novo geslo"
-                         required
-                         type="password"
-                  >
+
+      </div><!--/col-3-->
+      <div class="col-sm-9">
+        <ul class="nav nav-tabs">
+          <li><a href="profil.html" id="nastavitve">Podatki</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <!--<div class="tab-pane active" id="messages">
+
+            <h2></h2>
+
+
+            <form action="##" class="form" id="registrationForm1" method="post">
+              <div class="form-group">
+
+                <div class="col-xl-3">
+                  <label for="first_name"><h4>Ime</h4></label>
+                  <h6>Janez</h6>
                 </div>
-                <div class="form-group  col-sm-12 col-lg-6">
-                  <label for="potrdiGeslo">Potrdite novo geslo: </label>
-                  <input id="potrdiGeslo"
-                         placeholder="Potrdi geslo"
-                         required
-                         type="password"
-                  >
+              </div>
+              <hr>
+              <div class="form-group">
+
+                <div class="col-xl-3">
+                  <label for="last_name"><h4>Priimek</h4></label>
+                  <h6>Novak</h6>
+                </div>
+              </div>
+              <hr>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="phone"><h4>Telefon</h4></label>
+                  <p>++38631000000</p>
+                </div>
+              </div>
+              <hr>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="email"><h4>Email</h4></label>
+                  <p>janeznovak@gmail.com</p>
                 </div>
               </div>
 
-              <button class="btn btn-primary" type="submit">Potrdi</button>
+            </form>
+
+          </div>-->
+          <div class="tab-pane active" id="settings">
+
+
+            <form action="##" class="form" id="registrationForm" method="post">
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="first_name"><h4>Ime</h4></label>
+                  <input class="form-control" id="first_name" name="first_name" placeholder="Janez"
+                         title="enter your first name if any."
+                         type="text">
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="last_name"><h4>Priimek</h4></label>
+                  <input class="form-control" id="last_name" name="last_name" placeholder="Novak"
+                         title="enter your last name if any."
+                         type="text">
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="phone"><h4>Telefon</h4></label>
+                  <input class="form-control" id="phone" name="phone" placeholder="Vpišite telefon"
+                         title="enter your phone number if any."
+                         type="text">
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="email"><h4>Email</h4></label>
+                  <input class="form-control" id="email" name="email" placeholder="nekaj@email.com"
+                         title="enter your email."
+                         type="email">
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="password"><h4>Geslo</h4></label>
+                  <input class="form-control" id="password" name="password" placeholder="Geslo"
+                         title="enter your password."
+                         type="password">
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="col-xs-6">
+                  <label for="password2"><h4>Ponovite geslo</h4></label>
+                  <input class="form-control" id="password2" name="password2" placeholder="Geslo"
+                         title="enter your password2."
+                         type="password">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br>
+                  <button class="btn btn-lg btn-success pull-right" id="gumb" type="submit"><i
+                          class="glyphicon glyphicon-ok-sign"></i>Shrani
+                  </button>
+                  <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                </div>
+              </div>
             </form>
           </div>
-        </div>
-      </div>
-    </section>
 
+        </div><!--/tab-pane-->
+      </div><!--/tab-content-->
 
-  </div>
+    </div><!--/col-9-->
+  </div><!--/row-->
+
 </main>
 
 <!-- load scripts at the end -->
@@ -147,5 +247,7 @@
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->
 <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+
 </body>
+
 </html>
