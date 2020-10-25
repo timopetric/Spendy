@@ -21,51 +21,62 @@
         <li class="logo navbar-spendy">
           <a class="nav-link navbar-spendy" href="#">
             <img
-              src="media/logo.png"
-              class="logo-img navbar-spendy"
               alt="logo"
+              class="logo-img navbar-spendy"
+              src="media/logo.png"
             />
             <span class="logo-text navbar-spendy">Spendy</span>
           </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
+          <a class="nav-link navbar-spendy" href="index.html">
             <img
-              src="media/dashboard.svg"
-              class="navbar-spendy"
               alt="dashboard"
+              class="navbar-spendy"
+              src="media/dashboard.svg"
             />
             <span class="link-text navbar-spendy">Pregled</span>
           </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img src="media/graph.svg" class="navbar-spendy" alt="graph" />
+          <a class="nav-link navbar-spendy" href="graphs.html">
+            <img alt="graph" class="navbar-spendy" src="media/graph.svg" />
             <span class="link-text navbar-spendy">Grafično</span>
           </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
+          <a class="nav-link navbar-spendy" href="analysis.html">
             <img
-              src="media/analysis.svg"
-              class="navbar-spendy"
               alt="analysis"
+              class="navbar-spendy"
+              src="media/analysis.svg"
             />
             <span class="link-text navbar-spendy">Analiza</span>
           </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
+          <a
+            id="current-page"
+            class="nav-link navbar-spendy"
+            href="search.html"
+          >
             <img
-              src="media/expenses.svg"
-              class="navbar-spendy"
               alt="expenses"
+              class="navbar-spendy"
+              src="media/expenses.svg"
             />
             <span class="link-text navbar-spendy">Stroški</span>
+          </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+          <a class="nav-link navbar-spendy" href="groups.html">
+            <img alt="groups" class="navbar-spendy" src="media/groups.svg" />
+            <span class="link-text navbar-spendy">Skupine</span>
           </a>
         </li>
       </ul>
@@ -74,41 +85,54 @@
     <!-- ################ main body ################ -->
     <main>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto">
-          <h3 class="font-weight-bold mb-0">Janez Novak</h3>
-        </div>
+        <div class="mr-auto"></div>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item dropdown">
             <a
+              aria-expanded="false"
+              aria-haspopup="true"
               class="nav-link text-dark dropdown-toggle"
+              data-toggle="dropdown"
               href="#"
               id="navbarDropdown"
               role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
             >
               <img
-                src="media/user-1.png"
+                alt="https://generated.photos/"
                 class="img-fluid rounded-circle avatar mr-2"
-                alt="profilna slika"
+                src="media/user-1.png"
               />
               Janez Novak
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right position-absolute"
               aria-labelledby="navbarDropdown"
+              class="dropdown-menu dropdown-menu-right"
             >
-              <a class="dropdown-item" href="#">Moj profil</a>
-              <a class="dropdown-item" href="#">Nastavitve</a>
+              <a class="dropdown-item" href="profil.html">Moj profil</a>
+              <a class="dropdown-item" href="settings.html">Nastavitve</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Odjava</a>
+              <a class="dropdown-item" href="first_page.html">Odjava</a>
             </div>
           </li>
         </ul>
       </nav>
 
-      <div id="content" class="container search bg-grey px-3">
+      <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">Poisci aktivnosti</h1>
+                <p class="lead text-muted">
+                  Poglej si svoje aktivnosti in jih urejaj
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="content" class="container search bg-grey px-3 mb-3">
         <div class="container-fluid">
           <form class="position-relative my-2 w-100">
             <input
@@ -159,7 +183,7 @@
         <section class="bg-mix py-3">
           <div class="container-fluid">
             <div
-              class="card my-2"
+              class="card my-2 cursor-pointer"
               data-toggle="modal"
               data-target="#exampleModal"
             >
@@ -189,7 +213,7 @@
             </div>
 
             <div
-              class="card my-2"
+              class="card my-2 cursor-pointer"
               data-toggle="modal"
               data-target="#exampleModal"
             >
@@ -219,7 +243,7 @@
             </div>
 
             <div
-              class="card my-2"
+              class="card my-2 cursor-pointer"
               data-toggle="modal"
               data-target="#exampleModal"
             >

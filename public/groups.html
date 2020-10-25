@@ -1,86 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8" />
     <title>Skupine</title>
-    <link href="media/logo.ico" rel="icon"/>
-    <link href="css/main.css" rel="stylesheet"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="media/logo.ico" rel="icon" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <!-- must be before other css imports -->
-    <link href="css/navbar.css" rel="stylesheet"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link rel="stylesheet" href="css/styleGroups.css">
+    <link href="css/navbar.css" rel="stylesheet" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="stylesheet" href="css/styleGroups.css" />
 
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-</head>
+  </head>
 
-<body>
-<!-- ################ navbar ################ -->
-<nav class="navbar navbar-spendy">
-    <ul class="navbar-nav navbar-spendy">
+  <body>
+    <!-- ################ navbar ################ -->
+    <nav class="navbar navbar-spendy">
+      <ul class="navbar-nav navbar-spendy">
         <li class="logo navbar-spendy">
-            <a class="nav-link navbar-spendy" href="index.html">
-                <img
-                        alt="logo"
-                        class="logo-img navbar-spendy"
-                        src="media/logo.png"
-                />
-                <span class="logo-text navbar-spendy">Spendy</span>
-            </a>
+          <a class="nav-link navbar-spendy" href="index.html">
+            <img
+              alt="logo"
+              class="logo-img navbar-spendy"
+              src="media/logo.png"
+            />
+            <span class="logo-text navbar-spendy">Spendy</span>
+          </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a class="nav-link navbar-spendy" href="index.html">
-                <img
-                        alt="dashboard"
-                        class="navbar-spendy"
-                        src="media/dashboard.svg"
-                />
-                <span class="link-text navbar-spendy">Pregled</span>
-            </a>
+          <a class="nav-link navbar-spendy" href="index.html">
+            <img
+              alt="dashboard"
+              class="navbar-spendy"
+              src="media/dashboard.svg"
+            />
+            <span class="link-text navbar-spendy">Pregled</span>
+          </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a class="nav-link navbar-spendy" href="graphs.html">
-                <img alt="graph" class="navbar-spendy" src="media/graph.svg"/>
-                <span class="link-text navbar-spendy">Grafično</span>
-            </a>
+          <a class="nav-link navbar-spendy" href="graphs.html">
+            <img alt="graph" class="navbar-spendy" src="media/graph.svg" />
+            <span class="link-text navbar-spendy">Grafično</span>
+          </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a class="nav-link navbar-spendy" href="analysis.html">
-                <img
-                        alt="analysis"
-                        class="navbar-spendy"
-                        src="media/analysis.svg"
-                />
-                <span class="link-text navbar-spendy">Analiza</span>
-            </a>
+          <a class="nav-link navbar-spendy" href="analysis.html">
+            <img
+              alt="analysis"
+              class="navbar-spendy"
+              src="media/analysis.svg"
+            />
+            <span class="link-text navbar-spendy">Analiza</span>
+          </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a class="nav-link navbar-spendy" href="search.html">
-                <img
-                        alt="expenses"
-                        class="navbar-spendy"
-                        src="media/expenses.svg"
-                />
-                <span class="link-text navbar-spendy">Stroški</span>
-            </a>
+          <a class="nav-link navbar-spendy" href="search.html">
+            <img
+              alt="expenses"
+              class="navbar-spendy"
+              src="media/expenses.svg"
+            />
+            <span class="link-text navbar-spendy">Stroški</span>
+          </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a id="current-page" class="nav-link navbar-spendy" href="groups.html">
-                <img alt="groups" class="navbar-spendy" src="media/groups.svg"/>
-                <span class="link-text navbar-spendy">Skupine</span>
-            </a>
+          <a
+            id="current-page"
+            class="nav-link navbar-spendy"
+            href="groups.html"
+          >
+            <img alt="groups" class="navbar-spendy" src="media/groups.svg" />
+            <span class="link-text navbar-spendy">Skupine</span>
+          </a>
         </li>
-    </ul>
-</nav>
+      </ul>
+    </nav>
 
-<!-- ################ main body ################ -->
-<main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- ################ main body ################ -->
+    <main>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="mr-auto"></div>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
@@ -104,303 +108,555 @@
                         aria-labelledby="navbarDropdown"
                         class="dropdown-menu dropdown-menu-right"
                 >
-                    <a class="dropdown-item" href="#">Moj profil</a>
+                    <a class="dropdown-item" href="profil.html">Moj profil</a>
                     <a class="dropdown-item" href="settings.html">Nastavitve</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="first_page.html">Odjava</a>
                 </div>
             </li>
         </ul>
-    </nav>
+      </nav>
 
-    <div class="container-fluid bg-grey px-3" id="content">
+      <div class="container-fluid bg-grey px-3" id="content">
         <section class="bg-light py-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9 col-md-8">
-                        <h1 class="font-weight-bold mb-0">Skupine</h1>
-                        <p class="lead text-muted">Moje skupine</p>
-                    </div>
-                </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">Skupine</h1>
+                <p class="lead text-muted">Moje skupine</p>
+              </div>
             </div>
+          </div>
         </section>
 
-    <div class="container">
-        <div class="row">
+        <div class="container">
+          <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3" id="prvi">
-                <div class="accordion" id="accordionExample1">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    Družina
-                                </button>
-                            </h2>
-                        </div>
+              <div class="accordion" id="accordionExample1">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseOne"
+                        aria-expanded="false"
+                        aria-controls="collapseOne"
+                      >
+                        Družina
+                      </button>
+                    </h2>
+                  </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample1">
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Mati
-                                        <span class="badge badge-primary badge-pill">Admin</span>
-                                    </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Oče
-                                    <!--<span class="badge badge-primary badge-pill">2</span>>-->                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Sin
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Hči
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" id="dodajHitro1">
-                                    Dodaj člana
-                                </button>
+                  <div
+                    id="collapseOne"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample1"
+                  >
+                    <div class="card-body">
+                      <ul class="list-group">
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Mati
+                          <span class="badge badge-primary badge-pill"
+                            >Admin</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Oče
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Sin
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Hči
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                      </ul>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModal1"
+                        id="dodajHitro1"
+                      >
+                        Dodaj člana
+                      </button>
 
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel1">Dodaja člana</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="#" class="form" id="registrationForm1" method="post">
-                                                    <div class="form-group">
-
-                                                        <div class="col-xs-6">
-                                                            <label for="first_name"><h4>Uporabniško ime člana</h4></label>
-                                                            <input class="form-control" id="UporabniškoImeClana"
-                                                                   type="text" placeholder="janeznovak">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Preklic</button>
-                                                <button type="button" class="btn btn-primary">Dodajte skupino</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                      <div
+                        class="modal fade"
+                        id="exampleModal1"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="exampleModalLabel1"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel1">
+                                Dodaja člana
+                              </h5>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form
+                                action="#"
+                                class="form"
+                                id="registrationForm1"
+                                method="post"
+                              >
+                                <div class="form-group">
+                                  <div class="col-xs-6">
+                                    <label for="first_name"
+                                      ><h4>Uporabniško ime člana</h4></label
+                                    >
+                                    <input
+                                      class="form-control"
+                                      id="UporabniškoImeClana"
+                                      type="text"
+                                      placeholder="janeznovak"
+                                    />
+                                  </div>
                                 </div>
+                              </form>
                             </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                              >
+                                Preklic
+                              </button>
+                              <button type="button" class="btn btn-primary">
+                                Dodajte skupino
+                              </button>
+                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <div class="accordion" id="accordionExample2">
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                    Košarka
-                                </button>
-                            </h2>
-                        </div>
+              <div class="accordion" id="accordionExample2">
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        aria-expanded="true"
+                        aria-controls="collapseTwo"
+                      >
+                        Košarka
+                      </button>
+                    </h2>
+                  </div>
 
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample2">
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Janez Novak
-                                        <span class="badge badge-primary badge-pill">Admin</span>
-                                    </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Matic Bregar
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Kristjan Sever
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Timotej Petrič
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Aljaž Grdadolnik
-                                        <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                    </li>
-                                </ul>
-                                <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>-->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" id="dodajHitro2">
-                                    Dodaj člana
-                                </button>
+                  <div
+                    id="collapseTwo"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample2"
+                  >
+                    <div class="card-body">
+                      <ul class="list-group">
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Janez Novak
+                          <span class="badge badge-primary badge-pill"
+                            >Admin</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Matic Bregar
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Kristjan Sever
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Timotej Petrič
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          Aljaž Grdadolnik
+                          <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                        </li>
+                      </ul>
+                      <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>-->
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModal2"
+                        id="dodajHitro2"
+                      >
+                        Dodaj člana
+                      </button>
 
-                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel2">Dodaja člana</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="#" class="form" id="registrationForm2" method="post">
-                                                    <div class="form-group">
-
-                                                        <div class="col-xs-6">
-                                                            <label for="first_name"><h4>Uporabniško ime člana</h4></label>
-                                                            <input class="form-control" id="UporabniškoImeClana2"
-                                                                   type="text" placeholder="janeznovak">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Preklic</button>
-                                                <button type="button" class="btn btn-primary">Dodajte skupino</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                      <div
+                        class="modal fade"
+                        id="exampleModal2"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="exampleModalLabel2"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">
+                                Dodaja člana
+                              </h5>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form
+                                action="#"
+                                class="form"
+                                id="registrationForm2"
+                                method="post"
+                              >
+                                <div class="form-group">
+                                  <div class="col-xs-6">
+                                    <label for="first_name"
+                                      ><h4>Uporabniško ime člana</h4></label
+                                    >
+                                    <input
+                                      class="form-control"
+                                      id="UporabniškoImeClana2"
+                                      type="text"
+                                      placeholder="janeznovak"
+                                    />
+                                  </div>
                                 </div>
+                              </form>
                             </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                              >
+                                Preklic
+                              </button>
+                              <button type="button" class="btn btn-primary">
+                                Dodajte skupino
+                              </button>
+                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <div class="accordion" id="accordionExample3">
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                    Skupina
-                                </button>
-                            </h2>
-                        </div>
+              <div class="accordion" id="accordionExample3">
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseThree"
+                        aria-expanded="true"
+                        aria-controls="collapseThree"
+                      >
+                        Skupina
+                      </button>
+                    </h2>
+                  </div>
 
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample3">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
+                  <div
+                    id="collapseThree"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample3"
+                  >
+                    <div class="card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life
+                      accusamus terry richardson ad squid. 3 wolf moon officia
+                      aute, non cupidatat skateboard dolor brunch. Food truck
+                      quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+                      tempor, sunt aliqua put a bird on it squid single-origin
+                      coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                      helvetica, craft beer labore wes anderson cred nesciunt
+                      sapiente ea proident. Ad vegan excepteur butcher vice
+                      lomo. Leggings occaecat craft beer farm-to-table, raw
+                      denim aesthetic synth nesciunt you probably haven't heard
+                      of them accusamus labore sustainable VHS.
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <div class="accordion" id="accordionExample4">
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    Še ena skupina
-                                </button>
-                            </h2>
-                        </div>
+              <div class="accordion" id="accordionExample4">
+                <div class="card">
+                  <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseFour"
+                        aria-expanded="true"
+                        aria-controls="collapseFour"
+                      >
+                        Še ena skupina
+                      </button>
+                    </h2>
+                  </div>
 
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample4">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
+                  <div
+                    id="collapseFour"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample4"
+                  >
+                    <div class="card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life
+                      accusamus terry richardson ad squid. 3 wolf moon officia
+                      aute, non cupidatat skateboard dolor brunch. Food truck
+                      quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+                      tempor, sunt aliqua put a bird on it squid single-origin
+                      coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                      helvetica, craft beer labore wes anderson cred nesciunt
+                      sapiente ea proident. Ad vegan excepteur butcher vice
+                      lomo. Leggings occaecat craft beer farm-to-table, raw
+                      denim aesthetic synth nesciunt you probably haven't heard
+                      of them accusamus labore sustainable VHS.
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
 
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <div class="accordion" id="accordionExample5">
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                    Pa še ena
-                                </button>
-                            </h2>
-                        </div>
+              <div class="accordion" id="accordionExample5">
+                <div class="card">
+                  <div class="card-header" id="headingFive">
+                    <h2 class="mb-0">
+                      <button
+                        class="btn btn-link btn-block text-left"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseFive"
+                        aria-expanded="true"
+                        aria-controls="collapseFive"
+                      >
+                        Pa še ena
+                      </button>
+                    </h2>
+                  </div>
 
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample5">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
+                  <div
+                    id="collapseFive"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample5"
+                  >
+                    <div class="card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life
+                      accusamus terry richardson ad squid. 3 wolf moon officia
+                      aute, non cupidatat skateboard dolor brunch. Food truck
+                      quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+                      tempor, sunt aliqua put a bird on it squid single-origin
+                      coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                      helvetica, craft beer labore wes anderson cred nesciunt
+                      sapiente ea proident. Ad vegan excepteur butcher vice
+                      lomo. Leggings occaecat craft beer farm-to-table, raw
+                      denim aesthetic synth nesciunt you probably haven't heard
+                      of them accusamus labore sustainable VHS.
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" id="novaSkupina">
-            <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
+        <button
+          type="button"
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          id="novaSkupina"
+        >
+          <svg
+            width="4em"
+            height="4em"
+            viewBox="0 0 16 16"
+            class="bi bi-plus"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+            />
+          </svg>
         </button>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Dodajte skupino</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Dodajte skupino
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form
+                  action="#"
+                  class="form"
+                  id="registrationForm"
+                  method="post"
+                >
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="first_name"><h4>Ime skupine</h4></label>
+                      <input
+                        class="form-control"
+                        id="first_name"
+                        type="text"
+                        placeholder="Neko ime"
+                      />
                     </div>
-                    <div class="modal-body">
-                        <form action="#" class="form" id="registrationForm" method="post">
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>Ime skupine</h4></label>
-                                    <input class="form-control" id="first_name"
-                                           type="text" placeholder="Neko ime">
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="last_name"><h4>Limit</h4></label>
-                                    <input class="form-control" id="last_name" name="last_name" placeholder="xyz €"
-                                           type="text">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="phone"><h4>Uporabniško ime prvega čana</h4></label>
-                                    <input class="form-control" id="phone" name="phone"
-                                           type="text" placeholder="janko7">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="email"><h4>Uporabniško ime drugega člana</h4></label>
-                                    <input class="form-control" id="email" name="email"
-                                           type="email" placeholder="metka9">
-                                </div>
-                            </div>
-                        </form>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="last_name"><h4>Limit</h4></label>
+                      <input
+                        class="form-control"
+                        id="last_name"
+                        name="last_name"
+                        placeholder="xyz €"
+                        type="text"
+                      />
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Preklic</button>
-                        <button type="button" class="btn btn-primary">Dodajte skupino</button>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="phone"
+                        ><h4>Uporabniško ime prvega čana</h4></label
+                      >
+                      <input
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        type="text"
+                        placeholder="janko7"
+                      />
                     </div>
-                </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="email"
+                        ><h4>Uporabniško ime drugega člana</h4></label
+                      >
+                      <input
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="metka9"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Preklic
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Dodajte skupino
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</main>
+      </div>
+    </main>
 
-<!-- load scripts at the end -->
-<script src="js/jquery-3.4.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script
-        crossorigin="anonymous"
-        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
-        src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-></script>
+    <!-- load scripts at the end -->
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script
+      crossorigin="anonymous"
+      integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+    ></script>
 
-<!-- auto refresh on change when developing "python3 -m http.server" -->
-<script src="http://livejs.com/live.js"></script>
-
-</body>
-
+    <!-- auto refresh on change when developing "python3 -m http.server" -->
+    <script src="http://livejs.com/live.js"></script>
+  </body>
 </html>

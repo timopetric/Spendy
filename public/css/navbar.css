@@ -68,6 +68,7 @@ body::-webkit-scrollbar-thumb {
 
 .navbar-spendy .nav-item:hover img {
   filter: invert(1);
+  transition: var(--transition-speed);
 }
 
 /* icon text is hidden when collapsed, on hover its shown inline */

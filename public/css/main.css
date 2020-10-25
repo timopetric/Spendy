@@ -34,6 +34,9 @@ body {
   max-width: 80%;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
   width: 0.3rem;
