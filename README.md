@@ -18,6 +18,7 @@ Uporabniki potem lahko preverjajo in dodajajo stroške ter prihodke, hkrati pa j
 potem uporabnik investiral svoje prihranke, ki mu jih je aplikacija pomagala izboljšati!
 
 ## Prijava in registracija uporabnika
+
 ### [login.html](public/login.html)
 Stran za prijavit v sistem. V primeru, da uporabnik še nima svojega računa, lahko pritisne na gumb **Registrcija**, ki ga bo peljal na registrcijo.
 Ko uporabnik vnese epoštni naslov, ter geslo se spritiskom na gumb premakne na pregledno ploščo spletene strani.
@@ -33,6 +34,7 @@ Stran kjer se uporabnik lahko registrira v sistem. Za registracijo mora bodoči 
 Iz te strani je možno priti še na prvo stran spletne aplikacije, ter nazaj na prijavo.
 
 ##Pregled in urejanje profila
+
 ### [profil.html](public/profil.html)
 Na profilu, lahko uporabnik pregleda svoje podatke, kot so Ime, Priimek, številko svojega telefona ter email naslov, če pa mu kaj ne ustreza te lahko spremeni s pritiskom na gumb **Nastavitve**.
 Poleg tega, lahko spremeni sliko svojega avatarja s pritiskom nanj, nato pa naloži sliko iz svojega diska, ter lahko vidi še v koliko skupinah je. Iz te strani je možno priti na skupine, stroške, analizo, grafe, ter pregled.
@@ -49,6 +51,7 @@ Na strani **nastavitve** lahko uporabnik spreminja svoje podatke, ter tako kot p
 Od tu se uporabnik lahko premakne na skupine, stroške, analizo, grafe, pregled, ter nazaj na podatke svojega profila.
 
 ##Seznam in kreiranje skupin
+
 ###[groups.html](public/groups.html)
 Na strani **Skupin** lahko uporabnik pregleda seznam svojih skupin, ter že obstoječim doda novega člana s pritiskom na skupino, ter gumbom **Dodaj člana**,
 nakar se mu odpre modalno okno z možnostjo dodajanja člana z njegovim uporabniškim imenom.
