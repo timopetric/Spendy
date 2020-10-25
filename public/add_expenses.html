@@ -66,18 +66,81 @@
 
 <!-- ################ main body ################ -->
 <main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown">
-                <a
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                        class="nav-link text-dark dropdown-toggle"
-                        data-toggle="dropdown"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="mr-auto col-md-4">
+      <div class="form-group">
+        <label for="inputState"
+          ><p class="font-weight-light py-0 my-0">
+            Izberi pogled skupine
+          </p></label
+        >
+        <select id="inputState" class="form-control">
+          <option selected>Brez izbrane skupine</option>
+          <option>Družina</option>
+          <option>Služba</option>
+          <option>Šeena</option>
+        </select>
+      </div>
+    </div>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item dropdown">
+        <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="nav-link text-dark dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+            >
+              <img
+                alt="https://generated.photos/"
+                class="img-fluid rounded-circle avatar mr-2"
+                src="media/user-1.png"
+              />
+              Janez Novak
+            </a>
+            <div
+              aria-labelledby="navbarDropdown"
+              class="dropdown-menu dropdown-menu-right position-absolute"
+        >
+          <a class="dropdown-item" href="profil.html">Moj profil</a>
+          <a class="dropdown-item" href="settings.html">Nastavitve</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="first_page.html">Odjava</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid bg-grey px-3" id="content">
+    <section class="bg-light py-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9 col-md-8">
+            <h1 class="font-weight-bold mb-0">Dodaj prihodke/odhodke</h1>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-mix py-3">
+      <div class="container-fluid">
+        <div class="card rounded-0">
+          <div class="card-body">
+            <form>
+
+              <div class="form-group">
+                <input checked
+                       class="buttonExpenseIncome"
+                       data-off="Prihodek"
+                       data-offstyle="success"
+                       data-on="Odhodek"
+                       data-onstyle="danger"
+                       data-size="large" data-toggle="toggle"
+                       data-width="100%"
+                       type="checkbox"
                 >
                     <img
                             alt="https://generated.photos/"
