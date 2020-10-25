@@ -55,11 +55,11 @@ body::-webkit-scrollbar-thumb {
   height: 5rem;
   color: var(--text-primary);
   text-decoration: none;
-  filter: grayscale(0%) opacity(0.7);
+  filter: grayscale(0%) opacity(0.85);
   transition: var(--transition-speed);
 }
 
-.nav-link.navbar-spendy:hover {
+.nav-link.navbar-spendy:hover, #current-page {
   filter: grayscale(0%) opacity(1);
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -68,12 +68,22 @@ body::-webkit-scrollbar-thumb {
 
 .navbar-spendy .nav-item:hover img {
   filter: invert(1);
+  transition: var(--transition-speed);
 }
 
 /* icon text is hidden when collapsed, on hover its shown inline */
 .link-text.navbar-spendy {
   display: none;
   margin-left: 1rem; /*1 rem from the icon on the left*/
+  font-size: 1.25rem;
+  /*letter-spacing: 0.3ch;*/
+  text-align: center;
+  text-decoration: none;
+  filter: grayscale(0%) opacity(0.85);
+  transition: var(--transition-speed);
+
+  /*font-weight: bold;*/
+  /*text-transform: uppercase;*/
 }
 
 .logo-text.navbar-spendy {
@@ -93,22 +103,11 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   /*color: var(--text-primary);*/
   text-decoration: none;
-  filter: grayscale(0%) opacity(0.65);
+  filter: grayscale(0%) opacity(0.75);
   transition: var(--transition-speed);
 
   font-weight: bold;
   text-transform: uppercase;
-}
-
-.link-text.navbar-spendy {
-  font-size: 1.25rem;
-  /*letter-spacing: 0.3ch;*/
-  text-align: center;
-  text-decoration: none;
-  filter: grayscale(0%) opacity(0.65);
-  transition: var(--transition-speed);
-  /*font-weight: bold;*/
-  /*text-transform: uppercase;*/
 }
 
 /* Small screens */
@@ -253,7 +252,7 @@ body::-webkit-scrollbar-thumb {
     /*margin-left: 18rem;*/
     /*padding: 1rem;*/
     margin: 0 0 0 18rem;
-    padding: 5rem;
+    padding: 0 2.5rem 0 2.5rem;
   }
 }
 
