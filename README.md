@@ -21,6 +21,7 @@ potem uporabnik investiral svoje prihranke, ki mu jih je aplikacija pomagala izb
 ### [Prijavna stran](public/login.html)
 Stran za prijavit v sistem. V primeru, da uporabnik še nima svojega računa, lahko pritisne na gumb **Registrcija**, ki ga bo peljal na registrcijo.
 Ko uporabnik vnese epoštni naslov, ter geslo se spritiskom na gumb premakne na pregledno ploščo spletene strani.
+[![alt text](/docs/login.png "Prijava")](#)
 
 ---
 
@@ -33,12 +34,14 @@ Stran kjer se uporabnik lahko registrira v sistem. Za registracijo mora bodoči 
 + Geslo(dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
 
 Iz te strani je možno priti še na prvo stran spletne aplikacije, ter nazaj na prijavo.
+[![alt text](/docs/registration.png "Registracija")](#)
 
 ## Pregled in urejanje profila
 
 ### [Profil](public/profil.html)
 Na profilu, lahko uporabnik pregleda svoje podatke, kot so Ime, Priimek, številko svojega telefona ter email naslov, če pa mu kaj ne ustreza te lahko spremeni s pritiskom na gumb **Nastavitve**.
 Poleg tega, lahko spremeni sliko svojega avatarja s pritiskom nanj, nato pa naloži sliko iz svojega diska, ter lahko vidi še v koliko skupinah je. Iz te strani je možno priti na skupine, stroške, analizo, grafe, ter pregled.
+[![alt text](/docs/profil.png "Profil")](#)
 
 ---
 
@@ -52,6 +55,7 @@ Na strani **nastavitve** lahko uporabnik spreminja svoje podatke, ter tako kot p
 + Geslo(tega mora vpisati dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
 
 Od tu se uporabnik lahko premakne na skupine, stroške, analizo, grafe, pregled, ter nazaj na podatke svojega profila.
+[![alt text](/docs/settings.png "Nastavitve")](#)
 
 ## Seznam in kreiranje skupine
 ### [Skupine](public/groups.html)
@@ -83,7 +87,7 @@ ter ustrezni grafi za ceno Bitcoina, Etheriuma ter Nashdaqovih delnic skozi čas
 
 ---
 
-### [Dodajanje štroškov/prihodkov](/public/add_expenses.html)
+### [Dodajanje stroškov/prihodkov](/public/add_expenses.html)
 Na tej strani lahko uporabnik doda bodisi stroške bodisi prihodke. Ko je preusmerjen na stran lahko na dolgem gumbu najprej označi, ali bo vpisal Odhodek ali Prihodek z pritiskom na gumb.
 Nato označi vrednost tega prihodka oziroma odhodka. Označi še datum veljave. Nato izbere kategorijo, v katero sodi določen strošek oziroma odhodek (izbira lahko med različnimi, na primer za odhodek Avto ter za prihodek Plača). IMPORTANT: V primeru, da kategorija 
 še ne obstaja, je uporabniku (s pomočjo javaScripta, kasneje) omogočeno, da kategorijo preprosto doda med druge in jo lahko drugič izbere. Kategorija se doda šele, ko uporabnik shrani prihodek/odhodek. Kategorija se bo tudi izbrisala, če v njej ne bo nobenega vnosa (oziroma bo ta izbrisan).
