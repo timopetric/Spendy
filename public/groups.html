@@ -175,7 +175,7 @@
                         <li
                           class="list-group-item d-flex justify-content-between align-items-center"
                         >
-                          Mati
+                          Oče
                           <span class="badge badge-primary badge-pill"
                             >Admin</span
                           >
@@ -183,20 +183,35 @@
                         <li
                           class="list-group-item d-flex justify-content-between align-items-center"
                         >
-                          Oče
+                          Mati
                           <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                          <div class="d-flex justify-content-end flex-column">
+                            <button type="button" class="btn">
+                              <img src="media/delete-icon.svg" height="20px">
+                            </button>
+                          </div>
                         </li>
                         <li
                           class="list-group-item d-flex justify-content-between align-items-center"
                         >
                           Sin
                           <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                          <div class="d-flex justify-content-end flex-column">
+                            <button type="button" class="btn">
+                              <img src="media/delete-icon.svg" height="20px">
+                            </button>
+                          </div>
                         </li>
                         <li
                           class="list-group-item d-flex justify-content-between align-items-center"
                         >
                           Hči
                           <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                          <div class="d-flex justify-content-end flex-column">
+                            <button type="button" class="btn">
+                              <img src="media/delete-icon.svg" height="20px">
+                            </button>
+                          </div>
                         </li>
                       </ul>
                       <button
@@ -276,7 +291,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="accordion" id="accordionExample2">
-                <div class="card">
+                <div class="card naRdece">
                   <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
                       <button
@@ -286,6 +301,7 @@
                         data-target="#collapseTwo"
                         aria-expanded="true"
                         aria-controls="collapseTwo"
+                        id="košarka"
                       >
                         Košarka
                       </button>
@@ -411,7 +427,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="accordion" id="accordionExample3">
-                <div class="card">
+                <div class="card naRdece">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                       <button
@@ -421,6 +437,7 @@
                         data-target="#collapseThree"
                         aria-expanded="true"
                         aria-controls="collapseThree"
+                        id="skupina"
                       >
                         Skupina
                       </button>
@@ -452,7 +469,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="accordion" id="accordionExample4">
-                <div class="card">
+                <div class="card naRdece">
                   <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
                       <button
@@ -462,6 +479,7 @@
                         data-target="#collapseFour"
                         aria-expanded="true"
                         aria-controls="collapseFour"
+                        id="šeEnaSkupina"
                       >
                         Še ena skupina
                       </button>
@@ -494,7 +512,7 @@
 
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="accordion" id="accordionExample5">
-                <div class="card">
+                <div class="card naRdece">
                   <div class="card-header" id="headingFive">
                     <h2 class="mb-0">
                       <button
@@ -504,6 +522,7 @@
                         data-target="#collapseFive"
                         aria-expanded="true"
                         aria-controls="collapseFive"
+                        id="paŠeEna"
                       >
                         Pa še ena
                       </button>
@@ -614,48 +633,20 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <div class="col-xs-6">
-                      <label for="phone"
-                        ><h4>Uporabniško ime prvega čana</h4></label
-                      >
-                      <input
-                        class="form-control"
-                        id="phoneSettings"
-                        name="phone"
-                        type="text"
-                        placeholder="janko7"
-                        value="janko7"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="col-xs-6">
-                      <label for="email"
-                        ><h4>Uporabniško ime drugega člana</h4></label
-                      >
-                      <input
-                        class="form-control"
-                        id="emailSettings"
-                        name="email"
-                        type="email"
-                        placeholder="metka9"
-                        value="metka9"
-                      />
-                    </div>
-                  </div>
                 </form>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-white">
+                  Izbrišite skupino
+                </button>
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn btn-secondary text-white"
                   data-dismiss="modal"
                 >
                   Preklic
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary text-white">
                   Potrdite spremembe
                 </button>
               </div>
