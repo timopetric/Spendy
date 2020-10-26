@@ -56,6 +56,10 @@ svg:hover {
     margin-top: 10px;
 }
 
+/*#družina:focus, #košarka:focus, #skupina:focus, #šeEnaSkupina:focus, #paŠeEna:focus {
+    background-color: red;
+}*/
+
 @media screen and (max-width: 800px){
     svg {
         bottom: 55px;
