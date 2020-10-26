@@ -83,7 +83,7 @@ nakar se mu odpre modalno okno, kjer vpiše ime skupine, limit, ter člane. S kr
 Iz te strani se je možno prestaviti na profil, skupine, stroške, analizo, grafe, ter na pregledno stran svojega profila.
 Od tu pa se lahko tudi odjavi.
 
-[![alt text](/docs/skupine.png "Skupine")](#seznam-in-kreiranje-skupine)
+[![alt text](/docs/skupine.png "Skupine")](#skupine)
 
 ---
 
@@ -92,7 +92,7 @@ Od tu pa se lahko tudi odjavi.
 na tej strani lahko uporabnik preveri svoje odhodke in prihodke še v grafični obliki. Preprosto z nastavljanjem datumov
 Od in Do doseže željen časovni razpon, v katerem so grafi prikazani. Med drugimi vidi graf PORABE, PRIHODKOV ter tudi tortni diagaram porabe/prihodkov.
 
-[![alt text](/docs/graficno.png "Grafično")](#graficno)
+[![alt text](/docs/graficno.png "Grafično")](#grafično)
 
 ---
 
@@ -116,7 +116,7 @@ Nato označi vrednost tega prihodka oziroma odhodka. Označi še datum veljave. 
 Uporabnik tudi označi, v katero skupino naj se strošek vpiše. Če na primer strošek dodamo v družino Kovač, bodo ta strošek videli vsi člani družine Kovač. Uporabnik lahko na kratko tudi opiše dohodek/strošek v temu namenjenemu vnosnemu polju.
 Na koncu lahko še označi, ali gre za mesečni strošek/dohodek in potrdi svoj vpis z gumbom na shrani. Important: vsa okna morajo biti obvezno izpolnjena!
 
-[![alt text](/docs/dodajanje_stroskov.png "Dodajanje stroskov/prihodkov")](#dodajanje-stroskov-prihodkov)
+[![alt text](/docs/dodajanje_stroskov.png "Dodajanje stroskov/prihodkov")](#dodajanje-stroškovprihodkov)
 
 ---
 
@@ -125,7 +125,7 @@ Na koncu lahko še označi, ali gre za mesečni strošek/dohodek in potrdi svoj 
 Na tej strani lahko uporabnik pregleda odhodke in prihodke po njih išče in jih ureja.
 Prikaz elementov lahko tudi sortira, ali pa prikazuje samo dnevne, tednenske ali mesečne aktivnosti. Posamezne elemente lahko ureja tako, da klikne na posamezen element kjer se mu prikaže modalno okno v katerem lahko element uredi ali izbriše. Gumb spodaj pa pelje na stran, kjer lahko uporabnik dodaja nove aktivnosti.
 
-[![alt text](/docs/stroski.png "Prikaz štroškov/prihodkov in urejenje")](#prikaz-stroskov-prihodkov-in-urejanje)
+[![alt text](/docs/stroski.png "Prikaz štroškov/prihodkov in urejenje")](#prikaz-štroškovprihodkov-in-urejenje)
 
 ---
 
