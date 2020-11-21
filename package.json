@@ -12,11 +12,11 @@
   "dependencies": {
     "axios": "*",
     "cookie-parser": "*",
-    "debug": "*",
-    "express": "*",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
     "hbs": "*",
-    "http-errors": "*",
+    "http-errors": "^1.8.0",
     "mongoose": "*",
-    "morgan": "*"
+    "morgan": "^1.10.0"
   }
 }
