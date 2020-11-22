@@ -20,15 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="288a449c-cee1-439c-8346-5ea366882496" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_server/controllers/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/controllers/profil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/controllers/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/login.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/profil.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/signup.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/groups.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/partials/modal_add_user.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/partials/navbar_login_signup.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/settings.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/controllers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/views/login.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/login.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/views/profil.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/profil.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/views/signup.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/signup.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +76,7 @@
       <updated>1605123858465</updated>
       <workItem from="1605123859511" duration="712000" />
       <workItem from="1605958113520" duration="10849000" />
-      <workItem from="1606040250740" duration="5616000" />
+      <workItem from="1606040250740" duration="16090000" />
     </task>
     <servers />
   </component>
@@ -94,6 +96,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="109" y="202" key="#Inspections" timestamp="1606048650967">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="109" y="202" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1606048650967" />
     <state x="56" y="151" key="#JSHint" timestamp="1606002762614">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -122,5 +128,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="7" y="123" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605977557973" />
+    <state x="150" y="0" width="668" height="1026" key="dock-window-1" timestamp="1606056936078">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="150" y="0" width="668" height="1026" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1606056936078" />
+    <state x="313" y="239" width="585" height="801" key="find.popup" timestamp="1606056388335">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="313" y="239" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606056388335" />
+    <state x="146" y="230" key="search.everywhere.popup" timestamp="1606052777488">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="146" y="230" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606052777488" />
   </component>
 </project>
