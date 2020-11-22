@@ -20,12 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="288a449c-cee1-439c-8346-5ea366882496" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.jshintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/controllers/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/controllers/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/controllers/profil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/controllers/signup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/login.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/profil.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/views/signup.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +74,7 @@
       <updated>1605123858465</updated>
       <workItem from="1605123859511" duration="712000" />
       <workItem from="1605958113520" duration="10849000" />
+      <workItem from="1606040250740" duration="5616000" />
     </task>
     <servers />
   </component>
@@ -87,16 +91,33 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="56" y="151" key="#JSHint" timestamp="1605978283582">
+    <state x="56" y="151" key="#JSHint" timestamp="1606002762614">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="56" y="151" key="#JSHint/0.0.1920.1040@0.0.1920.1040" timestamp="1605978283582" />
-    <state x="241" y="325" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605980904385">
+    <state x="56" y="151" key="#JSHint/0.0.1920.1040@0.0.1920.1040" timestamp="1606002762614" />
+    <state x="241" y="325" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606042229203">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="241" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605980904385" />
+    <state x="241" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606042229203" />
+    <state width="936" height="281" key="GridCell.Tab.0.bottom" timestamp="1606040921730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="936" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606040921730" />
+    <state width="936" height="281" key="GridCell.Tab.0.center" timestamp="1606040921730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="936" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606040921730" />
+    <state width="936" height="281" key="GridCell.Tab.0.left" timestamp="1606040921730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="936" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606040921730" />
+    <state width="936" height="281" key="GridCell.Tab.0.right" timestamp="1606040921730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="936" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606040921730" />
     <state x="7" y="123" key="SettingsEditor" timestamp="1605977557973">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
