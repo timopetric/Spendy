@@ -1,0 +1,83 @@
+
+{{> navbar_main }}
+
+<main>
+
+    {{> navbar_avatar_and_choose_group }}
+
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Grafično</h1>
+                        <p class="lead text-muted">
+                            Grafični prikazi prihodkov, odhodkov in stanja
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div>
+                    <div class="card-body row">
+                        <div
+                                class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Od:</span>
+                            <div id="dateStart">
+                                <input required type="date" />
+                            </div>
+                        </div>
+
+                        <div
+                                class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Do:</span>
+                            <div id="dateEnd">
+                                <input required type="date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body row">
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Odhodki
+                            </h1>
+                            <canvas height="40%" id="expensesChart" width="50%"></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Prihodki
+                            </h1>
+                            <canvas height="40%" id="incomeChart" width="50%"></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Stanje
+                            </h1>
+                            <canvas height="40%" id="balanceChart" width="50%"></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Tortni
+                            </h1>
+                            <canvas height="40%" id="vsChart" width="50%"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>
+
+
