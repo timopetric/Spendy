@@ -1,0 +1,482 @@
+
+{{> navbar_main }}
+
+<main>
+
+    {{> navbar_avatar_and_choose_group }}
+
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Analiza</h1>
+                        <p class="lead text-muted">Analiza stanja in investiranja</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div>
+                    <div class="card-body row">
+                        <div
+                                class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Od:</span>
+                            <div id="dateStart">
+                                <input required type="date" />
+                            </div>
+                        </div>
+
+                        <div
+                                class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Do:</span>
+                            <div id="dateEnd">
+                                <input required type="date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body row">
+                        <form class="container mb-5 col-sm-12 col-lg-6">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Opomniki
+                            </h1>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bitcoin meja</span>
+                                </div>
+                                <input
+                                        type="number"
+                                        step="any"
+                                        value="7500.35"
+                                        class="form-control"
+                                        aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Etherium meja</span>
+                                </div>
+                                <input
+                                        type="number"
+                                        step="any"
+                                        value="300.75"
+                                        class="form-control"
+                                        aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Nashdaq meja</span>
+                                </div>
+                                <input
+                                        type="number"
+                                        step="any"
+                                        value="17999.99"
+                                        class="form-control"
+                                        aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+                            <div class="container-fluid d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">
+                                    Potrdi
+                                </button>
+                            </div>
+                        </form>
+
+                        <span class="col-sm-12 col-lg-6 mb-5">
+                  <h1 class="container-fluid d-flex justify-content-center">
+                    Predikcija
+                  </h1>
+
+                  <div
+                          class="input-group mb-3 container-fluid d-flex justify-content-center"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                      >Pričakovani prihodki:</span
+                      >
+                    </div>
+                    <span class="input-group-text bg-success">+210€</span>
+                  </div>
+                  <div
+                          class="input-group mb-3 container-fluid d-flex justify-content-center"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Pričakovani odhodki:</span>
+                    </div>
+                    <span class="input-group-text bg-danger">-150€</span>
+                  </div>
+                  <div
+                          class="input-group mb-3 container-fluid d-flex justify-content-center"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Skupno:</span>
+                    </div>
+                    <span class="input-group-text bg-success">+60€</span>
+                  </div>
+                </span>
+
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Predikcijski graf
+                            </h1>
+                            <canvas
+                                    height="40%"
+                                    id="predictionChart"
+                                    width="50%"
+                            ></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Nashdaq
+                            </h1>
+                            <canvas height="40%" id="NasdaqChart" width="50%"></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Bitcoin
+                            </h1>
+                            <canvas height="40%" id="bitcoinChart" width="50%"></canvas>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Etherium
+                            </h1>
+                            <canvas height="40%" id="etheriumChart" width="50%"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<script
+        crossorigin="anonymous"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+></script>
+<script>
+    var ctx = document.getElementById("predictionChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: [
+                "Jan 2020",
+                "Feb 2020",
+                "Mar 2020",
+                "Apr 2020",
+                "Maj 2020",
+                "Jun 2020",
+                "Jul 2020",
+                "Aug 2020",
+                "Sep 2020",
+                "Okt 2020",
+                "Nov 2020",
+                "Dec 2020",
+            ],
+            datasets: [
+                {
+                    label: "Prihodki",
+                    data: [
+                        4050,
+                        1080,
+                        750,
+                        4020,
+                        800,
+                        652,
+                        777,
+                        4545,
+                        8728,
+                        9928,
+                        1000,
+                        450,
+                        6000,
+                    ],
+                    backgroundColor: "lightgreen",
+                    borderColor: "darkgreen",
+                    borderWidth: 0.7,
+                    maxBarThickness: 30,
+                    maxBarLength: 2,
+                },
+                {
+                    label: "Odhodki",
+                    data: [
+                        470,
+                        2300,
+                        7250,
+                        400,
+                        3850,
+                        6522,
+                        777,
+                        3545,
+                        8728,
+                        998,
+                        690,
+                        450,
+                        5580,
+                    ],
+                    backgroundColor: "lightcoral",
+                    borderColor: "darkred",
+                    borderWidth: 0.7,
+                    maxBarThickness: 30,
+                    maxBarLength: 2,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>
+<script>
+    var ctx = document.getElementById("NasdaqChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "Februar",
+                "Marec",
+                "April",
+                "Maj",
+                "Junij",
+                "Julij",
+                "Avgust",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+            datasets: [
+                {
+                    label: "Nashdaq cena delnic v €",
+                    data: [
+                        12200,
+                        19400,
+                        10200,
+                        14800,
+                        12200.3,
+                        17003.69,
+                        12999,
+                        12728,
+                        16000,
+                        12000,
+                        12500,
+                        12000,
+                    ],
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(92, 184, 92, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>
+<script>
+    var ctx = document.getElementById("bitcoinChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "Februar",
+                "Marec",
+                "April",
+                "Maj",
+                "Junij",
+                "Julij",
+                "Avgust",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+            datasets: [
+                {
+                    label: "Bitcoin cena v €",
+                    data: [
+                        8800,
+                        9400,
+                        8200,
+                        10800,
+                        10200.3,
+                        12003.69,
+                        9999,
+                        8728,
+                        10000,
+                        12000,
+                        12500,
+                        10000,
+                    ],
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(92, 184, 92, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>
+<script>
+    var ctx = document.getElementById("etheriumChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "Februar",
+                "Marec",
+                "April",
+                "Maj",
+                "Junij",
+                "Julij",
+                "Avgust",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+            datasets: [
+                {
+                    label: "Cena Etheriuma v €",
+                    data: [
+                        340,
+                        345,
+                        368,
+                        380,
+                        370,
+                        380,
+                        390,
+                        400,
+                        450,
+                        360,
+                        350,
+                        370,
+                    ],
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(92, 184, 92, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>
+<script>
+    var ctx = document.getElementById("vsChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Prihodki", "Odhodki"],
+            datasets: [
+                {
+                    label: "Expenses",
+                    data: [480, 420],
+                    backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                    borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                    borderWidth: 1,
+                },
+            ],
+        },
+    });
+</script>

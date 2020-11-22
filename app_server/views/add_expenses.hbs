@@ -1,0 +1,101 @@
+
+{{> navbar_main }}
+
+<main>
+
+    {{> navbar_avatar_and_choose_group }}
+
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Dodaj</h1>
+                        <p class="lead text-muted">Dodaj prihodke ali odhodke</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        <form>
+
+                            <div class="form-group">
+                                <input checked
+                                       class="buttonExpenseIncome"
+                                       data-off="Prihodek"
+                                       data-offstyle="success"
+                                       data-on="Odhodek"
+                                       data-onstyle="danger"
+                                       data-size="large" data-toggle="toggle"
+                                       data-width="100%"
+                                       type="checkbox"
+                                >
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="vrednostPrihodkaOdhodka">Vnesite vrednost v €: </label>
+                                    <input id="vrednostPrihodkaOdhodka"
+                                           min="0"
+                                           placeholder="Vrednost v €"
+                                           required
+                                           step="0.01"
+                                           type="number"
+                                           value="10"
+                                    >
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    Datum veljave:
+                                    <input required type="date">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <select class="custom-select" required>
+                                        <option value="">Izberi odhodek/prihodek</option>
+                                        <option value="1">Hrana</option>
+                                        <option value="2">Avto</option>
+                                        <option value="3">Treningi</option>
+                                        <option value="4">Igrice</option>
+                                        <option value="5">Žepnina</option>
+                                        <option value="6">Plača</option>
+                                    </select>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <select class="custom-select" required>
+                                        <option value="">Skupina</option>
+                                        <option value="1">Služba</option>
+                                        <option value="2">Družina Kovač</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <input
+                                        class="form-control mb-3"
+                                        type="search"
+                                        placeholder="Kratek opis stroška/dohodka"
+                                        aria-label="search"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <input id="defaultCheck1" type="checkbox" value=""/>
+                                <label for="defaultCheck1">
+                                    Ponavljujoči se mesečni prihodek/odhodek
+                                </label>
+                            </div>
+                            <button class="container-fluid d-flex justify-content-center btn btn-primary" type="submit">Shrani</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>

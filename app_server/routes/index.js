@@ -3,15 +3,14 @@ var router = express.Router();
 
 // controllers
 const ctrlFirstPage = require('../controllers/first_page'); // first page controller
-const ctrlLogin = require('../controllers/login');
-const ctrlSignup = require('../controllers/signup');
-const ctrlProfil = require('../controllers/profil');
+const ctrlIndex = require('../controllers/index'); // first page controller
+
 
 // GET first page
 router.get('/first_page', ctrlFirstPage.page);
-router.get('/login', ctrlLogin.page);
-router.get('/signup', ctrlSignup.page);
-router.get('/profil', ctrlProfil.page);
-
+router.get('/index', ctrlIndex.index);
+router.get('/add_expenses', ctrlIndex.add_expenses);
+router.get('/analysis', ctrlIndex.analysis);
+router.get('/graphs', ctrlIndex.graphs);
 
 module.exports = router;
