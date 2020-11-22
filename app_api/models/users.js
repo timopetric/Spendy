@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 
 
-const userBalance = new mongoose.Schema({
-  balance: Number
+const userSettings = new mongoose.Schema({
+  language: String, // sl, en
+  currency: String  // eur, usd
 });
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true},
   name: String,
   surname: String,
-  balance: [userBalance]
+  balance: Number,
+  settings: userSettings
 });
 
-// mongoose.model('Lokacija', lokacijeShema, 'Lokacije');
+
 mongoose.model('User', userSchema, 'Users');

@@ -5,11 +5,11 @@ const router = express.Router();
 const ctrlUser = require('../controllers/users');
 
 // rest api for user (implement CRUD)
-router.get('/users', ctrlUser.getAllUsers);
-// router.get('/users/:userId', ctrlUser.getUserById);
-// router.post('/users', ctrlUser.addUser);
-// router.put('/users/:userId', ctrlUser.updateUser);
-// router.delete('/users/:userId', ctrlUser.deleteUser);
+router.get('/v1/users', ctrlUser.getAllUsers);
+router.post('/v1/users', ctrlUser.addUser);
+// router.get('/v1/users/:userId', ctrlUser.getUserById);
+// router.put('/v1/users/:userId', ctrlUser.updateUser);
+// router.delete('/v1/users/:userId', ctrlUser.deleteUser);
 
 
 module.exports = router;

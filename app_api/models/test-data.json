@@ -1,0 +1,23 @@
+[
+  {
+    "username": "super-janez123",
+    "name": "Janez",
+    "surname": "Novak",
+    "balance": 222.2,
+    "settings": {
+      "language": "sl",
+      "currency": "eur"
+    }
+  },
+  {
+    "username": "metka5",
+    "name": "Metka",
+    "surname": "Novak",
+    "balance": 900002.2323323,
+    "settings": {
+      "language": "sl",
+      "currency": "eur"
+    }
+  }
+]
+

@@ -1,5 +1,9 @@
 // copied from EduGeoCache example
 
+// docker cp ./app_api/models/test-data.json sp-spendy-mongodb:/test-data.json
+// docker exec -it sp-spendy-mongodb mongoimport --db SpendyDB --collection Users --mode upsert --upsertFields username --jsonArray --file test-data.json
+
+
 const mongoose = require('mongoose');
 
 var dbURI = 'mongodb://localhost/SpendyDB';
