@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="288a449c-cee1-439c-8346-5ea366882496" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_server/views/groups.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/partials/modal_add_user.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/partials/navbar_login_signup.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/views/settings.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/controllers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/views/login.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/login.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/views/profil.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/profil.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/views/signup.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/signup.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/views/settings.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/views/settings.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +47,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vaje4/v4" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -76,7 +67,7 @@
       <updated>1605123858465</updated>
       <workItem from="1605123859511" duration="712000" />
       <workItem from="1605958113520" duration="10849000" />
-      <workItem from="1606040250740" duration="16090000" />
+      <workItem from="1606040250740" duration="17277000" />
     </task>
     <servers />
   </component>
@@ -108,6 +99,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="241" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606042229203" />
+    <state x="266" y="278" key="FileChooserDialogImpl" timestamp="1606059814838">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="266" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606059814838" />
     <state width="936" height="281" key="GridCell.Tab.0.bottom" timestamp="1606040921730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -132,10 +127,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="150" y="0" width="668" height="1026" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1606056936078" />
-    <state x="313" y="239" width="585" height="801" key="find.popup" timestamp="1606056388335">
+    <state x="313" y="239" width="585" height="801" key="find.popup" timestamp="1606060194008">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="313" y="239" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606056388335" />
+    <state x="313" y="239" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606060194008" />
     <state x="146" y="230" key="search.everywhere.popup" timestamp="1606052777488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
