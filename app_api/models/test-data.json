@@ -3,21 +3,17 @@
     "username": "super-janez123",
     "name": "Janez",
     "surname": "Novak",
-    "balance": 222.2,
-    "settings": {
-      "language": "sl",
-      "currency": "eur"
-    }
+    "mail": "test@email.com",
+    "pass": "admin",
+    "balance": 222.2
   },
   {
     "username": "metka5",
     "name": "Metka",
     "surname": "Novak",
-    "balance": 900002.2323323,
-    "settings": {
-      "language": "sl",
-      "currency": "eur"
-    }
+    "mail": "test222@email.com",
+    "pass": "admin",
+    "balance": 900002.2323323
   }
 ]
 

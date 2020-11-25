@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var hbs = require("hbs");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -11,7 +12,6 @@ var indexApi = require('./app_api/routes/index');
 
 
 var app = express();
-var hbs = require("hbs");
 
 hbs.registerPartials(path.join(__dirname, "app_server/views/partials"));  // partials (navbar, ...)
 
