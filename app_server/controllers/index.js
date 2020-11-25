@@ -51,8 +51,14 @@ const signup = (req, res) => {
 const profil = (req, res) => {
   res.render('profil',{
     title: 'Profil',
+    uporabnik: {
+      ime: 'Janez',
+      priimek: 'Novak',
+      telefon: '++38631000000',
+      email: 'janeznovak@gmail.com'
+    },
     stylesheets_load: ["/stylesheets/style-profil.css"],
-    scripts_load: []
+    scripts_load: [],
   });
 };
 
@@ -67,6 +73,18 @@ const settings = (req, res) => {
 const groups = (req, res) => {
   res.render('groups',{
     title: 'Skupine',
+    skupina1:{
+      imeSkupine: 'Družina',
+      admin: 'Oče',
+      clani: ['Mati', 'Sin', 'Hči'],
+
+    },
+    skupina2:{
+      imeSkupine: 'Košarka',
+      admin: 'Janez Novak',
+      clani: ['Matic Bregar', 'Kristjan Sever', 'Timotej Petrič', 'Aljaž Grdadolnik']
+
+    },
     stylesheets_load: ["/stylesheets/styleGroups.css"],
     scripts_load: ["/javascripts/jquery-3.5.1.min.js",
       "/javascripts/popper.min.js", "/javascripts/bootstrap/bootstrap.min.js",

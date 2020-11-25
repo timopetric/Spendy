@@ -38,7 +38,7 @@
                                                     aria-expanded="false"
                                                     aria-controls="collapseOne"
                                             >
-                                                Družina
+                                                {{skupina1.imeSkupine}}
                                             </button>
                                         </div>
                                         <div class="d-flex justify-content-center flex-column mr-2">
@@ -67,15 +67,16 @@
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            Oče
+                                            {{skupina1.admin}}
                                             <span class="badge badge-primary badge-pill"
                                             >Admin</span
                                             >
                                         </li>
+                                        {{#each skupina1.clani as |clan|}}
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            Mati
+                                            {{clan}}
                                             <!--<span class="badge badge-primary badge-pill">2</span>>-->
                                             <div class="d-flex justify-content-end flex-column">
                                                 <button type="button" class="btn">
@@ -83,28 +84,7 @@
                                                 </button>
                                             </div>
                                         </li>
-                                        <li
-                                                class="list-group-item d-flex justify-content-between align-items-center"
-                                        >
-                                            Sin
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                            <div class="d-flex justify-content-end flex-column">
-                                                <button type="button" class="btn">
-                                                    <img src="icons/delete-icon.svg" height="20px">
-                                                </button>
-                                            </div>
-                                        </li>
-                                        <li
-                                                class="list-group-item d-flex justify-content-between align-items-center"
-                                        >
-                                            Hči
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                            <div class="d-flex justify-content-end flex-column">
-                                                <button type="button" class="btn">
-                                                    <img src="icons/delete-icon.svg" height="20px">
-                                                </button>
-                                            </div>
-                                        </li>
+                                        {{/each}}
                                     </ul>
                                     <button
                                             type="button"
@@ -196,7 +176,7 @@
                                             aria-controls="collapseTwo"
                                             id="košarka"
                                     >
-                                        Košarka
+                                        {{skupina2.imeSkupine}}
                                     </button>
                                 </h2>
                             </div>
@@ -212,35 +192,19 @@
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            Janez Novak
+                                            {{skupina2.admin}}
                                             <span class="badge badge-primary badge-pill"
                                             >Admin</span
                                             >
                                         </li>
+                                        {{#each skupina2.clani as |clan|}}
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            Matic Bregar
+                                            {{clan}}
                                             <!--<span class="badge badge-primary badge-pill">2</span>>-->
                                         </li>
-                                        <li
-                                                class="list-group-item d-flex justify-content-between align-items-center"
-                                        >
-                                            Kristjan Sever
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                        </li>
-                                        <li
-                                                class="list-group-item d-flex justify-content-between align-items-center"
-                                        >
-                                            Timotej Petrič
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                        </li>
-                                        <li
-                                                class="list-group-item d-flex justify-content-between align-items-center"
-                                        >
-                                            Aljaž Grdadolnik
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
-                                        </li>
+                                        {{/each}}
                                     </ul>
                                     <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>-->
                                     <button
