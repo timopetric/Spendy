@@ -19,7 +19,7 @@ const getAllUsers = (req, res) => {
               "surname": user.surname,
               "mail": user.mail,
               "balance": user.balance,
-              "groups": user.groups
+              "groupIds": user.groups
             };
           })
         );
@@ -33,18 +33,16 @@ const addUser = (req, res) => {
   const reqSurname = req.body.surname;
   const reqMail = req.body.mail;
   const reqPass = req.body.pass;
+  const balance = 0.0;
+  const groupId = "";
 
-  // if (!reqUsername || !reqName || !reqSurname) {
-  //   return res.status(400).json({
-  //     "msg": "Parameters username, name, surname are required."
-  //   });
-  // }
+  // todo: maybe create a special one user group and add him to it
 
   User.create({
     username: reqUsername,
     name: reqName,
     surname: reqSurname,
-    balance: 0.0,
+    balance: balance,
     mail: reqMail,
     pass: reqPass
   }, (error, user) => {
@@ -59,27 +57,26 @@ const addUser = (req, res) => {
 
 
 const addGroup = (req, res) => {
-  const reqBalance = req.body.balance;
-  const reqName = req.body.name;
-  const reqUsers = req.body.users;
-  const reqAdmins = req.body.admins;
-
+  const reqName = req.body.name;          // name of the group
+  const balance = 0.0;                    // balance of the group
+  const reqUsers = req.body.userIds;      // list of users (user ids)
+  const reqAdmins = req.body.adminIds;    // list of admins (user ids)
 
   Group.create({
-    balance: reqBalance,
+    balance: balance,
     name: reqName,
   }, (error, group) => {
     if (error) {
       res.status(400).json(error);
     } else {
 
-      // add the current user to the group
-      for (const u of reqUsers) {
-        if (validateUserById(u)) {
-          group.users.push(u);
-          // group.admins.push(user);
+      // add users from reqUsers to the group
+      for (const uId of reqUsers) {
+        if (validateUserById(uId)) {
+          group.userIds.push(uId);
+          group.adminIds.push(uId);
         } else {
-          res.status(500).json("Uporabnik: "+u+" ne obstaja.");
+          return res.status(500).json("Uporabnik: "+uId+" ne obstaja.");
         }
       }
 
@@ -88,15 +85,19 @@ const addGroup = (req, res) => {
         console.log("Error saving to database! "+err);
       });
 
-      res.status(201).json(group);
+      return res.status(201).json(group);
     }
+
   });
 
 };
 
 function validateUserById(userId) {
-  let user = User.findById(userId).exec((napaka, user) => {
-    return napaka;
+  let user = User.findById(userId).exec((err, user) => {
+    if (err) {
+      return false;
+    }
+    return true;
   });
 }
 
