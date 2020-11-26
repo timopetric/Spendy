@@ -64,4 +64,4 @@ process.on("SIGTERM", () => {
   });
 });
 
-require("./users");
+require("./schemes-models");
