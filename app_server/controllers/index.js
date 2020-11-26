@@ -32,9 +32,74 @@ const graphs = (req, res) => {
   });
 };
 
+const login = (req, res) => {
+  res.render('login',{
+    title: 'Prijavna stran',
+    stylesheets_load: ["/stylesheets/style.css", "/stylesheets/style-profil.css"],
+    scripts_load: []
+  });
+};
+
+const signup = (req, res) => {
+  res.render('signup',{
+    title: 'Registracijska stran',
+    stylesheets_load: ["/stylesheets/style.css", "/stylesheets/style-profil.css"],
+    scripts_load: []
+  });
+};
+
+const profil = (req, res) => {
+  res.render('profil',{
+    title: 'Profil',
+    uporabnik: {
+      ime: 'Janez',
+      priimek: 'Novak',
+      telefon: '++38631000000',
+      email: 'janeznovak@gmail.com'
+    },
+    stylesheets_load: ["/stylesheets/style-profil.css"],
+    scripts_load: [],
+  });
+};
+
+const settings = (req, res) => {
+  res.render('settings',{
+    title: 'Nastavitve profila',
+    stylesheets_load: ["/stylesheets/style-profil.css"],
+    scripts_load: []
+  });
+};
+
+const groups = (req, res) => {
+  res.render('groups',{
+    title: 'Skupine',
+    skupina1:{
+      imeSkupine: 'Družina',
+      admin: 'Oče',
+      clani: ['Mati', 'Sin', 'Hči'],
+
+    },
+    skupina2:{
+      imeSkupine: 'Košarka',
+      admin: 'Janez Novak',
+      clani: ['Matic Bregar', 'Kristjan Sever', 'Timotej Petrič', 'Aljaž Grdadolnik']
+
+    },
+    stylesheets_load: ["/stylesheets/styleGroups.css"],
+    scripts_load: ["/javascripts/jquery-3.5.1.min.js",
+      "/javascripts/popper.min.js", "/javascripts/bootstrap/bootstrap.min.js",
+    "https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"]
+  });
+};
+
 module.exports = {
   index,
   add_expenses,
   analysis,
   graphs,
+  login,
+  signup,
+  profil,
+  settings,
+  groups,
 };

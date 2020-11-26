@@ -133,7 +133,7 @@
           <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3" id="prvi">
               <div class="accordion" id="accordionExample1">
-                <div class="card bg-danger">
+                <div class="card bg-danger" id="skupina1">
                   <div class="card-header" id="headingOne">
                     <div class="mb-0">
                       <div class="row">
@@ -218,15 +218,16 @@
                         type="button"
                         class="btn btn-primary"
                         data-toggle="modal"
-                        data-target="#exampleModal1"
+                        data-target="#exampleModal"
+                        data-whatever="janeznovak"
                         id="dodajHitro1"
                       >
                         Dodaj člana
                       </button>
 
-                      <div
+                      <!--<div
                         class="modal fade"
-                        id="exampleModal1"
+                        id="exampleModal"
                         tabindex="-1"
                         role="dialog"
                         aria-labelledby="exampleModalLabel1"
@@ -235,7 +236,7 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel1">
+                              <h5 class="modal-title" id="exampleModalLabel">
                                 Dodaja člana
                               </h5>
                               <button
@@ -283,7 +284,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div>-->
                     </div>
                   </div>
                 </div>
@@ -354,18 +355,18 @@
                         type="button"
                         class="btn btn-primary"
                         data-toggle="modal"
-                        data-target="#exampleModal2"
+                        data-target="#exampleModal"
                         id="dodajHitro2"
                       >
                         Dodaj člana
                       </button>
 
-                      <div
+                      <!--<div
                         class="modal fade"
                         id="exampleModal2"
                         tabindex="-1"
                         role="dialog"
-                        aria-labelledby="exampleModalLabel2"
+                        aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
                       >
                         <div class="modal-dialog" role="document">
@@ -419,8 +420,68 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div>-->
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel1"
+                    aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Dodaja člana
+                    </h5>
+                    <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form
+                            action="#"
+                            class="form"
+                            id="registrationForm1"
+                            method="post"
+                    >
+                      <div class="form-group">
+                        <div class="col-xs-6">
+                          <label for="first_name"
+                          ><h4>Uporabniško ime člana</h4></label
+                          >
+                          <input
+                                  class="form-control"
+                                  id="UporabniškoImeClana"
+                                  type="text"
+                                  placeholder="janeznovak"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                    >
+                      Preklic
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                      Dodajte skupino
+                    </button>
                   </div>
                 </div>
               </div>
@@ -559,7 +620,7 @@
           type="button"
           class="btn"
           data-toggle="modal"
-          data-target="#exampleModal"
+          data-target="#exampleModalDodajSkupino"
           id="novaSkupina"
         >
           <svg
@@ -656,7 +717,7 @@
 
         <div
           class="modal fade"
-          id="exampleModal"
+          id="exampleModalDodajSkupino"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
@@ -665,7 +726,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+                <h5 class="modal-title" id="exampleModalLabelDodajSkupino">
                   Dodajte skupino
                 </h5>
                 <button
@@ -722,21 +783,6 @@
                       />
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <div class="col-xs-6">
-                      <label for="email"
-                        ><h4>Uporabniško ime drugega člana</h4></label
-                      >
-                      <input
-                        class="form-control"
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="metka9"
-                      />
-                    </div>
-                  </div>
                 </form>
               </div>
               <div class="modal-footer">
@@ -769,6 +815,17 @@
       integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
       src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
     ></script>
+    <script>
+      $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+      })
+    </script>
 
     <!-- auto refresh on change when developing "python3 -m http.server" -->
 <!--    <script src="http://livejs.com/live.js"></script>-->
