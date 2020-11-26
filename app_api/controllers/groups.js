@@ -4,22 +4,24 @@ const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
 const getAllGroups = async (req, res) => {
-  let found = await Group.find();
+  let found = await Group.find({});
   console.log(found);
   res.status(200).json(found);
 };
 
 const getGroupById = async (req, res) => {
-  let found = await Expense.findById(req.params.id).exec((napaka, group) => {
-    if (!group) {
-      return res.status(404).json({
-        sporočilo: "Ne najdem skupine s podanim id-jem",
-      });
-    } else if (napaka) {
-      return res.status(500).json(napaka);
-    }
-    res.status(200).json(group);
-  });
+  let found = await Group.findById(req.params.id)
+    .populate("expenses")
+    .exec((napaka, group) => {
+      if (!group) {
+        return res.status(404).json({
+          sporočilo: "Ne najdem skupine s podanim id-jem",
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      res.status(200).json(group);
+    });
 
   return found;
 };
@@ -42,6 +44,24 @@ const addGroup = (req, res) => {
       }
     }
   );
+};
+
+const addGroupExpenseById = (req, res) => {
+  const groupId = req.params.groupId;
+  const expenseId = req.params.expenseId;
+
+  Expense.findById(expenseId).exec((napaka, expense) => {
+    if (!lokacija) {
+      return res.status(404).json({
+        sporočilo:
+          "Ne najdem expensa s podanim enoličnim identifikatorjem idLokacije.",
+      });
+    } else if (napaka) {
+      return res.status(500).json(napaka);
+    }
+
+    res.status(200).json(expense);
+  });
 };
 
 module.exports = {
