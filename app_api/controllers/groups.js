@@ -13,8 +13,8 @@ const getAllGroups = async (req, res) => {
 const getGroupById = async (req, res) => {
   let found = await Group.findById(req.params.id)
     .populate("expenses")
-    .populate("userIds")
-    .populate("adminIds")
+    .populate("userIds", "-pass")
+    .populate("adminIds", "-pass")
     .exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
@@ -101,10 +101,19 @@ const removeGroupById = (req, res) => {
   if (idGroup) {
     Group
         .findByIdAndRemove(idGroup)
-        .exec((err) => {
+        .exec((err, group) => {
           if (err) {
             return res.status(500).json(err);
           }
+          console.log("GROUP DELETED: "+group);
+          console.log("Expenses to delete: "+group.expenses);
+
+          Expense.deleteMany({_id: { $in: (group.expenses)}}, (err, res) => {
+            if (!res || !err) {
+              console.log("Error deleting expenses for group."+err);
+            }
+          });
+          
           res.status(204).json(null);
         });
   } else {

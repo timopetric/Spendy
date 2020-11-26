@@ -4,8 +4,17 @@ const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
 //GET ALL EXPENSES
-const getAllExpensesForUser = async (req, res) => {
+const getExpenses = async (req, res) => {
   let found = await Expense.find({});
+  console.log(found);
+  res.status(200).json(found);
+};
+
+
+const getExpenseById = async (req, res) => {
+  const expenseId = req.params.id;
+
+  let found = await Expense.findById(expenseId);
   console.log(found);
   res.status(200).json(found);
 };
@@ -18,7 +27,7 @@ const getExpensesByGroupId = async (req, res) => {
     .exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
-          sporočilo: "Ne najdem skupine s podanim id-jem",
+          "message": "Ne najdem skupine s podanim id-jem",
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
@@ -37,7 +46,7 @@ const addExpense = (req, res) => {
     Group.findById(req.params.idGroup).exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
-          sporočilo:
+          "message":
             "Ne najdem groupe s podanim enoličnim identifikatorjem idGroup.",
         });
       } else if (napaka) {
@@ -49,7 +58,7 @@ const addExpense = (req, res) => {
     });
   } else {
     res.status(400).json({
-      sporočilo: "Ne najdem lokacije, idLokacije je obvezen parameter.",
+      "message": "Ne najdem lokacije, idLokacije je obvezen parameter.",
     });
   }
 };
@@ -59,8 +68,17 @@ const dodajExpense = (req, res, group) => {
   const cost = req.body.cost;
   const date = req.body.date;
   const category_name = req.body.category_name;
-  const groupId = req.body.groupId;
   const description = req.body.description;
+  const created_by = req.body.created_by;
+
+  if (!created_by) {
+    res.status(400).json({
+      "message": "Ne najdem created_by, ki naj bi vseboval username tistega,"
+      + "ki kreira expense, created_by je obvezen parameter.",
+    });
+  }
+
+  const groupId = req.params.idGroup;
 
   Expense.create(
     {
@@ -70,6 +88,7 @@ const dodajExpense = (req, res, group) => {
       category_name: category_name,
       groupId: groupId,
       description: description,
+      created_by: created_by
     },
     (error, expense) => {
       if (error) {
@@ -95,7 +114,7 @@ const deleteExpense = (req, res) => {
 
   if (!idGroup || !idExpense) {
     return res.status(404).json({
-      sporočilo:
+      "message":
         "Ne najdem Groupe oz. Expensa, " +
         "idGroup in idExpense sta obvezna parametra.",
     });
@@ -120,7 +139,7 @@ const odstraniExpense = (req, res, group) => {
   Expense.findByIdAndRemove(idExpense, (err, expense) => {
     if (!expense) {
       return res.status(404).json({
-        sporočilo: "Ne najdem Expensa za izbris.",
+        "message": "Ne najdem Expensa za izbris.",
       });
     }
     if (err) {
@@ -140,7 +159,7 @@ const odstraniExpense = (req, res, group) => {
 const updateExpense = (req, res) => {
   if (!req.params.idExpense || !req.params.idGroup) {
     return res.status(404).json({
-      sporočilo:
+      "message":
         "Ne najdem groupe oz. expensa, " +
         "idExpense in idGroup sta obvezna parametra.",
     });
@@ -150,7 +169,7 @@ const updateExpense = (req, res) => {
     .populate("expenses")
     .exec((napaka, group) => {
       if (!group) {
-        return res.status(404).json({ sporočilo: "Ne najdem groupe." });
+        return res.status(404).json({ "message": "Ne najdem groupe." });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
@@ -161,7 +180,7 @@ const updateExpense = (req, res) => {
         (err, result) => {
           if (!result) {
             return res.status(404).json({
-              sporočilo: "Ne najdem expensa, " + "idExpense ni veljaven.",
+              "message": "Ne najdem expensa, " + "idExpense ni veljaven.",
             });
           }
           if (err) {
@@ -175,7 +194,8 @@ const updateExpense = (req, res) => {
 };
 
 module.exports = {
-  getAllExpensesForUser,
+  getExpenses,
+  getExpenseById,
   addExpense,
   deleteExpense,
   getExpensesByGroupId,

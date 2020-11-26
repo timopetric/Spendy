@@ -19,7 +19,8 @@ router.post("/v1/users", ctrlUser.addUser);
 //START--------------------------EXPENSES-------------------------------START
 
 //get
-router.get("/v1/expenses/:id", ctrlExpenses.getAllExpensesForUser);
+router.get("/v1/expenses", ctrlExpenses.getExpenses);
+router.get("/v1/expenses/:id", ctrlExpenses.getExpenseById);
 
 router.post("/v1/groups/:idGroup/expenses", ctrlExpenses.addExpense);
 
