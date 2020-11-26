@@ -24,6 +24,20 @@ const getAllUsers = (req, res) => {
     });
 };
 
+const getUserById = (req, res) => {
+  const userId = req.params.userId;
+  User.findById(userId, (err, user) => {
+    if (!user) {
+      return res.status(404).json({
+        message: "Ne najdem userja s podanim id-jem",
+      });
+    } else if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(user);
+  });
+};
+
 const addUser = (req, res) => {
   const reqUsername = req.body.username;
   const reqName = req.body.name;

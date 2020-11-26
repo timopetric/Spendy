@@ -111,6 +111,7 @@ const expenseSchema = new mongoose.Schema(
     cost: { type: Number, required: true },
     date: { type: Date, default: Date.now() },
     category_name: { type: String, required: true },
+    created_by: { type: String, required: true }, // username
     description: String,
     groupId: {
           type: Schema.Types.ObjectId,
