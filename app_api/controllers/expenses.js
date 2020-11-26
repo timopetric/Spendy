@@ -134,8 +134,52 @@ const deleteExpenseById = (req, res) => {
     });
 };
 
+const deleteExpense = (req, res) => {
+  const idGroup = req.params.idGroup;
+  const idExpense = req.params.idExpense;
+
+  if (!idGroup || !idExpense) {
+    return res.status(404).json({
+      sporočilo:
+        "Ne najdem Groupe oz. Expensa, " +
+        "idGroup in idExpense sta obvezna parametra.",
+    });
+  }
+  Group.findById(idGroup)
+    .select("expenses")
+    .exec((napaka, group) => {
+      if (napaka) {
+        res.status(400).json(napaka);
+      } else {
+        console.log(group);
+        console.log(group.expenses);
+        odstraniExpense(req, res, group);
+      }
+    });
+};
+
+const odstraniExpense = (req, res, group) => {
+  const idExpense = req.params.idExpense;
+
+  group.expenses.remove(idExpense);
+  Expense.findByIdAndRemove(idExpense, (err, expense) => {
+    if (err) {
+      res.status(400).json(err);
+    } else {
+      group.save((napaka) => {
+        if (napaka) {
+          return res.status(500).json(napaka);
+        } else {
+          res.status(204).json(expense);
+        }
+      });
+    }
+  });
+};
+
 module.exports = {
   getAllExpensesForUser,
   addExpense,
   addExpense2,
+  deleteExpense,
 };

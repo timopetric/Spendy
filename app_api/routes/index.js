@@ -24,6 +24,11 @@ router.post("/v1/expenses", ctrlExpenses.addExpense);
 
 router.post("/v1/groups/:idGroup/expenses", ctrlExpenses.addExpense2);
 
+router.delete(
+  "/v1/groups/:idGroup/expenses/:idExpense",
+  ctrlExpenses.deleteExpense
+);
+
 //END----------------------------EXPENSES---------------------------------END
 
 //START--------------------------GROUPS-------------------------------START
