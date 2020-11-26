@@ -10,7 +10,6 @@ const getExpenses = async (req, res) => {
   res.status(200).json(found);
 };
 
-
 const getExpenseById = async (req, res) => {
   const expenseId = req.params.id;
 
@@ -27,12 +26,12 @@ const getExpensesByGroupId = async (req, res) => {
     .exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
-          "message": "Ne najdem skupine s podanim id-jem",
+          message: "Ne najdem skupine s podanim id-jem",
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      res.status(200).json(group);
+      return res.status(200).json(group);
     });
 
   return found;
@@ -46,7 +45,7 @@ const addExpense = (req, res) => {
     Group.findById(req.params.idGroup).exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
-          "message":
+          message:
             "Ne najdem groupe s podanim enoličnim identifikatorjem idGroup.",
         });
       } else if (napaka) {
@@ -58,7 +57,7 @@ const addExpense = (req, res) => {
     });
   } else {
     res.status(400).json({
-      "message": "Ne najdem lokacije, idLokacije je obvezen parameter.",
+      message: "Ne najdem lokacije, idLokacije je obvezen parameter.",
     });
   }
 };
@@ -73,8 +72,9 @@ const dodajExpense = (req, res, group) => {
 
   if (!created_by) {
     res.status(400).json({
-      "message": "Ne najdem created_by, ki naj bi vseboval username tistega,"
-      + "ki kreira expense, created_by je obvezen parameter.",
+      message:
+        "Ne najdem created_by, ki naj bi vseboval username tistega," +
+        "ki kreira expense, created_by je obvezen parameter.",
     });
   }
 
@@ -88,7 +88,7 @@ const dodajExpense = (req, res, group) => {
       category_name: category_name,
       groupId: groupId,
       description: description,
-      created_by: created_by
+      created_by: created_by,
     },
     (error, expense) => {
       if (!expense) {
@@ -120,7 +120,7 @@ const deleteExpense = (req, res) => {
 
   if (!idGroup || !idExpense) {
     return res.status(404).json({
-      "message":
+      message:
         "Ne najdem Groupe oz. Expensa, " +
         "idGroup in idExpense sta obvezna parametra.",
     });
@@ -145,7 +145,7 @@ const odstraniExpense = (req, res, group) => {
   Expense.findByIdAndRemove(idExpense, (err, expense) => {
     if (!expense) {
       return res.status(404).json({
-        "message": "Ne najdem Expensa za izbris.",
+        message: "Ne najdem Expensa za izbris.",
       });
     }
     if (err) {
@@ -165,7 +165,7 @@ const odstraniExpense = (req, res, group) => {
 const updateExpense = (req, res) => {
   if (!req.params.idExpense || !req.params.idGroup) {
     return res.status(404).json({
-      "message":
+      message:
         "Ne najdem groupe oz. expensa, " +
         "idExpense in idGroup sta obvezna parametra.",
     });
@@ -175,7 +175,7 @@ const updateExpense = (req, res) => {
     .populate("expenses")
     .exec((napaka, group) => {
       if (!group) {
-        return res.status(404).json({ "message": "Ne najdem groupe." });
+        return res.status(404).json({ message: "Ne najdem groupe." });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
@@ -186,7 +186,7 @@ const updateExpense = (req, res) => {
         (err, result) => {
           if (!result) {
             return res.status(404).json({
-              "message": "Ne najdem expensa, " + "idExpense ni veljaven.",
+              message: "Ne najdem expensa, " + "idExpense ni veljaven.",
             });
           }
           if (err) {

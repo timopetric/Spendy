@@ -16,6 +16,11 @@ router.post("/v1/users", ctrlUser.addUser);
 // router.put('/v1/users/:userId', ctrlUser.updateUser);
 // router.delete('/v1/users/:userId', ctrlUser.deleteUser);
 
+//START--------------------------USERS-------------------------------START
+router.get("/v1/users/:userId", ctrlUser.getUserById);
+
+//END----------------------------USERS---------------------------------END
+
 //START--------------------------EXPENSES-------------------------------START
 
 //get
