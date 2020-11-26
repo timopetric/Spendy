@@ -18,7 +18,7 @@ const getGroupById = async (req, res) => {
     .exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
-          sporočilo: "Ne najdem skupine s podanim id-jem",
+          "message": "Ne najdem skupine s podanim id-jem",
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
@@ -83,7 +83,7 @@ const addGroupExpenseById = (req, res) => {
   Expense.findById(expenseId).exec((napaka, expense) => {
     if (!lokacija) {
       return res.status(404).json({
-        sporočilo:
+        "message":
           "Ne najdem expensa s podanim enoličnim identifikatorjem idLokacije.",
       });
     } else if (napaka) {
@@ -94,8 +94,30 @@ const addGroupExpenseById = (req, res) => {
   });
 };
 
+const removeGroupById = (req, res) => {
+  const {idGroup} = req.params;
+  // const idGroup = req.params.idGroup;
+  console.log(idGroup);
+  if (idGroup) {
+    Group
+        .findByIdAndRemove(idGroup)
+        .exec((err) => {
+          if (err) {
+            return res.status(500).json(err);
+          }
+          res.status(204).json(null);
+        });
+  } else {
+    res.status(404).json({
+      "message": "groupId is a required parameter."
+    })
+  }
+}
+
+
 module.exports = {
   getAllGroups,
   getGroupById,
   addGroup,
+  removeGroupById
 };

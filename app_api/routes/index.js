@@ -39,7 +39,7 @@ router.delete(
 router.get("/v1/groups", ctrlGroups.getAllGroups);
 router.get("/v1/groups/:id", ctrlGroups.getGroupById);
 router.post("/v1/groups", ctrlGroups.addGroup);
-
+router.delete("/v1/groups/:idGroup", ctrlGroups.removeGroupById);
 //post
 
 //END----------------------------GROUPS---------------------------------END
