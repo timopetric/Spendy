@@ -14,13 +14,13 @@ const getGroupById = async (req, res) => {
     .populate("expenses")
     .populate("userIds", "-pass")
     .populate("adminIds", "-pass")
-    .exec((napaka, group) => {
+    .exec((err, group) => {
       if (!group) {
         return res.status(404).json({
           message: "Ne najdem skupine s podanim id-jem",
         });
-      } else if (napaka) {
-        return res.status(500).json(napaka);
+      } else if (err) {
+        return res.status(500).json(err);
       }
 
       // todo: pobris gesla
@@ -46,7 +46,7 @@ const addGroup = (req, res) => {
         res.status(400).json(err);
       } else if (!group) {
         return res.status(404).json({
-          message: "Ne najdem skupine s podanim id-jem",
+          "message": "Ustvarjanje skupine je bilo neuspešno",
         });
       }
       res.status(201).json(group);
@@ -81,9 +81,46 @@ const removeGroupById = (req, res) => {
   }
 };
 
+const updateGroup = (req, res) => {
+  const groupId = req.params.idGroup;
+  if (!groupId) {
+    return res.status(404).json({
+      "message":
+        "idGroup je obvezen parameter.",
+    });
+  }
+
+  Group
+    .findById(groupId)
+    .exec((err, group) => {
+      if (!group) {
+        return res.status(404).json({"message": "Ne najdem grupe"});
+      } else if (err) {
+        return res.status(500).json(err);
+      }
+
+      group.balance = req.body.balance;
+      group.userIds = req.body.userIds || [];
+      group.adminIds = req.body.adminIds || [];
+      group.expenses = req.body.expenses || [];
+      group.name = req.body.name;
+
+      group.save((err, group) => {
+        if (err) {
+          res.status(404).json(err);
+        } else {
+          res.status(200).json(group);
+        }
+      });
+    });
+
+};
+
+
 module.exports = {
   getAllGroups,
   getGroupById,
   addGroup,
   removeGroupById,
+  updateGroup
 };

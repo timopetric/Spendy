@@ -36,9 +36,9 @@ mongoose.connection.on("disconnected", () => {
   console.log("Mongoose ni povezan.");
 });
 
-const pravilnaZaustavitev = (sporocilo, povratniKlic) => {
+const pravilnaZaustavitev = (message, povratniKlic) => {
   mongoose.connection.close(() => {
-    console.log(`Mongoose je zaprl povezavo preko '${sporocilo}'`);
+    console.log(`Mongoose je zaprl povezavo preko '${message}'`);
     povratniKlic();
   });
 };

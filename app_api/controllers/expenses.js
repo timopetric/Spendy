@@ -103,7 +103,7 @@ const dodajExpense = (req, res, group) => {
         group.expenses.push(expense._id);
         group.save((err, group) => {
           if (err) {
-            res.status(400).json(napaka);
+            res.status(400).json(err);
           } else {
             res.status(201).json(expense);
           }
@@ -186,13 +186,19 @@ const updateExpense = (req, res) => {
         (err, result) => {
           if (!result) {
             return res.status(404).json({
-              message: "Ne najdem expensa, " + "idExpense ni veljaven.",
+              message: "Ne najdem expensa, idExpense ni veljaven. "+err,
             });
           }
           if (err) {
             return res.status(500).json(err);
           } else {
-            return res.status(200).json(result);
+            // vrne še ne posodobljen
+            Expense.findById(result._id).exec((err, expense) => {
+              if (!expense) {
+                return res.status(500).json(err);
+              }
+              return res.status(200).json(expense);
+            });
           }
         }
       );

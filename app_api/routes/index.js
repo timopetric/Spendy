@@ -49,6 +49,7 @@ router.get("/v1/groups", ctrlGroups.getAllGroups);
 router.get("/v1/groups/:id", ctrlGroups.getGroupById);
 router.post("/v1/groups", ctrlGroups.addGroup);
 router.delete("/v1/groups/:idGroup", ctrlGroups.removeGroupById);
+router.put("/v1/groups/:idGroup", ctrlGroups.updateGroup);
 //post
 
 //END----------------------------GROUPS---------------------------------END
