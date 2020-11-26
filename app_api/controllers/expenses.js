@@ -72,12 +72,18 @@ const dodajExpense = (req, res, group) => {
       description: description,
     },
     (error, expense) => {
+      if (!expense) {
+        return res.status(404).json({
+          message:
+            "Ne najdem expensa s podanim enoličnim identifikatorjem idGroup.",
+        });
+      }
       if (error) {
         res.status(400).json(error);
       } else {
         group.expenses.push(expense._id);
-        group.save((error, group) => {
-          if (error) {
+        group.save((err, group) => {
+          if (err) {
             res.status(400).json(napaka);
           } else {
             res.status(201).json(expense);
