@@ -19,14 +19,17 @@ router.get('/v1/users/:id', ctrlUser.getUserById);
 //get
 router.get("/v1/expenses/:id", ctrlExpenses.getAllExpensesForUser);
 
-//post
-router.post("/v1/expenses", ctrlExpenses.addExpense);
-
-router.post("/v1/groups/:idGroup/expenses", ctrlExpenses.addExpense2);
+router.post("/v1/groups/:idGroup/expenses", ctrlExpenses.addExpense);
 
 router.delete(
   "/v1/groups/:idGroup/expenses/:idExpense",
   ctrlExpenses.deleteExpense
+);
+
+router.get("/v1/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
+router.put(
+  "/v1/groups/:idGroup/expenses/:idExpense",
+  ctrlExpenses.updateExpense
 );
 
 //END----------------------------EXPENSES---------------------------------END
@@ -37,7 +40,7 @@ router.delete(
 router.get("/v1/groups", ctrlGroups.getAllGroups);
 router.get("/v1/groups/:id", ctrlGroups.getGroupById);
 router.post("/v1/groups", ctrlGroups.addGroup);
-
+router.delete("/v1/groups/:idGroup", ctrlGroups.removeGroupById);
 //post
 
 //END----------------------------GROUPS---------------------------------END

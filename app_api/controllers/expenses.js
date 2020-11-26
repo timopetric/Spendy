@@ -3,51 +3,50 @@ const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
+//GET ALL EXPENSES
 const getAllExpensesForUser = async (req, res) => {
   let found = await Expense.find({});
   console.log(found);
   res.status(200).json(found);
 };
 
-const addExpense = (req, res) => {
-  const isExpenditure = req.body.isExpenditure;
-  const cost = req.body.cost;
-  const date = req.body.date;
-  const category_name = req.body.category_name;
-  const groupId = req.body.groupId;
-  const description = req.body.description;
-
-  Expense.create(
-    {
-      isExpenditure: isExpenditure,
-      cost: cost,
-      date: date,
-      category_name: category_name,
-      groupId: groupId,
-      description: description,
-    },
-    (error, expense) => {
-      if (error) {
-        res.status(400).json(error);
-      } else {
-        res.status(201).json(expense);
+////GET ALL EXPENSES OF GROUP
+const getExpensesByGroupId = async (req, res) => {
+  let found = await Group.findById(req.params.id)
+    .select("expenses")
+    .populate("expenses")
+    .exec((napaka, group) => {
+      if (!group) {
+        return res.status(404).json({
+          sporočilo: "Ne najdem skupine s podanim id-jem",
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
       }
-    }
-  );
+      res.status(200).json(group);
+    });
+
+  return found;
 };
 
-const addExpense2 = (req, res) => {
+//DODAJ EXPENSE GROUPI
+const addExpense = (req, res) => {
   const idGroup = req.params.idGroup;
+  console.log(idGroup);
   if (idGroup) {
-    Group.findById(idGroup)
-      .select("expenses")
-      .exec((napaka, group) => {
-        if (napaka) {
-          res.status(400).json(napaka);
-        } else {
-          dodajExpense2(req, res, group);
-        }
-      });
+    Group.findById(req.params.idGroup).exec((napaka, group) => {
+      if (!group) {
+        return res.status(404).json({
+          sporočilo:
+            "Ne najdem groupe s podanim enoličnim identifikatorjem idGroup.",
+        });
+      } else if (napaka) {
+        console.log("napaka" + napaka);
+        res.status(400).json(napaka);
+      }
+      console.log("okej " + group);
+      dodajExpense(req, res, group);
+    });
   } else {
     res.status(400).json({
       sporočilo: "Ne najdem lokacije, idLokacije je obvezen parameter.",
@@ -55,7 +54,7 @@ const addExpense2 = (req, res) => {
   }
 };
 
-const dodajExpense2 = (req, res, group) => {
+const dodajExpense = (req, res, group) => {
   const isExpenditure = req.body.isExpenditure;
   const cost = req.body.cost;
   const date = req.body.date;
@@ -89,51 +88,7 @@ const dodajExpense2 = (req, res, group) => {
   );
 };
 
-const dodajExpense = (req, res, group) => {
-  if (!group) {
-    res.status(404).json({ sporočilo: "Ne najdem Groupe." });
-  } else {
-    group.komentarji.push({
-      avtor: req.body.naziv,
-      ocena: req.body.ocena,
-      besediloKomentarja: req.body.komentar,
-    });
-    lokacija.save((napaka, lokacija) => {
-      if (napaka) {
-        res.status(400).json(napaka);
-      } else {
-        posodobiPovprecnoOceno(lokacija._id);
-        const dodaniKomentar = lokacija.komentarji.slice(-1).pop();
-        res.status(201).json(dodaniKomentar);
-      }
-    });
-  }
-};
-
-const deleteExpenseById = (req, res) => {
-  const idExpense = req.params.id;
-  if (!idExpense) {
-    return res.status(404).json({
-      sporočilo:
-        "Ne najdem lokacije oz. komentarja, " +
-        "idLokacije in idKomentarja sta obvezna parametra.",
-    });
-  }
-  Expense.findById(idExpense)
-    .select("komentarji")
-    .exec((napaka, expense) => {
-      if (!expense) {
-        return res.status(404).json({ sporočilo: "Ne najdem expensa." });
-      } else if (napaka) {
-        return res.status(500).json(napaka);
-      } else {
-        return res
-          .status(200)
-          .json({ sporočilo: "POPRAVI TLE K TI NE ZBRIŠE" });
-      }
-    });
-};
-
+//IZBRIŠI  EXPENSE GROUPI
 const deleteExpense = (req, res) => {
   const idGroup = req.params.idGroup;
   const idExpense = req.params.idExpense;
@@ -163,6 +118,11 @@ const odstraniExpense = (req, res, group) => {
 
   group.expenses.remove(idExpense);
   Expense.findByIdAndRemove(idExpense, (err, expense) => {
+    if (!expense) {
+      return res.status(404).json({
+        sporočilo: "Ne najdem Expensa za izbris.",
+      });
+    }
     if (err) {
       res.status(400).json(err);
     } else {
@@ -177,9 +137,47 @@ const odstraniExpense = (req, res, group) => {
   });
 };
 
+const updateExpense = (req, res) => {
+  if (!req.params.idExpense || !req.params.idGroup) {
+    return res.status(404).json({
+      sporočilo:
+        "Ne najdem groupe oz. expensa, " +
+        "idExpense in idGroup sta obvezna parametra.",
+    });
+  }
+  Group.findById(req.params.idGroup)
+    .select("expenses")
+    .populate("expenses")
+    .exec((napaka, group) => {
+      if (!group) {
+        return res.status(404).json({ sporočilo: "Ne najdem groupe." });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+
+      Expense.findByIdAndUpdate(
+        req.params.idExpense,
+        req.body,
+        (err, result) => {
+          if (!result) {
+            return res.status(404).json({
+              sporočilo: "Ne najdem expensa, " + "idExpense ni veljaven.",
+            });
+          }
+          if (err) {
+            return res.status(500).json(err);
+          } else {
+            return res.status(200).json(result);
+          }
+        }
+      );
+    });
+};
+
 module.exports = {
   getAllExpensesForUser,
   addExpense,
-  addExpense2,
   deleteExpense,
+  getExpensesByGroupId,
+  updateExpense,
 };
