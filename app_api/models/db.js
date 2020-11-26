@@ -29,7 +29,7 @@ mongoose.connection.on("connected", () => {
 });
 
 mongoose.connection.on("error", () => {
-  console.log("Mongoose napaka pri povezavi: ", napaka);
+  console.log("Mongoose napaka pri povezavi.");
 });
 
 mongoose.connection.on("disconnected", () => {
