@@ -43,7 +43,7 @@ const expenseSchema = new mongoose.Schema(
   {
     isExpenditure: { type: Boolean, required: true },
     cost: { type: Number, required: true },
-    date: { type: Date, default: Date.now },
+    date: { type: Date, default: Date.now() },
     category_name: { type: String, required: true },
     groupId: { type: Schema.Types.ObjectId, ref: "Group", required: true }, // expense belongs to a certain group
     description: String,
@@ -64,6 +64,7 @@ const groupSchema = new mongoose.Schema(
     name: { type: String, required: true },
     userIds: [{ type: Schema.Types.ObjectId, ref: "User" }], // users of the group
     adminIds: [{ type: Schema.Types.ObjectId, ref: "User" }], // admins (users) of the group
+    expenses: [{ type: Schema.Types.ObjectId, ref: "Expense" }],
   },
   {
     timestamps: {

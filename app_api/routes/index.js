@@ -22,6 +22,8 @@ router.get("/v1/expenses/:id", ctrlExpenses.getAllExpensesForUser);
 //post
 router.post("/v1/expenses", ctrlExpenses.addExpense);
 
+router.post("/v1/groups/:idGroup/expenses", ctrlExpenses.addExpense2);
+
 //END----------------------------EXPENSES---------------------------------END
 
 //START--------------------------GROUPS-------------------------------START
