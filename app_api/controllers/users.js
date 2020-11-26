@@ -3,25 +3,25 @@ const User = mongoose.model("User");
 const Group = mongoose.model("Group");
 
 const getAllUsers = (req, res) => {
-    User.find().exec((napaka, users) => {
-        if (napaka) {
-            res.status(500).json(napaka);
-        } else {
-            res.status(200).json(
-                users.map((user) => {
-                    return {
-                        _id: user._id,
-                        username: user.username,
-                        name: user.name,
-                        surname: user.surname,
-                        mail: user.mail,
-                        balance: user.balance,
-                        groupIds: user.groups,
-                    };
-                })
-            );
-        }
-    });
+  User.find().exec((napaka, users) => {
+    if (napaka) {
+      res.status(500).json(napaka);
+    } else {
+      res.status(200).json(
+        users.map((user) => {
+          return {
+            _id: user._id,
+            username: user.username,
+            name: user.name,
+            surname: user.surname,
+            mail: user.mail,
+            balance: user.balance,
+            groupIds: user.groups,
+          };
+        })
+      );
+    }
+  });
 };
 
 const getUserById = (req, res) => {
@@ -77,60 +77,13 @@ function validateUserById(userId) {
   });
 }
 
-const getUserById = (req, res) => {
-  User.findById(req.params.id)
-      .exec((napaka, uporabnik) => {
-        if(!uporabnik)
-          return res.status(404).json({
-            "sporočilo":
-                "Uporabnik s podanim id-jem ne obstaja."
-          });
-        else if (napaka) {
-          return res.status(500).json(napaka);
-        } else
-          res.status(200).json(uporabnik);
-      });
-};
-
-/*const getUserById = (req, res) => {
-  var userId = req.params.userId;
-
-  console.log(req.params.userId);
-
-  User.findOne({"_id": userId}, function (err, user) {
-    if(!user)
-      return res.status(404).json({
-        "error": "user not found"
-      });
-    else if (err)
-      return res.status(500).json(err);
-    else
-      return res.status(200).json(user);
-  });
-};*/
-
-const deleteUser = (req, res) => {
-  var id = req.params.userId;
-  var ObjectId = (mongoose.Types.ObjectId);
-
-  User.deleteOne({"_id": ObjectId(id)},
-      function (error, result) {
-        if (error) res.status(404).json(result);
-        else res.status(200).json(result);
-      });
-
-};
-
-// };
-
-// todo: getUserById
 // todo: updateUser (change settings, etc)
 // todo: deleteUser
 
 module.exports = {
   getAllUsers,
-  getUserById, // todo
+  getUserById,
   addUser,
   // updateUser, // todo
-  deleteUser  // todo
+  // deleteUser  // todo
 };

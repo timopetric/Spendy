@@ -1,5 +1,6 @@
-# Logs
-logs
+# Numerous always-ignore extensions
+*.diff
+*.err
 *.log
 *.orig
 *.rej
@@ -90,6 +91,3 @@ typings/
 
 # next.js build output
 .next
-
-#
-.jshintrc
