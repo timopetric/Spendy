@@ -46,7 +46,7 @@
                                                     type="button"
                                                     class="btn"
                                                     data-toggle="modal"
-                                                    data-target="#groupSettingsModal"
+                                                    data-target="#spremeniSkupino"
                                                     id="groupSettings"
                                             >
                                                 <img src="icons/gear.svg" height="30px" style="filter: invert()">
@@ -91,73 +91,14 @@
                                             class="btn btn-primary"
                                             data-toggle="modal"
                                             data-target="#dodajClana"
+                                            data-whatever="janeznovak"
                                             id="dodajHitro1"
                                     >
                                         Dodaj člana
                                     </button>
 
-                                    <!--<div
-                                            class="modal fade"
-                                            id="exampleModal1"
-                                            tabindex="-1"
-                                            role="dialog"
-                                            aria-labelledby="exampleModalLabel1"
-                                            aria-hidden="true"
-                                    >
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel1">
-                                                        Dodaja člana
-                                                    </h5>
-                                                    <button
-                                                            type="button"
-                                                            class="close"
-                                                            data-dismiss="modal"
-                                                            aria-label="Close"
-                                                    >
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form
-                                                            action="#"
-                                                            class="form"
-                                                            id="registrationForm1"
-                                                            method="post"
-                                                    >
-                                                        <div class="form-group">
-                                                            <div class="col-xs-6">
-                                                                <label for="first_name"
-                                                                ><h4>Uporabniško ime člana</h4></label
-                                                                >
-                                                                <input
-                                                                        class="form-control"
-                                                                        id="UporabniškoImeClana"
-                                                                        type="text"
-                                                                        placeholder="janeznovak"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button
-                                                            type="button"
-                                                            class="btn btn-secondary"
-                                                            data-dismiss="modal"
-                                                    >
-                                                        Preklic
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary">
-                                                        Dodajte skupino
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                                    {{> modal_add_user }}
-                                </div>
+
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -206,18 +147,24 @@
                                         </li>
                                         {{/each}}
                                     </ul>
+
+
                                     <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>-->
+
                                     <button
                                             type="button"
                                             class="btn btn-primary"
                                             data-toggle="modal"
-                                            data-target="#exampleModal2"
+                                            data-target="#dodajClana"
+                                            data-whatever="janeznovak"
                                             id="dodajHitro2"
                                     >
                                         Dodaj člana
                                     </button>
 
-                                    <div
+
+
+                                    <!--<div
                                             class="modal fade"
                                             id="exampleModal2"
                                             tabindex="-1"
@@ -276,7 +223,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -412,11 +359,15 @@
             </div>
         </div>
 
+        {{> modal_add_user }}
+
+        {{> modal_change_group }}
+
         <button
                 type="button"
                 class="btn"
                 data-toggle="modal"
-                data-target="#exampleModalSkupina"
+                data-target="#dodajSkupino"
                 id="novaSkupina"
         >
             <svg
@@ -434,191 +385,34 @@
             </svg>
         </button>
 
-        <div
-                class="modal fade"
-                id="groupSettingsModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelSettings">
-                            Nastavitve skupine
-                        </h5>
-                        <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form
-                                action="#"
-                                class="form"
-                                id="registrationFormSettings"
-                                method="post"
-                        >
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>Spremeni ime skupine</h4></label>
-                                    <input
-                                            class="form-control"
-                                            id="first_nameSettings"
-                                            type="text"
-                                            placeholder="Novo ime"
-                                            value="Družina"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="last_name"><h4>Spremeni limit</h4></label>
-                                    <input
-                                            class="form-control"
-                                            id="last_nameSettings"
-                                            name="last_name"
-                                            placeholder="xyz €"
-                                            type="text"
-                                            value="500"
-                                    />
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger text-white">
-                            Izbrišite skupino
-                        </button>
-                        <button
-                                type="button"
-                                class="btn btn-secondary text-white"
-                                data-dismiss="modal"
-                        >
-                            Preklic
-                        </button>
-                        <button type="button" class="btn btn-primary text-white">
-                            Potrdite spremembe
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div
-                class="modal fade"
-                id="exampleModalSkupina"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabelSkupina"
-                aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelSkupina">
-                            Dodajte skupino
-                        </h5>
-                        <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form
-                                action="#"
-                                class="form"
-                                id="registrationForm"
-                                method="post"
-                        >
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>Ime skupine</h4></label>
-                                    <input
-                                            class="form-control"
-                                            id="first_name"
-                                            type="text"
-                                            placeholder="Neko ime"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="last_name"><h4>Limit</h4></label>
-                                    <input
-                                            class="form-control"
-                                            id="last_name"
-                                            name="last_name"
-                                            placeholder="xyz €"
-                                            type="text"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="phone"
-                                    ><h4>Uporabniško ime prvega čana</h4></label
-                                    >
-                                    <input
-                                            class="form-control"
-                                            id="phone"
-                                            name="phone"
-                                            type="text"
-                                            placeholder="janko7"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="email"
-                                    ><h4>Uporabniško ime drugega člana</h4></label
-                                    >
-                                    <input
-                                            class="form-control"
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            placeholder="metka9"
-                                    />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                        >
-                            Preklic
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            Dodajte skupino
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
+        {{> modal_add_group }}
     </div>
 </main>
 
 <!-- load scripts at the end -->
+<!--<script>
+    $('#dodajClana').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
 
+<script>
+    $('#dodajSkupino').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>-->
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->
 <!--    <script src="http://livejs.com/live.js"></script>-->
