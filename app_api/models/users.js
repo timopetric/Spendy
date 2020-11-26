@@ -1,25 +1,11 @@
-const mongoose = require("mongoose");
+// 'use strict';
 
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// skupine:
-// -ime
-// -admini
-// -stroski
-//
-// strosek:
-// -boolean: prihodek/odhodek
-// -skupina (kam pase) oziroma uporabnik
-//
-// uporabnik:
-// -ime
-// -priimk
-// -mail
-// -pass
-// -skupine
-// -(stroški)?
-
 // todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
+
+////////////////////////////////////// USER SCHEMA: /////////////////////////////////////////////////////////
 
 const userSchema = new mongoose.Schema(
   {
@@ -29,7 +15,20 @@ const userSchema = new mongoose.Schema(
     mail: { type: String, required: true },
     pass: { type: String, required: true },
     balance: { type: Number, required: true },
-    groupIds: [{ type: Schema.Types.ObjectId, ref: "Group" }], // user belongs to multiple groups
+    groupIds: [{
+          type: Schema.Types.ObjectId,
+          ref: "Group",
+          validate: {
+            validator: function (groupId) {
+              return new Promise(function (resolve) {
+                groupModel.find({_id: groupId}, function (err, docs) {
+                  resolve(docs.length === 1);
+                });
+              })
+            },
+            message: props => `Group with id '${props.value}' is not a valid group!`
+          },
+    }],
   },
   {
     timestamps: {
@@ -41,24 +40,9 @@ const userSchema = new mongoose.Schema(
 );
 const userModel = mongoose.model("User", userSchema);
 
-const expenseSchema = new mongoose.Schema(
-  {
-    isExpenditure: { type: Boolean, required: true },
-    cost: { type: Number, required: true },
-    date: { type: Date, default: Date.now() },
-    category_name: { type: String, required: true },
-    groupId: { type: Schema.Types.ObjectId, ref: "Group", required: true }, // expense belongs to a certain group
-    description: String,
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at",
-    },
-    collection: "Expenses",
-  }
-);
-mongoose.model("Expense", expenseSchema);
+
+////////////////////////////////////// GROUPS SCHEMA: /////////////////////////////////////////////////////////
+
 
 const groupSchema = new mongoose.Schema(
   {
@@ -68,31 +52,44 @@ const groupSchema = new mongoose.Schema(
           type: Schema.Types.ObjectId,
           ref: "User",
           validate: {
-            validator: function (uId) {
+            validator: function (userId) {
               return new Promise(function (resolve) {
-                userModel.find({_id: uId}, function (err, docs) {
+                userModel.find({_id: userId}, function (err, docs) {
                   resolve(docs.length === 1);
                 });
               })
             },
-            // message: "Message error user not exists"
+            message: props => `User with id '${props.value}' is not a valid user!`
           },
-    }], // users of the group
+    }],
     adminIds: [{
           type: Schema.Types.ObjectId,
           ref: "User",
           validate: {
-            validator: function (uId) {
+            validator: function (userId) {
               return new Promise(function (resolve) {
-                userModel.find({_id: uId}, function (err, docs) {
+                userModel.find({_id: userId}, function (err, docs) {
                   resolve(docs.length === 1);
                 });
               })
             },
-            // message: "Message error user not exists"
+            message: props => `User with id '${props.value}' is not a valid user!`
           },
-    }], // admins (users) of the group
-    expenses: [{ type: Schema.Types.ObjectId, ref: "Expense" }],
+    }],
+    expenses: [{
+          type: Schema.Types.ObjectId,
+          ref: "Expense",
+          validate: {
+            validator: function (expenseId) {
+              return new Promise(function (resolve) {
+                expenseModel.find({_id: expenseId}, function (err, docs) {
+                  resolve(docs.length === 1);
+                });
+              })
+            },
+            message: props => `Expense with id '${props.value}' is not a valid expense!`
+          },
+    }],
   },
   {
     timestamps: {
@@ -102,5 +99,41 @@ const groupSchema = new mongoose.Schema(
     collection: "Groups",
   }
 );
-
 const groupModel = mongoose.model("Group", groupSchema);
+
+
+/////////////////////////////////////////// EXPENSE SCHEMA: ////////////////////////////////////////////////////
+
+
+const expenseSchema = new mongoose.Schema(
+  {
+    isExpenditure: { type: Boolean, required: true },
+    cost: { type: Number, required: true },
+    date: { type: Date, default: Date.now() },
+    category_name: { type: String, required: true },
+    description: String,
+    groupId: {
+          type: Schema.Types.ObjectId,
+          ref: "Group",
+          required: true,
+          validate: {
+            validator: function (groupId) {
+              return new Promise(function (resolve) {
+                groupModel.find({_id: groupId}, function (err, docs) {
+                  resolve(docs.length === 1);
+                });
+              })
+            },
+            message: props => `Group with id '${props.value}' is not a valid group!`
+          },
+    },
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+    collection: "Expenses",
+  }
+);
+const expenseModel = mongoose.model("Expense", expenseSchema);

@@ -13,7 +13,7 @@
 
 const mongoose = require("mongoose");
 
-var dbURI = "mongodb://localhost/SpendyDB";
+let dbURI = "mongodb://localhost/SpendyDB";
 if (process.env.NODE_ENV === "production") {
   dbURI = process.env.MONGODB_CLOUD_URI;
 }
