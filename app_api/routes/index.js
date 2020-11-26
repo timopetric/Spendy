@@ -6,16 +6,17 @@ const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 
+
+//START--------------------------USERS-------------------------------START
+//router.get("/v1/users/:userId", ctrlUser.getUserById);
 // rest api for user (implement CRUD)
 router.get('/v1/users', ctrlUser.getAllUsers);
 router.post('/v1/users', ctrlUser.addUser);
 //router.post('/v1/groups', ctrlUser.addGroup);
+// todo: za prijavo userja
 router.get('/v1/users/:id', ctrlUser.getUserById);
 // router.put('/v1/users/:userId', ctrlUser.updateUser);
 // router.delete('/v1/users/:userId', ctrlUser.deleteUser);
-
-//START--------------------------USERS-------------------------------START
-router.get("/v1/users/:userId", ctrlUser.getUserById);
 
 //END----------------------------USERS---------------------------------END
 
