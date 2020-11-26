@@ -32,7 +32,6 @@ const getGroupById = async (req, res) => {
 };
 
 const addGroup = (req, res) => {
-  console.log(req.body);
   Group.create(
     {
       name: req.body.name,
@@ -42,11 +41,9 @@ const addGroup = (req, res) => {
       expenses: req.body.expenses,
     },
     (err, group) => {
-      console.log(err);
-      console.log(group);
       if (err) {
         console.log(err);
-        res.status(400).json(napaka);
+        res.status(400).json(err);
       } else if (!group) {
         return res.status(404).json({
           message: "Ne najdem skupine s podanim id-jem",
