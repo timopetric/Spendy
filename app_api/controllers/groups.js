@@ -3,6 +3,7 @@ const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
+
 const getAllGroups = async (req, res) => {
   let found = await Group.find({});
   console.log(found);
@@ -12,6 +13,8 @@ const getAllGroups = async (req, res) => {
 const getGroupById = async (req, res) => {
   let found = await Group.findById(req.params.id)
     .populate("expenses")
+    .populate("userIds")
+    .populate("adminIds")
     .exec((napaka, group) => {
       if (!group) {
         return res.status(404).json({
@@ -20,6 +23,9 @@ const getGroupById = async (req, res) => {
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
+
+      // todo: pobris gesla
+
       res.status(200).json(group);
     });
 

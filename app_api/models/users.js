@@ -19,6 +19,8 @@ const Schema = mongoose.Schema;
 // -skupine
 // -(stroški)?
 
+// todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
+
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true },
@@ -37,7 +39,7 @@ const userSchema = new mongoose.Schema(
     collection: "Users",
   }
 );
-mongoose.model("User", userSchema);
+const userModel = mongoose.model("User", userSchema);
 
 const expenseSchema = new mongoose.Schema(
   {
@@ -62,8 +64,34 @@ const groupSchema = new mongoose.Schema(
   {
     balance: { type: Number, default: 0.0, required: true },
     name: { type: String, required: true },
-    userIds: [{ type: Schema.Types.ObjectId, ref: "User" }], // users of the group
-    adminIds: [{ type: Schema.Types.ObjectId, ref: "User" }], // admins (users) of the group
+    userIds: [{
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          validate: {
+            validator: function (uId) {
+              return new Promise(function (resolve) {
+                userModel.find({_id: uId}, function (err, docs) {
+                  resolve(docs.length === 1);
+                });
+              })
+            },
+            // message: "Message error user not exists"
+          },
+    }], // users of the group
+    adminIds: [{
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          validate: {
+            validator: function (uId) {
+              return new Promise(function (resolve) {
+                userModel.find({_id: uId}, function (err, docs) {
+                  resolve(docs.length === 1);
+                });
+              })
+            },
+            // message: "Message error user not exists"
+          },
+    }], // admins (users) of the group
     expenses: [{ type: Schema.Types.ObjectId, ref: "Expense" }],
   },
   {
@@ -74,4 +102,5 @@ const groupSchema = new mongoose.Schema(
     collection: "Groups",
   }
 );
-mongoose.model("Group", groupSchema);
+
+const groupModel = mongoose.model("Group", groupSchema);
