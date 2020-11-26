@@ -26,24 +26,48 @@ const getGroupById = async (req, res) => {
   return found;
 };
 
-const addGroup = (req, res) => {
-  Group.create(
-    {
-      name: req.body.name,
-      balance: req.body.balance,
-      userIds: req.body.userIds,
-      adminIds: req.body.adminIds,
-    },
-    function (napaka, group) {
-      if (napaka) {
-        console.log(napaka);
-        res.status(400).json(napaka);
-      } else {
-        console.log(group);
-        res.status(201).json(group);
+const addGroup = async (req, res) => {
+  console.log(req.body.userIds);
+  let neki = true;
+  neki = await req.body.userIds.forEach((element) => {
+    User.exists(element, (err, user) => {
+      console.log(element);
+      if (err) {
+        console.log("napaka:", user);
+        return false;
       }
-    }
-  );
+    });
+  });
+  console.log(neki);
+  User.find()
+    .where("_id")
+    .in(req.body.userIds)
+    .exec((err, records) => {
+      if (err) {
+        return res.status(404).json({
+          sporočilo: "Ne najdem teh userjev s podanim id-jem",
+        });
+      } else {
+        Group.create(
+          {
+            name: req.body.name,
+            balance: req.body.balance,
+            userIds: req.body.userIds,
+            adminIds: req.body.adminIds,
+            expenses: req.body.expenses,
+          },
+          function (napaka, group) {
+            if (napaka) {
+              console.log(napaka);
+              res.status(400).json(napaka);
+            } else {
+              console.log(group);
+              res.status(201).json(group);
+            }
+          }
+        );
+      }
+    });
 };
 
 const addGroupExpenseById = (req, res) => {
