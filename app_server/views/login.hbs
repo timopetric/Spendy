@@ -6,14 +6,13 @@
 <!-- ################ main body ################ -->
 <main>
     <div class="main">
-        <form action="#" class="box col-sm-12 col-xl-6" id="login-form">
+        <form class="box col-sm-12 col-xl-6" method="post" id="forma">
             <div class="form-group"></div>
             <h1>Prijava</h1>
             <input placeholder="Epoštni Naslov" type="email" id="email">
             <input placeholder="Geslo" type="password" id="password">
-            <button class="btn btn-primary" id="PrijavaGumb" type="submit"><a class="nav-link" href="/index">Prijava</a>
-            </button>
-            <button class="btn btn-primary" type="submit"><a class="nav-link" href="/signup">Registracija</a></button>
+            <button class="btn btn-primary" id="PrijavaGumb" type="submit" onclick="validate()">Prijava</button>
+            <button class="btn btn-primary" type="submit"><a class="nav-link" href="signup.html">Registracija</a></button>
         </form>
     </div>
 </main>
