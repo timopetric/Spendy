@@ -29,6 +29,39 @@ const getAllUsers = (req, res) => {
     });
 };
 
+// POST: /v1/users/login
+// {
+//     "username": "a",
+//     "password": "a"
+// }
+const validateUser = (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User
+      .findOne()
+      .where("username")
+      .equals(username)
+      .exec((err, user) => {
+        if (!user)
+          return res.status(404).json({
+            "message":
+                "Uporabnik s podanim id-jem ne obstaja."
+          });
+        else if (err) {
+          return res.status(500).json(err);
+        } else {
+
+          if (user.pass === password) {
+            return res.status(200).json(user);
+          } else {
+            return res.status(404).json({"message": "password incorrect"});
+          }
+
+        }
+      });
+}
+
 /**
  * @swagger
  * paths:
@@ -263,4 +296,5 @@ module.exports = {
   addUser,
   updateUser, // todo
   deleteUser, // todo
+  validateUser,
 };

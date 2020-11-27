@@ -8,6 +8,7 @@ const ctrlGroups = require("../controllers/groups");
 
 //START--------------------------USERS-------------------------------START
 router.get("/v1/users", ctrlUser.getAllUsers);
+router.post("/v1/users/login", ctrlUser.validateUser);
 router.post("/v1/users", ctrlUser.addUser);
 router.get("/v1/users/:id", ctrlUser.getUserById);
 router.delete("/v1/users/:userId", ctrlUser.deleteUser);

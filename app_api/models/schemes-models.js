@@ -73,8 +73,8 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    mail: { type: String, required: true, unique: true},
-    pass: { type: String, required: true },
+    mail: { type: String, required: true},
+    pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
     balance: { type: Number, required: true },
     groupIds: [{
           type: Schema.Types.ObjectId,
