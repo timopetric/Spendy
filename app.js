@@ -54,7 +54,7 @@ const options = {
       }
     ]
   },
-  apis: ["app_api/models/schemes-models.js", "app_api/controllers/users.js"]
+  apis: ["app_api/models/schemes-models.js", "app_api/controllers/users.js", "app_api/controllers/groups.js"]
 };
 const specs = swaggerJsdoc(options);
 app.use("/docs", swaggerUi.serve);
