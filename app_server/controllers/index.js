@@ -2,6 +2,7 @@
 const index = (req, res) => {
   res.render('index',{
     title: 'Pregled',
+    navbar_button_selected_index: true,
     stylesheets_load: [],
     scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
                    "/javascripts/pregled_chart.js"]
@@ -20,6 +21,7 @@ const add_expenses = (req, res) => {
 const analysis = (req, res) => {
   res.render('analysis',{
     title: 'Analiza',
+    navbar_button_selected_analysis: true,
     stylesheets_load: [""],
     scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
       "/javascripts/first-page-chart.js", "/javascripts/analysis_script.js"]
@@ -28,6 +30,7 @@ const analysis = (req, res) => {
 const graphs = (req, res) => {
   res.render('graphs',{
     title: 'Grafično',
+    navbar_button_selected_graphs: true,
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
     scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
       "/javascripts/first-page-chart.js", "/javascripts/graphs_script.js"],
@@ -77,6 +80,7 @@ const settings = (req, res) => {
 const groups = (req, res) => {
   res.render('groups',{
     title: 'Skupine',
+    navbar_button_selected_groups: true,
     skupina1:{
       imeSkupine: 'Družina',
       admin: 'Oče',
