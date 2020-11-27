@@ -9,14 +9,22 @@
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a id="current-page" class="nav-link navbar-spendy" href="#">
+            {{#if navbar_button_selected_login }}
+            <a id="current-page" class="nav-link navbar-spendy" href="/login">
+            {{else}}
+            <a class="nav-link navbar-spendy" href="/login">
+            {{/if}}
                 <img alt="dashboard" class="navbar-spendy" src="icons/user.png"/>
                 <span class="link-text navbar-spendy">Prijava</span>
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
+            {{#if navbar_button_selected_signup }}
+            <a id="current-page" class="nav-link navbar-spendy" href="/signup">
+            {{else}}
             <a class="nav-link navbar-spendy" href="/signup">
+            {{/if}}
                 <img alt="Prijava" class="navbar-spendy" src="icons/edit.svg"/>
                 <span class="link-text navbar-spendy">Registracija</span>
             </a>
