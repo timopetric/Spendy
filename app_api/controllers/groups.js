@@ -169,7 +169,7 @@ const addGroup = (req, res) => {
         res.status(400).json(err);
       } else if (!group) {
         return res.status(404).json({
-          "message": "Ustvarjanje skupine je bilo neuspešno",
+          message: "Ustvarjanje skupine je bilo neuspešno",
         });
       }
       res.status(201).json(group);
@@ -208,37 +208,53 @@ const updateGroup = (req, res) => {
   const groupId = req.params.idGroup;
   if (!groupId) {
     return res.status(404).json({
-      "message":
-        "idGroup je obvezen parameter.",
+      message: "idGroup je obvezen parameter.",
     });
   }
 
-  Group
-    .findById(groupId)
-    .exec((err, group) => {
-      if (!group) {
-        return res.status(404).json({"message": "Ne najdem grupe"});
-      } else if (err) {
-        return res.status(500).json(err);
+  Group.findById(groupId).exec((err, group) => {
+    if (!group) {
+      return res.status(404).json({ message: "Ne najdem grupe" });
+    } else if (err) {
+      return res.status(500).json(err);
+    }
+
+    group.balance = req.body.balance;
+    group.userIds = req.body.userIds || [];
+    group.adminIds = req.body.adminIds || [];
+    group.expenses = req.body.expenses || [];
+    group.name = req.body.name;
+
+    group.save((err, group) => {
+      if (err) {
+        res.status(404).json(err);
+      } else {
+        res.status(200).json(group);
       }
-
-      group.balance = req.body.balance;
-      group.userIds = req.body.userIds || [];
-      group.adminIds = req.body.adminIds || [];
-      group.expenses = req.body.expenses || [];
-      group.name = req.body.name;
-
-      group.save((err, group) => {
-        if (err) {
-          res.status(404).json(err);
-        } else {
-          res.status(200).json(group);
-        }
-      });
     });
-
+  });
 };
 
+const deleteUserFromGroup = (req, res) => {
+  Group.findById(req.params.idGroup).exec((err, group) => {
+    if (!group) {
+      return res.status(404).json({ message: "Ne najdem grupe" });
+    } else if (err) {
+      res.status(404).json(err);
+    }
+    console.log(group);
+    group.userIds.remove(req.params.idUser);
+    console.log(group);
+    group.save((error, saved) => {
+      if (!saved) {
+        return res.status(404).json({ message: "Ni mi uspelo shranit" });
+      } else if (error) {
+        res.status(404).json(err);
+      }
+      res.status(200).json(saved);
+    });
+  });
+};
 
 module.exports = {
   getAllGroups,
@@ -246,5 +262,6 @@ module.exports = {
   addUserToGroup,
   addGroup,
   removeGroupById,
-  updateGroup
+  updateGroup,
+  deleteUserFromGroup,
 };
