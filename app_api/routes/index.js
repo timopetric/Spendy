@@ -17,6 +17,7 @@ router.post('/v1/users', ctrlUser.addUser);
 router.get('/v1/users/:id', ctrlUser.getUserById);
 // router.put('/v1/users/:userId', ctrlUser.updateUser);
 // router.delete('/v1/users/:userId', ctrlUser.deleteUser);
+router.delete('/v1/users/:idU/groups/:idG', ctrlUser.deleteUserFromGroupId);
 
 //END----------------------------USERS---------------------------------END
 
