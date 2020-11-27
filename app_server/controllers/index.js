@@ -12,7 +12,9 @@ const add_expenses = (req, res) => {
   res.render('add_expenses',{
     title: 'Dodaj',
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
-    scripts_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"]
+    scripts_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"],
+    naslov: 'Dodajanje prihodkov/odhodkov',
+    opis: 'Tukaj dodate prihodke/odhodke'
   });
 };
 const analysis = (req, res) => {
@@ -28,7 +30,9 @@ const graphs = (req, res) => {
     title: 'Grafično',
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
     scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
-      "/javascripts/first-page-chart.js", "/javascripts/graphs_script.js"]
+      "/javascripts/first-page-chart.js", "/javascripts/graphs_script.js"],
+    naslov: 'Grafično',
+    opis: 'Grafični prikazi prihodkov, odhodkov in stanja'
   });
 };
 
