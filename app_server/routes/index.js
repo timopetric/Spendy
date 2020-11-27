@@ -16,13 +16,13 @@ const ctrlSettings = require('../controllers/settings'); // SETTINGS page contro
 
 
 
-// ROUTER 
+// ROUTER
 router.get('/add_expenses', ctrlAddExpenses.add_expenses);
 router.get('/analysis', ctrlAnalysis.analysis);
 router.get('/first_page', ctrlFirstPage.page);
 router.get('/graphs', ctrlGraphs.graphs);
 router.get('/groups', ctrlGroups.groups);
-router.get('/index', ctrlIndex.index);
+router.get(['/', '/index'], ctrlIndex.index);
 router.get('/login', ctrlLogin.login);
 router.get('/profil', ctrlProfil.profil);
 router.get('/settings', ctrlSettings.settings);
