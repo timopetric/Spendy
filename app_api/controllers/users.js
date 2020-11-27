@@ -29,6 +29,7 @@ const getAllUsers = (req, res) => {
     });
 };
 
+// validate user and return it if pass is correct
 // POST: /v1/users/login
 // {
 //     "username": "a",
