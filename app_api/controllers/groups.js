@@ -23,8 +23,6 @@ const getGroupById = async (req, res) => {
         return res.status(500).json(err);
       }
 
-      // todo: pobris gesla
-
       res.status(200).json(group);
     });
 
