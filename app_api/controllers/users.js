@@ -349,4 +349,5 @@ module.exports = {
   updateUser, // todo
   deleteUser, // todo
   validateUser,
+  deleteUserFromGroupId
 };
