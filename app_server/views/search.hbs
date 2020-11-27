@@ -1,0 +1,330 @@
+
+{{> navbar_main }}
+
+<main>
+
+  {{> navbar_avatar_and_choose_group }}
+
+      <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-9 col-md-8">
+                <h1 class="font-weight-bold mb-0">{{title}}</h1>
+                <p class="lead text-muted">
+                  {{subtitle}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="content" class="container search bg-grey px-3 mb-3">
+        <div class="container-fluid">
+          <form class="position-relative my-2 w-100">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Isci po dohodkih/odhodkih"
+              aria-label="search"
+            />
+            <button class="btn position-absolute btn-search" type="submit">
+              <i class="icon ion-md-search"></i>
+            </button>
+          </form>
+          <div class="row mx-0">
+            <div class="mr-auto">
+              <!-- Example single danger button -->
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Sortiraj
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Odhodki</a>
+                  <a class="dropdown-item" href="#">Prihodki</a>
+                  <a class="dropdown-item" href="#">Kategorija</a>
+                </div>
+              </div>
+            </div>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option1" checked />
+                Dan
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" /> Mesec
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" /> Leto
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <section class="bg-mix py-3">
+          <div class="container-fluid">
+            <div
+              class="card my-2 cursor-pointer"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <div class="card-body">
+                <div class="row">
+                  <div
+                    class="col-lg-1 d-flex flex-column justify-content-center"
+                  >
+                    <i
+                      class="fas fa-arrow-down"
+                      style="font-size: 48px; color: #cb3b3b"
+                    ></i>
+                  </div>
+                  <div class="col-lg-11">
+                    <div class="row mx-0">
+                      <div class="mr-auto"></div>
+                      <div><p class="font-weight-light">12.10.2020</p></div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="mr-auto"><h4>Tacos</h4></div>
+                      <div><h4>25€</h4></div>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card my-2 cursor-pointer"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <div class="card-body">
+                <div class="row">
+                  <div
+                    class="col-lg-1 d-flex flex-column justify-content-center"
+                  >
+                    <i
+                      class="fas fa-arrow-down"
+                      style="font-size: 48px; color: #cb3b3b"
+                    ></i>
+                  </div>
+                  <div class="col-lg-11">
+                    <div class="row mx-0">
+                      <div class="mr-auto"></div>
+                      <div><p class="font-weight-light">12.10.2020</p></div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="mr-auto"><h4>Petrol</h4></div>
+                      <div><h4>60€</h4></div>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card my-2 cursor-pointer"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <div class="card-body">
+                <div class="row">
+                  <div
+                    class="col-lg-1 d-flex flex-column justify-content-center"
+                  >
+                    <i
+                      class="fas fa-arrow-up"
+                      style="font-size: 48px; color: #45a72d"
+                    ></i>
+                  </div>
+                  <div class="col-lg-11">
+                    <div class="row mx-0">
+                      <div class="mr-auto"></div>
+                      <div><p class="font-weight-light">15.10.2020</p></div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="mr-auto"><h4>Stava</h4></div>
+                      <div><h4>70€</h4></div>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="container-fluid d-flex">
+          <a href="add_expenses.html" class="btn btn-success w-100 px-3">
+            Dodaj nove aktivnosti
+          </a>
+        </div>
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-2"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog mymodal" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tacos</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-1 mr-3">
+                    <i
+                      class="fas fa-arrow-down"
+                      style="font-size: 48px; color: #cb3b3b"
+                    ></i>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mx-0">
+                      <div class="mr-auto"><b>Tacos: </b></div>
+                      <div>28€</div>
+                    </div>
+
+                    <div class="row mx-0">
+                      <div class="mr-auto"><b>Datum: </b></div>
+                      <div>12.10.2020</div>
+                    </div>
+
+                    <div class="row mx-0">
+                      <div class="mr-auto"><b>Opis: </b></div>
+                      <div>Kosilo v mehiški restavraciji</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-warning"
+                    data-toggle="modal"
+                    data-target="#uredi"
+                  >
+                    Uredi
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-dismiss="modal"
+                  >
+                    Izbriši
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="uredi"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="uredi"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog mymodal" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Uredi</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="kategorija">Kategorija</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="kategorija"
+                      placeholder="Vnesite kategorijo"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="znesek">Znesek</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Vnesite znesek"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="kategorija">Opis</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="kategorija"
+                      placeholder="Vnesite opis aktivnosti"
+                    />
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="prihodek"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="radioProhodek"
+                      >Prihodek</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="odhodek"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="radioOdhodek"
+                      >Odhodek</label
+                    >
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
