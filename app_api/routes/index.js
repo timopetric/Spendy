@@ -18,8 +18,6 @@ router.delete('/v1/users/:userId', ctrlUser.deleteUser);
 
 //START--------------------------EXPENSES-------------------------------START
 
-
-
 router.get("/v1/expenses", ctrlExpenses.getExpenses);
 router.get("/v1/expenses/:id", ctrlExpenses.getExpenseById);
 
@@ -46,6 +44,7 @@ router.get("/v1/groups/:id", ctrlGroups.getGroupById);
 router.post("/v1/groups", ctrlGroups.addGroup);
 router.delete("/v1/groups/:idGroup", ctrlGroups.removeGroupById);
 router.put("/v1/groups/:idGroup", ctrlGroups.updateGroup);
+router.post("/v1/groups/:idGroup", ctrlGroups.addUserToGroup);
 //post
 
 //END----------------------------GROUPS---------------------------------END

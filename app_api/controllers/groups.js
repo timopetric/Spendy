@@ -3,34 +3,157 @@ const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
+
+/**
+ * @swagger
+ * paths:
+ *  /groups:
+ *    get:
+ *      summary: Get all groups
+ *      tags: [Groups]
+ *      responses:
+ *        "200":
+ *          description: An array of groups
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Group'
+ */
 const getAllGroups = async (req, res) => {
-  let found = await Group.find({});
-  console.log(found);
-  res.status(200).json(found);
-};
-
-const getGroupById = async (req, res) => {
-  let found = await Group.findById(req.params.id)
-    .populate("expenses")
-    .populate("userIds", "-pass")
-    .populate("adminIds", "-pass")
-    .exec((err, group) => {
-      if (!group) {
-        return res.status(404).json({
-          message: "Ne najdem skupine s podanim id-jem",
+  Group
+      .find()
+      // .populate("userIds", "_id username name surname")
+      // .populate("adminIds", "_id username name surname")
+      // .populate("expenses")
+      .exec((err, groups) => {
+        if (err || !groups) return res.status(404).json({
+          "message": "Pridobivanje skupin je neuspešno: "+err
         });
-      } else if (err) {
-        return res.status(500).json(err);
-      }
-
-      // todo: pobris gesla
-
-      res.status(200).json(group);
-    });
-
-  return found;
+        else if (groups) {
+          console.log(groups);
+          return res.status(200).json({groups});
+        }
+      });
 };
 
+
+/**
+ * @swagger
+ * paths:
+ *  /groups/{groupId}:
+ *    post:
+ *      summary: Add a valid user to a valid group
+ *      tags: [Groups]
+ *      parameters:
+ *        - in: path
+ *          name: groupId
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: A valid group id
+ *      requestBody:
+ *          name: userId
+ *          content:
+ *            application/json:
+ *              todo: ??
+ *          required: true
+ *          description: A valid user you want to add to the group
+ *      responses:
+ *        "200":
+ *          description: A group with updated userId, userAdmin lists
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Group'
+ */
+const addUserToGroup = (req, res) => {
+  const groupId = req.params.idGroup;
+  const userId = req.body.userId;   // user id string
+  const isAdmin = req.body.isAdmin; // boolean
+
+  Group
+      .findById(groupId)
+      .exec((err, group) => {
+        if (err || !group) {
+          return res.status(404).json({"message": `Group not found: ${err}`});
+        }
+
+        group.userIds.push(userId);
+        if (isAdmin === true)
+          group.adminIds.push(userId);
+
+        group.save((err, groupUpdated) => {
+          if (err || !groupUpdated) {
+            return res.status(404).json({"message": `Could not add groupId to group: ${err}`});
+          }
+          return res.status(200).json({groupUpdated});
+        });
+      });
+}
+
+/**
+ * @swagger
+ * paths:
+ *  /groups/{id}:
+ *    get:
+ *      summary: Get group by id
+ *      tags: [Groups]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: A valid group id
+ *      responses:
+ *        "200":
+ *          description: A group
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Group'
+ */
+const getGroupById = async (req, res) => {
+  Group
+      .findById(req.params.id)
+      .populate("expenses")
+      .populate("userIds", "-pass")
+      .populate("adminIds", "-pass")
+      .exec((err, group) => {
+        if (!group) {
+          return res.status(404).json({
+            "message": "Ne najdem skupine s podanim id-jem",
+          });
+        } else if (err) {
+          return res.status(500).json(err);
+        }
+
+        return res.status(200).json(group);
+      });
+};
+
+
+/**
+ * @swagger
+ * paths:
+ *  /groups:
+ *    post:
+ *      summary: Create a new group
+ *      tags: [Groups]
+ *      requestBody:
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Group'
+ *          required: true
+ *      responses:
+ *        "200":
+ *          description: Created group
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Group'
+ */
 const addGroup = (req, res) => {
   Group.create(
     {
@@ -120,6 +243,7 @@ const updateGroup = (req, res) => {
 module.exports = {
   getAllGroups,
   getGroupById,
+  addUserToGroup,
   addGroup,
   removeGroupById,
   updateGroup
