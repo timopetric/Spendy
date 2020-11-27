@@ -1,8 +1,3 @@
-
-
-
-
-
 const settings = (req, res) => {
     res.render('settings',{
       title: 'Nastavitve profila',

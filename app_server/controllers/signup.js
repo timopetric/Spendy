@@ -1,7 +1,3 @@
-
-
-
-
 const signup = (req, res) => {
   res.render('signup',{
     title: 'Registracijska stran',
