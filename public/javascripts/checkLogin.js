@@ -60,3 +60,24 @@ function prevent() {
         alert(odgovor);
     }
 }*/
+
+
+
+// const axios = require('axios');
+
+// Make a request for a user with a given ID
+
+axios.post('/api/v1/users/login', {
+    username: 'a',
+    password: 'a'
+  })
+  .then(function (response) {
+      if (response.status === 200) {
+        console.log(response.data);
+        let loggedInUser = response.data;
+        saveCurrentlyLoginedUser(loggedInUser);
+      }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
