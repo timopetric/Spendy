@@ -63,28 +63,73 @@ const addUser = (req, res) => {
   const reqPass = req.body.pass;
   const balance = 0.0;
 
-  // todo: create a special one user group and add him to it
-  // const groupId = ;
+  if (req.body.groupIds !== undefined) {
+    return res.status(404).json({
+          "message": "groupIds ne sme biti definiran. Dodate ga lahko kasneje",
+        });
+  }
 
-  User.create(
-      {
-        username: reqUsername,
-        name: reqName,
-        surname: reqSurname,
-        balance: balance,
-        mail: reqMail,
-        pass: reqPass,
-        // groupId: groupId   // todo
-      },
-      (error, user) => {
-        if (error) {
-          res.status(400).json(error);
-        } else {
-          user._doc.pass = "";
-          user._doc.notice = "Group for the user is not yet created/not implemented";
-          res.status(201).json(user);
-        }
+  const USER_GROUP_NAME = `Uporabnik ${reqUsername}`;
+
+  // create special one man group
+  Group.create(
+    {
+      name: USER_GROUP_NAME,
+      balance: 0.0,
+      userIds: [],
+      adminIds: [],
+      expenses: [],
+    },
+    (err, group) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json(err);
+      } else if (!group) {
+        return res.status(404).json({
+          "message": "Ustvarjanje skupine za uporabnika je bilo neuspešno",
+        });
       }
+
+      User.create(
+            {
+              username: reqUsername,
+              name: reqName,
+              surname: reqSurname,
+              balance: balance,
+              mail: reqMail,
+              pass: reqPass,
+              groupIds: [ String(group._id) ]
+            },
+            (error, user) => {
+              if (error) {
+                res.status(400).json(error);
+              } else if (user) {
+
+                // redact pass from the current object (not also in the db)
+                delete user._doc.pass;
+
+                // push user and admin ids to the group
+                group._doc.userIds.push(user._id);
+                group._doc.adminIds.push(user._id);
+
+                // save the updated @userIds and @adminIds lists
+                group.save((err, group) => {
+                  if (err) {
+                    let eMsg = "Error updating the user and admin ids in the newly created group: " + err;
+                    console.log(eMsg);
+                    res.status(400).json({"message": eMsg});
+                  } else {
+                    console.log("Group user and admin ids successfully updated: "+group)
+                    res.status(201).json(user); // return the created user
+                  }
+                });
+              }
+              else {
+                console.log("Something went wrong when creating user.")
+              }
+            }
+      );
+    }
   );
 };
 
