@@ -186,7 +186,7 @@ const updateExpense = (req, res) => {
         (err, result) => {
           if (!result) {
             return res.status(404).json({
-              message: "Ne najdem expensa, idExpense ni veljaven. "+err,
+              message: "Ne najdem expensa, idExpense ni veljaven. " + err,
             });
           }
           if (err) {

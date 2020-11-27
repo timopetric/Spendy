@@ -40,6 +40,8 @@ const login = (req, res) => {
   });
 };
 
+
+
 const signup = (req, res) => {
   res.render('signup',{
     title: 'Registracijska stran',
