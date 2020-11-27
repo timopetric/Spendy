@@ -17,22 +17,22 @@
     <!--            </div>-->
     <!--        </div>-->
     <div class="main">
-        <form action="index.html" class="box col-sm-12 col-xl-6" method="post">
+        <form class="box col-sm-12 col-xl-6" method="post" id="toJePost">
             <div class="form-group"></div>
             <h1>Registracija</h1>
             <input placeholder="Ime" type="text">
             <input placeholder="Priimek" type="text">
             <input placeholder="Epoštni Naslov" type="email">
-            <input placeholder="Geslo" type="password">
-            <input placeholder="Ponovite geslo" type="password">
-            <button class="btn btn-primary" type="submit"><a class="nav-link" href="index.html">Registracija</a></button>
+            <input placeholder="Geslo" type="password" id="password">
+            <input placeholder="Ponovite geslo" type="password" id="password1">
+            <button class="btn btn-primary" type="submit" id="registracijaGumb" onclick="validate()">Registracija</button>
         </form>
     </div>
 
 </main>
 
 <!-- load scripts at the end -->
-
+<script src="javascripts/checkSignUp.js" type="text/javascript"></script>
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->
 <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
