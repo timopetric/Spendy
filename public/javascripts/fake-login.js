@@ -23,8 +23,8 @@ const pageAccessedByReload = (
 );
 
 if (pageAccessedByReload) {
-  console.log("page reloaded: User Logout");
-  deleteCurrentlyLoginedUser();
+  console.log("page reloaded: User Logout (commented out right now)");
+  // deleteCurrentlyLoginedUser();
   // window.location = "/first_page";
 }
 
