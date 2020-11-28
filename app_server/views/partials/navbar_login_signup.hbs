@@ -2,21 +2,29 @@
     <ul class="navbar-nav navbar-spendy">
 
         <li class="logo navbar-spendy">
-            <a class="nav-link navbar-spendy" href="first_page.html">
+            <a class="nav-link navbar-spendy" href="/first_page">
                 <img alt="logo" class="logo-img navbar-spendy" src="icons/logo.png"/>
                 <span class="logo-text navbar-spendy">Spendy</span>
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a id="current-page" class="nav-link navbar-spendy" href="#">
+            {{#if navbar_button_selected_login }}
+            <a id="current-page" class="nav-link navbar-spendy" href="/login">
+            {{else}}
+            <a class="nav-link navbar-spendy" href="/login">
+            {{/if}}
                 <img alt="dashboard" class="navbar-spendy" src="icons/user.png"/>
                 <span class="link-text navbar-spendy">Prijava</span>
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a class="nav-link navbar-spendy" href="signup.html">
+            {{#if navbar_button_selected_signup }}
+            <a id="current-page" class="nav-link navbar-spendy" href="/signup">
+            {{else}}
+            <a class="nav-link navbar-spendy" href="/signup">
+            {{/if}}
                 <img alt="Prijava" class="navbar-spendy" src="icons/edit.svg"/>
                 <span class="link-text navbar-spendy">Registracija</span>
             </a>

@@ -1,5 +1,6 @@
 const hbs = require('hbs');
 
+
 hbs.registerHelper("if", function(conditional, options) {
     if (conditional) {
         return options.fn(this);
@@ -15,4 +16,9 @@ hbs.registerHelper('formatirajDatum', (nizDatum) => {
     const m = imenaMesecev[datum.getMonth()];
     const l = datum.getFullYear();
     return `${d}. ${m}, ${l}`;
+
+
+hbs.registerHelper('openModal', (aktivnost) => {
+    
+
 });

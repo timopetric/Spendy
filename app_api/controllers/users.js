@@ -63,6 +63,7 @@ const validateUser = (req, res) => {
       });
 }
 
+
 /**
  * @swagger
  * paths:
@@ -250,6 +251,56 @@ const updateUser = (req, res) => {
   });
 };
 
+const deleteUserFromGroupId = async (req, res) => {
+    const idGroup = req.params.idG;
+    const idUser = req.params.idU;
+    console.log(idGroup + " " + idUser);
+
+    if (!idGroup || !idUser) {
+        return res.status(404).json({
+            sporočilo:
+                "Ne najdem Groupe oz. uporabnika, " +
+                "idGroup in idUser sta obvezna parametra.",
+        });
+    }
+    Group.findById(idGroup)
+        .select("userIds")
+        .exec((napaka, group) => {
+            if (napaka) {
+                res.status(400).json(napaka);
+            } else {
+                console.log(group);
+                console.log(group.expenses);
+                odstraniUser(req, res, group);
+            }
+        });
+};
+
+const odstraniUser = (req, res, group) => {
+    const idUser = req.params.idU;
+
+    group.userIds.remove(idUser);
+    User.findByIdAndRemove(idUser, (err, user) => {
+        if (!user) {
+            return res.status(404).json({
+                sporočilo: "Ne najdem User za izbris.",
+            });
+        }
+        if (err) {
+            res.status(400).json(err);
+        } else {
+            group.save((napaka) => {
+                if (napaka) {
+                    return res.status(500).json(napaka);
+                } else {
+                    res.status(204).json(user);
+                }
+            });
+        }
+    });
+};
+
+
 /**
  * @swagger
  * paths:
@@ -298,4 +349,5 @@ module.exports = {
   updateUser, // todo
   deleteUser, // todo
   validateUser,
+  deleteUserFromGroupId
 };

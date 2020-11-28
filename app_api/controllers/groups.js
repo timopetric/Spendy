@@ -251,7 +251,25 @@ const deleteUserFromGroup = (req, res) => {
       } else if (error) {
         res.status(404).json(err);
       }
-      res.status(200).json(saved);
+      User.findById(req.params.idUser)
+      .exec((userErr, user) => {
+        if(!user){
+          return res.status(404).json({ message: "Ne najdem userja" });
+        }
+        else if(userErr){
+          res.status(404).json(userErr);
+        }
+        user.groupIds.remove(req.params.idGroup);
+        user.save((saveErr, result) => {
+          if(!result){
+            return res.status(404).json({ message: "Ni mi uspelo shranit userja" });
+          }
+          else if(saveErr){
+            res.status(404).json(userErr);
+          }
+          res.status(200).json(saved);
+        })
+      })
     });
   });
 };

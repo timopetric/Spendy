@@ -12,47 +12,55 @@
     </li>
 
     <li class="nav-item navbar-spendy">
+      {{#if navbar_button_selected_index }}
       <a id="current-page" class="nav-link navbar-spendy" href="/index">
-        <img
-          alt="dashboard"
-          class="navbar-spendy"
-          src="icons/dashboard.svg"
-        />
+      {{else}}
+      <a class="nav-link navbar-spendy" href="/index">
+      {{/if}}
+        <img alt="dashboard" class="navbar-spendy" src="icons/dashboard.svg" />
         <span class="link-text navbar-spendy">Pregled</span>
       </a>
     </li>
 
     <li class="nav-item navbar-spendy">
+      {{#if navbar_button_selected_graphs }}
+      <a id="current-page" class="nav-link navbar-spendy" href="/graphs">
+      {{else}}
       <a class="nav-link navbar-spendy" href="/graphs">
+      {{/if}}
         <img alt="graph" class="navbar-spendy" src="icons/graph.svg" />
         <span class="link-text navbar-spendy">Grafično</span>
       </a>
     </li>
 
     <li class="nav-item navbar-spendy">
+      {{#if navbar_button_selected_analysis }}
+      <a id="current-page" class="nav-link navbar-spendy" href="/analysis">
+      {{else}}
       <a class="nav-link navbar-spendy" href="/analysis">
-        <img
-          alt="analysis"
-          class="navbar-spendy"
-          src="icons/analysis.svg"
-        />
+      {{/if}}
+        <img alt="analysis" class="navbar-spendy" src="icons/analysis.svg" />
         <span class="link-text navbar-spendy">Analiza</span>
       </a>
     </li>
 
     <li class="nav-item navbar-spendy">
+      {{#if navbar_button_selected_search }}
+      <a id="current-page" class="nav-link navbar-spendy" href="/search">
+      {{else}}
       <a class="nav-link navbar-spendy" href="/search">
-        <img
-          alt="expenses"
-          class="navbar-spendy"
-          src="icons/expenses.svg"
-        />
+      {{/if}}
+        <img alt="expenses" class="navbar-spendy" src="icons/expenses.svg" />
         <span class="link-text navbar-spendy">Stroški</span>
       </a>
     </li>
 
     <li class="nav-item navbar-spendy">
+      {{#if navbar_button_selected_groups }}
+      <a id="current-page" class="nav-link navbar-spendy" href="/groups">
+      {{else}}
       <a class="nav-link navbar-spendy" href="/groups">
+      {{/if}}
         <img alt="groups" class="navbar-spendy" src="icons/groups.svg" />
         <span class="link-text navbar-spendy">Skupine</span>
       </a>
