@@ -164,9 +164,9 @@
                         </div>
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
-                                Bitcoin cash
+                                Bitcash
                             </h1>
-                            <canvas height="40%" id="bitcoinCashChart" width="50%"></canvas>
+                            <canvas height="40%" id="bitcashChart" width="50%"></canvas>
                         </div>
                     </div>
                 </div>
@@ -231,14 +231,14 @@
     }
 
 
-    var ctx = document.getElementById("bitcoinCashChart").getContext("2d");
+    var ctx = document.getElementById("bitcashChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
             labels: resultDate,
             datasets: [
                 {
-                    label: "Bitcoin cash cena v €",
+                    label: "Bitcash cena v €",
                     data: resultData,
                     backgroundColor: ["rgba(0, 0, 0, 0.0)"],
                     borderColor: [
@@ -273,7 +273,7 @@
             labels: resultDate,
             datasets: [
                 {
-                    label: "Bitcoin cash cena v €",
+                    label: "Ripple cena v €",
                     data: resultData,
                     backgroundColor: ["rgba(0, 0, 0, 0.0)"],
                     borderColor: [
