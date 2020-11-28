@@ -23,15 +23,14 @@ const pageAccessedByReload = (
 );
 
 if (pageAccessedByReload) {
-  console.log("page reloaded: User Logout");
-  deleteCurrentlyLoginedUser();
-  if (process.env.NODE_ENV === "production") {
-    window.location = "/first_page";
-  }
+  console.log("page reloaded: User Logout (commented out right now)");
+  // deleteCurrentlyLoginedUser();
+  // window.location = "/first_page";
 }
 
-var loggedIdUser = getCurrentlyLoginedUser();
+var loggedIdUser = getCurrentlyLoginedUser(); // must remain var! (not cons)
+console.log(`Logged in user with username '${loggedIdUser.username}':`);
 console.log(loggedIdUser);
-
+console.log("Access its data by using 'loggedIdUser(.username, ...)' on any client side js")
 
 
