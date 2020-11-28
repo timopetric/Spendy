@@ -3,7 +3,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+
+////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
 // todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
+const currencySchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    price: { type: Number, required: true, min: 0},
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+    collection: "Currencies",
+  }
+);
+const currencyModel = mongoose.model("Currency", currencySchema);
+
 
 ////////////////////////////////////// USER SCHEMA: /////////////////////////////////////////////////////////
 /**
@@ -53,11 +70,11 @@ const Schema = mongoose.Schema;
  */
 const userSchema = new mongoose.Schema(
   {
-    username: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    mail: { type: String, required: true },
-    pass: { type: String, required: true },
+    mail: { type: String, required: true},
+    pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
     balance: { type: Number, required: true },
     groupIds: [{
           type: Schema.Types.ObjectId,

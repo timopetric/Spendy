@@ -1,3 +1,10 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+
+{{> navbar_first_page }}
+
+<main>
+  <h1>{{message}}</h1>
+  <h2>{{error.status}}</h2>
+  <div class="container-fluid">
+    <pre>{{error.stack}}</pre>
+  </div>
+</main>

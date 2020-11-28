@@ -57,7 +57,7 @@ const addExpense = (req, res) => {
     });
   } else {
     res.status(400).json({
-      message: "Ne najdem lokacije, idLokacije je obvezen parameter.",
+      message: "V zahtevku ni id skupine, id skupine je obvezen parameter",
     });
   }
 };
@@ -186,7 +186,7 @@ const updateExpense = (req, res) => {
         (err, result) => {
           if (!result) {
             return res.status(404).json({
-              message: "Ne najdem expensa, idExpense ni veljaven. "+err,
+              message: "Ne najdem expensa, idExpense ni veljaven. " + err,
             });
           }
           if (err) {
