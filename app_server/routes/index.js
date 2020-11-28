@@ -27,7 +27,7 @@ router.get('/login', ctrlLogin.login);
 router.get('/profil', ctrlProfil.profil);
 router.get('/settings', ctrlSettings.settings);
 router.get('/signup', ctrlSignUp.signup);
-router.get('/search', ctrlSearch.search);
+router.get('/search', ctrlSearch.seznamAktivnosti);
 
 
 module.exports = router;

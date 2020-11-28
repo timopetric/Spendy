@@ -159,6 +159,42 @@
                 </div>
               </div>
             </div>
+            {{#each aktivnosti as |aktivnost|}}
+                <div
+                class="card my-2 cursor-pointer"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                category_name="{{aktivnost.category_name}}"
+                date="{{formatirajDatum aktivnost.date}}"
+                description="{{aktivnost.description}}"
+                cost="{{aktivnost.cost}}"
+                >
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-1 d-flex flex-column justify-content-center">
+                                <i
+                                class="fas fa-arrow-up"
+                                style="font-size: 48px; color: #45a72d"
+                                ></i>
+                            </div>
+                            <div class="col-lg-11">
+                                <div class="row mx-0">
+                                <div class="mr-auto"></div>
+                                <div><p class="font-weight-light">{{aktivnost.date}}</p></div>
+                                </div>
+                                <div class="row mx-0">
+                                <div class="mr-auto"><h4>{{aktivnost.category_name}}</h4></div>
+                                <div><h4>{{aktivnost.cost}} €</h4></div>
+                                </div>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+
+
+
           </div>
         </section>
 
@@ -199,18 +235,18 @@
                   </div>
                   <div class="col-lg-10">
                     <div class="row mx-0">
-                      <div class="mr-auto"><b>Tacos: </b></div>
-                      <div>28€</div>
+                      <div class="mr-auto "><b>Cost: </b></div>
+                      <div class="cost">28€</div>
                     </div>
 
                     <div class="row mx-0">
                       <div class="mr-auto"><b>Datum: </b></div>
-                      <div>12.10.2020</div>
+                      <div class="date">12.10.2020</div>
                     </div>
 
                     <div class="row mx-0">
                       <div class="mr-auto"><b>Opis: </b></div>
-                      <div>Kosilo v mehiški restavraciji</div>
+                      <div class="description">Kosilo v mehiški restavraciji</div>
                     </div>
                   </div>
                 </div>

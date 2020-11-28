@@ -22,11 +22,11 @@
             <div class="container-fluid">
                 <div class="card rounded-0">
                     <div class="card-body">
-                        <form>
+                        <form id="dodajStrosek" action="" method="post" role="form">
 
                             <div class="form-group">
                                 <input checked
-                                       class="buttonExpenseIncome"
+                                       class="isExpenditure"
                                        data-off="Prihodek"
                                        data-offstyle="success"
                                        data-on="Odhodek"
@@ -34,12 +34,13 @@
                                        data-size="large" data-toggle="toggle"
                                        data-width="100%"
                                        type="checkbox"
+                                       name="isExpenditure"
                                 >
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <label for="vrednostPrihodkaOdhodka">Vnesite vrednost v €: </label>
-                                    <input id="vrednostPrihodkaOdhodka"
+                                    <label for="cost">Vnesite vrednost v €: </label>
+                                    <input id="cost"
                                            min="0"
                                            placeholder="Vrednost v €"
                                            required
@@ -50,14 +51,14 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
                                     Datum veljave:
-                                    <input required type="date">
+                                    <input id="date" required type="date">
                                 </div>
                             </div>
 
 
                             <div class="row">
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <select class="custom-select" required>
+                                    <select id="category_name" class="custom-select" required>
                                         <option value="">Izberi odhodek/prihodek</option>
                                         <option value="1">Hrana</option>
                                         <option value="2">Avto</option>
@@ -69,15 +70,16 @@
                                     <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <select class="custom-select" required>
-                                        <option value="">Skupina</option>
-                                        <option value="1">Služba</option>
-                                        <option value="2">Družina Kovač</option>
+                                    <select id="idGroup" class="custom-select" required>
+                                        {{#each skupine as |skupina|}}
+                                            <option value="{{skupina.name}}">{{skupina.name}}</option>
+                                        {{/each}}
                                     </select>
                                 </div>
                             </div>
                             <div>
                                 <input
+                                        id="description"
                                         class="form-control mb-3"
                                         type="search"
                                         placeholder="Kratek opis stroška/dohodka"
@@ -85,8 +87,8 @@
                                 />
                             </div>
                             <div class="form-group">
-                                <input id="defaultCheck1" type="checkbox" value=""/>
-                                <label for="defaultCheck1">
+                                <input id="recurring" type="checkbox" value=""/>
+                                <label for="recurring">
                                     Ponavljujoči se mesečni prihodek/odhodek
                                 </label>
                             </div>
