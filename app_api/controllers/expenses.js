@@ -57,7 +57,7 @@ const addExpense = (req, res) => {
     });
   } else {
     res.status(400).json({
-      message: "Ne najdem lokacije, idLokacije je obvezen parameter.",
+      message: "V zahtevku ni id skupine, id skupine je obvezen parameter",
     });
   }
 };
