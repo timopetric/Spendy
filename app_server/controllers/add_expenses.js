@@ -9,7 +9,6 @@ const add_expenses = (req, res) => {
   });
 };
 
-
 module.exports = {
   add_expenses,
 };
