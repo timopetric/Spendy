@@ -10,9 +10,12 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+var email = null;
+var passwd = null;
+
 function validate() {
-    var email = $("#email").val();
-    var passwd = $("#password").val();
+    email = $("#email").val();
+    passwd = $("#password").val();
 
     var odgovor = "";
     if (email === "") {
@@ -40,8 +43,8 @@ function validate() {
 
 
 axios.post('/api/v1/users/login', {
-    username: 'a',
-    password: 'a'
+    mail: "nekaj@gmail.com",
+    password: "nekaj"
   })
   .then(function (response) {
     console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);
@@ -49,8 +52,40 @@ axios.post('/api/v1/users/login', {
       console.log(response.data);
       let loggedInUser = response.data;
       saveCurrentlyLoginedUser(loggedInUser);
+
+      axios.post('/login-server', {
+          user_id: loggedInUser._id,
+      })
+          .then(function (response) {
+              if (response.status === 200) {
+                  console.log("server logged in the user");
+              } else {
+                  console.log("server error logging in user");
+              }
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+
     }
   })
   .catch(function (error) {
     console.log(error);
   });
+
+/*axios.post('/api/v1/users/login', {
+    username: 'a',
+    password: 'a'
+})
+    .then(function (response) {
+        console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);
+        if (response.status === 200) {
+            console.log(response.data);
+            let loggedInUser = response.data;
+            saveCurrentlyLoginedUser(loggedInUser);
+        }
+    })
+    .catch(function (error) {
+        console.log(error);
+    });*/
+

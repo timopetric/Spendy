@@ -33,4 +33,3 @@ console.log(`Logged in user with username '${loggedIdUser.username}':`);
 console.log(loggedIdUser);
 console.log("Access its data by using 'loggedIdUser(.username, ...)' on any client side js")
 
-

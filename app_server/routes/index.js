@@ -25,9 +25,12 @@ router.get('/groups', ctrlGroups.groups);
 router.get(['/', '/index'], ctrlIndex.index);
 router.get('/login', ctrlLogin.login);
 router.get('/profil', ctrlProfil.profil);
-router.get('/settings', ctrlSettings.settings);
-router.get('/signup', ctrlSignUp.signup);
+router.get('/settings', ctrlSettings.settings)
+    .post("/settings", ctrlSettings.spremeniUporabnika);
+router.get('/signup', ctrlSignUp.signup)
+    .post("/signup", ctrlSignUp.registrirajUporabnika);
 router.get('/search', ctrlSearch.seznamAktivnosti);
 
+router.post('/login-server', ctrlLogin.loginServer);
 
 module.exports = router;
