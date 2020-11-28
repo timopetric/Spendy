@@ -8,11 +8,26 @@ const getGraphData = (ime, dni) => {
   }
 };
 
+function toUnix (date){
+    return parseInt(date.getTime() / 1000).toFixed(0);
+}
+
+const getGraphDataInterval = (ime, start,finish) => {
+    try {
+        return axios.get('https://api.coingecko.com/api/v3/coins/' + ime + '/market_chart/range?vs_currency=eur&from=' + toUnix(start) + '&to=' + toUnix(finish));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 
 let bitcoinGraph;
 let bitcashGraph;
 let rippleGraph;
 
+
+
+/*
 getGraphData("bitcoin","30").then(response =>{
     if(response.data.prices) {
 
@@ -40,13 +55,42 @@ getGraphData("ripple","30").then(response =>{
     console.log(error);
 });
 
-
+*/
 
 
 
 
 const analysis = (req, res) => {
-  res.render('analysis',{
+    let dateStart = new Date(req.query.start || 2020-10-10) ;
+    let dateFinish = new Date(req.query.finish || 2020-11-10);
+
+
+    getGraphDataInterval("bitcoin",dateStart,dateFinish).then(response =>{
+        if(response.data.prices) {
+
+            bitcoinGraph = response.data.prices;
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
+    getGraphDataInterval("ripple",dateStart,dateFinish).then(response =>{
+        if(response.data.prices) {
+
+            rippleGraph = response.data.prices;
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
+    getGraphDataInterval("bitcash",dateStart,dateFinish).then(response =>{
+        if(response.data.prices) {
+
+            bitcashGraph = response.data.prices;
+        }
+    }).catch(error =>{
+        console.log(error);
+    });
+
+    res.render('analysis',{
     title: 'Analiza',
     navbar_button_selected_analysis: true,
     stylesheets_load: [""],

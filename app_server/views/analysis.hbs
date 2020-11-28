@@ -25,8 +25,8 @@
                                 class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
                         >
                             <span class="mr-3 font-weight-bold">Od:</span>
-                            <div id="dateStart">
-                                <input required type="date" />
+                            <div>
+                                <input id="dateStart" required type="date" value="2020-10-01"/>
                             </div>
                         </div>
 
@@ -34,8 +34,8 @@
                                 class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
                         >
                             <span class="mr-3 font-weight-bold">Do:</span>
-                            <div id="dateEnd">
-                                <input required type="date" />
+                            <div >
+                                <input  id="dateEnd" required type="date" onchange="posodobiPodatke()"/>
                             </div>
                         </div>
                     </div>
@@ -53,9 +53,10 @@
                             </h1>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Bitcoin meja</span>
+                                    <span class="input-group-text">Ripple meja</span>
                                 </div>
                                 <input
+                                        id="rippleMeja"
                                         type="number"
                                         step="any"
                                         value="7500.35"
@@ -69,9 +70,10 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Etherium meja</span>
+                                    <span class="input-group-text">Bitcoin meja</span>
                                 </div>
                                 <input
+                                        id="bitcoinMeja"
                                         type="number"
                                         step="any"
                                         value="300.75"
@@ -85,9 +87,10 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Nashdaq meja</span>
+                                    <span class="input-group-text">Bitcash meja</span>
                                 </div>
                                 <input
+                                        id="bitcashMeja"
                                         type="number"
                                         step="any"
                                         value="17999.99"
@@ -97,6 +100,7 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text">€</span>
                                 </div>
+
                             </div>
                             <div class="container-fluid d-flex justify-content-center">
                                 <button type="submit" class="btn btn-success">
@@ -182,10 +186,34 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
 ></script>
 <script>
+    let currentLoc = window.location.href;
+    let putDate = currentLoc.substring(currentLoc.match("finish=").index, currentLoc.match("finish=").index + 17);
+    putDate = putDate.split("=")[1];
+    if(putDate && putDate.length > 0){
+        document.getElementById("dateEnd").value = putDate;
+    }
+    function posodobiPodatke(){
+        let url = "/analysis?"
+
+        var start = $('#dateStart').val();
+
+        var finish = $('#dateEnd').val();
+        if(start > finish){
+            let tmp = start;
+            start = finish;
+            finish = tmp;
+        }
+        url = url + 'start=' + start + '&finish=' + finish;
+        console.log(url);
+        window.location = url;
+
+    }
+</script>
+<script>
     let dataBitcoin = {{narediArray graphData.bitcoin}};
     let resultData = [];
     for(let i = 0 ; i < dataBitcoin.length ; i++){
-        resultData.unshift(Math.round(100* dataBitcoin[i][1]) / 100);
+        resultData.push(Math.round(100* dataBitcoin[i][1]) / 100);
     }
     let resultDate = [];
     for(let i = 0 ; i < dataBitcoin.length ; i++){
@@ -194,7 +222,13 @@
         const d = datum.getDate();
         const m = datum.getMonth();
         const l = datum.getFullYear();
-        resultDate.unshift(`${d}. ${m}, ${l}`);
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+    var meja = document.getElementById("bitcoinMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("bitcoinMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
     }
 
     var ctx = document.getElementById("bitcoinChart").getContext("2d");
@@ -217,17 +251,23 @@
     });
 </script>
 <script>
-    let dataBitcoinCash = {{narediArray graphData.bitcash}};
+    let dataBitcash = {{narediArray graphData.bitcash}};
     resultData = [];
     resultDate = [];
-    for(let i = 0 ; i < dataBitcoinCash.length ; i++){
-        resultData.unshift(dataBitcoinCash[i][1]);
+    for(let i = 0 ; i < dataBitcash.length ; i++){
+        resultData.push(dataBitcash[i][1]);
 
-        const datum = new Date(dataBitcoinCash[i][0]);
+        const datum = new Date(dataBitcash[i][0]);
         const d = datum.getDate();
         const m = datum.getMonth();
         const l = datum.getFullYear();
-        resultDate.unshift(`${d}. ${m}, ${l}`);
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+    var meja = document.getElementById("bitcashMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("bitcashMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
     }
 
 
@@ -256,15 +296,21 @@
     resultData = [];
     resultDate = [];
     for(let i = 0 ; i < dataRipple.length ; i++){
-        resultData.unshift(dataRipple[i][1]);
+        resultData.push(dataRipple[i][1]);
 
         const datum = new Date(dataRipple[i][0]);
         const d = datum.getDate();
         const m = datum.getMonth();
         const l = datum.getFullYear();
-        resultDate.unshift(`${d}. ${m}, ${l}`);
+        resultDate.push(`${d}. ${m}, ${l}`);
     }
 
+    var meja = document.getElementById("rippleMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("rippleMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
+    }
 
     var ctx = document.getElementById("rippleChart").getContext("2d");
     var myChart = new Chart(ctx, {
