@@ -8,6 +8,23 @@ const login = (req, res) => {
   });
 };
 
+var userIdCurrent = null;
+const loginServer = (req, res) => {
+  // todo
+  userIdCurrent = req.body.user_id;
+  if (userIdCurrent)
+    res.status(200);
+  else
+    res.status(404);
+};
+
+function getUserId() {
+  return userIdCurrent;
+}
+
+
 module.exports = {
   login,
+  loginServer,
+  getUserId
 };
