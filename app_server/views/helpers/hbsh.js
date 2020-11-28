@@ -7,3 +7,12 @@ hbs.registerHelper("if", function(conditional, options) {
         return options.inverse(this);
     }
 });
+
+hbs.registerHelper('formatirajDatum', (nizDatum) => {
+    const datum = new Date(nizDatum);
+    const imenaMesecev = ["januar", "februar", "marec", "april", "maj", "junij", "julij", "avgust", "september", "oktober", "november", "december"];
+    const d = datum.getDate();
+    const m = imenaMesecev[datum.getMonth()];
+    const l = datum.getFullYear();
+    return `${d}. ${m}, ${l}`;
+});
