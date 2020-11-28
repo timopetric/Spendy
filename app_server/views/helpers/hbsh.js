@@ -16,7 +16,7 @@ hbs.registerHelper('formatirajDatum', (nizDatum) => {
     const m = imenaMesecev[datum.getMonth()];
     const l = datum.getFullYear();
     return `${d}. ${m}, ${l}`;
-
+});
 
 hbs.registerHelper('openModal', (aktivnost) => {
     
