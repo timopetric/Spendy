@@ -75,6 +75,7 @@ const analysis = (req, res) => {
                     getGraphDataInterval("bitcoin",dateStart,dateFinish).then(response =>{
                         if(response.data.prices) {
                             bitcoinGraph = response.data.prices;
+                            console.log(bitcoinGraph)
                             res.render('analysis',{
                                 title: 'Analiza',
                                 navbar_button_selected_analysis: true,

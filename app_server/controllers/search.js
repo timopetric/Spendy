@@ -58,25 +58,6 @@ const seznamAktivnosti = (req, res) => {
   };
 
 
-const seznamPrihodkov = (req, res) => {
-console.log("prihodki")
-axios
-    .get('/api/v1/expenses')
-    .then((odgovor) => {
-    let sporocilo =
-        odgovor.data.length ? null : "Ni aktivnosti.";
-    odgovor.data.map(lokacija => {
-        return lokacija;
-    });
-    console.log(odgovor.data);
-    search(req, res, odgovor.data, sporocilo);
-    })
-    .catch((err) => {
-    console.log(err);
-    search(req, res, [], "Napaka API-ja pri iskanju expensov.");
-    });
-};
-
 
 const search = (req, res, aktivnosti, sporocilo) => {
   const user = login.getUser();
