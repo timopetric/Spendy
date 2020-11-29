@@ -6,7 +6,7 @@
           Izberi pogled skupine
         </p></label
       >
-        <select id="idGroup" class="custom-select" required>
+        <select id="idGroup" class="custom-select" onchange="onGroupChange()" required>
             {{#each skupine as |skupina|}}
                 <option value="{{skupina._id}}">{{skupina.name}}</option>
             {{/each}}
