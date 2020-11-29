@@ -42,9 +42,23 @@ const getAllUsers = (req, res) => {
 };
 
 
-const getGroupByUserId = (req, res) => {
-    const userId = req.params.userId;
-
+const getGroupByUserId = async (req, res) => {
+    let found = await User.findById(req.params.userId)
+        .select("groupIds")
+        .populate("groupIds")
+        .exec((napaka, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    "Sporočilo": "Ne najdem uporabnika s tem id-jem",
+                });
+            }
+            else if (napaka) {
+                return res.status(500).json(napaka);
+            } else {
+                return res.status(200).json(user);
+            }
+        })
+    return found;
 };
 
 // validate user and return it if pass is correct
