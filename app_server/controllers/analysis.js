@@ -61,8 +61,8 @@ getGraphData("ripple","30").then(response =>{
 
 
 const analysis = (req, res) => {
-    let dateStart = new Date(req.query.start || 2020-10-10) ;
-    let dateFinish = new Date(req.query.finish || 2020-11-10);
+    let dateStart = new Date(req.query.start || 2020-11-15) ;
+    let dateFinish = new Date(req.query.finish || 2020-11-20);
 
 
     getGraphDataInterval("bitcoin",dateStart,dateFinish).then(response =>{

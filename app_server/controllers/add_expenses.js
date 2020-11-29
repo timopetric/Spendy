@@ -13,6 +13,9 @@ const login = require("./login");
 
 const add_expenses = (req, res) => {
   const userid = login.getUserId();
+  let uspelo = req.query.uspelo;
+  uspelo = uspelo ? "visible" : "hidden";
+
 
   // todo: uncomment in production
   // if(!userid) {
@@ -24,14 +27,14 @@ const add_expenses = (req, res) => {
   // let groups = [];
   axios.get(`/api/v1/users/${userid}`).then(resp => {
 
-     groups = resp.data.groupIds;
-     console.log(groups);
-    res.render('add_expenses',{
+      groups = resp.data.groupIds;
+      res.render('add_expenses',{
       title: 'Dodaj',
       stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
       scripts_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"],
       skupine: groups,
       uporabnikId:userid,
+      uspesno:uspelo,
 
     });
   }).catch(function (error) {
