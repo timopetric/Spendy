@@ -42,30 +42,35 @@ const getExpensesByGroupId = async (req, res) => {
 const getExpensesByGroupId2 = async (req, res) => {
   console.log("v EXPENSU SM" +req.query)
   let isExpenditure = req.query.isExpenditure;
-  let cena = req.query.cena
+  let cena = req.query.cena;
+  let datum = req.query.date;
+  let queryinput = req.query.search;
   isExpenditure = isExpenditure != null || undefined ? {isExpenditure : isExpenditure} : {};
   cena =  cena != null || undefined ? {cost: { $gte: cena }} : {};
+  datum =  datum != null || undefined ? { sort: { date : -1 }} : {};
+  queryinput = queryinput != null || undefined ? { "category_name" : { $regex : new RegExp(queryinput, "i") } } : {}
 
-  const  match = Object.assign ( isExpenditure, cena)
-  console.log(match)
-  let found = await Group.findById(req.params.id)
+  const match = Object.assign ( isExpenditure, cena, queryinput);
+  const options = Object.assign(datum)
+  console.log(match);
+  console.log(req.params);
+  Group.findById(req.params.id)
     .select("expenses")
     .populate({
       path: "expenses", 
-      match: match
+      match: match,
+      options: options,
   })
-    .exec((napaka, group) => {
-      if (!group) {
-        return res.status(404).json({
-          message: "Ne najdem skupine s podanim id-jem",
-        });
-      } else if (napaka) {
-        return res.status(500).json(napaka);
-      }
-      return res.status(200).json(group);
-    });
-  console.log(found)
-  return found;
+  .exec((napaka, group) => {
+    if (!group) {
+      return res.status(404).json({
+        message: "Ne najdem skupine s podanim id-jem",
+      });
+    } else if (napaka) {
+      return res.status(500).json(napaka);
+    }
+    return res.status(200).json(group);
+  });
 };
 
 //DODAJ EXPENSE GROUPI
