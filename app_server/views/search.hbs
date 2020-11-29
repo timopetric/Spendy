@@ -35,36 +35,26 @@
           </form>
           <div class="row mx-0">
             <div class="mr-auto">
-              <!-- Example single danger button -->
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Sortiraj
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Odhodki</a>
-                  <a class="dropdown-item" href="#">Prihodki</a>
-                  <a class="dropdown-item" href="#">Kategorija</a>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sortiraj
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/search?isExpenditure=true">Odhodki</a>
+                        <a class="dropdown-item" href="#">Prihodki</a>
+                        <a class="dropdown-item" href="#">Kategorija</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option1" checked />
-                Dan
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" /> Mesec
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" /> Leto
-              </label>
-            </div>
+            
+             <div class="btn-group">
+                <button type="button" class="btn btn-primary">Dan</button>
+                <button type="button" class="btn btn-primary">Mesec</button>
+                <button type="button" class="btn btn-primary">Leto</button>
+            </div> 
+
+            
           </div>
         </div>
 
@@ -168,19 +158,20 @@
                 date="{{formatirajDatum aktivnost.date}}"
                 description="{{aktivnost.description}}"
                 cost="{{aktivnost.cost}}"
+                isExpenditure={{aktivnost.isExpenditure}}
                 >
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-1 d-flex flex-column justify-content-center">
                                 <i
-                                class="fas fa-arrow-up"
-                                style="font-size: 48px; color: #45a72d"
+                                class={{#if aktivnost.isExpenditure}}"fas fa-arrow-down"{{else}}"fas fa-arrow-up"{{/if}}
+                                style="font-size: 48px; color: {{#if aktivnost.isExpenditure}}#cb3b3b{{else}}#45a72d{{/if}}" 
                                 ></i>
                             </div>
                             <div class="col-lg-11">
                                 <div class="row mx-0">
                                 <div class="mr-auto"></div>
-                                <div><p class="font-weight-light">{{aktivnost.date}}</p></div>
+                                <div><p class="font-weight-light">{{formatirajDatum aktivnost.date}}</p></div>
                                 </div>
                                 <div class="row mx-0">
                                 <div class="mr-auto"><h4>{{aktivnost.category_name}}</h4></div>
@@ -236,17 +227,17 @@
                   <div class="col-lg-10">
                     <div class="row mx-0">
                       <div class="mr-auto "><b>Cost: </b></div>
-                      <div class="cost">28€</div>
+                      <div class="cost">Ni podatka</div>
                     </div>
 
                     <div class="row mx-0">
                       <div class="mr-auto"><b>Datum: </b></div>
-                      <div class="date">12.10.2020</div>
+                      <div class="date">Ni podatka</div>
                     </div>
 
                     <div class="row mx-0">
                       <div class="mr-auto"><b>Opis: </b></div>
-                      <div class="description">Kosilo v mehiški restavraciji</div>
+                      <div class="description">Ni podatka</div>
                     </div>
                   </div>
                 </div>

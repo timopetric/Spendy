@@ -31,7 +31,7 @@ router.delete(
   ctrlExpenses.deleteExpense
 );
 
-router.get("/v1/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
+router.get("/v1/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId2);
 router.put(
   "/v1/groups/:idGroup/expenses/:idExpense",
   ctrlExpenses.updateExpense
