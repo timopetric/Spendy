@@ -32,5 +32,7 @@ router.get('/signup', ctrlSignUp.signup)
 router.get('/search', ctrlSearch.seznamAktivnosti);
 
 router.post('/login-server', ctrlLogin.loginServer);
+router.get('/logout-server', ctrlLogin.logoutServer);
+
 
 module.exports = router;

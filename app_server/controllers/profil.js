@@ -14,6 +14,8 @@ const login = require("./login"); // server-login
 
 
 const profil = (req, res) => {
+  if (login.getUser() == null) return res.redirect("/login");
+
   console.log("Sem v uporabniku");
   const userId = login.getUserId(); // server-login
   axios

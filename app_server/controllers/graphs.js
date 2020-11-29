@@ -1,6 +1,8 @@
 const login = require("./login");
 
 const graphs = (req, res) => {
+  if (login.getUser() == null) return res.redirect("/login");
+
   const user = login.getUser();
   res.render('graphs',{
     title: 'Grafično',

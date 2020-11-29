@@ -1,5 +1,7 @@
 const login = require("./login");
 const groups = (req, res) => {
+  if (login.getUser() == null) return res.redirect("/login");
+
   const user = login.getUser();
   res.render('groups',{
     title: 'Skupine',
