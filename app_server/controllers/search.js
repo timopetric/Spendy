@@ -1,4 +1,5 @@
 
+const { query } = require('express');
 const url = require('url');
 const login = require("./login");
 
@@ -19,12 +20,29 @@ const seznamAktivnosti = (req, res) => {
     // console.log(req._parsedUrl)
     // console.log(req.url)
     // console.log(Object.keys(req.query))
+
     let q = url.parse(req.originalUrl, true);
-    console.log(q.search);
-    let querySearch = q.search != null ? q.search : "";
-    console.log("queryserach: " + querySearch);
+    let querySearch;
+    let groupId;
+    if(q!=null){
+        let params = new URLSearchParams(q.search);
+        //console.log(q.search);
+        //console.log(params); 
+        groupId = params.get("groupId");
+        if(groupId != null){
+            params.delete(groupId)
+        }
+        querySearch = "?"+params.toString();
+        
+        //console.log(querySearch); 
+        //console.log("queryserach: " + querySearch);
+    }
+    if(groupId==null){
+        //console.log(login.getUser().groupIds[0]._id)
+        groupId = login.getUser().groupIds[0]._id;
+    }
     axios
-      .get(`/api/v1/groups/5fbeb5e3a48a39a6199e6719/expenses${querySearch}`)
+      .get(`/api/v1/groups/${groupId}/expenses${querySearch}`)
       .then((odgovor) => {
         let sporocilo = odgovor.data.length ? null : "Ni aktivnosti.";
         console.log(odgovor.data);
