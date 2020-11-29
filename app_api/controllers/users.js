@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
+const async = require("async");
 
 
 var apiParametri = {
@@ -252,7 +253,20 @@ const getUserById = (req, res) => {
         });
       else if (err) {
         return res.status(500).json(err);
-      } else res.status(200).json(user);
+      } else {
+
+          // async.forEach(user,function(oneUser,callback) {
+          //     Group.populate(oneUser.groupIds,{ "path": "userIds" },function(err,output) {
+          //         if (err) throw err; // or do something
+          //
+          //         callback();
+          //     });
+          // }, function(err) {
+          //     res.status(200).json(user);
+          // });
+
+          res.status(200).json(user);
+      }
     });
 };
 
