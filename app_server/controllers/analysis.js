@@ -62,45 +62,44 @@ const analysis = (req, res) => {
     let dateFinish = new Date(req.query.finish || 2020-11-20);
 
 
-    getGraphDataInterval("bitcoin",dateStart,dateFinish).then(response =>{
-        if(response.data.prices) {
 
-            bitcoinGraph = response.data.prices;
-        }
-    }).catch(error =>{
-        console.log(error);
-    });
-    getGraphDataInterval("ripple",dateStart,dateFinish).then(response =>{
-        if(response.data.prices) {
-
-            rippleGraph = response.data.prices;
-        }
-    }).catch(error =>{
-        console.log(error);
-    });
     getGraphDataInterval("bitcash",dateStart,dateFinish).then(response =>{
         if(response.data.prices) {
-
             bitcashGraph = response.data.prices;
+            getGraphDataInterval("ripple",dateStart,dateFinish).then(response =>{
+                if(response.data.prices) {
+
+                    rippleGraph = response.data.prices;
+                    getGraphDataInterval("bitcoin",dateStart,dateFinish).then(response =>{
+                        if(response.data.prices) {
+                            bitcoinGraph = response.data.prices;
+                            res.render('analysis',{
+                                title: 'Analiza',
+                                navbar_button_selected_analysis: true,
+                                stylesheets_load: [""],
+                                scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
+                                    "/javascripts/first-page-chart.js","/javascripts/analysis_script.js"],
+                                graphData: {
+                                    'bitcoin': bitcoinGraph,
+                                    'bitcash': bitcashGraph,
+                                    'ripple' : rippleGraph,
+                                },
+                                uporabnik: user,
+                                skupine: user.groupIds,
+                            });
+
+                        }
+                    }).catch(error =>{
+                        console.log(error);
+                    });
+                }
+            }).catch(error =>{
+                console.log(error);
+            });
         }
     }).catch(error =>{
         console.log(error);
     });
-
-    res.render('analysis',{
-    title: 'Analiza',
-    navbar_button_selected_analysis: true,
-    stylesheets_load: [""],
-    scripts_load: ["https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js",
-      "/javascripts/first-page-chart.js","/javascripts/analysis_script.js"],
-    graphData: {
-        'bitcoin': bitcoinGraph,
-        'bitcash': bitcashGraph,
-        'ripple' : rippleGraph,
-    },
-    uporabnik: user,
-    skupine: user.groupIds,
-  });
 };
 
 module.exports = {

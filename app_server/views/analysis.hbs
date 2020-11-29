@@ -26,7 +26,7 @@
                         >
                             <span class="mr-3 font-weight-bold">Od:</span>
                             <div>
-                                <input id="dateStart" required type="date" value="2020-10-01"/>
+                                <input id="dateStart" required type="date" value="2020-11-01"/>
                             </div>
                         </div>
 
@@ -35,7 +35,7 @@
                         >
                             <span class="mr-3 font-weight-bold">Do:</span>
                             <div >
-                                <input  id="dateEnd" required type="date" onchange="posodobiPodatke()"/>
+                                <input  id="dateEnd" required type="date" value="2020-11-30" onchange="posodobiPodatke()"/>
                             </div>
                         </div>
                     </div>
@@ -186,27 +186,37 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
 ></script>
 <script>
+
     let currentLoc = window.location.href;
-    let putDate = currentLoc.substring(currentLoc.match("finish=").index, currentLoc.match("finish=").index + 17);
-    putDate = putDate.split("=")[1];
+    let ind = -1;
+    if(currentLoc.match("finish=")) {
+        ind = currentLoc.match("finish=").index;
+    }
+    if(ind >= 0){
+        let putDate = currentLoc.substring(currentLoc.match("finish=").index, currentLoc.match("finish=").index + 17);
+        putDate = putDate.split("=")[1];
+    }else{
+        console.log("POSODABLJAM")
+        posodobiPodatke();
+    }
+
     if(putDate && putDate.length > 0){
         document.getElementById("dateEnd").value = putDate;
     }
     function posodobiPodatke(){
         let url = "/analysis?"
 
-        var start = $('#dateStart').val();
+        var start = document.getElementById("dateStart").value;
 
-        var finish = $('#dateEnd').val();
+        var finish = document.getElementById("dateEnd").value;
         if(start > finish){
             let tmp = start;
             start = finish;
             finish = tmp;
         }
         url = url + 'start=' + start + '&finish=' + finish;
-        console.log(url);
+        console.log(url)
         window.location = url;
-
     }
 </script>
 <script>
