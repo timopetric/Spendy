@@ -27,7 +27,7 @@ if (pageAccessedByReload) {
   // deleteCurrentlyLoginedUser();
   // window.location = "/first_page";
 }
-
+console.log("fake login current user = " + getCurrentlyLoginedUser());
 var loggedIdUser = getCurrentlyLoginedUser(); // must remain var! (not cons)
 console.log(`Logged in user with username '${loggedIdUser.username}':`);
 console.log(loggedIdUser);
