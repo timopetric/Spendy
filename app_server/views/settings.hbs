@@ -137,7 +137,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
-                                    <input class="form-control" id="email" name="email" placeholder="nekaj@email.com"
+                                    <input class="form-control" id="email" name="mail" placeholder="nekaj@email.com"
                                            title="enter your email."
                                            type="email">
                                 </div>
@@ -173,7 +173,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" onclick="validate()">
                                         Shrani
                                     </button>
                                     <!--<button class="btn btn-lg btn-success pull-right" id="gumb" type="submit"><i
@@ -197,6 +197,7 @@
 <script src="javascripts/jquery-3.5.1.min.js"></script>
 <script src="javascripts/popper.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/checkSettings.js"></script>
 
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->

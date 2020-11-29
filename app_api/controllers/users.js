@@ -29,6 +29,12 @@ const getAllUsers = (req, res) => {
     });
 };
 
+
+const getGroupByUserId = (req, res) => {
+    const userId = req.params.userId;
+
+};
+
 // validate user and return it if pass is correct
 // POST: /v1/users/login
 // {
@@ -301,6 +307,7 @@ const odstraniUser = (req, res, group) => {
 };
 
 
+
 /**
  * @swagger
  * paths:
@@ -349,5 +356,6 @@ module.exports = {
   updateUser, // todo
   deleteUser, // todo
   validateUser,
-  deleteUserFromGroupId
+  deleteUserFromGroupId,
+  getGroupByUserId
 };

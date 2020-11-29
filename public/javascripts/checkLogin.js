@@ -43,8 +43,8 @@ function validate() {
 
 
 axios.post('/api/v1/users/login', {
-    mail: "nekaj@gmail.com",
-    password: "nekaj"
+    mail: "a@gmail.com",
+    password: "a"
   })
   .then(function (response) {
     console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);

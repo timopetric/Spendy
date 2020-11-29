@@ -12,7 +12,7 @@ const axios = require('axios').create({
 const login = require("./login"); // server-login
  // server-login
 const settings = (req, res) => {
-    console.log("Sem v nastavtvah")
+    console.log("Sem v nastavtvah");
     const userId = login.getUserId();
     //req.params. todo: idUporabnika
     //var user = req.params.id;
@@ -53,16 +53,23 @@ const settings = (req, res) => {
 };*/
 
 const spremeniUporabnika = async (req, res) => {
-    const userId = login.getUserId();
-    const neki = await axios.put(`/v1/users/${userId}`, {
-        username: req.body.username,
-        name: req.body.name,
-        phone: req.body.phone,
-        mail: req.body.mail,
-        password: req.body.password,
-    });
-    neki.data;
+    try {
+        const userId = login.getUserId();
+        await axios.put(`/api/v1/users/${userId}`, {
+            surname: req.body.surname,
+            name: req.body.name,
+            phone: req.body.phone,
+            mail: req.body.mail,
+            pass: req.body.password,
+        })
+        console.log();
+    } catch (err) {
+        console.error(err);
+    }
+    // neki.data;
 };
+
+//spremeniUporabnika();
 
 
 
