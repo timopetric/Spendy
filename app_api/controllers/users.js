@@ -2,6 +2,18 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
 
+
+var apiParametri = {
+  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+};
+if (process.env.NODE_ENV === 'production') {
+  apiParametri.streznik = 'https://sp-spendy.herokuapp.com';
+}
+const axios = require('axios').create({
+  baseURL: apiParametri.streznik,
+  timeout: 5000
+});
+
 /**
  * @swagger
  * paths:
@@ -61,6 +73,25 @@ const validateUser = (req, res) => {
             } else {
 
                 if (user.pass === password) {
+
+                  // ----------- login-server ----------------
+                  axios.post('/login-server', {
+                      user: user,
+                  })
+                  .then(function (response) {
+                      if (response.status === 200) {
+                          console.log("server logged in the user");
+                      } else {
+                          console.log("server error logging in user");
+                      }
+                  })
+                  .catch(function (error) {
+                      console.log(error);
+                  });
+                  // ----------- login-server END --------------
+
+
+
                     return res.status(200).json(user);
                 } else {
                     return res.status(404).json({"message": "password incorrect"});

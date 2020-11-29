@@ -8,23 +8,25 @@ const login = (req, res) => {
   });
 };
 
-
 var user = null;
+
 const loginServer = (req, res) => {
-  // todo
+  console.log(req.body);
   user = req.body.user;
-  console.log(userGroups);
-  if (userIdCurrent)
-    res.status(200);
+
+  if (user)
+    res.status(200).json({"message":"successful user server logon"});
   else
-    res.status(404);
+    res.status(404).json({"message":"not successful user server logon"});
 };
 
 function getUserId() {
-  return userIdCurrent;
+  return user._id;
+  // return userIdCurrent
 }
 function getUserGroups(){
-  return userGroups;
+  return user.groupIds;
+  // return userGroups;
 }
 function getUser(){
   return user;
@@ -36,5 +38,5 @@ module.exports = {
   loginServer,
   getUserId,
   getUserGroups,
-  getUser,
+  getUser
 };
