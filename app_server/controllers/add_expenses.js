@@ -12,13 +12,11 @@ const axios = require('axios').create({
 const login = require("./login");
 
 const add_expenses = (req, res) => {
+
+  if (login.getUser() == null) return res.redirect("/login");
+
   let uspelo = req.query.uspelo;
   uspelo = uspelo ? "visible" : "hidden";
-
-  // todo: uncomment in production
-  // if(!userid) {
-  //   res.redirect("/login");
-  // }
 
   ///api/v1/users/5fc2be754b842a045038d5ca
   //console.log('/api/v1/users/'+ userid);

@@ -56,6 +56,8 @@ getGraphData("ripple","30").then(response =>{
 const login = require("./login");
 
 const analysis = (req, res) => {
+    if (login.getUser() == null) return res.redirect("/login");
+
     const user = login.getUser();
 
     let dateStart = new Date(req.query.start || 2020-11-15) ;
