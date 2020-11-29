@@ -53,7 +53,7 @@ const validateUser = (req, res) => {
             if (!user)
                 return res.status(404).json({
                     "message":
-                        "Uporabnik s podanim id-jem ne obstaja."
+                        "Uporabnik s podanim poštnim naslovom ne obstaja."
                 });
             else if (err) {
                 return res.status(500).json(err);
