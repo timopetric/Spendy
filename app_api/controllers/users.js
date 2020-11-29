@@ -84,6 +84,8 @@ const validateUser = (req, res) => {
                           return res.status(200).json(user);
                       } else {
                           console.log("server error logging in user");
+                          return res.status(404).json(user);
+
                       }
                   })
                   .catch(function (error) {

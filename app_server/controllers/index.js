@@ -1,6 +1,8 @@
 // vrni prvo stran
 const login = require("./login");
 const index = (req, res) => {
+  if (login.getUser() == null) return res.redirect("/login");
+
   const user = login.getUser();
   res.render('index',{
     title: 'Pregled',

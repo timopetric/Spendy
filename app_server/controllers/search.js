@@ -67,7 +67,7 @@ const search = (req, res, aktivnosti, sporocilo) => {
     navbar_button_selected_search: true,
     subtitle: "Poglej si svoje aktivnosti in jih urejaj ",
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
-    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js"],
+    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js", "/javascripts/getSelectedGroup.js"],
     aktivnosti: aktivnosti,
     sporocilo: sporocilo,
       uporabnik: user,
