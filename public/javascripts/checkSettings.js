@@ -1,16 +1,16 @@
 function validateEmail(email) {
     //var re = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/;
-    var re = /^[a-zA-Z0-9@\^&*)(+=._-]*$/;
+    var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return re.test(email);
 }
 
 function validateNameAndLastName(nameLastName) {
-    var reg = /^[a-zA-Z]*/;
+    var reg = /^[a-z ,.'-]+$/i;
     return reg.test(nameLastName);
 }
 
 function prevent() {
-    document.getElementById('toJePost').addEventListener('click', function (event) {
+    document.getElementById('registrationForm').addEventListener('click', function (event) {
         event.preventDefault();
     });
 }
@@ -20,11 +20,11 @@ function validate() {
 
     var ime = $("#name").val();
 
-    var priimek = $("#lastName").val();
+    var priimek = $("#surname").val();
 
     var telefon = $("#phone").val();
 
-    var email = $("#email").val();
+    var email = $("#mail").val();
 
     var password = $("#password").val();
 
@@ -36,16 +36,16 @@ function validate() {
         odgovor += "Vsa polja morajo biti izpolnjena";
     }
 
-    if (validateNameAndLastName(ime)) {
+    if (!validateNameAndLastName(ime)) {
         odgovor += "\nIme lahko vsebuje le črke!";
     }
 
-    if (validateNameAndLastName(priimek)) {
+    if (!validateNameAndLastName(priimek)) {
         odgovor += "\nPriimek lahko vsebuje le črke!";
     }
 
     if (password !== password1) {
-        napaka = true;
+        //napaka = true;
         odgovor += "\nGesli morata biti enaki";
     }
     /*if(validateEmail(email)) {

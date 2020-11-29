@@ -29,6 +29,12 @@ const getAllUsers = (req, res) => {
     });
 };
 
+
+const getGroupByUserId = (req, res) => {
+    const userId = req.params.userId;
+
+};
+
 // validate user and return it if pass is correct
 // POST: /v1/users/login
 // {
@@ -48,7 +54,7 @@ const validateUser = (req, res) => {
             if (!user)
                 return res.status(404).json({
                     "message":
-                        "Uporabnik s podanim id-jem ne obstaja."
+                        "Uporabnik s podanim poštnim naslovom ne obstaja."
                 });
             else if (err) {
                 return res.status(500).json(err);
@@ -303,6 +309,7 @@ const odstraniUser = (req, res, group) => {
 };
 
 
+
 /**
  * @swagger
  * paths:
@@ -351,5 +358,6 @@ module.exports = {
   updateUser, // todo
   deleteUser, // todo
   validateUser,
-  deleteUserFromGroupId
+  deleteUserFromGroupId,
+  getGroupByUserId
 };
