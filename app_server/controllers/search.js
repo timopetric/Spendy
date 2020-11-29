@@ -1,5 +1,6 @@
 
 const url = require('url');
+const login = require("./login");
 
 var apiParametri = {
     streznik: 'http://localhost:' + (process.env.PORT || 3000)
@@ -60,6 +61,7 @@ axios
 
 
 const search = (req, res, aktivnosti, sporocilo) => {
+  const user = login.getUser();
   res.render('search',{
     title: 'Poišči aktivnosti',
     navbar_button_selected_search: true,
@@ -67,7 +69,9 @@ const search = (req, res, aktivnosti, sporocilo) => {
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
     scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js", "/javascripts/getSelectedGroup.js"],
     aktivnosti: aktivnosti,
-    sporocilo: sporocilo
+    sporocilo: sporocilo,
+      uporabnik: user,
+      skupine: user.groupIds,
   });
 };
 

@@ -1,4 +1,6 @@
+const login = require("./login");
 const groups = (req, res) => {
+  const user = login.getUser();
   res.render('groups',{
     title: 'Skupine',
     navbar_button_selected_groups: true,
@@ -19,7 +21,9 @@ const groups = (req, res) => {
         "/javascripts/jquery-3.5.1.min.js",
         "/javascripts/popper.min.js", "/javascripts/bootstrap/bootstrap.min.js",
         "https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-    ]
+    ],
+    uporabnik:user,
+    skupine: user.groupIds
   });
 };
 
