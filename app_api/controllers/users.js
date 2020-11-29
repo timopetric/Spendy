@@ -81,18 +81,19 @@ const validateUser = (req, res) => {
                   .then(function (response) {
                       if (response.status === 200) {
                           console.log("server logged in the user");
+                          return res.status(200).json(user);
                       } else {
                           console.log("server error logging in user");
                       }
                   })
                   .catch(function (error) {
                       console.log(error);
+                      return res.status(404).json(user);
                   });
                   // ----------- login-server END --------------
 
 
 
-                    return res.status(200).json(user);
                 } else {
                     return res.status(404).json({"message": "password incorrect"});
                 }
