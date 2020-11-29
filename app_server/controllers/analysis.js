@@ -20,13 +20,9 @@ const getGraphDataInterval = (ime, start,finish) => {
     }
 };
 
-
 let bitcoinGraph;
 let bitcashGraph;
 let rippleGraph;
-
-
-
 /*
 getGraphData("bitcoin","30").then(response =>{
     if(response.data.prices) {
@@ -57,10 +53,11 @@ getGraphData("ripple","30").then(response =>{
 
 */
 
-
-
+const login = require("./login");
 
 const analysis = (req, res) => {
+    const user = login.getUser();
+
     let dateStart = new Date(req.query.start || 2020-11-15) ;
     let dateFinish = new Date(req.query.finish || 2020-11-20);
 
@@ -100,7 +97,9 @@ const analysis = (req, res) => {
         'bitcoin': bitcoinGraph,
         'bitcash': bitcashGraph,
         'ripple' : rippleGraph,
-    }
+    },
+    uporabnik: user,
+    skupine: user.groupIds,
   });
 };
 

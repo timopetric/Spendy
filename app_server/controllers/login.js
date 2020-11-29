@@ -9,9 +9,14 @@ const login = (req, res) => {
 };
 
 var userIdCurrent = null;
+var userGroups = null;
+var user = null;
 const loginServer = (req, res) => {
   // todo
   userIdCurrent = req.body.user_id;
+  userGroups = req.body.groupIds;
+  user = req.body.user;
+  console.log(userGroups);
   if (userIdCurrent)
     res.status(200);
   else
@@ -21,10 +26,18 @@ const loginServer = (req, res) => {
 function getUserId() {
   return userIdCurrent;
 }
+function getUserGroups(){
+  return userGroups;
+}
+function getUser(){
+  return user;
+}
 
 
 module.exports = {
   login,
   loginServer,
-  getUserId
+  getUserId,
+  getUserGroups,
+  getUser,
 };

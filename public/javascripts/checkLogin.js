@@ -55,6 +55,8 @@ axios.post('/api/v1/users/login', {
 
       axios.post('/login-server', {
           user_id: loggedInUser._id,
+          groupIds: loggedInUser.groupIds,
+          user: loggedInUser,
       })
           .then(function (response) {
               if (response.status === 200) {

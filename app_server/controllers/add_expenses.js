@@ -12,10 +12,8 @@ const axios = require('axios').create({
 const login = require("./login");
 
 const add_expenses = (req, res) => {
-  const userid = login.getUserId();
   let uspelo = req.query.uspelo;
   uspelo = uspelo ? "visible" : "hidden";
-
 
   // todo: uncomment in production
   // if(!userid) {
@@ -25,24 +23,17 @@ const add_expenses = (req, res) => {
   ///api/v1/users/5fc2be754b842a045038d5ca
   //console.log('/api/v1/users/'+ userid);
   // let groups = [];
-  axios.get(`/api/v1/users/${userid}`).then(resp => {
 
-      groups = resp.data.groupIds;
-      res.render('add_expenses',{
-      title: 'Dodaj',
-      stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
-      scripts_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"],
-      skupine: groups,
-      uporabnikId:userid,
-      uspesno:uspelo,
-
-    });
-  }).catch(function (error) {
-    res.status(400).json({"message": `Za uporabnika ${userid} ne najdem group. Error ${error}`});
+  const user = login.getUser();
+  res.render('add_expenses',{
+  title: 'Dodaj',
+  stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
+  scripts_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"],
+  skupine: user.groupIds,
+  uporabnikId: user._id,
+  uporabnik: user,
+  uspesno: uspelo,
   });
-
-
-
 };
 
 module.exports = {

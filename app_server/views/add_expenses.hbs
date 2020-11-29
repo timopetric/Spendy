@@ -110,6 +110,10 @@
 </main>
 <script>
 
+    setTimeout(()=> {
+        document.getElementById("uspesnoDodanExpense").style.visibility = "hidden";
+    },3000);
+
     function truefalse(){
         document.getElementById("stroskiCheckbox").value = !document.getElementById("stroskiCheckbox").value;
         document.getElementById("isExpenditure").value = !document.getElementById("isExpenditure").value;
