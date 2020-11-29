@@ -23,6 +23,7 @@
 
         <div class="container">
             <div class="row">
+                {{#each skupine as |skupina|}}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3" id="prvi">
                     <div class="accordion" id="accordionExample1">
                         <div class="card bg-danger">
@@ -34,11 +35,11 @@
                                                     class="btn btn-link btn-block text-left text-white"
                                                     type="button"
                                                     data-toggle="collapse"
-                                                    data-target="#collapseOne"
+                                                    data-target="#collapse"
                                                     aria-expanded="false"
                                                     aria-controls="collapseOne"
                                             >
-                                                {{skupina1.imeSkupine}}
+                                                {{skupina.name}}
                                             </button>
                                         </div>
                                         <div class="d-flex justify-content-center flex-column mr-2">
@@ -57,7 +58,7 @@
                             </div>
 
                             <div
-                                    id="collapseOne"
+                                    id="collapse"
                                     class="collapse"
                                     aria-labelledby="headingOne"
                                     data-parent="#accordionExample1"
@@ -67,16 +68,16 @@
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            {{skupina1.admin}}
+                                            {{skupina.adminIds.name}}
                                             <span class="badge badge-primary badge-pill"
                                             >Admin</span
                                             >
                                         </li>
-                                        {{#each skupina1.clani as |clan|}}
+                                        {{#each skupina.userIds as |clan|}}
                                         <li
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
-                                            {{clan}}
+                                            {{clan.name}}
                                             <!--<span class="badge badge-primary badge-pill">2</span>>-->
                                             <div class="d-flex justify-content-end flex-column">
                                                 <button type="button" class="btn">
@@ -103,7 +104,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+                <!--<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="accordion" id="accordionExample2">
                         <div class="card naRdece">
                             <div class="card-header" id="headingTwo">
@@ -143,13 +145,13 @@
                                                 class="list-group-item d-flex justify-content-between align-items-center"
                                         >
                                             {{clan}}
-                                            <!--<span class="badge badge-primary badge-pill">2</span>>-->
+                                            <!--<span class="badge badge-primary badge-pill">2</span>>
                                         </li>
                                         {{/each}}
                                     </ul>
 
 
-                                    <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>-->
+                                    <!--<a class="btn btn-primary" href="#" role="button" id="dodaj1">Dodaj Člana</a>
 
                                     <button
                                             type="button"
@@ -223,7 +225,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -355,7 +357,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
+                    {{/each}}
             </div>
         </div>
 

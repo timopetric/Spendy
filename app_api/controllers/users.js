@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
+const async = require("async");
 
 
 var apiParametri = {
@@ -42,9 +43,23 @@ const getAllUsers = (req, res) => {
 };
 
 
-const getGroupByUserId = (req, res) => {
-    const userId = req.params.userId;
-
+const getGroupByUserId = async (req, res) => {
+    let found = await User.findById(req.params.userId)
+        .select("groupIds")
+        .populate("groupIds")
+        .exec((napaka, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    "Sporočilo": "Ne najdem uporabnika s tem id-jem",
+                });
+            }
+            else if (napaka) {
+                return res.status(500).json(napaka);
+            } else {
+                return res.status(200).json(user);
+            }
+        })
+    return found;
 };
 
 // validate user and return it if pass is correct
@@ -241,7 +256,20 @@ const getUserById = (req, res) => {
         });
       else if (err) {
         return res.status(500).json(err);
-      } else res.status(200).json(user);
+      } else {
+
+          // async.forEach(user,function(oneUser,callback) {
+          //     Group.populate(oneUser.groupIds,{ "path": "userIds" },function(err,output) {
+          //         if (err) throw err; // or do something
+          //
+          //         callback();
+          //     });
+          // }, function(err) {
+          //     res.status(200).json(user);
+          // });
+
+          res.status(200).json(user);
+      }
     });
 };
 
