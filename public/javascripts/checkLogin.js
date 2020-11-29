@@ -18,7 +18,7 @@ function allGood() {
                     saveCurrentlyLoginedUser(loggedInUser);
 
                     axios.post('/login-server', {
-                        user_id: loggedInUser._id,
+                        user: loggedInUser,
                     })
                         .then(function (response) {
                             if (response.status === 200) {
