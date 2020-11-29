@@ -18,6 +18,8 @@ hbs.registerHelper('formatirajDatum', (nizDatum) => {
     return `${d}. ${m}, ${l}`;
 });
 
+
+
 hbs.registerHelper('openModal', (aktivnost) => {
     
 

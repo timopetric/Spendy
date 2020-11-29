@@ -37,6 +37,37 @@ const getExpensesByGroupId = async (req, res) => {
   return found;
 };
 
+
+////GET ALL EXPENSES OF GROUP
+const getExpensesByGroupId2 = async (req, res) => {
+  console.log("v EXPENSU SM" +req.query)
+  let isExpenditure = req.query.isExpenditure;
+  let cena = req.query.cena
+  isExpenditure = isExpenditure != null || undefined ? {isExpenditure : isExpenditure} : {};
+  cena =  cena != null || undefined ? {cost: { $gte: cena }} : {};
+
+  const  match = Object.assign ( isExpenditure, cena)
+  console.log(match)
+  let found = await Group.findById(req.params.id)
+    .select("expenses")
+    .populate({
+      path: "expenses", 
+      match: match
+  })
+    .exec((napaka, group) => {
+      if (!group) {
+        return res.status(404).json({
+          message: "Ne najdem skupine s podanim id-jem",
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      return res.status(200).json(group);
+    });
+  console.log(found)
+  return found;
+};
+
 //DODAJ EXPENSE GROUPI
 const addExpense = (req, res) => {
   const idGroup = req.params.idGroup;
@@ -57,7 +88,7 @@ const addExpense = (req, res) => {
     });
   } else {
     res.status(400).json({
-      message: "V zahtevku ni id skupine, id skupine je obvezen parameter",
+      message: "Ne najdem lokacije, idLokacije je obvezen parameter.",
     });
   }
 };
@@ -212,4 +243,5 @@ module.exports = {
   deleteExpense,
   getExpensesByGroupId,
   updateExpense,
+  getExpensesByGroupId2
 };
