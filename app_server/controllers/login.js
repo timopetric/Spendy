@@ -12,7 +12,6 @@ var userIdCurrent = null;
 var userGroups = null;
 var user = null;
 const loginServer = (req, res) => {
-  // todo
   userIdCurrent = req.body.user_id;
   userGroups = req.body.groupIds;
   user = req.body.user;
