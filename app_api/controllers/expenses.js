@@ -52,7 +52,7 @@ const addExpense = (req, res) => {
         console.log("napaka" + napaka);
         res.status(400).json(napaka);
       }
-      console.log("okej " + group);
+      console.log("grupa:  " + group);
       dodajExpense(req, res, group);
     });
   } else {
@@ -69,6 +69,7 @@ const dodajExpense = (req, res, group) => {
   const category_name = req.body.category_name;
   const description = req.body.description;
   const created_by = req.body.created_by;
+  console.log(req.body);
 
   if (!created_by) {
     res.status(400).json({
@@ -94,7 +95,7 @@ const dodajExpense = (req, res, group) => {
       if (!expense) {
         return res.status(404).json({
           message:
-            "Ne najdem expensa s podanim enoličnim identifikatorjem idGroup.",
+            "Ne najdem expensa s podanim enoličnim identifikatorjem idGroup." + error,
         });
       }
       if (error) {

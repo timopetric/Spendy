@@ -144,6 +144,7 @@ const groupSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     balance: { type: Number, default: 0.0, required: true },
+    // isUserGroup: {type: Boolean, default: false},
     userIds: [{
           type: Schema.Types.ObjectId,
           ref: "User",

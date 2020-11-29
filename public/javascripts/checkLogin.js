@@ -47,7 +47,7 @@ axios.post('/api/v1/users/login', {
     password: "nekaj"
   })
   .then(function (response) {
-    console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);
+    console.log(`/api/v1/users/login response: ${response.status} okkkkkkkkk cool`);
     if (response.status === 200) {
       console.log(response.data);
       let loggedInUser = response.data;

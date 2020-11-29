@@ -41,6 +41,7 @@ const validateUser = (req, res) => {
 
     User
         .findOne()
+        .populate("groupIds")
         .where("mail")
         .equals(mail)
         .exec((err, user) => {
@@ -192,6 +193,7 @@ const addUser = (req, res) => {
 const getUserById = (req, res) => {
   User.findById(req.params.id)
     .select("-pass")
+    .populate("groupIds")
     .exec((err, user) => {
       if (!user)
         return res.status(404).json({
