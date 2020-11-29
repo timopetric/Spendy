@@ -12,6 +12,8 @@ const axios = require('axios').create({
 const login = require("./login"); // server-login
  // server-login
 const settings = (req, res) => {
+    if (login.getUser() == null) return res.redirect("/login");
+
     console.log("Sem v nastavtvah");
     const userId = login.getUserId();
     //req.params. todo: idUporabnika

@@ -119,7 +119,9 @@ const izpisiSkupine = (req, res, grupe) => {
         "/javascripts/jquery-3.5.1.min.js",
         "/javascripts/popper.min.js", "/javascripts/bootstrap/bootstrap.min.js",
         "https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-    ]
+    ],
+    uporabnik:user,
+    skupine: user.groupIds
   });
 };*/
 
