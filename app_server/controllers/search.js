@@ -19,9 +19,11 @@ const seznamAktivnosti = (req, res) => {
     // console.log(req.url)
     // console.log(Object.keys(req.query))
     let q = url.parse(req.originalUrl, true);
-    console.log(q.search)
+    console.log(q.search);
+    let querySearch = q.search != null ? q.search : "";
+    console.log("queryserach: " + querySearch);
     axios
-      .get(`/api/v1/groups/5fbeb5e3a48a39a6199e6719/expenses${q.search}`)
+      .get(`/api/v1/groups/5fbeb5e3a48a39a6199e6719/expenses${querySearch}`)
       .then((odgovor) => {
         let sporocilo = odgovor.data.length ? null : "Ni aktivnosti.";
         console.log(odgovor.data);
@@ -63,7 +65,7 @@ const search = (req, res, aktivnosti, sporocilo) => {
     navbar_button_selected_search: true,
     subtitle: "Poglej si svoje aktivnosti in jih urejaj ",
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
-    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js"],
+    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js"],
     aktivnosti: aktivnosti,
     sporocilo: sporocilo
   });
