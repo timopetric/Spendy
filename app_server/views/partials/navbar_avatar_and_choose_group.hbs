@@ -6,12 +6,11 @@
           Izberi pogled skupine
         </p></label
       >
-      <select id="inputState" class="form-control">
-        <option selected>Brez izbrane skupine</option>
-        <option>Družina</option>
-        <option>Služba</option>
-        <option>Šeena</option>
-      </select>
+        <select id="idGroup" class="custom-select" required>
+            {{#each skupine as |skupina|}}
+                <option value="{{skupina._id}}">{{skupina.name}}</option>
+            {{/each}}
+        </select>
     </div>
   </div>
   <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -30,7 +29,7 @@
           class="img-fluid rounded-circle avatar mr-2"
           src="icons/user-1.png"
         />
-        Janez Novak
+          {{uporabnik.username}}
       </a>
       <div
         aria-labelledby="navbarDropdown"

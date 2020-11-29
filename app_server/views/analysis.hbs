@@ -25,8 +25,8 @@
                                 class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
                         >
                             <span class="mr-3 font-weight-bold">Od:</span>
-                            <div id="dateStart">
-                                <input required type="date" />
+                            <div>
+                                <input id="dateStart" required type="date" value="2020-10-01"/>
                             </div>
                         </div>
 
@@ -34,8 +34,8 @@
                                 class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
                         >
                             <span class="mr-3 font-weight-bold">Do:</span>
-                            <div id="dateEnd">
-                                <input required type="date" />
+                            <div >
+                                <input  id="dateEnd" required type="date" onchange="posodobiPodatke()"/>
                             </div>
                         </div>
                     </div>
@@ -53,9 +53,10 @@
                             </h1>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Bitcoin meja</span>
+                                    <span class="input-group-text">Ripple meja</span>
                                 </div>
                                 <input
+                                        id="rippleMeja"
                                         type="number"
                                         step="any"
                                         value="7500.35"
@@ -69,9 +70,10 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Etherium meja</span>
+                                    <span class="input-group-text">Bitcoin meja</span>
                                 </div>
                                 <input
+                                        id="bitcoinMeja"
                                         type="number"
                                         step="any"
                                         value="300.75"
@@ -85,9 +87,10 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Nashdaq meja</span>
+                                    <span class="input-group-text">Bitcash meja</span>
                                 </div>
                                 <input
+                                        id="bitcashMeja"
                                         type="number"
                                         step="any"
                                         value="17999.99"
@@ -97,6 +100,7 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text">€</span>
                                 </div>
+
                             </div>
                             <div class="container-fluid d-flex justify-content-center">
                                 <button type="submit" class="btn btn-success">
@@ -137,7 +141,7 @@
                     <span class="input-group-text bg-success">+60€</span>
                   </div>
                 </span>
-
+                        <!--
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
                                 Predikcijski graf
@@ -148,11 +152,13 @@
                                     width="50%"
                             ></canvas>
                         </div>
+
+                        -->
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
-                                Nashdaq
+                                Ripple
                             </h1>
-                            <canvas height="40%" id="NasdaqChart" width="50%"></canvas>
+                            <canvas height="40%" id="rippleChart" width="50%"></canvas>
                         </div>
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
@@ -162,9 +168,9 @@
                         </div>
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
-                                Etherium
+                                Bitcash
                             </h1>
-                            <canvas height="40%" id="etheriumChart" width="50%"></canvas>
+                            <canvas height="40%" id="bitcashChart" width="50%"></canvas>
                         </div>
                     </div>
                 </div>
@@ -172,308 +178,153 @@
         </section>
     </div>
 </main>
+
+
 <script
         crossorigin="anonymous"
         integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
 ></script>
 <script>
-    var ctx = document.getElementById("predictionChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: [
-                "Jan 2020",
-                "Feb 2020",
-                "Mar 2020",
-                "Apr 2020",
-                "Maj 2020",
-                "Jun 2020",
-                "Jul 2020",
-                "Aug 2020",
-                "Sep 2020",
-                "Okt 2020",
-                "Nov 2020",
-                "Dec 2020",
-            ],
-            datasets: [
-                {
-                    label: "Prihodki",
-                    data: [
-                        4050,
-                        1080,
-                        750,
-                        4020,
-                        800,
-                        652,
-                        777,
-                        4545,
-                        8728,
-                        9928,
-                        1000,
-                        450,
-                        6000,
-                    ],
-                    backgroundColor: "lightgreen",
-                    borderColor: "darkgreen",
-                    borderWidth: 0.7,
-                    maxBarThickness: 30,
-                    maxBarLength: 2,
-                },
-                {
-                    label: "Odhodki",
-                    data: [
-                        470,
-                        2300,
-                        7250,
-                        400,
-                        3850,
-                        6522,
-                        777,
-                        3545,
-                        8728,
-                        998,
-                        690,
-                        450,
-                        5580,
-                    ],
-                    backgroundColor: "lightcoral",
-                    borderColor: "darkred",
-                    borderWidth: 0.7,
-                    maxBarThickness: 30,
-                    maxBarLength: 2,
-                },
-            ],
-        },
-        options: {
-            scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                    },
-                ],
-            },
-        },
-    });
+    let currentLoc = window.location.href;
+    let putDate = currentLoc.substring(currentLoc.match("finish=").index, currentLoc.match("finish=").index + 17);
+    putDate = putDate.split("=")[1];
+    if(putDate && putDate.length > 0){
+        document.getElementById("dateEnd").value = putDate;
+    }
+    function posodobiPodatke(){
+        let url = "/analysis?"
+
+        var start = $('#dateStart').val();
+
+        var finish = $('#dateEnd').val();
+        if(start > finish){
+            let tmp = start;
+            start = finish;
+            finish = tmp;
+        }
+        url = url + 'start=' + start + '&finish=' + finish;
+        console.log(url);
+        window.location = url;
+
+    }
 </script>
 <script>
-    var ctx = document.getElementById("NasdaqChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: [
-                "Januar",
-                "Februar",
-                "Marec",
-                "April",
-                "Maj",
-                "Junij",
-                "Julij",
-                "Avgust",
-                "September",
-                "Oktober",
-                "November",
-                "December",
-            ],
-            datasets: [
-                {
-                    label: "Nashdaq cena delnic v €",
-                    data: [
-                        12200,
-                        19400,
-                        10200,
-                        14800,
-                        12200.3,
-                        17003.69,
-                        12999,
-                        12728,
-                        16000,
-                        12000,
-                        12500,
-                        12000,
-                    ],
-                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
-                    borderColor: [
-                        "rgba(92, 184, 92, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                    ],
-                    borderWidth: 1,
-                },
-            ],
-        },
-        options: {
-            scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                    },
-                ],
-            },
-        },
-    });
-</script>
-<script>
+    let dataBitcoin = {{narediArray graphData.bitcoin}};
+    let resultData = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+        resultData.push(Math.round(100* dataBitcoin[i][1]) / 100);
+    }
+    let resultDate = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+
+        const datum = new Date(dataBitcoin[i][0]);
+        const d = datum.getDate();
+        const m = datum.getMonth();
+        const l = datum.getFullYear();
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+    var meja = document.getElementById("bitcoinMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("bitcoinMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
+    }
+
     var ctx = document.getElementById("bitcoinChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: [
-                "Januar",
-                "Februar",
-                "Marec",
-                "April",
-                "Maj",
-                "Junij",
-                "Julij",
-                "Avgust",
-                "September",
-                "Oktober",
-                "November",
-                "December",
-            ],
+            labels: resultDate,
             datasets: [
                 {
                     label: "Bitcoin cena v €",
-                    data: [
-                        8800,
-                        9400,
-                        8200,
-                        10800,
-                        10200.3,
-                        12003.69,
-                        9999,
-                        8728,
-                        10000,
-                        12000,
-                        12500,
-                        10000,
-                    ],
+                    data: resultData,
                     backgroundColor: ["rgba(0, 0, 0, 0.0)"],
                     borderColor: [
-                        "rgba(92, 184, 92, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
+                        "rgba(92, 184, 92, 1)"
                     ],
                     borderWidth: 1,
                 },
             ],
         },
-        options: {
-            scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                    },
-                ],
-            },
-        },
     });
 </script>
 <script>
-    var ctx = document.getElementById("etheriumChart").getContext("2d");
+    let dataBitcash = {{narediArray graphData.bitcash}};
+    resultData = [];
+    resultDate = [];
+    for(let i = 0 ; i < dataBitcash.length ; i++){
+        resultData.push(dataBitcash[i][1]);
+
+        const datum = new Date(dataBitcash[i][0]);
+        const d = datum.getDate();
+        const m = datum.getMonth();
+        const l = datum.getFullYear();
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+    var meja = document.getElementById("bitcashMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("bitcashMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
+    }
+
+
+    var ctx = document.getElementById("bitcashChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: [
-                "Januar",
-                "Februar",
-                "Marec",
-                "April",
-                "Maj",
-                "Junij",
-                "Julij",
-                "Avgust",
-                "September",
-                "Oktober",
-                "November",
-                "December",
-            ],
+            labels: resultDate,
             datasets: [
                 {
-                    label: "Cena Etheriuma v €",
-                    data: [
-                        340,
-                        345,
-                        368,
-                        380,
-                        370,
-                        380,
-                        390,
-                        400,
-                        450,
-                        360,
-                        350,
-                        370,
-                    ],
+                    label: "Bitcash cena v €",
+                    data: resultData,
                     backgroundColor: ["rgba(0, 0, 0, 0.0)"],
                     borderColor: [
-                        "rgba(92, 184, 92, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
+                        "rgba(92, 184, 92, 1)"
                     ],
                     borderWidth: 1,
                 },
             ],
         },
-        options: {
-            scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                            beginAtZero: true,
-                        },
-                    },
-                ],
-            },
-        },
     });
 </script>
+
 <script>
-    var ctx = document.getElementById("vsChart").getContext("2d");
+    let dataRipple = {{narediArray graphData.ripple}};
+    resultData = [];
+    resultDate = [];
+    for(let i = 0 ; i < dataRipple.length ; i++){
+        resultData.push(dataRipple[i][1]);
+
+        const datum = new Date(dataRipple[i][0]);
+        const d = datum.getDate();
+        const m = datum.getMonth();
+        const l = datum.getFullYear();
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+
+    var meja = document.getElementById("rippleMeja").value;
+    if(meja > resultData[resultData.length - 1]){
+        document.getElementById("rippleMeja").classList.add("bg-success");
+    }else{
+        document.getElementById("bitcoinMeja").classList.add("bg-danger");
+    }
+
+    var ctx = document.getElementById("rippleChart").getContext("2d");
     var myChart = new Chart(ctx, {
-        type: "pie",
+        type: "line",
         data: {
-            labels: ["Prihodki", "Odhodki"],
+            labels: resultDate,
             datasets: [
                 {
-                    label: "Expenses",
-                    data: [480, 420],
-                    backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
-                    borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                    label: "Ripple cena v €",
+                    data: resultData,
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(92, 184, 92, 1)"
+                    ],
                     borderWidth: 1,
                 },
             ],

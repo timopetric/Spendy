@@ -73,7 +73,7 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    mail: { type: String, required: true},
+    mail: { type: String, required: true, unique: true }, // todo: delete mongo atlas SpendyDB to add unique constraint
     pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
     balance: { type: Number, required: true },
     groupIds: [{
@@ -144,6 +144,7 @@ const groupSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     balance: { type: Number, default: 0.0, required: true },
+    // isUserGroup: {type: Boolean, default: false},
     userIds: [{
           type: Schema.Types.ObjectId,
           ref: "User",

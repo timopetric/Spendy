@@ -77,7 +77,41 @@
             </div>
         </section>
     </div>
-
 </main>
+<!--
+<script>
+    let podatki = {{narediArray graphData.stroski}};
+    var ctx = document.getElementById("expensesChart").getContext("2d");
+    resultData = [];
+    resultDate = [];
+    for(let i = 0 ; i < podatki.length ; i++){
+        resultData.unshift(podatki[i][1]);
 
+        const datum = new Date(podatki[i][0]);
+        const d = datum.getDate();
+        const m = datum.getMonth();
+        const l = datum.getFullYear();
+        resultDate.unshift(`${d}. ${m}, ${l}`);
+    }
+
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: resultDate,
+            datasets: [
+                {
+                    label: "Odhodki v €",
+                    data: resultData,
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(255, 99, 132, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        },
+    });
+
+</script>
+-->
 

@@ -20,7 +20,7 @@
     <!--        </div>-->
     <div class="container bootstrap snippet">
         <div class="row">
-            <div class="col-sm-10"><h1>janeznovak</h1></div>
+            <div class="col-sm-10"><h1>{{uporabnik.username}}</h1></div>
         </div>
         <div class="row">
             <div class="col-sm-3"><!--left col-->
@@ -44,7 +44,7 @@
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Pregled <i class="fa fa-dashboard fa-1x"></i></li>
                     <li class="list-group-item text-right" id="stSkupin"><span
-                            class="pull-left"><strong>Število skupin</strong></span> 125
+                            class="pull-left"><strong>Število skupin</strong></span> {{stevilo}}
                     </li>
                 </ul>
 
@@ -103,21 +103,21 @@
                     <div class="tab-pane active" id="settings">
 
 
-                        <form action="##" class="form" id="registrationForm" method="post">
+                        <form action="/settings" class="form" id="registrationForm" method="post" id="forma">
                             <div class="form-group">
 
                                 <div class="col-xs-6">
                                     <label for="first_name"><h4>Ime</h4></label>
-                                    <input class="form-control" id="first_name" name="first_name" placeholder="Janez"
+                                    <input class="form-control" id="first_name" name="name" placeholder="Janez"
                                            title="enter your first name if any."
-                                           type="text">
+                                           type="text" >
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <div class="col-xs-6">
                                     <label for="last_name"><h4>Priimek</h4></label>
-                                    <input class="form-control" id="last_name" name="last_name" placeholder="Novak"
+                                    <input class="form-control" id="last_name" name="surname" placeholder="Novak"
                                            title="enter your last name if any."
                                            type="text">
                                 </div>
@@ -137,7 +137,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="email"><h4>Email</h4></label>
-                                    <input class="form-control" id="email" name="email" placeholder="nekaj@email.com"
+                                    <input class="form-control" id="email" name="mail" placeholder="nekaj@email.com"
                                            title="enter your email."
                                            type="email">
                                 </div>
@@ -156,7 +156,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="password2"><h4>Ponovite geslo</h4></label>
-                                    <input class="form-control" id="password2" name="password2" placeholder="Geslo"
+                                    <input class="form-control" id="password2" name="password1" placeholder="Geslo"
                                            title="enter your password2."
                                            type="password">
                                 </div>
@@ -165,7 +165,7 @@
 
                                 <div class="col-xs-6">
                                     <label for="password2"><h4>Limit</h4></label>
-                                    <input class="form-control" id="limit" name="password2" placeholder="350€"
+                                    <input class="form-control" id="limit" name="limit" placeholder="350€"
                                            title="enter your password2."
                                            type="password">
                                 </div>
@@ -173,7 +173,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" onclick="validate()">
                                         Shrani
                                     </button>
                                     <!--<button class="btn btn-lg btn-success pull-right" id="gumb" type="submit"><i
@@ -197,6 +197,7 @@
 <script src="javascripts/jquery-3.5.1.min.js"></script>
 <script src="javascripts/popper.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/checkSettings.js"></script>
 
 
 <!-- auto refresh on change when developing "python3 -m http.server" -->

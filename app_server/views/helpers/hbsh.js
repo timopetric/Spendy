@@ -19,6 +19,10 @@ hbs.registerHelper('formatirajDatum', (nizDatum) => {
 });
 
 
+hbs.registerHelper('narediArray', (context) => {
+    var res = JSON.stringify(context);
+    return res;
+});
 
 hbs.registerHelper('openModal', (aktivnost) => {
     

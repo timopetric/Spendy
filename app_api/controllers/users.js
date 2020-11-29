@@ -29,6 +29,12 @@ const getAllUsers = (req, res) => {
     });
 };
 
+
+const getGroupByUserId = (req, res) => {
+    const userId = req.params.userId;
+
+};
+
 // validate user and return it if pass is correct
 // POST: /v1/users/login
 // {
@@ -36,31 +42,32 @@ const getAllUsers = (req, res) => {
 //     "password": "a"
 // }
 const validateUser = (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
+    const mail = req.body.mail;
+    const password = req.body.password;
 
-  User
-      .findOne()
-      .where("username")
-      .equals(username)
-      .exec((err, user) => {
-        if (!user)
-          return res.status(404).json({
-            "message":
-                "Uporabnik s podanim id-jem ne obstaja."
-          });
-        else if (err) {
-          return res.status(500).json(err);
-        } else {
+    User
+        .findOne()
+        .populate("groupIds")
+        .where("mail")
+        .equals(mail)
+        .exec((err, user) => {
+            if (!user)
+                return res.status(404).json({
+                    "message":
+                        "Uporabnik s podanim poštnim naslovom ne obstaja."
+                });
+            else if (err) {
+                return res.status(500).json(err);
+            } else {
 
-          if (user.pass === password) {
-            return res.status(200).json(user);
-          } else {
-            return res.status(404).json({"message": "password incorrect"});
-          }
+                if (user.pass === password) {
+                    return res.status(200).json(user);
+                } else {
+                    return res.status(404).json({"message": "password incorrect"});
+                }
 
-        }
-      });
+            }
+        });
 }
 
 
@@ -192,6 +199,7 @@ const addUser = (req, res) => {
 const getUserById = (req, res) => {
   User.findById(req.params.id)
     .select("-pass")
+    .populate("groupIds")
     .exec((err, user) => {
       if (!user)
         return res.status(404).json({
@@ -301,6 +309,7 @@ const odstraniUser = (req, res, group) => {
 };
 
 
+
 /**
  * @swagger
  * paths:
@@ -349,5 +358,6 @@ module.exports = {
   updateUser, // todo
   deleteUser, // todo
   validateUser,
-  deleteUserFromGroupId
+  deleteUserFromGroupId,
+  getGroupByUserId
 };
