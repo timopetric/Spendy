@@ -175,7 +175,15 @@ Na strani /settings
 
 Dinamična spletna aplikacija s podatkovno bazo
 
-[Delujoćča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
+NAVODILA ZA NAMESTITEV IN ZAGON:
+-Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
+1. docker-compose up --no-start
+2. docker start sp-spendy-mongodb
+
+-poskrbeti moramo, da se prenesejo vse odvisnosti definirane v package.json.
+1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: npm install
+
+[Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
 ## 4. LP
 
 SPA aplikacija na eni strani
