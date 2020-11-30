@@ -173,6 +173,10 @@ Na strani /settings
 
 DELOVANJE APLIKACIJE NA TREH NAPRAVAH:
 -Naša aplikacija deluje na osebnih računalnikih, tabličnih računalnikih (iPad air 4) ter telefonih(Galaxy s7).
+
+UPORABA DODATNE KNJIŽNICE
+Uporabili smo swagger-ui-express, ki nam je omogočal dokumentacijo apija, s tem smo dobili lažji pregled in razumevanje našega apija.
+Z njim pa smo lahko tudi testirali api klice, in tako preverjali njihovo delovanje.
 ## 3. LP
 
 Dinamična spletna aplikacija s podatkovno bazo
