@@ -182,7 +182,7 @@ NAVODILA ZA NAMESTITEV IN ZAGON:
 
 -poskrbeti moramo, da se prenesejo vse odvisnosti definirane v package.json.
 1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: npm install
-
+2. npm start za zagon aplikacije (če imamo lahko tudi z nodemon)
 [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
 ## 4. LP
 
