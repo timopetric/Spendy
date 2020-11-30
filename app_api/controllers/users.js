@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
-const async = require("async");
 
 
 var apiParametri = {

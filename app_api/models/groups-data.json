@@ -1,14 +1,78 @@
 [
   {
-    "balance": 5000,
-    "name": "Skupina1",
-    "userIds": ["5fbe7ae3530ebcce94f1e2e8"],
-    "adminIds": ["5fbe7ae3530ebcce94f1e2e8"]
+    "balance": 0,
+    "userIds": [
+      "5fc44bd3f35a902b3000803c",
+      "5fc44c35bd64c430d4bc45cb"
+    ],
+    "adminIds": [
+        "5fc44bd3f35a902b3000803c"
+    ],
+    "expenses": ["5fc44df3cf07580754df8b25", "5fc45cdada655843682c6be0"],
+    "_id": "5fc453db3c30ae0017a716cb",
+    "name": "Skupina 1"
+  },
+    {
+    "balance": 0,
+    "userIds": [
+      "5fc44bd3f35a902b3000803c",
+      "5fc44c35bd64c430d4bc45cb",
+      "5fc44c5b8dcf2636e8aeed55"
+    ],
+    "adminIds": [
+        "5fc44bd3f35a902b3000803c"
+    ],
+    "expenses": ["5fc45d47c985aa4208f2353c"],
+    "_id": "5fc454603c30ae0017a716cc",
+    "name": "Skupina 2"
+  },
+
+
+
+
+
+
+  {
+    "balance": 0,
+    "userIds": [
+        "5fc44bd3f35a902b3000803c"
+    ],
+    "adminIds": [
+        "5fc44bd3f35a902b3000803c"
+    ],
+    "expenses": ["5fc45bc04bddfe4168632a98", "5fc45c792bc0b14390b0bd49"],
+    "_id": "5fc44bd3f35a902b3000803b",
+    "name": "Uporabnik super-janez123"
+  },
+    {
+    "balance": 0,
+    "userIds": [
+        "5fc44c35bd64c430d4bc45cb"
+    ],
+    "adminIds": [
+        "5fc44c35bd64c430d4bc45cb"
+    ],
+    "expenses": [],
+    "_id": "5fc44c35bd64c430d4bc45ca",
+    "name": "Uporabnik metka5"
   },
   {
-    "balance": 2500,
-    "name": "Skupina1",
-    "userIds": ["5fbe7ae3530ebcce94f1e2e9"],
-    "adminIds": ["5fbe7ae3530ebcce94f1e2e9"]
+    "balance": 0,
+    "userIds": [
+        "5fc44c5b8dcf2636e8aeed56"
+    ],
+    "adminIds": [
+        "5fc44c5b8dcf2636e8aeed56"
+    ],
+    "expenses": [],
+    "_id": "5fc44c5b8dcf2636e8aeed55",
+    "name": "Uporabnik metka5"
   }
+
+
+
+
+
+
+
 ]
