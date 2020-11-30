@@ -275,8 +275,6 @@
         zadnjih5 += tmp[i][1];
         tmp[i][1] = `${predznak} ${tmp[i][1]} €`
         let tmpi = i+1;
-        console.log(tmpi)
-        console.log(`Oboje${tmpi}C`)
         document.getElementById(`Oboje${tmpi}C`).innerText = tmp[i][1];
     }
     document.getElementById(`Zadnjih5Expensov`).innerText = zadnjih5 + " €";
