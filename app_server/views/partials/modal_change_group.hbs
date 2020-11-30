@@ -1,3 +1,4 @@
+<form action="/index" id="formaZaPosodabljanje">
 <div
                 class="modal fade"
                 id="spremeniSkupino"
@@ -37,6 +38,8 @@
                                             type="text"
                                             placeholder="Novo ime"
                                             value="Družina"
+                                            required=""
+                                            pattern="^[a-zA-Z\s]*$"
                                     />
                                 </div>
                             </div>
@@ -50,6 +53,7 @@
                                             placeholder="xyz €"
                                             type="text"
                                             value="500"
+                                            required=""
                                     />
                                 </div>
                             </div>
@@ -67,10 +71,11 @@
                         >
                             Preklic
                         </button>
-                        <button type="button" class="btn btn-primary text-white">
+                        <button type="submit" class="btn btn-primary text-white" onclick="candidate()">
                             Potrdite spremembe
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+</form>

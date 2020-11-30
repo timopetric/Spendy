@@ -10,41 +10,31 @@ function validateNameAndLastName(nameLastName) {
 }
 
 function prevent() {
-    document.getElementById('registrationForm').addEventListener('click', function (event) {
+    document.getElementById('formaModala').addEventListener('click', function (event) {
         event.preventDefault();
+        event.stopPropagation();
     });
 }
 
-function bandidate() {
+function balidate() {
     var odgovor = "";
 
-    var ime = $("#first_name").val();
-
-    var priimek = $("#last_name").val();
-
-    var email = $("#email").val();
-
-    var password = $("#password").val();
-
-    var password1 = $("#password2").val();
+    var ime = $("#imeSKupine").val();
 
     var limit = $("#limit").val();
 
-    if (ime === "" || priimek === "" || email === "" || password === "" || password1 === "") {
+    var imeDrugegaClana = $("#drugiClan").val();
+
+    if (ime === "" || limit === "" || imeDrugegaClana === "") {
         odgovor += "Vsa polja morajo biti izpolnjena";
     }
 
     if (!validateNameAndLastName(ime)) {
-        odgovor += "\nIme lahko vsebuje le črke!";
+        odgovor += "\nIme skupine lahko vsebuje le črke!";
     }
 
-    if (!validateNameAndLastName(priimek)) {
-        odgovor += "\nPriimek lahko vsebuje le črke!";
-    }
-
-    if (password !== password1) {
-        //napaka = true;
-        odgovor += "\nGesli morata biti enaki";
+    if (!validateNameAndLastName(imeDrugegaClana)) {
+        odgovor += "\nIme drugega člana lahko vsebuje le črke!";
     }
     /*if(validateEmail(email)) {
         console.log("OK");
@@ -53,9 +43,6 @@ function bandidate() {
         console.log("NOT OK");
         window.location.pathname = '/login';
     }*/
-    if (!validateEmail(email)) {
-        odgovor += "\nEmail naslov je lahko le oblike nekdo@nekaj.com";
-    }
 
     if (odgovor !== "") {
         prevent();

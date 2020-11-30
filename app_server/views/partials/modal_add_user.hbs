@@ -1,3 +1,4 @@
+<script>require('javascripts/checkAddUser')</script>
 <div
         class="modal fade"
         id="dodajClana"
@@ -25,7 +26,7 @@
                 <form
                         action="#"
                         class="form"
-                        id="registrationForm1"
+                        id="nekajPac1"
                         method="post"
                 >
                     <div class="form-group">
@@ -35,9 +36,11 @@
                             >
                             <input
                                     class="form-control"
-                                    id="UporabniškoImeClana"
+                                    id="uporabniskoImeClana"
                                     type="text"
                                     placeholder="janeznovak"
+                                    required=""
+                                    pattern="^[a-zA-Z\s]*$"
                             />
                         </div>
                     </div>
@@ -51,7 +54,7 @@
                 >
                     Preklic
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" onclick="validate()">
                     Dodajte skupino
                 </button>
             </div>
