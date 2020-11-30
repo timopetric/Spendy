@@ -14,8 +14,7 @@ var indexRouter = require('./app_server/routes/index');
 var indexApi = require('./app_api/routes/index');
 
 
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+
 
 
 var app = express();
@@ -35,34 +34,6 @@ app.use('/', indexRouter);
 app.use('/api', indexApi);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-//START--------------------------SWAGGER-------------------------------START
-// Swagger set up
-const options = {
-  swaggerDefinition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Spendy API docs",
-      version: "1.0.0",
-      description:
-        "Documentation for spendy API",
-      contact: {
-        name: "Spendy development github",
-        url: "https://github.com/sp-2020-2021/LP-02",
-      }
-    },
-    servers: [
-      {
-        url: "http://localhost:3000/api/v1"
-      }
-    ]
-  },
-  apis: ["app_api/models/schemes-models.js", "app_api/controllers/users.js", "app_api/controllers/groups.js"]
-};
-const specs = swaggerJsdoc(options);
-app.use("/docs", swaggerUi.serve);
-app.get("/docs", swaggerUi.setup(specs, { explorer: true }));
-//END----------------------------SWAGGER---------------------------------END
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
