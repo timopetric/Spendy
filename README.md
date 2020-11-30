@@ -164,10 +164,10 @@ Na strani /signup
 -Ponovitev gesla (isto kot zgoraj)
 
 Na strani /settings
--Ime (Vnesemo ime, poljubna dolžina (currently bugged, da lahko damo poljuben znak))
--Priimek (Vnesemo priimek, poljubna dolžina (currently bugged, da lahko damo poljuben znak))
--Email  (Vnesemo veljaven Email )
--Geslo (Vnesemo geslo, poljubna dolžina poljubni znaki)
+-Ime (Vnesemo ime, kot pri registraciji)
+-Priimek (Vnesemo priimek, kot pri registraciji)
+-Email  (Vnesemo veljaven Email, kot pri registraciji )
+-Geslo (Vnesemo geslo, kot pri registraciji)
 -Ponovite geslo (Vnesemo geslo identicno prejsnjemu)
 -Limit (nastavimo limit v evrih, pozitivni število, poljubno veliko)
 
