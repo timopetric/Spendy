@@ -171,6 +171,8 @@ Na strani /settings
 -Ponovite geslo (Vnesemo geslo identicno prejsnjemu)
 -Limit (nastavimo limit v evrih, pozitivni število, poljubno veliko)
 
+DELOVANJE APLIKACIJE NA TREH NAPRAVAH:
+-Naša aplikacija deluje na osebnih računalnikih, tabličnih računalnikih (iPad air 4) ter telefonih(Galaxy s7).
 ## 3. LP
 
 Dinamična spletna aplikacija s podatkovno bazo
