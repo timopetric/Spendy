@@ -29,7 +29,9 @@ router.get('/settings', ctrlSettings.settings)
     .post("/settings", ctrlSettings.spremeniUporabnika);
 router.get('/signup', ctrlSignUp.signup)
     .post("/signup", ctrlSignUp.registrirajUporabnika);
-router.get('/search', ctrlSearch.seznamAktivnosti);
+router.get('/search', ctrlSearch.seznamAktivnosti)
+      .delete('/search/:groupId/expenses/:expenseId', ctrlSearch.seznamAktivnostiDelete)
+      .post('/search/:groupId/expenses/:expenseId',ctrlSearch.seznamAktivnostiPut);
 
 router.post('/login-server', ctrlLogin.loginServer);
 router.get('/logout-server', ctrlLogin.logoutServer);
