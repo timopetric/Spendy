@@ -1,6 +1,6 @@
 [
   {
-    "balance": 0,
+    "balance": 50000,
     "userIds": [
       "5fc44bd3f35a902b3000803c",
       "5fc44c35bd64c430d4bc45cb"
@@ -13,7 +13,7 @@
     "name": "Skupina 1"
   },
     {
-    "balance": 0,
+    "balance": 2000,
     "userIds": [
       "5fc44bd3f35a902b3000803c",
       "5fc44c35bd64c430d4bc45cb",
@@ -33,7 +33,7 @@
 
 
   {
-    "balance": 0,
+    "balance": 300,
     "userIds": [
         "5fc44bd3f35a902b3000803c"
     ],
@@ -45,7 +45,7 @@
     "name": "Uporabnik super-janez123"
   },
     {
-    "balance": 0,
+    "balance": 32,
     "userIds": [
         "5fc44c35bd64c430d4bc45cb"
     ],
@@ -57,7 +57,7 @@
     "name": "Uporabnik metka5"
   },
   {
-    "balance": 0,
+    "balance": 999,
     "userIds": [
         "5fc44c5b8dcf2636e8aeed56"
     ],
