@@ -205,8 +205,7 @@
     let resultDataP = [];
     for(let i = 0 ; i < prihodki.length ; i++){
         resultDataP.push( prihodki[i][1]);
-        vs += odhodki[i][1];
-        console.log(vs);
+        vs += prihodki[i][1];
     }
     let resultDateP = [];
     for(let i = 0 ; i < prihodki.length ; i++){
@@ -276,9 +275,11 @@
         zadnjih5 += tmp[i][1];
         tmp[i][1] = `${predznak} ${tmp[i][1]} €`
         let tmpi = i+1;
+        console.log(tmpi)
+        console.log(`Oboje${tmpi}C`)
         document.getElementById(`Oboje${tmpi}C`).innerText = tmp[i][1];
     }
     document.getElementById(`Zadnjih5Expensov`).innerText = zadnjih5 + " €";
     document.getElementById(`ZadnjiExpense`).innerText = zadnji +" €";
-    document.getElementById("vs").innerText = vs +" €";
+    document.getElementById(`vs`).innerText =  vs +" €";
 </script>
