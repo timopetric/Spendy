@@ -175,6 +175,7 @@ Na strani /settings
 
 Dinamična spletna aplikacija s podatkovno bazo
 
+[Delujoćča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
 ## 4. LP
 
 SPA aplikacija na eni strani
