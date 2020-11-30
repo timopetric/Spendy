@@ -142,6 +142,35 @@ Ta stran omogoča osnovni pregled nad aplikacijo. Torej kako gre trenutno uporab
 
 Dinamična spletna aplikacija z logiko na strani strežnika
 
+Vsa dovoljena uporabniška vnosna polja:
+Na strani /add_expenses je dovoljeno vnašanje: 
+-Iizbira odhodek/dohodek z checkboxom (spreminjamo s pritiskom na gumb)
+-Vrednost v € (vnese se pozitivna vrednost zaokrožena na cente. Min je 0, maksimuma ni)
+-Datum (izberemo veljaven datum, dd-mm-yyyy)
+-Kategorija (izberemo eno od predefiniranih kategorij)
+-Skupina (izberemo eno izmed skupin, v katerih je trenutno prijavljeni uporabnik)
+-Kratek opis (vnesemo opis. Število znakov ni omejeno. Lahko številke in črke ter znaki)
+
+Na strani /login
+-Epoštni naslov (vnesemo veljaven epoštni naslov oblike zzzz@zzz.zzz, dovoljeni le veljavni emaili)
+-Geslo (Vnesemo uporabniško geslo. Katerikoli znak, dolžina poljubna);
+
+Na strani /signup
+-Ime (Vnesemo ime, poljubna dolžina zgolj črke)
+-Priimek (Vnesemo priimek, poljubna dolžina zgolj črke)
+-Epošta (veljaven Epoštni naslov, kot nekaj vrstic gor)
+-Uporabniško ime (Vnesemo username, poljubna dolžina poljubni znaki)
+-Geslo (Vnesemo geslo, poljubna dolžina poljubni znaki)
+-Ponovitev gesla (isto kot zgoraj)
+
+Na strani /settings
+-Ime (Vnesemo ime, poljubna dolžina (currently bugged, da lahko damo poljuben znak))
+-Priimek (Vnesemo priimek, poljubna dolžina (currently bugged, da lahko damo poljuben znak))
+-Email  (Vnesemo veljaven Email )
+-Geslo (Vnesemo geslo, poljubna dolžina poljubni znaki)
+-Ponovite geslo (Vnesemo geslo identicno prejsnjemu)
+-Limit (nastavimo limit v evrih, pozitivni število, poljubno veliko)
+
 ## 3. LP
 
 Dinamična spletna aplikacija s podatkovno bazo
