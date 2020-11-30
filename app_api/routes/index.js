@@ -16,6 +16,7 @@ router.put("/v1/users/:idUser", ctrlUser.updateUser);
 // todo: za prijavo userja
 router.delete('/v1/users/:idU/groups/:idG', ctrlUser.deleteUserFromGroupId);
 router.get("/v1/users/:userId/groups", ctrlUser.getGroupByUserId);
+router.get("/v1/users/name/:name", ctrlUser.getUserByName);
 
 //END----------------------------USERS---------------------------------END
 

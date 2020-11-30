@@ -21,7 +21,8 @@ router.get('/add_expenses', ctrlAddExpenses.add_expenses);
 router.get('/analysis', ctrlAnalysis.analysis);
 router.get('/first_page', ctrlFirstPage.page);
 router.get('/graphs', ctrlGraphs.graphs);
-router.get('/groups', ctrlGroups.groups);
+router.get('/groups', ctrlGroups.groups)
+    .post('/groups', ctrlGroups.dodajSkupino);
 router.get(['/', '/index'], ctrlIndex.index);
 router.get('/login', ctrlLogin.login);
 router.get('/profil', ctrlProfil.profil);

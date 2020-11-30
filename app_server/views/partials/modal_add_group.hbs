@@ -6,6 +6,7 @@
             aria-labelledby="exampleModalLabelSkupina"
             aria-hidden="true"
     >
+    <form method="post" id="formaModala">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,9 +34,11 @@
                                 <label for="first_name"><h4>Ime skupine</h4></label>
                                 <input
                                         class="form-control"
-                                        id="first_name"
+                                        id="imeSKupine"
                                         type="text"
                                         placeholder="Neko ime"
+                                        name="imeZaSkupino"
+                                        pattern="^[a-zA-Z\s]*$"
                                 />
                             </div>
                         </div>
@@ -44,7 +47,7 @@
                                 <label for="last_name"><h4>Limit</h4></label>
                                 <input
                                         class="form-control"
-                                        id="last_name"
+                                        id="limit"
                                         name="last_name"
                                         placeholder="xyz €"
                                         type="text"
@@ -55,14 +58,15 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="phone"
-                                ><h4>Uporabniško ime prvega čana</h4></label
+                                ><h4>Uporabniško ime drugega čana</h4></label
                                 >
                                 <input
                                         class="form-control"
-                                        id="phone"
-                                        name="phone"
+                                        id="drugiClan"
                                         type="text"
                                         placeholder="janko7"
+                                        name="imeUporabnika"
+                                        pattern="^[a-zA-Z\s]*$"
                                 />
                             </div>
                         </div>
@@ -76,10 +80,11 @@
                     >
                         Preklic
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" onclick="balidate()">
                         Dodajte skupino
                     </button>
                 </div>
             </div>
         </div>
+    </form>
     </div>

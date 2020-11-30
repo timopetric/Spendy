@@ -42,6 +42,25 @@ const getAllUsers = (req, res) => {
     });
 };
 
+const getUserByName = (req, res) => {
+    const name = req.params.name;
+    User.findOne()
+        .where("name")
+        .equals(name)
+        .exec((napaka, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    "Sporočilo": "Uporabnik s tem imenom ne obstaja",
+                });
+            }
+            else if (napaka) {
+                return res.status(500).json(napaka);
+            } else {
+                return res.status(200).json(user);
+            }
+        })
+}
+
 
 const getGroupByUserId = async (req, res) => {
     let found = await User.findById(req.params.userId)
@@ -421,5 +440,7 @@ module.exports = {
   deleteUser, // todo
   validateUser,
   deleteUserFromGroupId,
-  getGroupByUserId
+  getGroupByUserId,
+  getUserByName
+
 };
