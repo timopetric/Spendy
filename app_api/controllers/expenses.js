@@ -193,7 +193,8 @@ const odstraniExpense = (req, res, group) => {
         if (napaka) {
           return res.status(500).json(napaka);
         } else {
-          res.status(204).json(expense);
+          res.redirect("/search");
+          //res.status(204).json(expense);
         }
       });
     }
@@ -201,6 +202,8 @@ const odstraniExpense = (req, res, group) => {
 };
 
 const updateExpense = (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
   if (!req.params.idExpense || !req.params.idGroup) {
     return res.status(404).json({
       message:

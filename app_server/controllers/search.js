@@ -1,4 +1,5 @@
 
+const { Console } = require('console');
 const { query } = require('express');
 const url = require('url');
 const login = require("./login");
@@ -57,6 +58,43 @@ const seznamAktivnosti = (req, res) => {
       });
   };
 
+  const seznamAktivnostiDelete = (req, res) => {
+    console.log("SeznamAktivnostiDelete in search.js")
+    let expenseId = req.params.expenseId;
+    let groupId = req.params.groupId;
+    axios
+      .delete(`api/v1/groups/${groupId}/expenses/${expenseId}`)
+      .then((odgovor) => {
+        let sporocilo = odgovor.data.length ? null : "Izbris ni bil uspešen.";
+        console.log(odgovor.data);
+
+        search(req, res, odgovor.data.expenses, sporocilo);
+      })
+      .catch((err) => {
+        console.log(err);
+        search(req, res, [], "Napaka API-ja pri iskanju expensov.");
+      });
+  };
+
+  const seznamAktivnostiPut = (req, res) => {
+    console.log("SeznamAktivnostiPut in search.js")
+    console.log(req.params);
+    console.log(req.body);
+    let expenseId = req.params.expenseId;
+    let groupId = req.params.groupId;
+    axios
+      .put(`api/v1/groups/${groupId}/expenses/${expenseId}`,req.body)
+      .then((odgovor) => {
+        let sporocilo = odgovor.data.length ? null : "Izbris ni bil uspešen.";
+        console.log(odgovor.data);
+
+        search(req, res, odgovor.data.expenses, sporocilo);
+      })
+      .catch((err) => {
+        console.log(err);
+        search(req, res, [], "Napaka API-ja pri iskanju expensov.");
+      });
+  };
 
 
 const search = (req, res, aktivnosti, sporocilo) => {
@@ -66,7 +104,7 @@ const search = (req, res, aktivnosti, sporocilo) => {
     navbar_button_selected_search: true,
     subtitle: "Poglej si svoje aktivnosti in jih urejaj ",
     stylesheets_load: ["https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"],
-    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js", "/javascripts/getSelectedGroup.js"],
+    scripts_load: [ "https://kit.fontawesome.com/a076d05399.js","/javascripts/modal_script.js", "/javascripts/searchInput.js", "/javascripts/getSelectedGroup.js"," /javascripts/secondModal.js"],
     aktivnosti: aktivnosti,
     sporocilo: sporocilo,
       uporabnik: user,
@@ -77,5 +115,6 @@ const search = (req, res, aktivnosti, sporocilo) => {
 module.exports = {
   search,
   seznamAktivnosti,
-  
+  seznamAktivnostiDelete,
+  seznamAktivnostiPut,
 };

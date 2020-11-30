@@ -58,6 +58,7 @@
 
             {{#each aktivnosti as |aktivnost|}}
                 <div
+                id="modal1"
                 class="card my-2 cursor-pointer"
                 data-toggle="modal"
                 data-target="#exampleModal"
@@ -66,6 +67,7 @@
                 description="{{aktivnost.description}}"
                 cost="{{aktivnost.cost}}"
                 isExpenditure={{aktivnost.isExpenditure}}
+                expenseId={{aktivnost._id}}
                 >
                     <div class="card-body">
                         <div class="row">
@@ -160,11 +162,12 @@
                     type="button"
                     class="btn btn-warning"
                     data-toggle="modal"
-                    data-target="#uredi"
+                    data-target="#urediModal"
                   >
                     Uredi
                   </button>
                   <button
+                    id="deleteButton"
                     type="button"
                     class="btn btn-danger"
                     data-dismiss="modal"
@@ -179,10 +182,10 @@
 
         <div
           class="modal fade"
-          id="uredi"
+          id="urediModal"
           tabindex="-1"
           role="dialog"
-          aria-labelledby="uredi"
+          aria-labelledby="uredimodal"
           aria-hidden="true"
         >
           <div class="modal-dialog mymodal" role="document">
@@ -199,13 +202,14 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="urediExpense" action='' method="post" role="form">
                   <div class="form-group">
                     <label for="kategorija">Kategorija</label>
                     <input
                       type="text"
                       class="form-control"
                       id="kategorija"
+                      name="category_name"
                       placeholder="Vnesite kategorijo"
                     />
                   </div>
@@ -214,8 +218,9 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="exampleInputPassword1"
+                      id="znesek"
                       placeholder="Vnesite znesek"
+                      name="cost"
                     />
                   </div>
                   <div class="form-group">
@@ -225,6 +230,7 @@
                       class="form-control"
                       id="opis"
                       placeholder="Vnesite opis aktivnosti"
+                      name="description"
                     />
                   </div>
                   <div class="form-check form-check-inline">
@@ -233,7 +239,7 @@
                       type="radio"
                       name="inlineRadioOptions"
                       id="prihodek"
-                      value="option1"
+                      value="false"
                     />
                     <label class="form-check-label" for="radioProhodek"
                       >Prihodek</label
@@ -245,7 +251,7 @@
                       type="radio"
                       name="inlineRadioOptions"
                       id="odhodek"
-                      value="option2"
+                      value="true"
                     />
                     <label class="form-check-label" for="radioOdhodek"
                       >Odhodek</label
@@ -254,7 +260,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="formButtonSubmit" type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </div>
@@ -262,3 +268,8 @@
       </div>
     </main>
 
+<script>
+
+
+
+</script>
