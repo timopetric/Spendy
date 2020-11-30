@@ -22,6 +22,7 @@
             <div class="container-fluid">
                 <div>
                     <div class="card-body row">
+                        <!--
                         <div
                                 class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
                         >
@@ -38,7 +39,7 @@
                             <div id="dateEnd">
                                 <input required type="date" />
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -60,12 +61,12 @@
                             </h1>
                             <canvas height="40%" id="incomeChart" width="50%"></canvas>
                         </div>
-                        <div class="col-sm-12 col-lg-6 mb-5">
+                        <!--<div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
                                 Stanje
                             </h1>
                             <canvas height="40%" id="balanceChart" width="50%"></canvas>
-                        </div>
+                        </div>-->
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
                                 Tortni
@@ -78,22 +79,77 @@
         </section>
     </div>
 </main>
-<!--
 <script>
-    let podatki = {{narediArray graphData.stroski}};
-    var ctx = document.getElementById("expensesChart").getContext("2d");
-    resultData = [];
-    resultDate = [];
-    for(let i = 0 ; i < podatki.length ; i++){
-        resultData.unshift(podatki[i][1]);
+    let url = window.location.href;
+    let matching = url.match("groupId");
+    console.log(url)
+    if(matching == null){
+        let group = document.getElementById("idGroup").value;
+        window.location = url + `?groupId=${group}`
 
-        const datum = new Date(podatki[i][0]);
+    }
+
+</script>
+<script
+        crossorigin="anonymous"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+></script>
+<script>
+    let dataBitcoin = {{narediArray expenses.prihodki}} ;
+    let prihodki = dataBitcoin;
+    let resultData = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+        resultData.push( dataBitcoin[i][1]);
+    }
+    let resultDate = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+
+        const datum = new Date(dataBitcoin[i][0]);
         const d = datum.getDate();
         const m = datum.getMonth();
         const l = datum.getFullYear();
-        resultDate.unshift(`${d}. ${m}, ${l}`);
+        resultDate.push(`${d}. ${m}, ${l}`);
     }
 
+    var ctx = document.getElementById("incomeChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: resultDate,
+            datasets: [
+                {
+                    label: "Prihodki v €",
+                    data: resultData,
+                    backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                    borderColor: [
+                        "rgba(92, 184, 92, 1)"
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        },
+    });
+</script>
+
+<script>
+    dataBitcoin = {{narediArray expenses.odhodki}} ;
+    let odhodki = dataBitcoin;
+    resultData = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+        resultData.push( dataBitcoin[i][1]);
+    }
+    resultDate = [];
+    for(let i = 0 ; i < dataBitcoin.length ; i++){
+
+        const datum = new Date(dataBitcoin[i][0]);
+        const d = datum.getDate();
+        const m = datum.getMonth();
+        const l = datum.getFullYear();
+        resultDate.push(`${d}. ${m}, ${l}`);
+    }
+
+    var ctx = document.getElementById("expensesChart").getContext("2d");
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
@@ -111,7 +167,32 @@
             ],
         },
     });
+</script>
+<script>
+    let sumPrihodki = 0;
+    for(let i = 0 ; i < prihodki.length ; i++){
+        sumPrihodki += prihodki[i][1];
+    }
+    let sumOdhodki= 0;
+    for(let i = 0 ; i < odhodki.length ; i++){
+        sumOdhodki += odhodki[i][1];
+    }
+
+    var ctx = document.getElementById("vsChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Prihodki", "Odhodki"],
+            datasets: [
+                {
+                    label: "Prihodki/odhodki v €",
+                    data: [sumPrihodki, sumOdhodki],
+                    backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                    borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                    borderWidth: 1,
+                },
+            ],
+        },
+    });
 
 </script>
--->
-

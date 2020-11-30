@@ -5,6 +5,7 @@ const router = express.Router();
 const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
+const ctrlDb = require("../controllers/db");
 
 //START--------------------------USERS-------------------------------START
 router.get("/v1/users", ctrlUser.getAllUsers);
@@ -55,5 +56,15 @@ router.delete(
 //post
 
 //END----------------------------GROUPS---------------------------------END
+
+//START--------------------------DB IMPORT-------------------------------START
+router.get("/db/import", ctrlDb.importDbData);
+router.get("/db/drop", ctrlDb.dropDb);
+
+
+
+//END----------------------------DB IMPORT---------------------------------END
+
+
 
 module.exports = router;

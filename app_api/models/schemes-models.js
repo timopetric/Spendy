@@ -148,44 +148,44 @@ const groupSchema = new mongoose.Schema(
     userIds: [{
           type: Schema.Types.ObjectId,
           ref: "User",
-          validate: {
-            validator: function (userId) {
-              return new Promise(function (resolve) {
-                userModel.find({_id: userId}, function (err, docs) {
-                  resolve(docs.length === 1);
-                });
-              })
-            },
-            message: props => `User with id '${props.value}' is not a valid user!`
-          },
+          // validate: {
+          //   validator: function (userId) {
+          //     return new Promise(function (resolve) {
+          //       userModel.find({_id: userId}, function (err, docs) {
+          //         resolve(docs.length === 1);
+          //       });
+          //     })
+          //   },
+          //   message: props => `User with id '${props.value}' is not a valid user!`
+          // },
     }],
     adminIds: [{
           type: Schema.Types.ObjectId,
           ref: "User",
-          validate: {
-            validator: function (userId) {
-              return new Promise(function (resolve) {
-                userModel.find({_id: userId}, function (err, docs) {
-                  resolve(docs.length === 1);
-                });
-              })
-            },
-            message: props => `User with id '${props.value}' is not a valid user!`
-          },
+          // validate: {
+          //   validator: function (userId) {
+          //     return new Promise(function (resolve) {
+          //       userModel.find({_id: userId}, function (err, docs) {
+          //         resolve(docs.length === 1);
+          //       });
+          //     })
+          //   },
+          //   message: props => `User with id '${props.value}' is not a valid user!`
+          // },
     }],
     expenses: [{
           type: Schema.Types.ObjectId,
           ref: "Expense",
-          validate: {
-            validator: function (expenseId) {
-              return new Promise(function (resolve) {
-                expenseModel.find({_id: expenseId}, function (err, docs) {
-                  resolve(docs.length === 1);
-                });
-              })
-            },
-            message: props => `Expense with id '${props.value}' is not a valid expense!`
-          },
+          // validate: {
+          //   validator: function (expenseId) {
+          //     return new Promise(function (resolve) {
+          //       expenseModel.find({_id: expenseId}, function (err, docs) {
+          //         resolve(docs.length === 1);
+          //       });
+          //     })
+          //   },
+          //   message: props => `Expense with id '${props.value}' is not a valid expense!`
+          // },
     }],
   },
   {

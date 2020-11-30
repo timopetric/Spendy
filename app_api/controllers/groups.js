@@ -3,7 +3,6 @@ const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
-
 /**
  * @swagger
  * paths:
@@ -177,6 +176,11 @@ const addGroup = (req, res) => {
     }
   );
 };
+
+const getNamesUsersOfGroup = (req, res) => {
+  const userId = req.params.groupId;
+
+}
 
 const removeGroupById = (req, res) => {
   const { idGroup } = req.params;

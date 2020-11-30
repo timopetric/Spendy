@@ -1,26 +1,55 @@
 [
+    {
+        "date": "2020-11-30T00:00:00.000Z",
+        "_id": "5fc45bc04bddfe4168632a98",
+        "isExpenditure": true,
+        "cost": 10000,
+        "category_name": "Avto",
+        "groupId": "5fc44bd3f35a902b3000803b",
+        "description": "Mercedes",
+        "created_by": "5fc44bd3f35a902b3000803c"
+    },
+
   {
-    "isExpenditure": true,
-    "cost": 45,
-    "date": "14,5,2000",
-    "category_name": "neki",
-    "groupId": 1,
-    "description": "neksadasd"
-  },
-  {
-    "isExpenditure": false,
-    "cost": 4,
-    "date": "14,5,2000",
-    "category_name": "neki2",
-    "groupId": 1,
-    "description": "neksadasd2"
-  },
-  {
-    "isExpenditure": true,
-    "cost": 455,
-    "date": "14,5,2000",
-    "category_name": "neki3",
-    "groupId": 1,
-    "description": "neksadasd3"
-  }
+        "date": "2020-11-23T00:00:00.000Z",
+        "_id": "5fc45c792bc0b14390b0bd49",
+        "isExpenditure": true,
+        "cost": 10,
+        "category_name": "Hrana",
+        "groupId": "5fc44bd3f35a902b3000803b",
+        "description": "Banana",
+        "created_by": "5fc44bd3f35a902b3000803c"
+    },
+
+    {
+        "date": "2020-11-28T00:00:00.000Z",
+        "_id": "5fc45cdada655843682c6be0",
+        "isExpenditure": true,
+        "cost": 12,
+        "category_name": "Hrana",
+        "groupId": "5fc453db3c30ae0017a716cb",
+        "description": "Solata",
+        "created_by": "5fc44bd3f35a902b3000803c",
+        "created_at": "2020-11-30T02:45:46.894Z",
+        "updated_at": "2020-11-30T02:45:46.894Z",
+        "__v": 0
+    },
+    {
+        "date": "2020-11-24T00:00:00.000Z",
+        "_id": "5fc45d47c985aa4208f2353c",
+        "isExpenditure": true,
+        "cost": 30,
+        "category_name": "Treningi",
+        "groupId": "5fc454603c30ae0017a716cc",
+        "description": "Karate",
+        "created_by": "5fc44bd3f35a902b3000803c",
+        "created_at": "2020-11-30T02:47:35.857Z",
+        "updated_at": "2020-11-30T02:47:35.857Z",
+        "__v": 0
+    }
+
+
+
+
+
 ]

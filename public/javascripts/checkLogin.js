@@ -4,47 +4,40 @@ function prevent() {
     });
 }
 
-// document.getElementById('forma').addEventListener('click', function (event) {
-//     allGood()
-// })
+/*function allGood() {
+    document.getElementById('forma').addEventListener('click', function (event) {
+        axios.post('/api/v1/users/login', {
+            mail: "a@gmail.com",
+            password: "a"
+        })
+            .then(function (response) {
+                console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);
+                if (response.status === 200) {
+                    console.log(response.data);
+                    let loggedInUser = response.data;
+                    saveCurrentlyLoginedUser(loggedInUser);
 
-// function allGood() {
-//     axios.create({
-//         baseURL: "localhost:3000",
-//         timeout: 5000
-//     }).post('/api/v1/users/login', {
-//         mail: $("#email").val(),
-//         password: $("#password").val()
-//     })
-//     .then(function (response) {
-//
-//         console.log(`/api/v1/users/login response: ${response.status} (if 200 -> OK, else NOT)`);
-//             console.log(response.data);
-//         if (response.status === 200) {
-//             let loggedInUser = response.data;
-//             saveCurrentlyLoginedUser(loggedInUser);
-//
-//             axios.post('/login-server', {
-//                 user: loggedInUser,
-//             })
-//             .then(function (response) {
-//                 if (response.status === 200) {
-//                     console.log("server logged in the user");
-//                 } else {
-//                     console.log("server error logging in user");
-//                 }
-//             })
-//             .catch(function (error) {
-//                 console.log(error);
-//             });
-//
-//         }
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
-// }
+                    axios.post('/login-server', {
+                        user_id: loggedInUser._id,
+                    })
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                console.log("server logged in the user");
+                            } else {
+                                console.log("server error logging in user");
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
 
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
+}*/
 
 function validateEmail(email) {
     //var re = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/;
@@ -102,6 +95,7 @@ function validate() {
 
     }
 }
+
 
 
 
