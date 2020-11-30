@@ -43,7 +43,7 @@
                  <div class="col-lg-3 col-md-6 d-flex stat my-3">
                    <div class="mx-auto">
                      <h6 class="text-muted">skupno P vs. O</h6>
-                     <h3 id="vs" class="font-weight-bold">1000</h3>
+                     <h3 id="vs" class="font-weight-bold"></h3>
                      <!--<h6 class="text-success">
                        <i class="icon ion-md-arrow-dropup-circle"></i> 75.50%
                      </h6>-->
@@ -137,7 +137,7 @@
                          </h5>
                      </div>
                      <div class="align-self-center">
-                       <h5 id="Oboje4C" class="d-inline-block mb-0">4</h5>
+                       <h5 id="Oboje4C" class="d-inline-block mb-0"></h5>
 
                      </div>
                    </div>
@@ -151,7 +151,7 @@
                              </h5>
                          </div>
                          <div class="align-self-center">
-                             <h5 id="Oboje5C" class="d-inline-block mb-0">4</h5>
+                             <h5 id="Oboje5C" class="d-inline-block mb-0"></h5>
 
                          </div>
                      </div>
@@ -260,8 +260,10 @@
 </script>
 <script>
     let tmp = {{narediArray expenses.oboje}} ;
+    console.log(tmp);
     let zadnjih5 = 0;
-    let zadnji = tmp[4][1];
+
+    let zadnji = tmp.length > 0 ? tmp[tmp.length-1][1] : 0;
     for(let i = 0 ; i < tmp.length ; i++){
 
         const datum = new Date(tmp[i][0]);
@@ -271,7 +273,7 @@
         tmp[i][0] = `${d}. ${m}, ${l}`;
         let predznak = tmp[i][1] >= 0 ? "+" : "-";
         console.log(predznak)
-        tmp[i][1] >= 0 ? document.getElementById(`Oboje${i+1}`).classList.add("prihodek") : document.getElementById(`Oboje${i+1}`).classList.add("odhodek");
+        tmp[i][2] == false ? document.getElementById(`Oboje${i+1}`).classList.add("prihodek") : document.getElementById(`Oboje${i+1}`).classList.add("odhodek");
         zadnjih5 += tmp[i][1];
         tmp[i][1] = `${predznak} ${tmp[i][1]} €`
         let tmpi = i+1;

@@ -36,12 +36,14 @@ function pridobiOboje(skupinaId){
 
 
 
-let odhodki = [];
-let prihodki = [];
-let oboje = [];
+
 const index = (req, res) => {
   if (login.getUser() == null) return res.redirect("/login");
   const user = login.getUser();
+
+  let odhodki = [];
+  let prihodki = [];
+  let oboje = [];
 
   let selectedGroup = req.query.groupId;
   if(selectedGroup) {
@@ -72,13 +74,17 @@ const index = (req, res) => {
           pridobiOboje(selectedGroup).then(res2 => {
             if(res2.data){
 
-              for (let i = 0; i < res1.data.expenses.length; i++) {
-                let tmp = [0, 0];
-                tmp[0] = new Date(res1.data.expenses[i].date).getTime();
-                tmp[1] = res1.data.expenses[i].cost;
+              for (let i = 0; i < res2.data.expenses.length; i++) {
+                let tmp = [0, 0, 0];
+                tmp[0] = new Date(res2.data.expenses[i].date).getTime();
+                tmp[1] = res2.data.expenses[i].cost;
+                tmp[2] = res2.data.expenses[i].isExpenditure == 1 ? true : false;
                 oboje.unshift(tmp);
               }
-              oboje = oboje.slice(oboje.length-5,oboje.length);
+              if (! (oboje.length < 6)) {
+                oboje = oboje.slice(oboje.length-5,oboje.length);
+              }
+
               res.render('index', {
                 title: 'Pregled',
                 navbar_button_selected_index: true,

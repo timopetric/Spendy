@@ -29,10 +29,12 @@ function pridobiOdhodkeSkupine(skupinaId){
 }
 
 
-let odhodki = [];
-let prihodki = [];
+
 const graphs = (req, res) => {
   if (login.getUser() == null) return res.redirect("/login");
+
+  let odhodki = [];
+  let prihodki = [];
 
   let selectedGroup = req.query.groupId;
   console.log(selectedGroup)
