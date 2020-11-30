@@ -13,6 +13,7 @@ const ctrlProfil = require('../controllers/profil'); // PROFIL page controller
 const ctrlSearch = require('../controllers/search'); // SEARCH page controller
 const ctrlSignUp = require('../controllers/signup'); // SIGN_UP page controller
 const ctrlSettings = require('../controllers/settings'); // SETTINGS page controller
+const ctrlDb = require('../controllers/db'); // SETTINGS page controller
 
 
 
@@ -33,6 +34,8 @@ router.get('/search', ctrlSearch.seznamAktivnosti);
 
 router.post('/login-server', ctrlLogin.loginServer);
 router.get('/logout-server', ctrlLogin.logoutServer);
+
+router.get('/db', ctrlDb.page);
 
 
 module.exports = router;
