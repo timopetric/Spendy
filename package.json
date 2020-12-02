@@ -11,13 +11,14 @@
   },
   "dependencies": {
     "async": "^3.2.0",
-    "axios": "^0.21.0",
+    "axios": "0.21.0",
     "cookie-parser": "*",
     "debug": "4.3.1",
     "express": "4.17.1",
     "hbs": "*",
     "http-errors": "^1.8.0",
     "mongoose": "5.10.15",
-    "morgan": "1.10.0"
+    "morgan": "1.10.0",
+    "prettier": "2.2.1"
   }
 }
