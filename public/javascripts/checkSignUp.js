@@ -10,7 +10,7 @@ function validateNameAndLastName(nameLastName) {
 }
 
 function prevent() {
-    document.getElementById('toJePost').addEventListener('click', function (event) {
+    document.getElementById("toJePost").addEventListener("click", function (event) {
         event.preventDefault();
     });
 }

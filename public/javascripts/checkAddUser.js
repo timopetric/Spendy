@@ -10,7 +10,7 @@ function validateNameAndLastName(nameLastName) {
 }
 
 function cre() {
-    document.getElementById('nekajPac1').addEventListener('click', function (event) {
+    document.getElementById("nekajPac1").addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
     });

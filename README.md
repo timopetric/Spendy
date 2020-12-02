@@ -16,14 +16,13 @@ lahko doda kdo drug v svojo skupino z uporabo unikatne identifikacije (email).
 Uporabniki potem lahko preverjajo in dodajajo stroške ter prihodke, hkrati pa jim zunanji vir omogoča nastavitev mej za opomnik za nakup delnic oziroma kriptovalut, v katere bi lahko
 potem uporabnik investiral svoje prihranke, ki mu jih je aplikacija pomagala izboljšati!
 
-
 ## Prijava in registracija uporabnika
 
 ### [Prva stran](/public/first_page.html)
+
 Vstopna stran, kjer uporabnik izve osnovne informacije o strani. Na dnu strani je povezava na prijavno stran.
 
 [![alt text](/docs/first_page.png "Pregled")](#prva-stran)
-
 
 ### [Prijavna stran](public/login.html)
 
@@ -38,10 +37,10 @@ Ko uporabnik vnese epoštni naslov, ter geslo se spritiskom na gumb premakne na 
 
 Stran kjer se uporabnik lahko registrira v sistem. Za registracijo mora bodoči uporabnik vpisati svoje podatke:
 
-- Ime
-- Priimek
-- Epoštni naslov
-- Geslo(dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
+-   Ime
+-   Priimek
+-   Epoštni naslov
+-   Geslo(dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
 
 Iz te strani je možno priti še na prvo stran spletne aplikacije, ter nazaj na prijavo.
 
@@ -62,11 +61,11 @@ Poleg tega, lahko spremeni sliko svojega avatarja s pritiskom nanj, nato pa nalo
 
 Na strani **nastavitve** lahko uporabnik spreminja svoje podatke, ter tako kot pri profilu tudi tukaj lahko spremeni sliko svojega avatarja. Podatki ki jih lahko spremeni so:
 
-- Ime
-- Priimek
-- Telefon
-- Email
-- Geslo(tega mora vpisati dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
+-   Ime
+-   Priimek
+-   Telefon
+-   Email
+-   Geslo(tega mora vpisati dvakrat, da ne pride do napake, če bi se uporanik pri pisanju tega zmotil)
 
 Od tu se uporabnik lahko premakne na skupine, stroške, analizo, grafe, pregled, ter nazaj na podatke svojega profila.
 
@@ -137,39 +136,41 @@ Ta stran omogoča osnovni pregled nad aplikacijo. Torej kako gre trenutno uporab
 
 ---
 
-
 ## 2. LP
 
 Dinamična spletna aplikacija z logiko na strani strežnika
 
 Vsa dovoljena uporabniška vnosna polja:
-Na strani /add_expenses je dovoljeno vnašanje: 
--Iizbira odhodek/dohodek z checkboxom (spreminjamo s pritiskom na gumb)
--Vrednost v € (vnese se pozitivna vrednost zaokrožena na cente. Min je 0, maksimuma ni)
--Datum (izberemo veljaven datum, dd-mm-yyyy)
--Kategorija (izberemo eno od predefiniranih kategorij)
--Skupina (izberemo eno izmed skupin, v katerih je trenutno prijavljeni uporabnik)
--Kratek opis (vnesemo opis. Število znakov ni omejeno. Lahko številke in črke ter znaki)
+Na strani /add_expenses je dovoljeno vnašanje:
+
+-   Iizbira odhodek/dohodek z checkboxom (spreminjamo s pritiskom na gumb)
+-   Vrednost v € (vnese se pozitivna vrednost zaokrožena na cente. Min je 0, maksimuma ni)
+-   Datum (izberemo veljaven datum, dd-mm-yyyy)
+-   Kategorija (izberemo eno od predefiniranih kategorij)
+-   Skupina (izberemo eno izmed skupin, v katerih je trenutno prijavljeni uporabnik)
+-   Kratek opis (vnesemo opis. Število znakov ni omejeno. Lahko številke in črke ter znaki)
 
 Na strani /login
 -Epoštni naslov (vnesemo veljaven epoštni naslov oblike zzzz@zzz.zzz, dovoljeni le veljavni emaili)
 -Geslo (Vnesemo uporabniško geslo. Katerikoli znak, dolžina poljubna);
 
 Na strani /signup
--Ime (Vnesemo ime, poljubna dolžina zgolj črke)
--Priimek (Vnesemo priimek, poljubna dolžina zgolj črke)
--Epošta (veljaven Epoštni naslov, kot nekaj vrstic gor)
--Uporabniško ime (Vnesemo username, poljubna dolžina poljubni znaki)
--Geslo (Vnesemo geslo, poljubna dolžina poljubni znaki)
--Ponovitev gesla (isto kot zgoraj)
+
+-   Ime (Vnesemo ime, poljubna dolžina zgolj črke)
+-   Priimek (Vnesemo priimek, poljubna dolžina zgolj črke)
+-   Epošta (veljaven Epoštni naslov, kot nekaj vrstic gor)
+-   Uporabniško ime (Vnesemo username, poljubna dolžina poljubni znaki)
+-   Geslo (Vnesemo geslo, poljubna dolžina poljubni znaki)
+-   Ponovitev gesla (isto kot zgoraj)
 
 Na strani /settings
--Ime (Vnesemo ime, kot pri registraciji)
--Priimek (Vnesemo priimek, kot pri registraciji)
--Email  (Vnesemo veljaven Email, kot pri registraciji )
--Geslo (Vnesemo geslo, kot pri registraciji)
--Ponovite geslo (Vnesemo geslo identicno prejsnjemu)
--Limit (nastavimo limit v evrih, pozitivni število, poljubno veliko)
+
+-   Ime (Vnesemo ime, kot pri registraciji)
+-   Priimek (Vnesemo priimek, kot pri registraciji)
+-   Email (Vnesemo veljaven Email, kot pri registraciji )
+-   Geslo (Vnesemo geslo, kot pri registraciji)
+-   Ponovite geslo (Vnesemo geslo identicno prejsnjemu)
+-   Limit (nastavimo limit v evrih, pozitivni število, poljubno veliko)
 
 DELOVANJE APLIKACIJE NA TREH NAPRAVAH:
 -Naša aplikacija deluje na osebnih računalnikih, tabličnih računalnikih (iPad air 4) ter telefonih(Galaxy s7).
@@ -177,19 +178,23 @@ DELOVANJE APLIKACIJE NA TREH NAPRAVAH:
 UPORABA DODATNE KNJIŽNICE
 Uporabili smo swagger-ui-express, ki nam je omogočal dokumentacijo apija, s tem smo dobili lažji pregled in razumevanje našega apija.
 Z njim pa smo lahko tudi testirali api klice, in tako preverjali njihovo delovanje.
+
 ## 3. LP
 
 Dinamična spletna aplikacija s podatkovno bazo
 
 NAVODILA ZA NAMESTITEV IN ZAGON:
 -Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
+
 1. docker-compose up --no-start
 2. docker start sp-spendy-mongodb
 
 -poskrbeti moramo, da se prenesejo vse odvisnosti definirane v package.json.
+
 1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: npm install
 2. npm start za zagon aplikacije (če imamo lahko tudi z nodemon)
-[Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
+   [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
+
 ## 4. LP
 
 SPA aplikacija na eni strani

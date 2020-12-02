@@ -1,465 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Spendy</title>
-    <link rel="icon" href="icons/logo.ico" />
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
-    <!-- must be before other css imports -->
-    <link href="stylesheets/navbar.css" rel="stylesheet" />
-    <link href="stylesheets/main.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Spendy</title>
+        <link rel="icon" href="icons/logo.ico" />
+        <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
+        <!-- must be before other css imports -->
+        <link href="stylesheets/navbar.css" rel="stylesheet" />
+        <link href="stylesheets/main.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-  </head>
+        <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    </head>
 
-  <body>
-    <!-- ################ navbar ################ -->
-    <nav class="navbar navbar-spendy">
-      <ul class="navbar-nav navbar-spendy">
-        <li class="logo navbar-spendy">
-          <a class="nav-link navbar-spendy" href="#">
-            <img
-              alt="logo"
-              class="logo-img navbar-spendy"
-              src="icons/logo.png"
-            />
-            <span class="logo-text navbar-spendy">Spendy</span>
-          </a>
-        </li>
+    <body>
+        <!-- ################ navbar ################ -->
+        <nav class="navbar navbar-spendy">
+            <ul class="navbar-nav navbar-spendy">
+                <li class="logo navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="#">
+                        <img alt="logo" class="logo-img navbar-spendy" src="icons/logo.png" />
+                        <span class="logo-text navbar-spendy">Spendy</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="index.html">
-            <img
-              alt="dashboard"
-              class="navbar-spendy"
-              src="icons/dashboard.svg"
-            />
-            <span class="link-text navbar-spendy">Pregled</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="index.html">
+                        <img alt="dashboard" class="navbar-spendy" src="icons/dashboard.svg" />
+                        <span class="link-text navbar-spendy">Pregled</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="graphs.html">
-            <img alt="graph" class="navbar-spendy" src="icons/graph.svg" />
-            <span class="link-text navbar-spendy">Grafično</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="graphs.html">
+                        <img alt="graph" class="navbar-spendy" src="icons/graph.svg" />
+                        <span class="link-text navbar-spendy">Grafično</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="analysis.html">
-            <img
-              alt="analysis"
-              class="navbar-spendy"
-              src="icons/analysis.svg"
-            />
-            <span class="link-text navbar-spendy">Analiza</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="analysis.html">
+                        <img alt="analysis" class="navbar-spendy" src="icons/analysis.svg" />
+                        <span class="link-text navbar-spendy">Analiza</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a
-            id="current-page"
-            class="nav-link navbar-spendy"
-            href="search.html"
-          >
-            <img
-              alt="expenses"
-              class="navbar-spendy"
-              src="icons/expenses.svg"
-            />
-            <span class="link-text navbar-spendy">Stroški</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a id="current-page" class="nav-link navbar-spendy" href="search.html">
+                        <img alt="expenses" class="navbar-spendy" src="icons/expenses.svg" />
+                        <span class="link-text navbar-spendy">Stroški</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="groups.html">
-            <img alt="groups" class="navbar-spendy" src="icons/groups.svg" />
-            <span class="link-text navbar-spendy">Skupine</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="groups.html">
+                        <img alt="groups" class="navbar-spendy" src="icons/groups.svg" />
+                        <span class="link-text navbar-spendy">Skupine</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-    <!-- ################ main body ################ -->
-    <main>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto col-md-4">
-          <div class="form-group">
-            <label for="inputState"
-              ><p class="font-weight-light py-0 my-0">
-                Izberi pogled skupine
-              </p></label
-            >
-            <select id="inputState" class="form-control">
-              <option selected>Brez izbrane skupine</option>
-              <option>Družina</option>
-              <option>Služba</option>
-              <option>Šeena</option>
-            </select>
-          </div>
-        </div>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item dropdown">
-            <a
-              aria-expanded="false"
-              aria-haspopup="true"
-              class="nav-link text-dark dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-            >
-              <img
-                alt=""
-                class="img-fluid rounded-circle avatar mr-2"
-                src="icons/user-1.png"
-              />
-              Janez Novak
-            </a>
-            <div
-              aria-labelledby="navbarDropdown"
-              class="dropdown-menu dropdown-menu-right"
-            >
-              <a class="dropdown-item" href="profil.html">Moj profil</a>
-              <a class="dropdown-item" href="settings.html">Nastavitve</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="first_page.html">Odjava</a>
+        <!-- ################ main body ################ -->
+        <main>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="mr-auto col-md-4">
+                    <div class="form-group">
+                        <label for="inputState"
+                            ><p class="font-weight-light py-0 my-0">Izberi pogled skupine</p></label
+                        >
+                        <select id="inputState" class="form-control">
+                            <option selected>Brez izbrane skupine</option>
+                            <option>Družina</option>
+                            <option>Služba</option>
+                            <option>Šeena</option>
+                        </select>
+                    </div>
+                </div>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            class="nav-link text-dark dropdown-toggle"
+                            data-toggle="dropdown"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                        >
+                            <img
+                                alt=""
+                                class="img-fluid rounded-circle avatar mr-2"
+                                src="icons/user-1.png"
+                            />
+                            Janez Novak
+                        </a>
+                        <div
+                            aria-labelledby="navbarDropdown"
+                            class="dropdown-menu dropdown-menu-right"
+                        >
+                            <a class="dropdown-item" href="profil.html">Moj profil</a>
+                            <a class="dropdown-item" href="settings.html">Nastavitve</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="first_page.html">Odjava</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container-fluid bg-grey px-3" id="content">
+                <section class="bg-light py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8">
+                                <h1 class="font-weight-bold mb-0">Poišči aktivnosti</h1>
+                                <p class="lead text-muted">
+                                    Poglej si svoje aktivnosti in jih urejaj
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-          </li>
-        </ul>
-      </nav>
 
-      <div class="container-fluid bg-grey px-3" id="content">
-        <section class="bg-light py-3">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Poišči aktivnosti</h1>
-                <p class="lead text-muted">
-                  Poglej si svoje aktivnosti in jih urejaj
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+            <div id="content" class="container search bg-grey px-3 mb-3">
+                <div class="container-fluid">
+                    <form class="position-relative my-2 w-100">
+                        <input
+                            class="form-control"
+                            type="search"
+                            placeholder="Isci po dohodkih/odhodkih"
+                            aria-label="search"
+                        />
+                        <button class="btn position-absolute btn-search" type="submit">
+                            <i class="icon ion-md-search"></i>
+                        </button>
+                    </form>
+                    <div class="row mx-0">
+                        <div class="mr-auto">
+                            <!-- Example single danger button -->
+                            <div class="btn-group">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    Sortiraj
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Odhodki</a>
+                                    <a class="dropdown-item" href="#">Prihodki</a>
+                                    <a class="dropdown-item" href="#">Kategorija</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="options" id="option1" checked />
+                                Dan
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option2" /> Mesec
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option3" /> Leto
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-      <div id="content" class="container search bg-grey px-3 mb-3">
-        <div class="container-fluid">
-          <form class="position-relative my-2 w-100">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Isci po dohodkih/odhodkih"
-              aria-label="search"
-            />
-            <button class="btn position-absolute btn-search" type="submit">
-              <i class="icon ion-md-search"></i>
-            </button>
-          </form>
-          <div class="row mx-0">
-            <div class="mr-auto">
-              <!-- Example single danger button -->
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                <section class="bg-mix py-3">
+                    <div class="container-fluid">
+                        <div
+                            class="card my-2 cursor-pointer"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                        >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-1 d-flex flex-column justify-content-center">
+                                        <i
+                                            class="fas fa-arrow-down"
+                                            style="font-size: 48px; color: #cb3b3b"
+                                        ></i>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"></div>
+                                            <div><p class="font-weight-light">12.10.2020</p></div>
+                                        </div>
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><h4>Tacos</h4></div>
+                                            <div><h4>25€</h4></div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="card my-2 cursor-pointer"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                        >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-1 d-flex flex-column justify-content-center">
+                                        <i
+                                            class="fas fa-arrow-down"
+                                            style="font-size: 48px; color: #cb3b3b"
+                                        ></i>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"></div>
+                                            <div><p class="font-weight-light">12.10.2020</p></div>
+                                        </div>
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><h4>Petrol</h4></div>
+                                            <div><h4>60€</h4></div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="card my-2 cursor-pointer"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                        >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-1 d-flex flex-column justify-content-center">
+                                        <i
+                                            class="fas fa-arrow-up"
+                                            style="font-size: 48px; color: #45a72d"
+                                        ></i>
+                                    </div>
+                                    <div class="col-lg-11">
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"></div>
+                                            <div><p class="font-weight-light">15.10.2020</p></div>
+                                        </div>
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><h4>Stava</h4></div>
+                                            <div><h4>70€</h4></div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="container-fluid d-flex">
+                    <a href="add_expenses.html" class="btn btn-success w-100 px-3">
+                        Dodaj nove aktivnosti
+                    </a>
+                </div>
+
+                <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-2"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
                 >
-                  Sortiraj
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Odhodki</a>
-                  <a class="dropdown-item" href="#">Prihodki</a>
-                  <a class="dropdown-item" href="#">Kategorija</a>
+                    <div class="modal-dialog mymodal" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tacos</h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-1 mr-3">
+                                        <i
+                                            class="fas fa-arrow-down"
+                                            style="font-size: 48px; color: #cb3b3b"
+                                        ></i>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><b>Tacos: </b></div>
+                                            <div>28€</div>
+                                        </div>
+
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><b>Datum: </b></div>
+                                            <div>12.10.2020</div>
+                                        </div>
+
+                                        <div class="row mx-0">
+                                            <div class="mr-auto"><b>Opis: </b></div>
+                                            <div>Kosilo v mehiški restavraciji</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-warning"
+                                        data-toggle="modal"
+                                        data-target="#uredi"
+                                    >
+                                        Uredi
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        data-dismiss="modal"
+                                    >
+                                        Izbriši
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option1" checked />
-                Dan
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" /> Mesec
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" /> Leto
-              </label>
-            </div>
-          </div>
-        </div>
 
-        <section class="bg-mix py-3">
-          <div class="container-fluid">
-            <div
-              class="card my-2 cursor-pointer"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              <div class="card-body">
-                <div class="row">
-                  <div
-                    class="col-lg-1 d-flex flex-column justify-content-center"
-                  >
-                    <i
-                      class="fas fa-arrow-down"
-                      style="font-size: 48px; color: #cb3b3b"
-                    ></i>
-                  </div>
-                  <div class="col-lg-11">
-                    <div class="row mx-0">
-                      <div class="mr-auto"></div>
-                      <div><p class="font-weight-light">12.10.2020</p></div>
-                    </div>
-                    <div class="row mx-0">
-                      <div class="mr-auto"><h4>Tacos</h4></div>
-                      <div><h4>25€</h4></div>
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="card my-2 cursor-pointer"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              <div class="card-body">
-                <div class="row">
-                  <div
-                    class="col-lg-1 d-flex flex-column justify-content-center"
-                  >
-                    <i
-                      class="fas fa-arrow-down"
-                      style="font-size: 48px; color: #cb3b3b"
-                    ></i>
-                  </div>
-                  <div class="col-lg-11">
-                    <div class="row mx-0">
-                      <div class="mr-auto"></div>
-                      <div><p class="font-weight-light">12.10.2020</p></div>
-                    </div>
-                    <div class="row mx-0">
-                      <div class="mr-auto"><h4>Petrol</h4></div>
-                      <div><h4>60€</h4></div>
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="card my-2 cursor-pointer"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              <div class="card-body">
-                <div class="row">
-                  <div
-                    class="col-lg-1 d-flex flex-column justify-content-center"
-                  >
-                    <i
-                      class="fas fa-arrow-up"
-                      style="font-size: 48px; color: #45a72d"
-                    ></i>
-                  </div>
-                  <div class="col-lg-11">
-                    <div class="row mx-0">
-                      <div class="mr-auto"></div>
-                      <div><p class="font-weight-light">15.10.2020</p></div>
-                    </div>
-                    <div class="row mx-0">
-                      <div class="mr-auto"><h4>Stava</h4></div>
-                      <div><h4>70€</h4></div>
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="container-fluid d-flex">
-          <a href="add_expenses.html" class="btn btn-success w-100 px-3">
-            Dodaj nove aktivnosti
-          </a>
-        </div>
-
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-2"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog mymodal" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tacos</h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
+                <div
+                    class="modal fade"
+                    id="uredi"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="uredi"
+                    aria-hidden="true"
                 >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-lg-1 mr-3">
-                    <i
-                      class="fas fa-arrow-down"
-                      style="font-size: 48px; color: #cb3b3b"
-                    ></i>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="row mx-0">
-                      <div class="mr-auto"><b>Tacos: </b></div>
-                      <div>28€</div>
+                    <div class="modal-dialog mymodal" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Uredi</h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="kategorija">Kategorija</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="kategorija"
+                                            placeholder="Vnesite kategorijo"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="znesek">Znesek</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="exampleInputPassword1"
+                                            placeholder="Vnesite znesek"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kategorija">Opis</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="kategorija"
+                                            placeholder="Vnesite opis aktivnosti"
+                                        />
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="prihodek"
+                                            value="option1"
+                                        />
+                                        <label class="form-check-label" for="radioProhodek"
+                                            >Prihodek</label
+                                        >
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="odhodek"
+                                            value="option2"
+                                        />
+                                        <label class="form-check-label" for="radioOdhodek"
+                                            >Odhodek</label
+                                        >
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="row mx-0">
-                      <div class="mr-auto"><b>Datum: </b></div>
-                      <div>12.10.2020</div>
-                    </div>
-
-                    <div class="row mx-0">
-                      <div class="mr-auto"><b>Opis: </b></div>
-                      <div>Kosilo v mehiški restavraciji</div>
-                    </div>
-                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    data-toggle="modal"
-                    data-target="#uredi"
-                  >
-                    Uredi
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    data-dismiss="modal"
-                  >
-                    Izbriši
-                  </button>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
+        </main>
 
-        <div
-          class="modal fade"
-          id="uredi"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="uredi"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog mymodal" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Uredi</h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="kategorija">Kategorija</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="kategorija"
-                      placeholder="Vnesite kategorijo"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="znesek">Znesek</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Vnesite znesek"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="kategorija">Opis</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="kategorija"
-                      placeholder="Vnesite opis aktivnosti"
-                    />
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="prihodek"
-                      value="option1"
-                    />
-                    <label class="form-check-label" for="radioProhodek"
-                      >Prihodek</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="odhodek"
-                      value="option2"
-                    />
-                    <label class="form-check-label" for="radioOdhodek"
-                      >Odhodek</label
-                    >
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+        <!-- load scripts at the end -->
+        <script src="javascripts/jquery-3.5.1.min.js"></script>
+        <script src="javascripts/popper.min.js"></script>
+        <script src="javascripts/bootstrap.min.js"></script>
 
-    <!-- load scripts at the end -->
-    <script src="javascripts/jquery-3.5.1.min.js"></script>
-    <script src="javascripts/popper.min.js"></script>
-    <script src="javascripts/bootstrap.min.js"></script>
-
-    <!-- auto refresh on change when developing "python3 -m http.server" -->
-    <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
-  </body>
+        <!-- auto refresh on change when developing "python3 -m http.server" -->
+        <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+    </body>
 </html>

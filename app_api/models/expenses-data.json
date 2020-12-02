@@ -9,8 +9,7 @@
         "description": "Mercedes",
         "created_by": "5fc44bd3f35a902b3000803c"
     },
-
-  {
+    {
         "date": "2020-11-23T00:00:00.000Z",
         "_id": "5fc45c792bc0b14390b0bd49",
         "isExpenditure": true,
@@ -20,7 +19,6 @@
         "description": "Banana",
         "created_by": "5fc44bd3f35a902b3000803c"
     },
-
     {
         "date": "2020-11-28T00:00:00.000Z",
         "_id": "5fc45cdada655843682c6be0",
@@ -47,9 +45,4 @@
         "updated_at": "2020-11-30T02:47:35.857Z",
         "__v": 0
     }
-
-
-
-
-
 ]

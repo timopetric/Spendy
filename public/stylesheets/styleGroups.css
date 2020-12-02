@@ -16,23 +16,25 @@
 }*/
 
 .accordion > button {
-    text-align: center!important;
+    text-align: center !important;
 }
 
 .btn:hover {
     text-decoration: none;
-    color: #CB3B3B;
+    color: #cb3b3b;
 }
 
 .btn:visited {
     text-decoration: none;
 }
 
-#dodaj1, #dodaj2 {
+#dodaj1,
+#dodaj2 {
     margin-top: 5px;
 }
 
-#dodaj1, #dodaj2 {
+#dodaj1,
+#dodaj2 {
     color: white;
 }
 
@@ -52,11 +54,12 @@
 }
 
 svg:hover {
-    color: #CB3B3B;
+    color: #cb3b3b;
 }
 
-#dodajHitro1, #dodajHitro2 {
-    text-decoration-color: white!important;
+#dodajHitro1,
+#dodajHitro2 {
+    text-decoration-color: white !important;
     margin-top: 10px;
 }
 
@@ -64,7 +67,7 @@ svg:hover {
     background-color: red;
 }*/
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
     svg {
         bottom: 55px;
         margin-right: 0;

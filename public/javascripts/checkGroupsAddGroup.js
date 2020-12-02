@@ -10,7 +10,7 @@ function validateNameAndLastName(nameLastName) {
 }
 
 function prevent() {
-    document.getElementById('formaModala').addEventListener('click', function (event) {
+    document.getElementById("formaModala").addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
     });

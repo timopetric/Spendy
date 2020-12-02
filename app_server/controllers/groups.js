@@ -1,16 +1,15 @@
 var apiParametri = {
-  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+    streznik: "http://localhost:" + (process.env.PORT || 3000),
 };
-if (process.env.NODE_ENV === 'production') {
-  apiParametri.streznik = 'https://sp-spendy.herokuapp.com';
+if (process.env.NODE_ENV === "production") {
+    apiParametri.streznik = "https://sp-spendy.herokuapp.com";
 }
-const axios = require('axios').create({
-  baseURL: apiParametri.streznik,
-  timeout: 5000
+const axios = require("axios").create({
+    baseURL: apiParametri.streznik,
+    timeout: 5000,
 });
 
 const login = require("./login");
-
 
 const getUserData = (userId) => {
     try {
@@ -21,69 +20,64 @@ const getUserData = (userId) => {
 };
 const getGropData = async (skupina) => {
     try {
-        return await axios.get(`/api/v1/groups/${skupina}`)
+        return await axios.get(`/api/v1/groups/${skupina}`);
     } catch (error) {
         console.error(error);
     }
 };
 
-
-
 const groups = (req, res) => {
     console.log("Sem v skupinah");
     const userId = login.getUserId();
-    console.log("sem v groups")
+    console.log("sem v groups");
     let skupineList = [];
-    getUserData(userId).then((response) => {
+    getUserData(userId)
+        .then((response) => {
+            var skupineId = response.data.groupIds;
 
+            console.log("To je odgovor v skupinah " + skupineId);
+            console.log(skupineId);
 
-        var skupineId = response.data.groupIds;
+            for (let i = 0; i < skupineId.length; i++) {
+                var skupina = skupineId[i]._id;
+                var ime = {};
+                getGropData(skupina)
+                    .then((response) => {
+                        const skupinaData = response.data;
+                        skupineList.push(skupinaData);
+                        console.log(skupinaData);
 
-        console.log("To je odgovor v skupinah " + skupineId);
-        console.log(skupineId);
+                        if (i === skupineId.length - 1) {
+                            console.log("################################");
+                            console.log(skupineList);
+                            console.log(skupineList.length);
+                            const user = login.getUser();
 
-        for (let i = 0; i < skupineId.length; i++) {
-            var skupina = skupineId[i]._id;
-            var ime = {};
-            getGropData(skupina).then(response => {
-                const skupinaData = response.data;
-                skupineList.push(skupinaData)
-                console.log(skupinaData);
-
-                if (i === skupineId.length - 1) {
-
-                    console.log("################################");
-                    console.log(skupineList);
-                    console.log(skupineList.length);
-                    const user = login.getUser();
-
-                    res.render('groups', {
-                        title: 'Skupine',
-                        navbar_button_selected_groups: true,
-                        uporabnik: user,
-                        skupine: skupineList,
-                        stylesheets_load: ["/stylesheets/styleGroups.css"],
-                        scripts_load: [
-                            "/javascripts/jquery-3.5.1.min.js",
-                            "/javascripts/popper.min.js",
-                            "https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-                        ]
+                            res.render("groups", {
+                                title: "Skupine",
+                                navbar_button_selected_groups: true,
+                                uporabnik: user,
+                                skupine: skupineList,
+                                stylesheets_load: ["/stylesheets/styleGroups.css"],
+                                scripts_load: [
+                                    "/javascripts/jquery-3.5.1.min.js",
+                                    "/javascripts/popper.min.js",
+                                    "https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js",
+                                ],
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
                     });
+            }
 
-                }
-            })
-                .catch((err) => {
-                    console.log(err);
-                })
-
-        }
-
-        // izpisiSkupine(req, res, skupineList);
-    })
+            // izpisiSkupine(req, res, skupineList);
+        })
         .catch((err) => {
             console.log(err);
-        })
-}
+        });
+};
 
 const pridobiUporabnika = (ime) => {
     try {
@@ -93,46 +87,37 @@ const pridobiUporabnika = (ime) => {
     }
 };
 
-
 const dodajSkupino = (req, res) => {
-      const uporabnik1 = login.getUserId();
-      console.log(uporabnik1);
-      const ime = req.body.imeUporabnika;
-         axios
-              .get(`api/v1/users/name/${ime}`)
-              .then((odgovor) => {
-                  console.log("########################################################")
-                  console.log(odgovor.data);
-                  axios({
-                      method: "post",
-                      url: "/api/v1/groups/",
-                      data: {
-                          name: req.body.imeZaSkupino,
-                          adminIds: uporabnik1,
-                          userIds: [uporabnik1, odgovor.data._id]
-                      }
-                  }).then((response) => {
-                      res.redirect('/index');
-                  }).catch((napaka) => {
-                      console.log("Prišlo je do napake" + napaka);
-                  })
-              })
-              .catch((err) => {
-                  console.log(err);
-              })
-}
-
-
-
-
-
-
-const izpisiSkupine = (req, res, grupe) => {
-
-
+    const uporabnik1 = login.getUserId();
+    console.log(uporabnik1);
+    const ime = req.body.imeUporabnika;
+    axios
+        .get(`api/v1/users/name/${ime}`)
+        .then((odgovor) => {
+            console.log("########################################################");
+            console.log(odgovor.data);
+            axios({
+                method: "post",
+                url: "/api/v1/groups/",
+                data: {
+                    name: req.body.imeZaSkupino,
+                    adminIds: uporabnik1,
+                    userIds: [uporabnik1, odgovor.data._id],
+                },
+            })
+                .then((response) => {
+                    res.redirect("/index");
+                })
+                .catch((napaka) => {
+                    console.log("Prišlo je do napake" + napaka);
+                });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
-
+const izpisiSkupine = (req, res, grupe) => {};
 
 /*const groups = (req, res) => {
   res.render('groups',{
@@ -162,6 +147,6 @@ const izpisiSkupine = (req, res, grupe) => {
 };*/
 
 module.exports = {
-  groups,
-  dodajSkupino
+    groups,
+    dodajSkupino,
 };

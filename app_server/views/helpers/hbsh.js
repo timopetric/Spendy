@@ -1,7 +1,6 @@
-const hbs = require('hbs');
+const hbs = require("hbs");
 
-
-hbs.registerHelper("if", function(conditional, options) {
+hbs.registerHelper("if", function (conditional, options) {
     if (conditional) {
         return options.fn(this);
     } else {
@@ -9,22 +8,31 @@ hbs.registerHelper("if", function(conditional, options) {
     }
 });
 
-hbs.registerHelper('formatirajDatum', (nizDatum) => {
+hbs.registerHelper("formatirajDatum", (nizDatum) => {
     const datum = new Date(nizDatum);
-    const imenaMesecev = ["januar", "februar", "marec", "april", "maj", "junij", "julij", "avgust", "september", "oktober", "november", "december"];
+    const imenaMesecev = [
+        "januar",
+        "februar",
+        "marec",
+        "april",
+        "maj",
+        "junij",
+        "julij",
+        "avgust",
+        "september",
+        "oktober",
+        "november",
+        "december",
+    ];
     const d = datum.getDate();
     const m = imenaMesecev[datum.getMonth()];
     const l = datum.getFullYear();
     return `${d}. ${m}, ${l}`;
 });
 
-
-hbs.registerHelper('narediArray', (context) => {
+hbs.registerHelper("narediArray", (context) => {
     var res = JSON.stringify(context);
     return res;
 });
 
-hbs.registerHelper('openModal', (aktivnost) => {
-    
-
-});
+hbs.registerHelper("openModal", (aktivnost) => {});

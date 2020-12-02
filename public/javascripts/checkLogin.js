@@ -1,5 +1,5 @@
 function prevent() {
-    document.getElementById('forma').addEventListener('click', function (event) {
+    document.getElementById("forma").addEventListener("click", function (event) {
         event.preventDefault();
     });
 }
@@ -75,29 +75,24 @@ function validate() {
     } else {
         // allGood();
 
-
-        axios.post('/api/v1/users/login', {
-            mail: email,
-            password: passwd
-          })
-          .then(function (response) {
-            console.log(`/api/v1/users/login response: ${response.status} okkkkkkkkk cool`);
-            if (response.status === 200) {
-              console.log(response.data);
-              let loggedInUser = response.data;
-              saveCurrentlyLoginedUser(loggedInUser);
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-
+        axios
+            .post("/api/v1/users/login", {
+                mail: email,
+                password: passwd,
+            })
+            .then(function (response) {
+                console.log(`/api/v1/users/login response: ${response.status} okkkkkkkkk cool`);
+                if (response.status === 200) {
+                    console.log(response.data);
+                    let loggedInUser = response.data;
+                    saveCurrentlyLoginedUser(loggedInUser);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 }
-
-
-
 
 /*axios.post('/api/v1/users/login', {
     mail: "a@gmail.com",
@@ -147,4 +142,3 @@ function validate() {
     .catch(function (error) {
         console.log(error);
     });*/
-

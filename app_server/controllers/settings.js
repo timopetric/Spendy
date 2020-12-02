@@ -1,16 +1,16 @@
 var apiParametri = {
-    streznik: 'http://localhost:' + (process.env.PORT || 3000)
+    streznik: "http://localhost:" + (process.env.PORT || 3000),
 };
-if (process.env.NODE_ENV === 'production') {
-    apiParametri.streznik = 'https://sp-spendy.herokuapp.com';
+if (process.env.NODE_ENV === "production") {
+    apiParametri.streznik = "https://sp-spendy.herokuapp.com";
 }
-const axios = require('axios').create({
+const axios = require("axios").create({
     baseURL: apiParametri.streznik,
-    timeout: 5000
+    timeout: 5000,
 });
 
 const login = require("./login"); // server-login
- // server-login
+// server-login
 const settings = (req, res) => {
     if (login.getUser() == null) return res.redirect("/login");
 
@@ -63,7 +63,7 @@ const spremeniUporabnika = async (req, res) => {
             phone: req.body.phone,
             mail: req.body.mail,
             pass: req.body.password,
-        })
+        });
         console.log();
     } catch (err) {
         console.error(err);
@@ -73,22 +73,18 @@ const spremeniUporabnika = async (req, res) => {
 
 //spremeniUporabnika();
 
-
-
-
-
 const pogled = (req, res, podatkiUporabnika, stevilo) => {
-    res.render('settings',{
-      title: 'Nastavitve profila',
-      uporabnik: podatkiUporabnika,
-      stevilo: stevilo,
-      stylesheets_load: ["/stylesheets/style-profil.css"],
-      scripts_load: []
+    res.render("settings", {
+        title: "Nastavitve profila",
+        uporabnik: podatkiUporabnika,
+        stevilo: stevilo,
+        stylesheets_load: ["/stylesheets/style-profil.css"],
+        scripts_load: [],
     });
-  };
-  
+};
+
 module.exports = {
     settings,
     pogled,
-    spremeniUporabnika
+    spremeniUporabnika,
 };

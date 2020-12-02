@@ -1,402 +1,382 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Grafi</title>
-    <link href="icons/logo.ico" rel="icon" />
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
-    <!-- must be before other css imports -->
+    <head>
+        <meta charset="UTF-8" />
+        <title>Grafi</title>
+        <link href="icons/logo.ico" rel="icon" />
+        <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
+        <!-- must be before other css imports -->
 
-    <link href="stylesheets/navbar.css" rel="stylesheet" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="stylesheets/navbar.css" rel="stylesheet" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-  </head>
+        <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    </head>
 
-  <body>
-    <!-- ################ navbar ################ -->
-    <nav class="navbar navbar-spendy">
-      <ul class="navbar-nav navbar-spendy">
-        <li class="logo navbar-spendy">
-          <a class="nav-link navbar-spendy" href="index.html">
-            <img
-              alt="logo"
-              class="logo-img navbar-spendy"
-              src="icons/logo.png"
-            />
-            <span class="logo-text navbar-spendy">Spendy</span>
-          </a>
-        </li>
+    <body>
+        <!-- ################ navbar ################ -->
+        <nav class="navbar navbar-spendy">
+            <ul class="navbar-nav navbar-spendy">
+                <li class="logo navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="index.html">
+                        <img alt="logo" class="logo-img navbar-spendy" src="icons/logo.png" />
+                        <span class="logo-text navbar-spendy">Spendy</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="index.html">
-            <img
-              alt="dashboard"
-              class="navbar-spendy"
-              src="icons/dashboard.svg"
-            />
-            <span class="link-text navbar-spendy">Pregled</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="index.html">
+                        <img alt="dashboard" class="navbar-spendy" src="icons/dashboard.svg" />
+                        <span class="link-text navbar-spendy">Pregled</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a
-            id="current-page"
-            class="nav-link navbar-spendy"
-            href="graphs.html"
-          >
-            <img alt="graph" class="navbar-spendy" src="icons/graph.svg" />
-            <span class="link-text navbar-spendy">Grafično</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a id="current-page" class="nav-link navbar-spendy" href="graphs.html">
+                        <img alt="graph" class="navbar-spendy" src="icons/graph.svg" />
+                        <span class="link-text navbar-spendy">Grafično</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="analysis.html">
-            <img
-              alt="analysis"
-              class="navbar-spendy"
-              src="icons/analysis.svg"
-            />
-            <span class="link-text navbar-spendy">Analiza</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="analysis.html">
+                        <img alt="analysis" class="navbar-spendy" src="icons/analysis.svg" />
+                        <span class="link-text navbar-spendy">Analiza</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="search.html">
-            <img
-              alt="expenses"
-              class="navbar-spendy"
-              src="icons/expenses.svg"
-            />
-            <span class="link-text navbar-spendy">Stroški</span>
-          </a>
-        </li>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="search.html">
+                        <img alt="expenses" class="navbar-spendy" src="icons/expenses.svg" />
+                        <span class="link-text navbar-spendy">Stroški</span>
+                    </a>
+                </li>
 
-        <li class="nav-item navbar-spendy">
-          <a class="nav-link navbar-spendy" href="groups.html">
-            <img alt="groups" class="navbar-spendy" src="icons/groups.svg" />
-            <span class="link-text navbar-spendy">Skupine</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+                <li class="nav-item navbar-spendy">
+                    <a class="nav-link navbar-spendy" href="groups.html">
+                        <img alt="groups" class="navbar-spendy" src="icons/groups.svg" />
+                        <span class="link-text navbar-spendy">Skupine</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-    <!-- ################ main body ################ -->
-    <main>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="mr-auto col-md-4">
-          <div class="form-group">
-            <label for="inputState">
-              <p class="font-weight-light py-0 my-0">Izberi pogled skupine</p>
-            </label>
-            <select id="inputState" class="form-control">
-              <option selected>Brez izbrane skupine</option>
-              <option>Družina</option>
-              <option>Služba</option>
-              <option>Šeena</option>
-            </select>
-          </div>
-        </div>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item dropdown">
-            <a
-              aria-expanded="false"
-              aria-haspopup="true"
-              class="nav-link text-dark dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-            >
-              <img
-                alt=""
-                class="img-fluid rounded-circle avatar mr-2"
-                src="icons/user-1.png"
-              />
-              Janez Novak
-            </a>
-            <div
-              aria-labelledby="navbarDropdown"
-              class="dropdown-menu dropdown-menu-right"
-            >
-              <a class="dropdown-item" href="profil.html">Moj profil</a>
-              <a class="dropdown-item" href="settings.html">Nastavitve</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="first_page.html">Odjava</a>
+        <!-- ################ main body ################ -->
+        <main>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="mr-auto col-md-4">
+                    <div class="form-group">
+                        <label for="inputState">
+                            <p class="font-weight-light py-0 my-0">Izberi pogled skupine</p>
+                        </label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Brez izbrane skupine</option>
+                            <option>Družina</option>
+                            <option>Služba</option>
+                            <option>Šeena</option>
+                        </select>
+                    </div>
+                </div>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            class="nav-link text-dark dropdown-toggle"
+                            data-toggle="dropdown"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                        >
+                            <img
+                                alt=""
+                                class="img-fluid rounded-circle avatar mr-2"
+                                src="icons/user-1.png"
+                            />
+                            Janez Novak
+                        </a>
+                        <div
+                            aria-labelledby="navbarDropdown"
+                            class="dropdown-menu dropdown-menu-right"
+                        >
+                            <a class="dropdown-item" href="profil.html">Moj profil</a>
+                            <a class="dropdown-item" href="settings.html">Nastavitve</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="first_page.html">Odjava</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container-fluid bg-grey px-3" id="content">
+                <section class="bg-light py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8">
+                                <h1 class="font-weight-bold mb-0">Grafično</h1>
+                                <p class="lead text-muted">
+                                    Grafični prikazi prihodkov, odhodkov in stanja
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-mix py-3">
+                    <div class="container-fluid">
+                        <div>
+                            <div class="card-body row">
+                                <div
+                                    class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                                >
+                                    <span class="mr-3 font-weight-bold">Od:</span>
+                                    <div id="dateStart">
+                                        <input required type="date" />
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                                >
+                                    <span class="mr-3 font-weight-bold">Do:</span>
+                                    <div id="dateEnd">
+                                        <input required type="date" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-mix py-3">
+                    <div class="container-fluid">
+                        <div class="card rounded-0">
+                            <div class="card-body row">
+                                <div class="col-sm-12 col-lg-6 mb-5">
+                                    <h1 class="container-fluid d-flex justify-content-center">
+                                        Odhodki
+                                    </h1>
+                                    <canvas height="40%" id="expensesChart" width="50%"></canvas>
+                                </div>
+                                <div class="col-sm-12 col-lg-6 mb-5">
+                                    <h1 class="container-fluid d-flex justify-content-center">
+                                        Prihodki
+                                    </h1>
+                                    <canvas height="40%" id="incomeChart" width="50%"></canvas>
+                                </div>
+                                <div class="col-sm-12 col-lg-6 mb-5">
+                                    <h1 class="container-fluid d-flex justify-content-center">
+                                        Stanje
+                                    </h1>
+                                    <canvas height="40%" id="balanceChart" width="50%"></canvas>
+                                </div>
+                                <div class="col-sm-12 col-lg-6 mb-5">
+                                    <h1 class="container-fluid d-flex justify-content-center">
+                                        Tortni
+                                    </h1>
+                                    <canvas height="40%" id="vsChart" width="50%"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-          </li>
-        </ul>
-      </nav>
+        </main>
 
-      <div class="container-fluid bg-grey px-3" id="content">
-        <section class="bg-light py-3">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-9 col-md-8">
-                <h1 class="font-weight-bold mb-0">Grafično</h1>
-                <p class="lead text-muted">
-                  Grafični prikazi prihodkov, odhodkov in stanja
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="bg-mix py-3">
-          <div class="container-fluid">
-            <div>
-              <div class="card-body row">
-                <div
-                  class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
-                >
-                  <span class="mr-3 font-weight-bold">Od:</span>
-                  <div id="dateStart">
-                    <input required type="date" />
-                  </div>
-                </div>
+        <!-- load scripts at the end -->
+        <script src="javascripts/jquery-3.5.1.min.js"></script>
+        <script src="javascripts/popper.min.js"></script>
+        <script src="javascripts/bootstrap.min.js"></script>
+        <script
+            crossorigin="anonymous"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        ></script>
+        <script>
+            var ctx = document.getElementById("expensesChart").getContext("2d");
 
-                <div
-                  class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
-                >
-                  <span class="mr-3 font-weight-bold">Do:</span>
-                  <div id="dateEnd">
-                    <input required type="date" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="bg-mix py-3">
-          <div class="container-fluid">
-            <div class="card rounded-0">
-              <div class="card-body row">
-                <div class="col-sm-12 col-lg-6 mb-5">
-                  <h1 class="container-fluid d-flex justify-content-center">
-                    Odhodki
-                  </h1>
-                  <canvas height="40%" id="expensesChart" width="50%"></canvas>
-                </div>
-                <div class="col-sm-12 col-lg-6 mb-5">
-                  <h1 class="container-fluid d-flex justify-content-center">
-                    Prihodki
-                  </h1>
-                  <canvas height="40%" id="incomeChart" width="50%"></canvas>
-                </div>
-                <div class="col-sm-12 col-lg-6 mb-5">
-                  <h1 class="container-fluid d-flex justify-content-center">
-                    Stanje
-                  </h1>
-                  <canvas height="40%" id="balanceChart" width="50%"></canvas>
-                </div>
-                <div class="col-sm-12 col-lg-6 mb-5">
-                  <h1 class="container-fluid d-flex justify-content-center">
-                    Tortni
-                  </h1>
-                  <canvas height="40%" id="vsChart" width="50%"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- load scripts at the end -->
-    <script src="javascripts/jquery-3.5.1.min.js"></script>
-    <script src="javascripts/popper.min.js"></script>
-    <script src="javascripts/bootstrap.min.js"></script>
-    <script
-      crossorigin="anonymous"
-      integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-    ></script>
-    <script>
-      var ctx = document.getElementById("expensesChart").getContext("2d");
-
-      var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [
-            "Januar",
-            "Februar",
-            "Marec",
-            "April",
-            "Maj",
-            "Junij",
-            "Julij",
-            "Avgust",
-            "September",
-            "Oktober",
-            "November",
-            "December",
-          ],
-          datasets: [
-            {
-              label: "Odhodki v €",
-              data: [12, 30, 36, 54, 12, 44, 100, 66, 0, 22, 60, 70],
-              backgroundColor: ["rgba(0, 0, 0, 0.0)"],
-              borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: [
+                        "Januar",
+                        "Februar",
+                        "Marec",
+                        "April",
+                        "Maj",
+                        "Junij",
+                        "Julij",
+                        "Avgust",
+                        "September",
+                        "Oktober",
+                        "November",
+                        "December",
+                    ],
+                    datasets: [
+                        {
+                            label: "Odhodki v €",
+                            data: [12, 30, 36, 54, 12, 44, 100, 66, 0, 22, 60, 70],
+                            backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                            borderColor: [
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
                 },
-              },
-            ],
-          },
-        },
-      });
-    </script>
-    <script>
-      var ctx = document.getElementById("incomeChart").getContext("2d");
-      var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [
-            "Januar",
-            "Februar",
-            "Marec",
-            "April",
-            "Maj",
-            "Junij",
-            "Julij",
-            "Avgust",
-            "September",
-            "Oktober",
-            "November",
-            "December",
-          ],
-          datasets: [
-            {
-              label: "Prihodki v €",
-              data: [40, 40, 40, 40, 40, 70, 80, 80, 40, 40, 40, 60],
-              backgroundColor: ["rgba(0, 0, 0, 0.0)"],
-              borderColor: [
-                "rgba(92, 184, 92, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        ],
+                    },
                 },
-              },
-            ],
-          },
-        },
-      });
-    </script>
-    <script>
-      var ctx = document.getElementById("balanceChart").getContext("2d");
-      var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [
-            "Januar",
-            "Februar",
-            "Marec",
-            "April",
-            "Maj",
-            "Junij",
-            "Julij",
-            "Avgust",
-            "September",
-            "Oktober",
-            "November",
-            "December",
-          ],
-          datasets: [
-            {
-              label: "Stanje",
-              data: [50, 80, 160, 170, 100, 70, 50, 100, 120, 180, 150, 100],
-              backgroundColor: ["rgba(0, 0, 0, 0.0)"],
-              borderColor: [
-                "rgba(92, 184, 92, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
+            });
+        </script>
+        <script>
+            var ctx = document.getElementById("incomeChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: [
+                        "Januar",
+                        "Februar",
+                        "Marec",
+                        "April",
+                        "Maj",
+                        "Junij",
+                        "Julij",
+                        "Avgust",
+                        "September",
+                        "Oktober",
+                        "November",
+                        "December",
+                    ],
+                    datasets: [
+                        {
+                            label: "Prihodki v €",
+                            data: [40, 40, 40, 40, 40, 70, 80, 80, 40, 40, 40, 60],
+                            backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                            borderColor: [
+                                "rgba(92, 184, 92, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
                 },
-              },
-            ],
-          },
-        },
-      });
-    </script>
-    <script>
-      var ctx = document.getElementById("vsChart").getContext("2d");
-      var myChart = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels: ["Prihodki", "Odhodki"],
-          datasets: [
-            {
-              label: "Prihodki/odhodki v €",
-              data: [480, 420],
-              backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
-              borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
-              borderWidth: 1,
-            },
-          ],
-        },
-      });
-    </script>
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+        </script>
+        <script>
+            var ctx = document.getElementById("balanceChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: [
+                        "Januar",
+                        "Februar",
+                        "Marec",
+                        "April",
+                        "Maj",
+                        "Junij",
+                        "Julij",
+                        "Avgust",
+                        "September",
+                        "Oktober",
+                        "November",
+                        "December",
+                    ],
+                    datasets: [
+                        {
+                            label: "Stanje",
+                            data: [50, 80, 160, 170, 100, 70, 50, 100, 120, 180, 150, 100],
+                            backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+                            borderColor: [
+                                "rgba(92, 184, 92, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+        </script>
+        <script>
+            var ctx = document.getElementById("vsChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: ["Prihodki", "Odhodki"],
+                    datasets: [
+                        {
+                            label: "Prihodki/odhodki v €",
+                            data: [480, 420],
+                            backgroundColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                            borderColor: ["rgba(92, 184, 92, 1)", "rgba(217, 83, 79,1)"],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+            });
+        </script>
 
-    <!-- auto refresh on change when developing "python3 -m http.server" -->
-    <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
-  </body>
+        <!-- auto refresh on change when developing "python3 -m http.server" -->
+        <!--    <script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+    </body>
 </html>
