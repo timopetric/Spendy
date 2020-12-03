@@ -1,0 +1,59 @@
+:root {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    --transition-speed: 350ms;
+    /* theme colors: todo: checkout how to set, use */
+    --text-primary: #1c0808; /* --variable ~= to set the theme */
+    --text-secondary: #ffffff;
+    --bg-primary: #cb3b3b;
+    --bg-secondary: #731c1c;
+}
+
+.nevem {
+    font-family: "Muli", sans-serif;
+    font-weight: 300;
+    color: #111b54;
+}
+
+body {
+    color: black;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.prihodek {
+    background-color: lightgreen;
+}
+
+.odhodek {
+    background-color: lightcoral;
+}
+
+.search {
+    max-width: 80%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+/* ---------------------- scrollbar ---------------------- */
+body::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #cb3b3b;
+}
+
+.mymodal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 50%;
+}
