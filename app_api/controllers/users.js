@@ -28,6 +28,11 @@ const axios = require("axios").create({
  *              schema:
  *                $ref: '#/components/schemas/User'
  */
+
+/**
+ * GET /api/v1/users
+ * return all users in db
+ */
 const getAllUsers = (req, res) => {
     User.find()
         .select("-pass")
@@ -40,6 +45,10 @@ const getAllUsers = (req, res) => {
         });
 };
 
+/**
+ * GET /api/v1/users/name/:name
+ * return a user by his name
+ */
 const getUserByName = (req, res) => {
     const name = req.params.name;
     User.findOne()
@@ -58,8 +67,12 @@ const getUserByName = (req, res) => {
         });
 };
 
+/**
+ * GET /api/v1/users/:userId/groups
+ * return a list of populated groups that a user belongs to
+ */
 const getGroupByUserId = async (req, res) => {
-    let found = await User.findById(req.params.userId)
+    return await User.findById(req.params.userId)
         .select("groupIds")
         .populate("groupIds")
         .exec((napaka, user) => {
@@ -73,15 +86,17 @@ const getGroupByUserId = async (req, res) => {
                 return res.status(200).json(user);
             }
         });
-    return found;
 };
 
-// validate user and return it if pass is correct
-// POST: /v1/users/login
-// {
-//     "username": "a",
-//     "password": "a"
-// }
+/**
+ * POST /api/v1/users/login
+ * POST body:
+ * {
+ *   "username": "a",
+ *   "password": "a"
+ * }
+ * validate a user by his username and password and return him if pass is correct
+ */
 const validateUser = (req, res) => {
     const mail = req.body.mail;
     const password = req.body.password;
@@ -96,7 +111,7 @@ const validateUser = (req, res) => {
                     message: "Uporabnik s podanim poštnim naslovom ne obstaja.",
                 });
             else if (err) {
-                return res.status(500).json(err);
+                return res.status(500).json({ message: err });
             } else {
                 if (user.pass === password) {
                     // ----------- login-server ----------------
@@ -147,6 +162,19 @@ const validateUser = (req, res) => {
  *            application/json:
  *              schema:
  *                $ref: '#/components/schemas/User'
+ */
+
+/**
+ * POST /api/v1/users
+ * POST body:
+ * {
+ *   "username": "a",
+ *   "name": "Janez",
+ *   "surname": "Novak",
+ *   "mail": "a@a.com"
+ *   "password": "a",
+ * }
+ * create a new user and return it
  */
 const addUser = (req, res) => {
     const reqUsername = req.body.username;
@@ -250,8 +278,13 @@ const addUser = (req, res) => {
  *              schema:
  *                $ref: '#/components/schemas/User'
  */
+
+/**
+ * GET /api/v1/users/:userId
+ * return a user with populated groups with id @userId
+ */
 const getUserById = (req, res) => {
-    User.findById(req.params.id)
+    User.findById(req.params.userId)
         .select("-pass")
         .populate("groupIds")
         .exec((err, user) => {
