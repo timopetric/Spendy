@@ -60,7 +60,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .nav-link.navbar-spendy:hover,
-#current-page {
+.current-page {
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);

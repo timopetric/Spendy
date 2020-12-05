@@ -17,6 +17,8 @@ import { GraphsComponent } from "./shared/components/graphs/graphs.component";
 import { AnalysisComponent } from "./shared/components/analysis/analysis.component";
 import { SearchComponent } from "./shared/components/search/search.component";
 import { GroupsComponent } from "./shared/components/groups/groups.component";
+import { LoginComponent } from "./shared/components/login/login.component";
+import { SignupComponent } from "./shared/components/signup/signup.component";
 
 @NgModule({
     declarations: [
@@ -33,6 +35,8 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
         AnalysisComponent,
         SearchComponent,
         GroupsComponent,
+        LoginComponent,
+        SignupComponent,
     ],
     imports: [
         BrowserModule,
@@ -40,24 +44,29 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
         ChartsModule,
         RouterModule.forRoot([
             {
+                path: "",
+                pathMatch: "full",
+                redirectTo: "overview",
+            },
+            {
                 path: "overview",
-                component: OverviewComponent, // todo: change
+                component: OverviewComponent,
             },
             {
                 path: "graphs",
-                component: GraphsComponent, // todo: change
+                component: GraphsComponent,
             },
             {
                 path: "analysis",
-                component: AnalysisComponent, // todo: change
+                component: AnalysisComponent,
             },
             {
                 path: "search",
-                component: SearchComponent, // todo: change
+                component: SearchComponent,
             },
             {
                 path: "groups",
-                component: GroupsComponent, // todo: change
+                component: GroupsComponent,
             },
             {
                 path: "first-page",
@@ -70,6 +79,14 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
             {
                 path: "settings",
                 component: OverviewComponent,
+            },
+            {
+                path: "login",
+                component: LoginComponent,
+            },
+            {
+                path: "signup",
+                component: SignupComponent,
             },
         ]),
     ],
