@@ -19,6 +19,7 @@ import { SearchComponent } from "./shared/components/search/search.component";
 import { GroupsComponent } from "./shared/components/groups/groups.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
+import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 
 @NgModule({
     declarations: [
@@ -38,58 +39,7 @@ import { SignupComponent } from "./shared/components/signup/signup.component";
         LoginComponent,
         SignupComponent,
     ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ChartsModule,
-        RouterModule.forRoot([
-            {
-                path: "",
-                pathMatch: "full",
-                redirectTo: "overview",
-            },
-            {
-                path: "overview",
-                component: OverviewComponent,
-            },
-            {
-                path: "graphs",
-                component: GraphsComponent,
-            },
-            {
-                path: "analysis",
-                component: AnalysisComponent,
-            },
-            {
-                path: "search",
-                component: SearchComponent,
-            },
-            {
-                path: "groups",
-                component: GroupsComponent,
-            },
-            {
-                path: "first-page",
-                component: FirstPageComponent,
-            },
-            {
-                path: "profile",
-                component: OverviewComponent,
-            },
-            {
-                path: "settings",
-                component: OverviewComponent,
-            },
-            {
-                path: "login",
-                component: LoginComponent,
-            },
-            {
-                path: "signup",
-                component: SignupComponent,
-            },
-        ]),
-    ],
+    imports: [BrowserModule, BrowserAnimationsModule, ChartsModule, AppRoutingModule],
     providers: [],
     bootstrap: [FrameComponent],
 })
