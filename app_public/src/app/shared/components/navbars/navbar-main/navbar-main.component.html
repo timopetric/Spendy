@@ -10,55 +10,70 @@
         <li class="nav-item navbar-spendy">
             <a
                 class="nav-link navbar-spendy"
-                routerLinkActive="current-page nav-link navbar-spendy"
+                routerLinkActive="current-page"
                 routerLink="/overview"
             >
-                <img alt="dashboard" class="navbar-spendy" src="/assets/icons/dashboard.svg" />
-                <span class="link-text navbar-spendy">Pregled</span>
+                <img
+                    alt="dashboard"
+                    class="navbar-spendy"
+                    src="/assets/icons/dashboard.svg"
+                    routerLinkActive="current-page-img"
+                />
+                <span class="link-text navbar-spendy" routerLinkActive="current-page">Pregled</span>
+            </a>
+        </li>
+
+        <li class="nav-item navbar-spendy">
+            <a class="nav-link navbar-spendy" routerLinkActive="current-page" routerLink="/graphs">
+                <img
+                    alt="graph"
+                    class="navbar-spendy"
+                    src="/assets/icons/graph.svg"
+                    routerLinkActive="current-page-img"
+                />
+                <span class="link-text navbar-spendy" routerLinkActive="current-page"
+                    >Grafično</span
+                >
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
             <a
                 class="nav-link navbar-spendy"
-                routerLinkActive="current-page nav-link navbar-spendy"
-                routerLink="/graphs"
-            >
-                <img alt="graph" class="navbar-spendy" src="/assets/icons/graph.svg" />
-                <span class="link-text navbar-spendy">Grafično</span>
-            </a>
-        </li>
-
-        <li class="nav-item navbar-spendy">
-            <a
-                class="nav-link navbar-spendy"
-                routerLinkActive="current-page nav-link navbar-spendy"
+                routerLinkActive="current-page"
                 routerLink="/analysis"
             >
-                <img alt="analysis" class="navbar-spendy" src="/assets/icons/analysis.svg" />
-                <span class="link-text navbar-spendy">Analiza</span>
+                <img
+                    alt="analysis"
+                    class="navbar-spendy"
+                    src="/assets/icons/analysis.svg"
+                    routerLinkActive="current-page-img"
+                />
+                <span class="link-text navbar-spendy" routerLinkActive="current-page">Analiza</span>
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a
-                class="nav-link navbar-spendy"
-                routerLinkActive="current-page nav-link navbar-spendy"
-                routerLink="/search"
-            >
-                <img alt="expenses" class="navbar-spendy" src="/assets/icons/expenses.svg" />
-                <span class="link-text navbar-spendy">Stroški</span>
+            <a class="nav-link navbar-spendy" routerLinkActive="current-page" routerLink="/search">
+                <img
+                    alt="expenses"
+                    class="navbar-spendy"
+                    src="/assets/icons/expenses.svg"
+                    routerLinkActive="current-page-img"
+                />
+                <span class="link-text navbar-spendy" routerLinkActive="current-page">Stroški</span>
             </a>
         </li>
 
         <li class="nav-item navbar-spendy">
-            <a
-                class="nav-link navbar-spendy"
-                routerLinkActive="current-page nav-link navbar-spendy"
-                routerLink="/groups"
-            >
-                <img alt="groups" class="navbar-spendy" src="/assets/icons/groups.svg" />
-                <span class="link-text navbar-spendy">Skupine</span>
+            <a class="nav-link navbar-spendy" routerLinkActive="current-page" routerLink="/groups">
+                <img
+                    alt="groups"
+                    class="navbar-spendy"
+                    src="/assets/icons/groups.svg"
+                    routerLinkActive="current-page-img"
+                />
+                <span class="link-text navbar-spendy" routerLinkActive="current-page">Skupine</span>
             </a>
         </li>
     </ul>
