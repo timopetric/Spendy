@@ -178,6 +178,7 @@ img.current-page-img {
         height: 5rem;
         width: 100%;
         margin-top: 1rem;
+        margin-bottom: 5rem;
         /*margin-bottom: 1rem;*/
         transition: var(--transition-speed) ease;
     }
