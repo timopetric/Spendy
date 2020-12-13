@@ -20,6 +20,9 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -38,8 +41,16 @@ import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
         GroupsComponent,
         LoginComponent,
         SignupComponent,
+        MapDictToArrayPipe,
     ],
-    imports: [BrowserModule, BrowserAnimationsModule, ChartsModule, AppRoutingModule],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        ChartsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+    ],
     providers: [],
     bootstrap: [FrameComponent],
 })

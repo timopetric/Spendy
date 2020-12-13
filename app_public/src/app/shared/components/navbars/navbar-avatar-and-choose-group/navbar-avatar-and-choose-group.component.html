@@ -2,14 +2,8 @@
     <div class="mr-auto col-md-4">
         <div class="form-group">
             <label><p class="font-weight-light py-0 my-0">Izberi pogled skupine</p></label>
-            <select
-                id="idGroup"
-                class="custom-select"
-                onchange="onGroupChange()"
-                *ngFor="let skupina of skupine"
-                required
-            >
-                <option value="{{ skupina._id }}">
+            <select id="idGroup" class="custom-select" onchange="onGroupChange()" required>
+                <option *ngFor="let skupina of skupine" value="{{ skupina._id }}">
                     {{ skupina.name }}
                 </option>
             </select>
