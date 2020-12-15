@@ -75,8 +75,8 @@ app.use("/api/v1", indexApi);
 app.use(express.static(path.join(__dirname, "public")));
 
 //START--------------------------SWAGGER-------------------------------START
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.get("/swagger.json", (req, res) => {
+indexApi.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+indexApi.get("/swagger.json", (req, res) => {
     res.status(200).json(swaggerDocument);
 });
 //END--------------------------SWAGGER-------------------------------END
