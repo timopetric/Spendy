@@ -33,7 +33,13 @@ export class KriptoService {
                 let graphData: ChartDataSets[];
                 let data = [];
                 for (let i = 0; i < resData.length; i++) {
-                    data.push(Math.round(100 * resData[i][1]) / 100);
+                    if (name == "bitcoin") {
+                        data.push(Math.round(100 * resData[i][1]) / 100);
+                    } else if (name == "ripple") {
+                        data.push(Math.round(10000 * resData[i][1]) / 10000);
+                    } else if (name == "bitcash") {
+                        data.push(Math.round(100000 * resData[i][1]) / 100000);
+                    }
                 }
                 graphData = [{ data: data, label: `${nameCapitalized} cena v €` }];
 
