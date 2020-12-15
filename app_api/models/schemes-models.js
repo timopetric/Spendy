@@ -27,6 +27,7 @@ const currencyModel = mongoose.model("Currency", currencySchema);
  *    schemas:
  *      User:
  *        type: object
+ *        description: \-
  *        required:
  *          - username
  *          - name
@@ -71,7 +72,7 @@ const userSchema = new mongoose.Schema(
         username: { type: String, required: true, unique: true },
         name: { type: String, required: true },
         surname: { type: String, required: true },
-        mail: { type: String, required: true, unique: true }, // todo: delete mongo atlas SpendyDB to add unique constraint
+        mail: { type: String, required: true, unique: true },
         pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
         balance: { type: Number, required: true },
         groupIds: [

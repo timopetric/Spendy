@@ -35,6 +35,7 @@ var swaggerOptions = {
         "app_api/models/schemes-models.js",
         "app_api/controllers/users.js",
         "app_api/controllers/groups.js",
+        "app_api/routes/index.js",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);
