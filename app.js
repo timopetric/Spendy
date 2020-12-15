@@ -5,6 +5,41 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+//START--------------------------SWAGGER-------------------------------START
+var swaggerJsdoc = require("swagger-jsdoc");
+var swaggerUi = require("swagger-ui-express");
+
+var swaggerOptions = {
+    swaggerDefinition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Spendy API docs",
+            version: "1.0.0",
+            description: "Spendy REST API",
+        },
+        license: {
+            name: "GNU LGPLv3",
+            url: "https://choosealicense.com/licenses/lgpl-3.0",
+        },
+        contact: {
+            name: "Skupina Spendy",
+            // url: "",
+            email: "a@a.si",
+        },
+        servers: [
+            { url: "http://localhost:3000/api/v1" },
+            { url: "http://sp-spendy.herokuapp.com/api/v1" },
+        ],
+    },
+    apis: [
+        "app_api/models/schemes-models.js",
+        "app_api/controllers/users.js",
+        "app_api/controllers/groups.js",
+    ],
+};
+const swaggerDocument = swaggerJsdoc(swaggerOptions);
+//END----------------------------SWAGGER---------------------------------END
+
 require("./app_server/views/helpers/hbsh.js");
 
 require("./app_api/models/db");
@@ -38,6 +73,13 @@ app.use("/", indexRouter);
 app.use("/api/v1", indexApi);
 
 app.use(express.static(path.join(__dirname, "public")));
+
+//START--------------------------SWAGGER-------------------------------START
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get("/swagger.json", (req, res) => {
+    res.status(200).json(swaggerDocument);
+});
+//END--------------------------SWAGGER-------------------------------END
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
