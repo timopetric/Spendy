@@ -22,7 +22,12 @@
                         >
                             <span class="mr-3 font-weight-bold">Od:</span>
                             <div>
-                                <input id="dateStart" required type="date" value="2020-11-01" />
+                                <input
+                                    id="dateStart"
+                                    required
+                                    type="date"
+                                    [(ngModel)]="datum.zacetek"
+                                />
                             </div>
                         </div>
 
@@ -35,11 +40,11 @@
                                     id="dateEnd"
                                     required
                                     type="date"
-                                    value="2020-11-30"
-                                    onchange="posodobiPodatke()"
+                                    [(ngModel)]="datum.konec"
                                 />
                             </div>
                         </div>
+                        <button (click)="getGraphs()">Izpisi</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +166,7 @@
                                     baseChart
                                     [datasets]="coin.data"
                                     [labels]="coin.labels"
-                                    [colors]="graphColors"
+                                    [colors]="coin.graphColor"
                                     [chartType]="typeGraph"
                                     height="40%"
                                     width="50%"

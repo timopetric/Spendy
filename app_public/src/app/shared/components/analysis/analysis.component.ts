@@ -13,6 +13,10 @@ export class AnalysisComponent implements OnInit {
 
     public startDate = "";
     public endDate = "";
+    public datum = {
+        zacetek: new Date("2020.12.01"),
+        konec: new Date("2020.12.15"),
+    };
 
     public kek() {
         console.log(this.startDate);
@@ -27,14 +31,29 @@ export class AnalysisComponent implements OnInit {
 
     public getGraphData(coin) {
         // todo: date start..
-        this.kriptoService.getGraphData(coin, "1604243746", "1604589346").then(response => {
-            let tmpObject = {
-                data: response.graphData,
-                labels: response.labels,
-                name: coin[0].toUpperCase() + coin.slice(1),
-            };
-            this.coins.push(tmpObject);
-        });
+        this.kriptoService
+            .getGraphData(coin, this.toUnix(this.datum.zacetek), this.toUnix(this.datum.konec))
+            .then(response => {
+                let graphColor: Color[] = [{ backgroundColor: "rgba(92, 184, 92, 1)" }];
+                switch (coin) {
+                    case "bitcoin":
+                        graphColor = [{ backgroundColor: "rgba(244, 210, 40, 0.93)" }];
+                        break;
+                    case "ripple":
+                        graphColor = [{ backgroundColor: "rgba(70, 241, 78, 0.93)" }];
+                        break;
+                    case "bitcash":
+                        graphColor = [{ backgroundColor: "rgba(60, 89, 235, 0.88)" }];
+                        break;
+                }
+                let tmpObject = {
+                    data: response.graphData,
+                    labels: response.labels,
+                    name: coin[0].toUpperCase() + coin.slice(1),
+                    graphColor: graphColor,
+                };
+                this.coins.push(tmpObject);
+            });
     }
 
     public getGraphs() {
@@ -46,5 +65,15 @@ export class AnalysisComponent implements OnInit {
 
     ngOnInit(): void {
         this.getGraphs();
+    }
+
+    public izpisiDatum() {
+        console.log("DATUMA");
+        console.log(this.toUnix(new Date(this.datum.zacetek)));
+        console.log(this.datum.konec);
+    }
+
+    private toUnix(datum) {
+        return parseInt((new Date(datum).getTime() / 1000).toFixed(0));
     }
 }
