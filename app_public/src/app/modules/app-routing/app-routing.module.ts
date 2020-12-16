@@ -10,6 +10,9 @@ import { LoginComponent } from "../../shared/components/login/login.component";
 import { SignupComponent } from "../../shared/components/signup/signup.component";
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
 import { GroupsComponent } from "../../shared/components/groups/groups.component";
+import { ProfileComponent } from "../../shared/components/profile/profile.component";
+import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
+import { SettingsComponent } from "../../shared/components/settings/settings.component";
 
 const routes: Routes = [
     {
@@ -43,11 +46,11 @@ const routes: Routes = [
     },
     {
         path: "profile",
-        component: OverviewComponent,
+        component: ProfileComponent,
     },
     {
         path: "settings",
-        component: OverviewComponent,
+        component: SettingsComponent,
     },
     {
         path: "login",

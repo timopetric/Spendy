@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 import { HtmlBreakLinesPipe } from "./shared/pipes/html-break-lines.pipe";
 import { FirstPageComponent } from "./shared/components/first-page/first-page.component";
@@ -20,6 +21,8 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
+import { ProfileComponent } from "./shared/components/profile/profile.component";
+import { SettingsComponent } from "./shared/components/settings/settings.component";
 
 @NgModule({
     declarations: [
@@ -38,8 +41,16 @@ import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
         GroupsComponent,
         LoginComponent,
         SignupComponent,
+        ProfileComponent,
+        SettingsComponent,
     ],
-    imports: [BrowserModule, BrowserAnimationsModule, ChartsModule, AppRoutingModule],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        ChartsModule,
+        AppRoutingModule,
+        HttpClientModule,
+    ],
     providers: [],
     bootstrap: [FrameComponent],
 })
