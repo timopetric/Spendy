@@ -23,6 +23,7 @@ import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
 import { FormsModule } from "@angular/forms";
+import { SettingsComponent } from "./shared/components/settings/settings.component";
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { FormsModule } from "@angular/forms";
         LoginComponent,
         SignupComponent,
         MapDictToArrayPipe,
+        SettingsComponent,
     ],
     imports: [
         BrowserModule,

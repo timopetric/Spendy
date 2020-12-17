@@ -1,0 +1,36 @@
+[
+    {
+        "groupIds": [
+            "5fc44bd3f35a902b3000803b",
+            "5fc453db3c30ae0017a716cb",
+            "5fc454603c30ae0017a716cc"
+        ],
+        "_id": "5fc44bd3f35a902b3000803c",
+        "username": "super-janez123",
+        "name": "Janez",
+        "surname": "Novak",
+        "balance": 2000,
+        "mail": "a@gmail.com",
+        "pass": "a"
+    },
+    {
+        "groupIds": ["5fc44c35bd64c430d4bc45ca", "5fc453db3c30ae0017a716cb"],
+        "_id": "5fc44c35bd64c430d4bc45cb",
+        "username": "metka5",
+        "name": "Metka",
+        "surname": "Novak",
+        "balance": 1000,
+        "mail": "b@gmail.com",
+        "pass": "b"
+    },
+    {
+        "groupIds": ["5fc44c5b8dcf2636e8aeed55", "5fc454603c30ae0017a716cc"],
+        "_id": "5fc44c5b8dcf2636e8aeed56",
+        "username": "andrej88",
+        "name": "Andrej",
+        "surname": "Novak",
+        "balance": 2333,
+        "mail": "c@gmail.com",
+        "pass": "c"
+    }
+]

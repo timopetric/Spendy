@@ -7,6 +7,28 @@ const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
 
+/**
+ * Categories
+ * @swagger
+ * tags:
+ *  - name: Users
+ *    description: Everything about users
+ *  - name: Groups
+ *    description: Everything about groups
+ */
+
+/**
+ * Varnostna shema dostopa
+ * @swagger
+ * components:
+ *  securitySchemes:
+ *   jwt:
+ *    type: http
+ *    scheme: bearer
+ *    in: header
+ *    bearerFormat: JWT
+ */
+
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/name/:name", ctrlUser.getUserByName);
