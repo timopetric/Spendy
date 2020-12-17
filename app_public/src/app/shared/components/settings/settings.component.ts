@@ -6,12 +6,11 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./settings.component.css", "../../../../assets/stylesheets/style-profil.css"],
 })
 export class SettingsComponent implements OnInit {
-    uporabnik = {
-        username: "janeznovak",
-        stSkupin: "50",
-    };
-
     constructor() {}
+    public user = {
+        username: "matija123",
+    };
+    public stevilo_skupin = 2;
 
     ngOnInit(): void {}
 }

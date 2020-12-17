@@ -1,5 +1,207 @@
 <app-navbar-main></app-navbar-main>
 
 <main>
-    <p>analysis works!</p>
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Analiza</h1>
+                        <p class="lead text-muted">Analiza stanja in investiranja</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div>
+                    <div class="card-body row">
+                        <div
+                            class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Od:</span>
+                            <div>
+                                <input
+                                    id="dateStart"
+                                    required
+                                    type="date"
+                                    [(ngModel)]="datum.zacetek"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                            class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
+                        >
+                            <span class="mr-3 font-weight-bold">Do:</span>
+                            <div>
+                                <input
+                                    id="dateEnd"
+                                    required
+                                    type="date"
+                                    [(ngModel)]="datum.konec"
+                                />
+                            </div>
+                        </div>
+                        <button (click)="getGraphs()">Izpisi</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body row">
+                        <form class="container mb-5 col-sm-12 col-lg-6">
+                            <h1 class="container-fluid d-flex justify-content-center">Opomniki</h1>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ripple meja</span>
+                                </div>
+                                <input
+                                    id="rippleMeja"
+                                    type="number"
+                                    step="any"
+                                    value="7500.35"
+                                    class="form-control"
+                                    aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bitcoin meja</span>
+                                </div>
+                                <input
+                                    id="bitcoinMeja"
+                                    type="number"
+                                    step="any"
+                                    value="300.75"
+                                    class="form-control"
+                                    aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bitcash meja</span>
+                                </div>
+                                <input
+                                    id="bitcashMeja"
+                                    type="number"
+                                    step="any"
+                                    value="17999.99"
+                                    class="form-control"
+                                    aria-label="Meja v €"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                </div>
+                            </div>
+                            <div class="container-fluid d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">Potrdi</button>
+                            </div>
+                        </form>
+
+                        <span class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Predikcija
+                            </h1>
+
+                            <div
+                                class="input-group mb-3 container-fluid d-flex justify-content-center"
+                            >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Pričakovani prihodki:</span>
+                                </div>
+                                <span class="input-group-text bg-success">+210€</span>
+                            </div>
+                            <div
+                                class="input-group mb-3 container-fluid d-flex justify-content-center"
+                            >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Pričakovani odhodki:</span>
+                                </div>
+                                <span class="input-group-text bg-danger">-150€</span>
+                            </div>
+                            <div
+                                class="input-group mb-3 container-fluid d-flex justify-content-center"
+                            >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Skupno:</span>
+                                </div>
+                                <span class="input-group-text bg-success">+60€</span>
+                            </div>
+                        </span>
+                        <!--
+                        <div class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                Predikcijski graf
+                            </h1>
+                            <canvas
+                                    height="40%"
+                                    id="predictionChart"
+                                    width="50%"
+                            ></canvas>
+                        </div>
+
+                        -->
+
+                        <!-- TODO: to ne dela dobr-->
+                        <div *ngFor="let coin of coins" class="col-sm-12 col-lg-6 mb-5">
+                            <div>
+                                <h1 class="container-fluid d-flex justify-content-center">
+                                    {{ coin.name }}
+                                </h1>
+                                <canvas
+                                    *ngIf="coin.data"
+                                    baseChart
+                                    [datasets]="coin.data"
+                                    [labels]="coin.labels"
+                                    [colors]="coin.graphColor"
+                                    [chartType]="typeGraph"
+                                    height="40%"
+                                    width="50%"
+                                ></canvas>
+                            </div>
+                        </div>
+
+                        <!--div class="col-sm-12 col-lg-6 mb-5"
+                        <div *ngFor="let coin of coins">
+                            <h1 class="container-fluid d-flex justify-content-center">
+                                {{ coin.name }}
+                            </h1>
+                            <canvas
+                                *ngIf="coin.data"
+                                baseChart
+                                [datasets]="coin.data"
+                                [labels]="coin.labels"
+                                [colors]="graphColors"
+                                [chartType]="typeGraph"
+                                height="40%"
+                                width="50%"
+                            ></canvas>
+                        </div>
+                        -->
+                        <!--<div class="col-sm-12 col-lg-6 mb-5">-->
+                        <!--    <h1 class="container-fluid d-flex justify-content-center">Bitcoin</h1>-->
+                        <!--    <canvas height="40%" id="bitcoinChart" width="50%"></canvas>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-12 col-lg-6 mb-5">-->
+                        <!--    <h1 class="container-fluid d-flex justify-content-center">Bitcash</h1>-->
+                        <!--    <canvas height="40%" id="bitcashChart" width="50%"></canvas>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </main>

@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
 
 import { HtmlBreakLinesPipe } from "./shared/pipes/html-break-lines.pipe";
 import { FirstPageComponent } from "./shared/components/first-page/first-page.component";
@@ -21,8 +20,11 @@ import { GroupsComponent } from "./shared/components/groups/groups.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
-import { ProfileComponent } from "./shared/components/profile/profile.component";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
+import { FormsModule } from "@angular/forms";
 import { SettingsComponent } from "./shared/components/settings/settings.component";
+import { ProfileComponent } from "./shared/components/profile/profile.component";
 
 @NgModule({
     declarations: [
@@ -41,6 +43,7 @@ import { SettingsComponent } from "./shared/components/settings/settings.compone
         GroupsComponent,
         LoginComponent,
         SignupComponent,
+        MapDictToArrayPipe,
         ProfileComponent,
         SettingsComponent,
     ],
@@ -50,6 +53,7 @@ import { SettingsComponent } from "./shared/components/settings/settings.compone
         ChartsModule,
         AppRoutingModule,
         HttpClientModule,
+        FormsModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

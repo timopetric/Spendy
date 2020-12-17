@@ -73,7 +73,9 @@ const userSchema = new mongoose.Schema(
         name: { type: String, required: true },
         surname: { type: String, required: true },
         mail: { type: String, required: true, unique: true },
-        pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
+        // pass: { type: String, required: true /*, set: Data.prototype.saltySha1*/ },
+        zgoscenaVrednost: { type: String, required: true },
+        nakljucnaVrednost: { type: String, required: true },
         balance: { type: Number, required: true },
         groupIds: [
             {

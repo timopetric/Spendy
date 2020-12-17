@@ -17,7 +17,7 @@ export class UporabnikService {
         // const userId: number = 1;//poglej kaksni id-ji se naredijo
         // const name: string = "Metka";
         // const url: string = `v1/users/${userId}`;
-        const url: string = `${this.apiUrl}/v1/users/name/${name}`;
+        const url: string = `${this.apiUrl}/v2/users/name/${name}`;
         return this.http
             .get(url)
             .toPromise()
