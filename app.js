@@ -34,6 +34,7 @@ var swaggerOptions = {
     apis: [
         "app_api_v2/models/schemes-models.js",
         "app_api_v2/controllers/users.js",
+        "app_api_v2/controllers/expenses.js",
         "app_api_v2/controllers/groups.js",
         "app_api_v2/routes/index.js",
     ],

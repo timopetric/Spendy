@@ -23,14 +23,14 @@ const getAllGroups = async (req, res) => {
         // .populate("userIds", "_id username name surname")
         // .populate("adminIds", "_id username name surname")
         // .populate("expenses")
-        .exec((err, groups) => {
-            if (err || !groups)
-                return res.status(404).json({
-                    message: "Pridobivanje skupin je neuspešno: " + err,
-                });
+        .exec((error, groups) => {
+            if (error)
+                return res.status(500).json({message: "Error in database" , error: error});
+            if(!groups){
+                return res.status(404).json({message: "Group not found"});
+            }
             else if (groups) {
-                console.log(groups);
-                return res.status(200).json({ groups });
+                return res.status(200).json(groups);
             }
         });
 };
