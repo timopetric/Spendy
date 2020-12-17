@@ -15,6 +15,8 @@ const ctrlDb = require("../controllers/db");
  *    description: Everything about users
  *  - name: Groups
  *    description: Everything about groups
+ *  - name: Expenses
+ *    description: Everything about expenses
  */
 
 /**
@@ -35,15 +37,27 @@ router.get("/users", ctrlUser.getAllUsers);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START
-
+router.get("/expenses", ctrlExpenses.getAllExpenses);
+router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
+router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
 // END----------------------------EXPENSES---------------------------------END
 
 // START--------------------------GROUPS-------------------------------START
-
+//router.get("/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
+router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
+router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
+router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
+router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------DB IMPORT-------------------------------START
 
 // END----------------------------DB IMPORT---------------------------------END
+
+//Api endpoint for all invalid urls
+//if you get this check your params and path
+router.all("/*", function (req, res) {
+    res.status(404).json({ message: "This url does not exists, check your params and url path" });
+});
 
 module.exports = router;

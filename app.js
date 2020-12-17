@@ -46,7 +46,7 @@ require("./app_server/views/helpers/hbsh.js");
 require("./app_api_v2/models/db");
 
 var indexRouter = require("./app_server/routes/index");
-// var indexApi = require("./app_api/routes/index");
+var indexApi = require("./app_api/routes/index");
 var indexApiV2 = require("./app_api_v2/routes/index");
 
 var app = express();
@@ -72,7 +72,7 @@ app.use("/api", (req, res, next) => {
 });
 
 app.use("/", indexRouter);
-// app.use("/api/v1", indexApi);
+app.use("/api/v1", indexApi);
 app.use("/api/v2", indexApiV2);
 
 app.use(express.static(path.join(__dirname, "public")));
