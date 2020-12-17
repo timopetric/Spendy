@@ -27,8 +27,8 @@ var swaggerOptions = {
             email: "a@a.si",
         },
         servers: [
-            { url: "http://localhost:3000/api/v1" },
-            { url: "http://sp-spendy.herokuapp.com/api/v1" },
+            { url: "http://localhost:3000/api/v2" },
+            { url: "http://sp-spendy.herokuapp.com/api/v2" },
         ],
     },
     apis: [

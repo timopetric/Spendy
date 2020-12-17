@@ -3,6 +3,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+/**
+ * @swagger
+ *  components:
+ *    schemas:
+ *      Error:
+ *        type: object
+ *        description: Vrne napake
+ *        properties:
+ *          message:
+ *            type: string
+ *          error:
+ *            type: string
+ *        example:
+ *          message: Napaka v bazi.
+ *          error: json napake
+ */
+
 ////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
 // todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
 const currencySchema = new mongoose.Schema(
@@ -66,6 +83,41 @@ const currencyModel = mongoose.model("Currency", currencySchema);
  *              type: string
  *            description: A list of valid(existing) group IDs
  *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+ *
+ *      User_getAllUsers:
+ *        type: object
+ *        description: Returns all users in the database
+ *        properties:
+ *          groupIds:
+ *            type: array
+ *            items:
+ *              type: string
+ *            description: A list of valid(existing) group IDs
+ *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+ *          _id:
+ *            type: string
+ *            description: Internal database ID of the user
+ *            example: 5fc44bd3f35a902b3000803c
+ *          username:
+ *            type: string
+ *            description: Username of the user
+ *            example: janez123
+ *          name:
+ *            type: string
+ *            description: Name of the user
+ *            example: Janez
+ *          surname:
+ *            type: string
+ *            description: Surname of the user
+ *            example: Novak
+ *          balance:
+ *            type: number
+ *            description: Current balance of the user in €
+ *            example: 100.9
+ *          mail:
+ *            type: boolean
+ *            description: Mail address of the user
+ *            example: j_novak@email.com
  */
 const userSchema = new mongoose.Schema(
     {
