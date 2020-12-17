@@ -18,16 +18,8 @@ export class AnalysisComponent implements OnInit {
         konec: new Date("2020.12.15"),
     };
 
-    public kek() {
-        console.log(this.startDate);
-    }
-
-    public graphBitcoin;
-    public graphRipple;
     public coins = [];
-    public labelGraph = ["bitcoin graph"];
     public typeGraph: ChartType = "line";
-    public graphColors: Color[] = [{ backgroundColor: "rgba(92, 184, 92, 1)" }];
 
     public getGraphData(coin) {
         // todo: date start..

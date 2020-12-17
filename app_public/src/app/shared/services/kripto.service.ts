@@ -9,12 +9,6 @@ import { Label } from "ng2-charts";
 export class KriptoService {
     constructor(private http: HttpClient) {}
 
-    public graphDataBitcoin;
-
-    // private toUnix(date: string) {
-    //     return parseInt(date / 1000).toFixed(0);
-    // }
-
     public getGraphData(name, unixTimeStart, unixTimeEnd): any {
         return this.http
             .get(

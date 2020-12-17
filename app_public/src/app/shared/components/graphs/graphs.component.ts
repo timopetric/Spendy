@@ -8,5 +8,12 @@ import { Component, OnInit } from "@angular/core";
 export class GraphsComponent implements OnInit {
     constructor() {}
 
+    public prihodki;
+    public odhodki;
+
+    public getExpenses() {
+        //TODO
+    }
+
     ngOnInit(): void {}
 }
