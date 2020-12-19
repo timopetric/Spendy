@@ -18,6 +18,7 @@ const getExpenseById = async (req, res) => {
     res.status(200).json(found);
 };
 
+
 ////GET ALL EXPENSES OF GROUP
 const getExpensesByGroupId = async (req, res) => {
     let found = await Group.findById(req.params.id)

@@ -9,15 +9,15 @@ const Schema = mongoose.Schema;
  *    schemas:
  *      Error:
  *        type: object
- *        description: Vrne napake
+ *        description: Returns errors
  *        properties:
  *          message:
  *            type: string
  *          error:
  *            type: string
  *        example:
- *          message: Napaka v bazi.
- *          error: json napake
+ *          message: Error in database
+ *          error: optional json error
  */
 
 ////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
@@ -83,7 +83,12 @@ const currencyModel = mongoose.model("Currency", currencySchema);
  *              type: string
  *            description: A list of valid(existing) group IDs
  *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
- *
+ */
+
+/** ########################## GET /api/v2/users [User_getAllUsers] ############################
+ * @swagger
+ *  components:
+ *    schemas:
  *      User_getAllUsers:
  *        type: object
  *        description: Returns all users in the database

@@ -7,7 +7,7 @@ const Group = mongoose.model("Group");
  *  /users:
  *    get:
  *      summary: Get all users
- *      description: \-
+ *      description: Returns a list of all users
  *      tags: [Users]
  *      responses:
  *        "200":
@@ -19,7 +19,14 @@ const Group = mongoose.model("Group");
  *                items:
  *                  $ref: '#/components/schemas/User_getAllUsers'
  *        "500":
- *          description: An error message
+ *          description: Error in database
+ *          content:
+ *            application/json:
+ *              schema:
+ *                items:
+ *                  $ref: '#/components/schemas/Error'
+ *        "404":
+ *          description: No user was found
  *          content:
  *            application/json:
  *              schema:
@@ -31,9 +38,11 @@ const getAllUsers = (req, res) => {
         .select("_id groupIds username name surname balance mail")
         .exec((error, users) => {
             if (error) {
-                res.status(500).json({ message: "Napaka v bazi", error: error });
+                res.status(500).json({ message: "Error in database", error: error });
+            } else if (!users) {
+                res.status(404).json({ message: "Users not found" });
             } else {
-                res.status(200).json({ users });
+                res.status(200).json(users);
             }
         });
 };
