@@ -2,15 +2,15 @@
 
 <main>
     <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
+    <app-add-expenses></app-add-expenses>
+    <br /><br /><br /><br /><br /><br />
 
     <div class="container-fluid bg-grey px-3" id="content">
         <section class="bg-light py-3">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-9 col-md-8">
-                        <h1 class="font-weight-bold mb-0">
-                            Pozdravljeni {{ uporabnik.name }} {{ uporabnik.surname }}
-                        </h1>
+                        <h1 class="font-weight-bold mb-0">Pozdravljeni {{ uporabnik.name }} {{ uporabnik.surname }}</h1>
                         <p class="lead text-muted">Dashboard ter osnovni podatki</p>
                     </div>
                 </div>
@@ -149,9 +149,7 @@
                                         <h5 id="Oboje5C" class="d-inline-block mb-0"></h5>
                                     </div>
                                 </div>
-                                <a class="btn btn-primary w-100" routerLink="/search">
-                                    Oglej si aktivnosti
-                                </a>
+                                <a class="btn btn-primary w-100" routerLink="/search"> Oglej si aktivnosti </a>
                             </div>
                         </div>
                     </div>

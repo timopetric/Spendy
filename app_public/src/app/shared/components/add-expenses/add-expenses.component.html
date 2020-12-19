@@ -1,0 +1,101 @@
+<div class="container-fluid bg-grey px-3" id="content">
+    <section class="bg-light py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9 col-md-8">
+                    <h1 class="font-weight-bold mb-0">Dodaj stroške/prihodke</h1>
+                    <p class="lead text-muted">Dodajte svoje stroške in prihodke.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section>
+        <div id="uspesnoDodanExpense" class="bg-success text-justify text-lg-center" style='visibility: {{uspesno}}'>Uspešno dodano!</div>
+    </section> -->
+
+    <section class="bg-mix py-3">
+        <div class="container-fluid">
+            <div class="card rounded-0">
+                <div class="card-body">
+                    <form id="dodajStrosek" action="" method="post" role="form">
+                        <div class="form-group">
+                            <input
+                                checked
+                                id="stroskiCheckbox"
+                                onchange="truefalse()"
+                                data-off="Prihodek"
+                                data-offstyle="success"
+                                data-on="Odhodek"
+                                data-onstyle="danger"
+                                data-size="large"
+                                data-toggle="toggle"
+                                data-width="100%"
+                                type="checkbox"
+                            />
+                            <input id="isExpenditure" name="isExpenditure" value="true" style="visibility: hidden" />
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-6">
+                                <label for="cost">Vnesite vrednost v €: </label>
+                                <input
+                                    id="cost"
+                                    min="0"
+                                    placeholder="Vrednost v €"
+                                    required
+                                    step="0.01"
+                                    type="number"
+                                    value="10"
+                                    name="cost"
+                                />
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                Datum veljave:
+                                <input id="date" required type="date" name="date" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-6">
+                                <select id="category_name" class="custom-select" name="category_name" required>
+                                    <option value="">Izberi odhodek/prihodek</option>
+                                    <option value="Hrana">Hrana</option>
+                                    <option value="Avto">Avto</option>
+                                    <option value="Treningi">Treningi</option>
+                                    <option value="Igrice">Igrice</option>
+                                    <option value="Žepnina">Žepnina</option>
+                                    <option value="Plača">Plača</option>
+                                    <option value="Luksuz">Luksuz</option>
+                                </select>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                <select
+                                    id="idGroupSelect"
+                                    class="custom-select"
+                                    name="idGroup"
+                                    onchange="onChange()"
+                                    required
+                                ></select>
+                            </div>
+                        </div>
+                        <div>
+                            <input
+                                id="description"
+                                class="form-control mb-3"
+                                type="search"
+                                placeholder="Kratek opis stroška/dohodka"
+                                aria-label="search"
+                                name="description"
+                            />
+                        </div>
+
+                        <input id="uporabnikTrenutni" style="visibility: hidden" name="created_by" />
+                        <button class="container-fluid d-flex justify-content-center btn btn-primary" type="submit">
+                            Shrani
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

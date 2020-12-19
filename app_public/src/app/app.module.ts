@@ -24,6 +24,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
 import { FormsModule } from "@angular/forms";
 import { SettingsComponent } from "./shared/components/settings/settings.component";
+import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
 
 @NgModule({
     declarations: [
@@ -44,15 +45,9 @@ import { SettingsComponent } from "./shared/components/settings/settings.compone
         SignupComponent,
         MapDictToArrayPipe,
         SettingsComponent,
+        AddExpensesComponent,
     ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ChartsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-    ],
+    imports: [BrowserModule, BrowserAnimationsModule, ChartsModule, AppRoutingModule, HttpClientModule, FormsModule],
     providers: [],
     bootstrap: [FrameComponent],
 })
