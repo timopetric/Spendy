@@ -100,7 +100,7 @@ const addExpenseToGroup = (req, res) => {
         });
     } else {
         res.status(400).json({
-            message: "Parameter idGroup must be defined.",
+            message: "Parameter idGroup must be defind.",
         });
     }
 };
@@ -247,4 +247,3 @@ module.exports = {
     deleteExpenseOfGroup,
     updateExpense,
 };
-
