@@ -12,12 +12,20 @@ const API_URL = environment.apiUrl;
 })
 export class SpendyDataService {
     constructor(private http: HttpClient) {}
+
     public getExpenses(skupinaId): any {
         return this.http
-            .get(API_URL + "/" + skupinaId)
+            .get(`${API_URL}/groups/${skupinaId}/expenses?isExpenditure=true&date=desc`)
             .toPromise()
-            .then((response: any) => {
-                //TODO
+            .then((responseExpenses: any) => {
+                let expenses = responseExpenses.expenses;
+                this.http
+                    .get(`${API_URL}/groups/${skupinaId}/expenses?isExpenditure=false&date=desc`)
+                    .toPromise()
+                    .then((responseIncome: any) => {
+                        let income = responseIncome.expenses;
+                        return { income: income, expenses: expenses };
+                    });
             });
     }
 }
