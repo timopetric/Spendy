@@ -23,42 +23,38 @@
     <!--</div>-->
 
     <div class="container">
+        <mat-spinner *ngIf="loading"></mat-spinner>
         <div class="row d-flex justify-content-center">
-            <mat-spinner *ngIf="!loaded"></mat-spinner>
-            <div *ngIf="loaded" class="col col-lg-9">
-                <mat-card>
+            <div class="col col-lg-9 p-0">
+                <mat-card *ngIf="!loading">
                     <mat-card-header>
                         <img mat-card-avatar src="assets/icons/user-silhouette.png" alt="Uporabniška slika" />
                         <mat-card-title>
-                            <h3>{{ user.username }}</h3>
+                            <h3>{{ user.name.value }} {{ user.surname.value }}</h3>
                         </mat-card-title>
-                        <mat-card-subtitle>Uporabniško ime</mat-card-subtitle>
-                        <mat-card-content> Število skupin: {{ stevilo_skupin }} </mat-card-content>
+                        <!--<mat-card-subtitle>Uporabnik</mat-card-subtitle>-->
+                        <mat-card-subtitle> Število skupin: {{ stevilo_skupin }} </mat-card-subtitle>
                     </mat-card-header>
 
                     <mat-card-content>
-                        <div role="alert" *ngIf="errorMessage" class="alert alert-danger">
-                            {{ errorMessage }}
-                        </div>
-
                         <div class="tab-content">
                             <div class="tab-pane active" id="settings">
-                                <form action="/settings" class="form" id="registrationForm" method="post" id="forma">
+                                <form (submit)="sendData()" class="form">
                                     <!--ime-->
                                     <div class="form-group">
                                         <mat-card-title>Ime</mat-card-title>
                                         <mat-form-field appearance="outline">
                                             <mat-label>Vnesite željeno ime</mat-label>
                                             <input
-                                                required
                                                 matInput
-                                                [formControl]="name"
+                                                [formControl]="user.name"
+                                                required
                                                 name="name"
                                                 placeholder="Janez"
                                                 title="Vnesite željeno ime"
                                                 type="text"
                                             />
-                                            <mat-error *ngIf="name.invalid">{{ nameError }}</mat-error>
+                                            <mat-error *ngIf="user.name.invalid">{{ nameError }}</mat-error>
                                         </mat-form-field>
                                     </div>
 
@@ -70,45 +66,30 @@
                                             <input
                                                 required
                                                 matInput
-                                                [formControl]="surname"
+                                                [formControl]="user.surname"
                                                 name="surname"
                                                 placeholder="Novak"
                                                 title="Vnesite željen priimek"
                                                 type="text"
                                             />
-                                            <mat-error *ngIf="surname.invalid">{{ surnameError }}</mat-error>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <!--email-->
-                                    <div class="form-group">
-                                        <mat-card-title>Email</mat-card-title>
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Vnesite željeni email</mat-label>
-                                            <input
-                                                required
-                                                matInput
-                                                [formControl]="email"
-                                                name="mail"
-                                                placeholder="janez123@email.si"
-                                                title="Vnesite željen email"
-                                                type="email"
-                                                email
-                                            />
-                                            <mat-error *ngIf="email.invalid">{{ emailError }}</mat-error>
+                                            <mat-error *ngIf="user.surname.invalid">{{ surnameError }}</mat-error>
                                         </mat-form-field>
                                     </div>
 
                                     <!--geslo-->
                                     <div class="form-group">
                                         <mat-card-title>Geslo</mat-card-title>
+                                        <mat-card-subtitle
+                                            >Geslo mora biti dolgo vsaj 8 znakov, mora vsebovati male in velike črke,
+                                            številke in specialne znake
+                                        </mat-card-subtitle>
                                         <mat-form-field appearance="outline">
                                             <mat-label>Vnesite željeno novo geslo</mat-label>
                                             <input
                                                 required
                                                 matInput
-                                                [formControl]="password1"
-                                                name="mail"
+                                                [formControl]="user.password"
+                                                name="password1"
                                                 placeholder="Geslo"
                                                 title="Vnesite svoje novo geslo"
                                                 type="password"
@@ -125,23 +106,7 @@
                                                     passwordHide ? "visibility_off" : "visibility"
                                                 }}</mat-icon>
                                             </button>
-                                            <mat-error *ngIf="password1.invalid">{{ passwordError }}</mat-error>
-                                        </mat-form-field>
-
-                                        <mat-form-field *ngIf="passwordHide" appearance="outline">
-                                            <mat-label>Še enkrat vnesite novo geslo</mat-label>
-                                            <input
-                                                required
-                                                matInput
-                                                [formControl]="password2"
-                                                (input)="validatePasswords($event)"
-                                                name="mail"
-                                                placeholder="Geslo"
-                                                title="Vnesite svoje novo geslo"
-                                                type="password"
-                                            />
-                                            <mat-error *ngIf="password2.invalid">{{ passwordError }}</mat-error>
-                                            <mat-error *ngIf="passwordNotSameError">Gesli morata biti enaki</mat-error>
+                                            <mat-error *ngIf="user.password.invalid">{{ passwordError }}</mat-error>
                                         </mat-form-field>
                                     </div>
 
@@ -153,28 +118,17 @@
                                             <input
                                                 required
                                                 matInput
-                                                [formControl]="limit"
+                                                [formControl]="user.limit"
                                                 name="limit"
                                                 placeholder="350"
                                                 title="Vnesite željen limit"
                                                 type="number"
                                             />
                                             <span matSuffix>€</span>
-                                            <mat-error *ngIf="limit.invalid">{{ limitError }}</mat-error>
+                                            <mat-error *ngIf="user.limit.invalid">{{ limitError }}</mat-error>
                                         </mat-form-field>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-xs-12">
-                                            <br />
-                                            <button type="submit" class="btn btn-primary" onclick="bandidate()">
-                                                Shrani
-                                            </button>
-                                            <!--<button class="btn btn-lg btn-success pull-right" id="gumb" type="submit"><i
-                                            class="glyphicon glyphicon-ok-sign"></i>Shrani
-                                    </button>-->
-                                            <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                                        </div>
-                                    </div>
+                                    <button mat-raised-button color="primary" type="submit">POTRDI SPREMEMBE</button>
                                 </form>
                             </div>
                         </div>
