@@ -3,12 +3,12 @@
 /* main text in body */
 main {
     /*margin-left: 5rem;*/
-    padding: 1rem 0;
+    padding: 1rem;
 }
 
 /* ---------------------- scrollbar ---------------------- */
 body::-webkit-scrollbar {
-    width: 0.3rem;
+    width: 0.4rem;
 }
 
 body::-webkit-scrollbar-track {

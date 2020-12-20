@@ -1,37 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="mr-auto col-md-4">
-        <div class="form-group">
-            <label><p class="font-weight-light py-0 my-0">Izberi pogled skupine</p></label>
-            <select id="idGroup" class="custom-select" onchange="onGroupChange()" required>
-                <option *ngFor="let skupina of skupine" value="{{ skupina._id }}">
-                    {{ skupina.name }}
-                </option>
-            </select>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<mat-card>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9 col-md-4">
+                <div class="form-group">
+                    <label><p class="font-weight-light py-0 my-0">Izberi pogled skupine</p></label>
+                    <select id="idGroup" class="custom-select" onchange="onGroupChange()" required>
+                        <option *ngFor="let skupina of skupine" value="{{ skupina._id }}">
+                            {{ skupina.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3 col-md-8 d-flex justify-content-end">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-content-end">
+                    <li class="nav-item dropdown">
+                        <a
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            class="nav-link text-dark dropdown-toggle"
+                            data-toggle="dropdown"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                        >
+                            <img
+                                alt=""
+                                class="img-fluid rounded-circle avatar mr-2"
+                                src="/assets/icons/user-silhouette.png"
+                            />
+                        </a>
+                        <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" routerLink="/profil">Moj profil</a>
+                            <a class="dropdown-item" routerLink="/settings">Nastavitve</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" routerLink="/first-page">Odjava</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-        <li class="nav-item dropdown">
-            <a
-                aria-expanded="false"
-                aria-haspopup="true"
-                class="nav-link text-dark dropdown-toggle"
-                data-toggle="dropdown"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-            >
-                <img
-                    alt=""
-                    class="img-fluid rounded-circle avatar mr-2"
-                    src="/assets/icons/user-1.png"
-                />
-            </a>
-            <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" routerLink="/profil">Moj profil</a>
-                <a class="dropdown-item" routerLink="/settings">Nastavitve</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLink="/first-page">Odjava</a>
-            </div>
-        </li>
-    </ul>
-</nav>
+</mat-card>
+<!--</nav>-->
