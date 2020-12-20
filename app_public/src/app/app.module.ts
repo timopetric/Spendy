@@ -22,8 +22,17 @@ import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SettingsComponent } from "./shared/components/settings/settings.component";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatCard, MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatIconModule } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
     declarations: [
@@ -52,6 +61,16 @@ import { SettingsComponent } from "./shared/components/settings/settings.compone
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        MatAutocompleteModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

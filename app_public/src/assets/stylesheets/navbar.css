@@ -2,8 +2,8 @@
 
 /* main text in body */
 main {
-    margin-left: 5rem;
-    padding: 1rem;
+    /*margin-left: 5rem;*/
+    padding: 1rem 0;
 }
 
 /* ---------------------- scrollbar ---------------------- */
@@ -147,8 +147,8 @@ img.current-page-img {
     }
 
     main {
-        margin: 0 0 4rem 0;
-        padding: 1rem;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
     }
 }
 
@@ -208,6 +208,9 @@ img.current-page-img {
         margin-right: 0.5rem;
         /*margin-top: 3rem;*/
     }
+    main {
+        margin-left: 5rem;
+    }
 }
 
 /* Large screens */
@@ -255,10 +258,7 @@ img.current-page-img {
     }
 
     main {
-        /*margin-left: 18rem;*/
-        /*padding: 1rem;*/
         margin: 0 0 0 18rem;
-        padding: 0 2.5rem 0 2.5rem;
     }
 }
 
