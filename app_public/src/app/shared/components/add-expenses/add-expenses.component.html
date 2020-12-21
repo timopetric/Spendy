@@ -17,22 +17,19 @@
         <div class="container-fluid">
             <div class="card rounded-0">
                 <div class="card-body">
-                    <form id="dodajStrosek" action="" method="post" role="form">
+                    <form (ngSubmit)="postExpense()">
                         <div class="form-group">
-                            <input
-                                checked
-                                id="stroskiCheckbox"
-                                onchange="truefalse()"
-                                data-off="Prihodek"
-                                data-offstyle="success"
-                                data-on="Odhodek"
-                                data-onstyle="danger"
-                                data-size="large"
-                                data-toggle="toggle"
-                                data-width="100%"
-                                type="checkbox"
-                            />
-                            <input id="isExpenditure" name="isExpenditure" value="true" style="visibility: hidden" />
+                            <div>
+                                <ng-toggle
+                                    onColor="{{ toggler.onColor }}"
+                                    onText="{{ toggler.onText }}"
+                                    offColor="{{ toggler.offColor }}"
+                                    offText="{{ toggler.offText }}"
+                                    [(ngModel)]="Expense.isExpenditure"
+                                    name="toggler"
+                                >
+                                </ng-toggle>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-12 col-md-6">
@@ -44,20 +41,25 @@
                                     required
                                     step="0.01"
                                     type="number"
-                                    value="10"
+                                    [(ngModel)]="Expense.cost"
                                     name="cost"
                                 />
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 Datum veljave:
-                                <input id="date" required type="date" name="date" />
+                                <input id="date" required type="date" name="date" [(ngModel)]="Expense.date" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-sm-12 col-md-6">
-                                <select id="category_name" class="custom-select" name="category_name" required>
-                                    <option value="">Izberi odhodek/prihodek</option>
+                                <select
+                                    id="category_name"
+                                    class="custom-select"
+                                    name="category_name"
+                                    [(ngModel)]="Expense.category_name"
+                                    required
+                                >
                                     <option value="Hrana">Hrana</option>
                                     <option value="Avto">Avto</option>
                                     <option value="Treningi">Treningi</option>
@@ -74,6 +76,7 @@
                                     class="custom-select"
                                     name="idGroup"
                                     onchange="onChange()"
+                                    [(ngModel)]="Expense.group"
                                     required
                                 ></select>
                             </div>
@@ -86,6 +89,7 @@
                                 placeholder="Kratek opis stroška/dohodka"
                                 aria-label="search"
                                 name="description"
+                                [(ngModel)]="Expense.description"
                             />
                         </div>
 

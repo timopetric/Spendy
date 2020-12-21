@@ -86,7 +86,7 @@ const getExpensesByGroupIdWithQueries = async (req, res) => {
 //DODAJ EXPENSE GROUPI
 const addExpenseToGroup = (req, res) => {
     const idGroup = req.params.idGroup;
-    //console.log(idGroup);
+    console.log(idGroup);
     if (idGroup) {
         Group.findById(req.params.idGroup).exec((error, group) => {
             if (error) {

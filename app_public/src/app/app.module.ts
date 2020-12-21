@@ -22,6 +22,7 @@ import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
+import { NgToggleModule } from "@nth-cloud/ng-toggle";
 import { FormsModule } from "@angular/forms";
 import { SettingsComponent } from "./shared/components/settings/settings.component";
 import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
@@ -47,7 +48,15 @@ import { AddExpensesComponent } from "./shared/components/add-expenses/add-expen
         SettingsComponent,
         AddExpensesComponent,
     ],
-    imports: [BrowserModule, BrowserAnimationsModule, ChartsModule, AppRoutingModule, HttpClientModule, FormsModule],
+    imports: [
+        BrowserModule,
+        NgToggleModule,
+        BrowserAnimationsModule,
+        ChartsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+    ],
     providers: [],
     bootstrap: [FrameComponent],
 })
