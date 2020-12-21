@@ -30,17 +30,13 @@ export class SpendyDataService {
     }
 
     public postExpense(Expense) {
-        let data = JSON.stringify(Expense);
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json",
-                Authorization: "my-auth-token",
-            }),
-        };
+        let data = Expense;
+        console.log(data);
+        const httpOptions = {};
 
         console.log(Expense.group);
         return this.http
-            .post(`${API_URL}/groups/${Expense.group}/expenses)`, data, httpOptions)
+            .post(`${API_URL}/groups/${Expense.group}/expenses`, data, httpOptions)
             .toPromise()
             .then(res => {
                 console.log("Adding Expense succesful");

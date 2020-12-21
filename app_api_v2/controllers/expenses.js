@@ -90,7 +90,7 @@ const addExpenseToGroup = (req, res) => {
     if (idGroup) {
         Group.findById(req.params.idGroup).exec((error, group) => {
             if (error) {
-                res.status(500).json({ message: "Error in database.", error: error });
+                res.status(500).json({ message: "Error in database. 1", error: error });
             } else if (!group) {
                 res.status(404).json({ message: `Cant find group with idGroup:${idGroup}` });
             } else {
@@ -131,7 +131,7 @@ const createExpenseAndAddToGroup = (req, res, group) => {
         },
         (error, expense) => {
             if (error) {
-                res.status(500).json({ message: "Error in database cant create expense", error: error });
+                res.status(500).json({ message: "Error in database cant create expense 2", error: error });
             } else if (!expense) {
                 res.status(404).json({ message: "Cant create expense" });
             } else {

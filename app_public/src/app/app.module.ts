@@ -19,6 +19,7 @@ import { SearchComponent } from "./shared/components/search/search.component";
 import { GroupsComponent } from "./shared/components/groups/groups.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
+import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
@@ -34,7 +35,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
 
 @NgModule({

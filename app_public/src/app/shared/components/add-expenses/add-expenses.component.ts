@@ -20,16 +20,16 @@ export class AddExpensesComponent implements OnInit {
     public Expense = {
         isExpenditure: false,
         cost: 0,
-        date: "",
+        date: "2020-12-11",
         category_name: "Hrana",
         group: "",
         description: "",
+        created_by: "5fe087f6fabe4b365c8a7998",
     };
 
     public izpisi() {}
 
     public postExpense() {
-        console.log(this.Expense);
         this.Expense.group = "5fe087f6fabe4b365c8a7998";
         this.SpendyDataService.postExpense(this.Expense);
     }
