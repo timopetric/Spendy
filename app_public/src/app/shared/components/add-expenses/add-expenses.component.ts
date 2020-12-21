@@ -30,7 +30,7 @@ export class AddExpensesComponent implements OnInit {
 
     public postExpense() {
         console.log(this.Expense);
-        this.Expense.group = "tojeneki";
+        this.Expense.group = "5fe087f6fabe4b365c8a7998";
         this.SpendyDataService.postExpense(this.Expense);
     }
     ngOnInit(): void {}

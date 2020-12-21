@@ -37,6 +37,17 @@ export class SpendyDataService {
                 Authorization: "my-auth-token",
             }),
         };
-        return this.http.post(`${API_URL}/groups/${Expense.group}/expenses)`, data, httpOptions);
+
+        console.log(Expense.group);
+        return this.http
+            .post(`${API_URL}/groups/${Expense.group}/expenses)`, data, httpOptions)
+            .toPromise()
+            .then(res => {
+                console.log("Adding Expense succesful");
+                console.log(Expense);
+            })
+            .catch(napaka => {
+                console.log(napaka);
+            });
     }
 }
