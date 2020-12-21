@@ -33,6 +33,8 @@ const ctrlDb = require("../controllers/db");
 
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
+router.put("/users/:idUser", ctrlUser.updateUser);
+router.get("/users/:userId", ctrlUser.getUserById);
 
 // END----------------------------USERS---------------------------------END
 
@@ -56,6 +58,12 @@ router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 
 //Api endpoint for all invalid urls
 //if you get this check your params and path
+
+// CORS fix
+router.options("/*", function (req, res) {
+    res.status(200).json("OK");
+});
+
 router.all("/*", function (req, res) {
     res.status(404).json({ message: "This url does not exists, check your params and url path" });
 });

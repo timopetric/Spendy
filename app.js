@@ -26,10 +26,7 @@ var swaggerOptions = {
             // url: "",
             email: "a@a.si",
         },
-        servers: [
-            { url: "http://localhost:3000/api/v2" },
-            { url: "http://sp-spendy.herokuapp.com/api/v2" },
-        ],
+        servers: [{ url: "http://localhost:3000/api/v2" }, { url: "http://sp-spendy.herokuapp.com/api/v2" }],
     },
     apis: [
         "app_api_v2/models/schemes-models.js",
@@ -69,6 +66,7 @@ app.use(express.static(path.join(__dirname, "app_public")));
 app.use("/api", (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT,OPTIONS");
     next();
 });
 
