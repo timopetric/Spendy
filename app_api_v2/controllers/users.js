@@ -41,28 +41,39 @@ const getAllUsers = (req, res) => {
 /**
  * GET /api/v2/users/name/:name
  * return a user by his name
- *  * @swagger
- *  /users:
- *    get:
- *      summary: Get all users
- *      description: \-
- *      tags: [Users]
- *      responses:
- *        "200":
- *          description: An array of users
- *          content:
- *            application/json:
- *              schema:
- *                type: array
- *                items:
- *                  $ref: '#/components/schemas/User_getAllUsers'
- *        "500":
- *          description: An error message
- *          content:
- *            application/json:
- *              schema:
- *                items:
- *                  $ref: '#/components/schemas/Error'
+ * @swagger
+ *  /users/name:
+ *   get:
+ *    summary: Get a user
+ *    description: Get a user by their name
+ *    tags: [Users]
+ *    parameters:
+ *     - in: path
+ *       name: name
+ *       description: the name of the user
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: Metka
+ *    responses:
+ *     "200":
+ *      description: A user object
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: '#/components/schemas/Error'
+ *     "400":
+ *      description: Napaka zahteve, manjkajo obvezni parametri.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/components/schemas/Error'
+ *        example:
+ *         sporočilo: Parametra lng in lat sta obvezna.
+ *     "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
 const getUserByName = (req, res) => {
     const name = req.params.name;
@@ -82,7 +93,37 @@ const getUserByName = (req, res) => {
         });
 };
 
+
+const getUserById = (req, res) => {
+    User.findById(req.params.userId)
+        .select("-pass")
+        .populate("groupIds")
+        .exec((err, user) => {
+            if (!user)
+                return res.status(404).json({
+                    message: "Uporabnik s podanim id-jem ne obstaja.",
+                });
+            else if (err) {
+                return res.status(500).json(err);
+            } else {
+                // async.forEach(user,function(oneUser,callback) {
+                //     Group.populate(oneUser.groupIds,{ "path": "userIds" },function(err,output) {
+                //         if (err) throw err; // or do something
+                //
+                //         callback();
+                //     });
+                // }, function(err) {
+                //     res.status(200).json(user);
+                // });
+
+                res.status(200).json(user);
+            }
+        });
+};
+
+
 module.exports = {
     getAllUsers,
-    getUserByName
+    getUserByName,
+    getUserById
 };

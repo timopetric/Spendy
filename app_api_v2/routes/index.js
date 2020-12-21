@@ -6,6 +6,12 @@ const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
+var ctrlAuthentication = require("../controllers/authentication");
+
+/* Avtentikacija */
+router.post('/registracija', ctrlAuthentication.registracija);
+router.post('/prijava', ctrlAuthentication.prijava);
+
 
 /**
  * Categories
