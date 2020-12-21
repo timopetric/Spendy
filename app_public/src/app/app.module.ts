@@ -35,7 +35,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
+
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
     declarations: [
@@ -76,6 +79,7 @@ import { NgToggleModule } from "@nth-cloud/ng-toggle";
         ReactiveFormsModule,
         MatIconModule,
         MatProgressSpinnerModule,
+        MatSnackBarModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],
