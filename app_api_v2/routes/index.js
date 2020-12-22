@@ -7,30 +7,6 @@ const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
 
-/**
- * Categories
- * @swagger
- * tags:
- *  - name: Users
- *    description: Everything about users
- *  - name: Groups
- *    description: Everything about groups
- *  - name: Expenses
- *    description: Everything about expenses
- */
-
-/**
- * Varnostna shema dostopa
- * @swagger
- * components:
- *  securitySchemes:
- *   jwt:
- *    type: http
- *    scheme: bearer
- *    in: header
- *    bearerFormat: JWT
- */
-
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/:idUser", ctrlUser.getUserById);
@@ -67,7 +43,7 @@ var swaggerOptions = {
         openapi: "3.0.0",
         info: {
             title: "Spendy API docs",
-            version: "1.0.0",
+            version: "2.0.0",
             description: "Spendy REST API",
         },
         license: {
@@ -82,10 +58,11 @@ var swaggerOptions = {
         servers: [{ url: "http://localhost:3000/api/v2" }, { url: "http://sp-spendy.herokuapp.com/api/v2" }],
     },
     apis: [
-        "app_api_v2/models/schemes-models.js",
-        "app_api_v2/controllers/users.js",
-        "app_api_v2/controllers/groups.js",
-        "app_api_v2/routes/index.js",
+        "app_api_v2/documentation/expenses.js",
+        "app_api_v2/documentation/groups.js",
+        "app_api_v2/documentation/users.js",
+        "app_api_v2/documentation/basics.js",
+        "app_api_v2/documentation/schemes.js",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);

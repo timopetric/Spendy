@@ -1,20 +1,20 @@
 import { Group } from "./group";
 
 export class UserGroupPopulated {
-    private _id: string;
-    private _groupIds: any;
+    private __id: string;
+    private _groupIds: Group[];
     private _username: string;
     private _name: string;
     private _surname: string;
     private _mail: string;
     private _balance: number;
 
-    get id(): string {
-        return this._id;
+    get _id(): string {
+        return this.__id;
     }
 
-    set id(value: string) {
-        this._id = value;
+    set _id(value: string) {
+        this.__id = value;
     }
 
     get groupIds(): Group[] {

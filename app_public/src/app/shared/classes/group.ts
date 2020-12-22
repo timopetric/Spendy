@@ -5,9 +5,6 @@ export class Group {
     private _expenses: string[];
     private _name: string;
     private _balance: number;
-    private _created_at: string;
-    private _updated_at: string;
-    private __v: number;
 
     get _id(): string {
         return this.__id;
@@ -55,29 +52,5 @@ export class Group {
 
     set balance(value: number) {
         this._balance = value;
-    }
-
-    get created_at(): string {
-        return this._created_at;
-    }
-
-    set created_at(value: string) {
-        this._created_at = value;
-    }
-
-    get updated_at(): string {
-        return this._updated_at;
-    }
-
-    set updated_at(value: string) {
-        this._updated_at = value;
-    }
-
-    get _v(): number {
-        return this.__v;
-    }
-
-    set _v(value: number) {
-        this.__v = value;
     }
 }
