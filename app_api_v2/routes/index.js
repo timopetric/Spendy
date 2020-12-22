@@ -48,6 +48,10 @@ router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQue
 router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
 router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
 router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
+
+router.get("/groups", ctrlGroups.getAllGroups);
+router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
+router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------DB IMPORT-------------------------------START
