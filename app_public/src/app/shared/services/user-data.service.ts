@@ -16,7 +16,7 @@ export class UserDataService implements OnInit {
         });
     }
 
-    userId = "5fc44bd3f35a902b3000803c"; // todo: get from token
+    userId = "5fe12a172732e405383395e6"; // todo: get from token
 
     public userPopulated: UserGroupPopulated = new UserGroupPopulated();
     numOfGroups = 0;
@@ -51,6 +51,16 @@ export class UserDataService implements OnInit {
                     this.numOfGroups = this.userPopulated.groupIds.length;
                     return this.userPopulated;
                 });
+            })
+            .catch(UserDataService.obdelajNapako);
+    }
+
+    public deleteUser(idUser: string) {
+        return this.http
+            .delete(`${API_URL}/${idUser}`)
+            .toPromise()
+            .then((response: any) => {
+                return response;
             })
             .catch(UserDataService.obdelajNapako);
     }

@@ -75,7 +75,7 @@ const deleteUser = (req, res) => {
     }
 
     User.findByIdAndDelete(idUser, (error, result) => {
-        if (!result || error.kind === "ObjectId") {
+        if (!result || (error && error.kind === "ObjectId")) {
             res.status(404).json({ message: `User with id: ${idUser} not found`, error: error });
         } else if (error) {
             res.status(500).json({ message: "Error in database", error: error });

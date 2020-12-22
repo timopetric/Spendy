@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { UserDataService } from "../../services/user-data.service";
 import { User } from "../../classes/user.model";
 import { UserGroupPopulated } from "../../classes/user-group-populated";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-settings",
@@ -12,7 +13,7 @@ import { UserGroupPopulated } from "../../classes/user-group-populated";
     styleUrls: ["./settings.component.css"],
 })
 export class SettingsComponent implements OnInit {
-    constructor(public userDataService: UserDataService, private _snackBar: MatSnackBar) {}
+    constructor(public userDataService: UserDataService, private _snackBar: MatSnackBar, private router: Router) {}
 
     loading = true;
     userData: UserGroupPopulated = new UserGroupPopulated();
@@ -34,6 +35,7 @@ export class SettingsComponent implements OnInit {
     surnameError = "Priimek mora biti dolg med 3 in 16 znakov";
     passwordError = "Geslo ni pravilne oblike (8 znakov, velike, male črke, številke, specialni znak)";
     passwordHide = true;
+    deleteError = "";
 
     ngOnInit(): void {
         this.loading = true;
@@ -60,6 +62,16 @@ export class SettingsComponent implements OnInit {
         if (confirm("Ste prepričani, da želite izbrisati svoj račun?")) {
             console.log("Implement delete functionality here");
             // todo: add deleteUser to api, service
+            this.userDataService.deleteUser(this.userDataService.userId).then(resp => {
+                if (resp === null) {
+                    // successfully deleted user
+                    this.deleteError = "";
+                    alert("Uporabnik uspešno izbrisan");
+                    this.router.navigateByUrl("/first-page");
+                } else {
+                    this.deleteError = "Napaka: Izbris uporabnika ni uspel";
+                }
+            });
         }
     }
 
