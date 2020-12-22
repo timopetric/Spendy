@@ -33,8 +33,10 @@ const ctrlDb = require("../controllers/db");
 
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
+router.get("/users/:idUser", ctrlUser.getUserById);
 router.put("/users/:idUser", ctrlUser.updateUser);
-router.get("/users/:userId", ctrlUser.getUserById);
+router.delete("/users/:idUser", ctrlUser.deleteUser);
+router.post("/users", ctrlUser.addUser);
 
 // END----------------------------USERS---------------------------------END
 
@@ -56,14 +58,51 @@ router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 
 // END----------------------------DB IMPORT---------------------------------END
 
-//Api endpoint for all invalid urls
-//if you get this check your params and path
+//START--------------------------SWAGGER-------------------------------START
+var swaggerJsdoc = require("swagger-jsdoc");
+var swaggerUi = require("swagger-ui-express");
 
-// CORS fix
+var swaggerOptions = {
+    swaggerDefinition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Spendy API docs",
+            version: "1.0.0",
+            description: "Spendy REST API",
+        },
+        license: {
+            name: "GNU LGPLv3",
+            url: "https://choosealicense.com/licenses/lgpl-3.0",
+        },
+        contact: {
+            name: "Skupina Spendy",
+            // url: "",
+            email: "a@a.si",
+        },
+        servers: [{ url: "http://localhost:3000/api/v2" }, { url: "http://sp-spendy.herokuapp.com/api/v2" }],
+    },
+    apis: [
+        "app_api_v2/models/schemes-models.js",
+        "app_api_v2/controllers/users.js",
+        "app_api_v2/controllers/groups.js",
+        "app_api_v2/routes/index.js",
+    ],
+};
+const swaggerDocument = swaggerJsdoc(swaggerOptions);
+
+router.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.get("/swagger.json", (req, res) => {
+    res.status(200).json(swaggerDocument);
+});
+//END--------------------------SWAGGER-------------------------------END
+
+// CORS fix - send response to OPTIONS call
 router.options("/*", function (req, res) {
     res.status(200).json("OK");
 });
 
+//Api endpoint for all invalid urls
+//if you get this check your params and path
 router.all("/*", function (req, res) {
     res.status(404).json({ message: "This url does not exists, check your params and url path" });
 });

@@ -56,6 +56,13 @@ export class SettingsComponent implements OnInit {
         });
     }
 
+    deleteUser() {
+        if (confirm("Ste prepričani, da želite izbrisati svoj račun?")) {
+            console.log("Implement delete functionality here");
+            // todo: add deleteUser to api, service
+        }
+    }
+
     public sendData(): void {
         let data;
         if (this.userForm.name.valid && this.userForm.surname.valid && this.userForm.password.valid) {

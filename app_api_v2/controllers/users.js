@@ -1,3 +1,5 @@
+const SpendyError = require("./SpendyError");
+
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
@@ -33,6 +35,7 @@ const Group = mongoose.model("Group");
  *                items:
  *                  $ref: '#/components/schemas/Error'
  */
+// DONE
 const getAllUsers = (req, res) => {
     User.find()
         .select("_id groupIds username name surname balance mail")
@@ -43,7 +46,9 @@ const getAllUsers = (req, res) => {
                 res.status(404).json({ message: "Users not found" });
             } else {
                 res.status(200).json(
-                    // FYI this map is not needed
+                    // FYI this map is not needed because of .select() but
+                    // it will be easier to write documentation on its basis
+
                     users.map((user) => {
                         return {
                             _id: user._id,
@@ -60,8 +65,13 @@ const getAllUsers = (req, res) => {
         });
 };
 
+// DONE
 const getUserById = (req, res) => {
-    User.findById(req.params.userId)
+    let idUser = req.params.idUser;
+    if (!idUser) {
+        res.status(404).json({ message: "Parameter {idUser} must be supplied" });
+    }
+    User.findById(idUser)
         .select("-pass")
         .populate("groupIds")
         .exec((error, user) => {
@@ -70,9 +80,19 @@ const getUserById = (req, res) => {
             } else if (!user) {
                 res.status(404).json({ message: "User not found" });
             } else {
+                // everything is mapped so we know exactly what is returned
                 res.status(200).json({
                     _id: user._id,
-                    groupIds: user.groupIds,
+                    groupIds: user.groupIds.map((group) => {
+                        return {
+                            _id: group._id,
+                            name: group.name,
+                            balance: group.balance,
+                            adminIds: group.adminIds,
+                            userIds: group.userIds,
+                            expenses: group.expenses,
+                        };
+                    }),
                     username: user.username,
                     name: user.name,
                     surname: user.surname,
@@ -83,35 +103,130 @@ const getUserById = (req, res) => {
         });
 };
 
-// pretty done, pls do not touch
+// DONE
 const updateUser = (req, res) => {
     let idUser = req.params.idUser;
     if (!idUser) {
         res.status(404).json({ message: "Parameter {idUser} must be supplied" });
     }
-    User.findByIdAndUpdate(idUser, req.body, (error, result) => {
-        if (error) {
-            res.status(500).json({ message: "Error in database", error: error });
-        } else if (!result) {
-            res.status(404).json({ message: `User with id: ${idUser} not found`, error: error });
-        } else {
-            return result;
-        }
-    })
+    User.findByIdAndUpdate(idUser, req.body)
         .then((userUpdated) => {
-            res.status(200).json({
-                _id: userUpdated._id,
-                groupIds: userUpdated.groupIds,
-                username: userUpdated.username,
-                name: userUpdated.name,
-                surname: userUpdated.surname,
-                mail: userUpdated.mail,
-                balance: userUpdated.balance,
-            });
+            if (!userUpdated) {
+                throw new SpendyError("User with this id does not exist", 404);
+            } else {
+                res.status(200).json({
+                    _id: userUpdated._id,
+                    groupIds: userUpdated.groupIds,
+                    username: userUpdated.username,
+                    name: userUpdated.name,
+                    surname: userUpdated.surname,
+                    mail: userUpdated.mail,
+                    balance: userUpdated.balance,
+                });
+            }
         })
         .catch((error) => {
-            res.status(500).json({ message: "Error in database", error: error });
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else if (error.kind === "ObjectId") {
+                res.status(404).json({ message: `Could not find user with id: ${idUser}` });
+            } else {
+                console.log(error);
+                res.status(500).json({ message: `Error in database`, error: error });
+            }
         });
 };
 
-module.exports = { getAllUsers, updateUser, getUserById };
+// DONE
+const deleteUser = (req, res) => {
+    const idUser = req.params.idUser;
+    if (!idUser) {
+        res.status(404).json({ message: "Parameter {idUser} must be supplied" });
+    }
+
+    User.findByIdAndDelete(idUser, (error, result) => {
+        if (!result || error.kind === "ObjectId") {
+            res.status(404).json({ message: `User with id: ${idUser} not found`, error: error });
+        } else if (error) {
+            res.status(500).json({ message: "Error in database", error: error });
+        } else {
+            res.status(204).json({ message: `User with id: ${idUser} successfully deleted` });
+        }
+    });
+};
+
+// DONE
+const addUser = (req, res) => {
+    const reqName = req.body.name;
+    const reqSurname = req.body.surname;
+    const reqUsername = req.body.username;
+    const reqMail = req.body.mail;
+    const reqPass = req.body.pass;
+
+    if (!reqUsername || !reqName || !reqSurname || !reqMail || !reqPass) {
+        return res.status(404).json({
+            message: "Parameters username, name, surname, mail, pass must be supplied in the body",
+        });
+    }
+
+    if (req.body.groupIds !== undefined) {
+        return res.status(404).json({
+            message: "groupIds must not be defined",
+        });
+    }
+
+    const USER_GROUP_NAME = `${reqMail}`;
+    const BALANCE_STARTING = 0.0;
+
+    // create special one man group
+    Group.create({
+        name: USER_GROUP_NAME,
+        balance: BALANCE_STARTING,
+        userIds: [],
+        adminIds: [],
+        expenses: [],
+    })
+        .then((group) => {
+            return User.create({
+                username: reqUsername,
+                name: reqName,
+                surname: reqSurname,
+                balance: BALANCE_STARTING,
+                mail: reqMail,
+                pass: reqPass,
+                groupIds: [group._id],
+            });
+        })
+        .then((user) => {
+            // add userid to the users of the group
+            return Group.findByIdAndUpdate(user.groupIds[0], { userIds: [user._id], adminIds: [user._id] }).then(() => {
+                return user;
+            });
+        })
+        .then((user) => {
+            res.status(201).json({
+                _id: user._id,
+                groupIds: user.groupIds,
+                username: user.username,
+                name: user.name,
+                surname: user.surname,
+                mail: user.mail,
+                balance: user.balance,
+            });
+        })
+        .catch((error) => {
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else if (error.code === 11000 && error.keyValue) {
+                // 11000 is mongo duplicate key error
+                res.status(409).json({
+                    message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
+                    error: error,
+                });
+            } else {
+                res.status(500).json({ message: "Error in database", error: error });
+            }
+        });
+};
+
+module.exports = { getAllUsers, updateUser, getUserById, deleteUser, addUser };
