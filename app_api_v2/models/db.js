@@ -13,6 +13,8 @@
 
 const mongoose = require("mongoose");
 
+mongoose.set("returnOriginal", false); // when findbyidandupdate - return the updated one, not old result
+
 let dbURI = "mongodb://localhost/SpendyDB";
 if (process.env.NODE_ENV === "production") {
     dbURI = process.env.MONGODB_CLOUD_URI;

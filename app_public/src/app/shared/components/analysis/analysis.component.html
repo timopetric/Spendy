@@ -1,6 +1,8 @@
 <app-navbar-main></app-navbar-main>
 
 <main>
+    <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
+
     <div class="container-fluid bg-grey px-3" id="content">
         <section class="bg-light py-3">
             <div class="container-fluid">
@@ -17,31 +19,17 @@
             <div class="container-fluid">
                 <div>
                     <div class="card-body row">
-                        <div
-                            class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
-                        >
+                        <div class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center">
                             <span class="mr-3 font-weight-bold">Od:</span>
                             <div>
-                                <input
-                                    id="dateStart"
-                                    required
-                                    type="date"
-                                    [(ngModel)]="datum.zacetek"
-                                />
+                                <input id="dateStart" required type="date" [(ngModel)]="datum.zacetek" />
                             </div>
                         </div>
 
-                        <div
-                            class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center"
-                        >
+                        <div class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center">
                             <span class="mr-3 font-weight-bold">Do:</span>
                             <div>
-                                <input
-                                    id="dateEnd"
-                                    required
-                                    type="date"
-                                    [(ngModel)]="datum.konec"
-                                />
+                                <input id="dateEnd" required type="date" [(ngModel)]="datum.konec" />
                             </div>
                         </div>
                         <button (click)="getGraphs()">Izpisi</button>
@@ -112,29 +100,21 @@
                         </form>
 
                         <span class="col-sm-12 col-lg-6 mb-5">
-                            <h1 class="container-fluid d-flex justify-content-center">
-                                Predikcija
-                            </h1>
+                            <h1 class="container-fluid d-flex justify-content-center">Predikcija</h1>
 
-                            <div
-                                class="input-group mb-3 container-fluid d-flex justify-content-center"
-                            >
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Pričakovani prihodki:</span>
                                 </div>
                                 <span class="input-group-text bg-success">+210€</span>
                             </div>
-                            <div
-                                class="input-group mb-3 container-fluid d-flex justify-content-center"
-                            >
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Pričakovani odhodki:</span>
                                 </div>
                                 <span class="input-group-text bg-danger">-150€</span>
                             </div>
-                            <div
-                                class="input-group mb-3 container-fluid d-flex justify-content-center"
-                            >
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Skupno:</span>
                                 </div>

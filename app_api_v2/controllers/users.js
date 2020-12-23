@@ -4,63 +4,17 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Group = mongoose.model("Group");
 
-/** GET /api/v2/users
- * @swagger
- *  /users:
- *    get:
- *      summary: Get all users
- *      description: Returns a list of all users
- *      tags: [Users]
- *      responses:
- *        "200":
- *          description: An array of users
- *          content:
- *            application/json:
- *              schema:
- *                type: array
- *                items:
- *                  $ref: '#/components/schemas/User_getAllUsers'
- *        "500":
- *          description: Error in database
- *          content:
- *            application/json:
- *              schema:
- *                items:
- *                  $ref: '#/components/schemas/Error'
- *        "404":
- *          description: No user was found
- *          content:
- *            application/json:
- *              schema:
- *                items:
- *                  $ref: '#/components/schemas/Error'
- */
 // DONE
 const getAllUsers = (req, res) => {
     User.find()
-        .select("_id groupIds username name surname balance mail")
+        .select("_id groupIds username name surname mail balance")
         .exec((error, users) => {
             if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
             } else if (!users) {
                 res.status(404).json({ message: "Users not found" });
             } else {
-                res.status(200).json(
-                    // FYI this map is not needed because of .select() but
-                    // it will be easier to write documentation on its basis
-
-                    users.map((user) => {
-                        return {
-                            _id: user._id,
-                            groupIds: user.groupIds,
-                            username: user.username,
-                            name: user.name,
-                            surname: user.surname,
-                            mail: user.mail,
-                            balance: user.balance,
-                        };
-                    })
-                );
+                res.status(200).json(users);
             }
         });
 };
@@ -72,36 +26,19 @@ const getUserById = (req, res) => {
         res.status(404).json({ message: "Parameter {idUser} must be supplied" });
     }
     User.findById(idUser)
-        .select("-pass")
-        .populate("groupIds")
+        .select("_id groupIds username name surname mail balance")
+        // .populate("groupIds", "_id name balance adminIds userIds expenses")
         .exec((error, user) => {
-            if (error) {
+            if (!user || (error && error.kind === "ObjectId")) {
+                res.status(404).json({ message: `Could not find user with id: ${idUser}` });
+            } else if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
-            } else if (!user) {
-                res.status(404).json({ message: "User not found" });
             } else {
-                // everything is mapped so we know exactly what is returned
-                res.status(200).json({
-                    _id: user._id,
-                    groupIds: user.groupIds.map((group) => {
-                        return {
-                            _id: group._id,
-                            name: group.name,
-                            balance: group.balance,
-                            adminIds: group.adminIds,
-                            userIds: group.userIds,
-                            expenses: group.expenses,
-                        };
-                    }),
-                    username: user.username,
-                    name: user.name,
-                    surname: user.surname,
-                    mail: user.mail,
-                    balance: user.balance,
-                });
+                res.status(200).json(user);
             }
         });
 };
+// todo: MAYBE ALREADY DONE IN GROUPS CONTROLLER make a special response for getting all groups of user with details
 
 // DONE
 const updateUser = (req, res) => {
@@ -109,20 +46,14 @@ const updateUser = (req, res) => {
     if (!idUser) {
         res.status(404).json({ message: "Parameter {idUser} must be supplied" });
     }
+
     User.findByIdAndUpdate(idUser, req.body)
+        .select("_id groupIds username name surname mail balance")
         .then((userUpdated) => {
             if (!userUpdated) {
                 throw new SpendyError("User with this id does not exist", 404);
             } else {
-                res.status(200).json({
-                    _id: userUpdated._id,
-                    groupIds: userUpdated.groupIds,
-                    username: userUpdated.username,
-                    name: userUpdated.name,
-                    surname: userUpdated.surname,
-                    mail: userUpdated.mail,
-                    balance: userUpdated.balance,
-                });
+                res.status(200).json(userUpdated);
             }
         })
         .catch((error) => {
@@ -145,7 +76,7 @@ const deleteUser = (req, res) => {
     }
 
     User.findByIdAndDelete(idUser, (error, result) => {
-        if (!result || error.kind === "ObjectId") {
+        if (!result || (error && error.kind === "ObjectId")) {
             res.status(404).json({ message: `User with id: ${idUser} not found`, error: error });
         } else if (error) {
             res.status(500).json({ message: "Error in database", error: error });
@@ -224,6 +155,7 @@ const addUser = (req, res) => {
                     error: error,
                 });
             } else {
+                console.log(error);
                 res.status(500).json({ message: "Error in database", error: error });
             }
         });
