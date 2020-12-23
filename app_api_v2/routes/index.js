@@ -43,7 +43,6 @@ router.post("/users", ctrlUser.addUser);
 // START--------------------------EXPENSES-------------------------------START
 router.get("/expenses", ctrlExpenses.getAllExpenses);
 router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
-router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
 // END----------------------------EXPENSES---------------------------------END
 
 // START--------------------------GROUPS-------------------------------START

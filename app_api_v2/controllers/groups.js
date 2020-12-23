@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const SpendyError = require("./SpendyError");
 const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
@@ -219,9 +220,9 @@ const removeGroupById = (req, res) => {
                 console.log(deletedGroup);
                 return deletedGroup;
             } catch (error) {
-                console.log("nek error je kao");
+                //console.log("nek error je kao");
                 console.log(error);
-                return res.status(404).json({ message: error });
+                throw new SpendyError("Cant delete expenses of group", 404);
             }
         })
         .then(async (deletedGroup) => {
@@ -237,7 +238,7 @@ const removeGroupById = (req, res) => {
                 return deletedGroup;
             } catch (error) {
                 console.log(error);
-                return res.status(404).json({ message: "error with updating Users", error: error });
+                throw new SpendyError("Cant update users of group", 404);
             }
         })
         .then((deletedGroup) => {
@@ -246,32 +247,6 @@ const removeGroupById = (req, res) => {
         .catch((error) => {
             return res.status(404).json({ message: error });
         });
-    /*
-        Expense.deleteMany({ _id: { $in: group.expenses } }, (err, res) => {
-            if (!res || err) {
-                console.log("Error deleting expenses for group." + err);
-                return res.status(404).json({
-                    message: `Error in database cant delete expenses of group`,
-                });
-            }
-        });
-
-        User.updateMany(
-            { _id: { $in: group.userIds } },
-            { $pull: { groupIds: { $in: [idGroup] } } },
-            { multi: true },
-            (err, res) => {
-                if (!res || err) {
-                    console.log("Error deleting expenses for group." + err);
-                    return res.status(404).json({
-                        message: `Error in database cant delete expenses of group`,
-                    });
-                }
-            }
-        );
-*/
-
-    //});
 };
 
 module.exports = {

@@ -3,6 +3,7 @@ module.exports = class SpendyError extends Error {
         super(message);
         this.name = "SpendyError";
         this.message = message;
+        this.error = error;
         this.respCode = respCode;
     }
 };
