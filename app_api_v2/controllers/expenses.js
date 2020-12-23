@@ -80,7 +80,7 @@ const getExpensesByGroupIdWithQueries = (req, res) => {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
     }
 
-    Group.findById(idGroup)
+    Group.findById(idGroup, { _id: false })
         .select("expenses")
         .populate({
             path: "expenses",
@@ -101,7 +101,7 @@ const getExpensesByGroupIdWithQueries = (req, res) => {
 //DODAJ EXPENSE GROUPI
 const addExpenseToGroup = (req, res) => {
     const idGroup = req.params.idGroup;
-    //console.log(idGroup);
+    console.log(idGroup);
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
     }
@@ -130,7 +130,7 @@ const createExpenseAndAddToGroup = (req, res, group) => {
         return res.status(400).json({ message: "Parameter created_by is not defind" });
     }
 
-    const groupId = req.params.idGroup;
+    const idGroup = req.params.idGroup;
 
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
@@ -142,7 +142,7 @@ const createExpenseAndAddToGroup = (req, res, group) => {
             cost: cost,
             date: date,
             category_name: category_name,
-            groupId: groupId,
+            groupId: idGroup,
             description: description,
             created_by: created_by,
         },
