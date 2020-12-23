@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { User } from "../classes/user.model";
@@ -11,7 +11,7 @@ const API_URL = environment.apiUrl + "/users";
     providedIn: "root",
 })
 export class UserDataService {
-    private user: User = new User();
+    private user: User = null;
     private userUpdated = new Subject<{ message: string; user: User }>();
 
     constructor(private http: HttpClient) {}
@@ -24,9 +24,8 @@ export class UserDataService {
         return this.userUpdated.asObservable();
     }
 
-    private handleUpdateUserData(data, message?) {
+    private handleUpdateUserData(data, message?: string) {
         this.user = data as User;
-        console.log(this.user);
         this.userUpdated.next({
             message: message || "OK",
             user: { ...this.user },
@@ -40,15 +39,23 @@ export class UserDataService {
         return UserDataService.handleError(error);
     }
 
-    getUser() {
-        return this.http.get(`${API_URL}/${this.getUserId()}`).subscribe(
-            data => this.handleUpdateUserData(data),
-            error => this.handleUpdateUserError(error)
-        );
+    getUser(online?: boolean) {
+        if (online == true || this.user == null) {
+            this.http.get(`${API_URL}/${this.getUserId()}`).subscribe(
+                data => this.handleUpdateUserData(data),
+                error => this.handleUpdateUserError(error)
+            );
+        } else {
+            // return cached user data
+            this.userUpdated.next({
+                message: "OK",
+                user: { ...this.user },
+            });
+        }
     }
 
     updateUser(data: UserSettings) {
-        return this.http.put(`${API_URL}/${this.getUserId()}`, data).subscribe(
+        this.http.put(`${API_URL}/${this.getUserId()}`, data).subscribe(
             data => this.handleUpdateUserData(data, "UPDATED"),
             error => this.handleUpdateUserError(error)
         );

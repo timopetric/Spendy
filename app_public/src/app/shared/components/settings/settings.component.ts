@@ -1,18 +1,20 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UserDataService } from "../../services/user-data.service";
 import { User } from "../../classes/user.model";
 import { Router } from "@angular/router";
 import { UserSettings } from "../../classes/UserSettings";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "app-settings",
     templateUrl: "./settings.component.html",
     styleUrls: ["./settings.component.css"],
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
     constructor(public userDataService: UserDataService, private _snackBar: MatSnackBar, private router: Router) {}
+    private userDataSub: Subscription;
 
     loading = true;
     passwordHide = true;
@@ -37,14 +39,22 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit(): void {
         this.loading = true;
+        this.userDataSub = this.userDataService
+            .getUserUpdateListener()
+            .subscribe((user: { message: string; user: User }) => {
+                this.userData = user.user;
+                this.updateFieldsAndSaveUser(user);
+            });
         this.userDataService.getUser();
-        this.userDataService.getUserUpdateListener().subscribe((user: { message: string; user: User }) => {
-            this.updateFieldsAndSaveUser(user);
-        });
+    }
+
+    ngOnDestroy() {
+        this.userDataSub.unsubscribe();
     }
 
     private updateFieldsAndSaveUser(data: { message: string; user: User }) {
         if (data.user !== null) {
+            this.loading = false;
             this.userForm.name.patchValue(data.user.name);
             this.userForm.surname.patchValue(data.user.surname);
             this.userGroupsNumber = data.user.groupIds.length;
@@ -54,7 +64,6 @@ export class SettingsComponent implements OnInit {
             if (data.message === "UPDATED") {
                 this.openSnackBar("Podatki uspešno posodobljeni!");
             }
-            this.loading = false;
         } else {
             console.log("Can not find user");
             this.apiError = data.message;
@@ -64,7 +73,7 @@ export class SettingsComponent implements OnInit {
 
     private openSnackBar(message: string) {
         this._snackBar.open(message, "skrij", {
-            duration: 1500,
+            duration: 5000,
         });
     }
 
