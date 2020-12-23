@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { AbstractControl, FormControl, Validators } from "@angular/forms";
-import { MatRipple } from "@angular/material/core";
+import { FormControl, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UserDataService } from "../../services/user-data.service";
 import { User } from "../../classes/user.model";
-import { UserGroupPopulated } from "../../classes/user-group-populated";
 import { Router } from "@angular/router";
+import { UserSettings } from "../../classes/UserSettings";
 
 @Component({
     selector: "app-settings",
@@ -16,7 +15,11 @@ export class SettingsComponent implements OnInit {
     constructor(public userDataService: UserDataService, private _snackBar: MatSnackBar, private router: Router) {}
 
     loading = true;
-    userData: UserGroupPopulated = new UserGroupPopulated();
+    passwordHide = true;
+    deleteError = "";
+    apiError = "";
+    userData: User = new User();
+    userGroupsNumber = 0;
 
     public userForm = {
         name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),
@@ -28,28 +31,35 @@ export class SettingsComponent implements OnInit {
             Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"),
         ]),
     };
-
-    stevilo_skupin = 0;
-
     nameError = "Ime mora biti dolgo med 3 in 16 znakov";
     surnameError = "Priimek mora biti dolg med 3 in 16 znakov";
     passwordError = "Geslo ni pravilne oblike (8 znakov, velike, male črke, številke, specialni znak)";
-    passwordHide = true;
-    deleteError = "";
 
     ngOnInit(): void {
         this.loading = true;
-        this.userDataService.getUserGroupPopulatedData().then(userPopulated => {
-            this.userData = userPopulated;
-            this.updateFields();
-            this.loading = false;
+        this.userDataService.getUser();
+        this.userDataService.getUserUpdateListener().subscribe((user: { message: string; user: User }) => {
+            this.updateFieldsAndSaveUser(user);
         });
     }
 
-    private updateFields() {
-        this.userForm.name.patchValue(this.userData.name);
-        this.userForm.surname.patchValue(this.userData.surname);
-        this.stevilo_skupin = this.userData.groupIds.length;
+    private updateFieldsAndSaveUser(data: { message: string; user: User }) {
+        if (data.user !== null) {
+            this.userForm.name.patchValue(data.user.name);
+            this.userForm.surname.patchValue(data.user.surname);
+            this.userGroupsNumber = data.user.groupIds.length;
+            this.userForm.password.reset();
+            this.userData = data.user;
+            this.apiError = "";
+            if (data.message === "UPDATED") {
+                this.openSnackBar("Podatki uspešno posodobljeni!");
+            }
+            this.loading = false;
+        } else {
+            console.log("Can not find user");
+            this.apiError = data.message;
+            this.loading = true;
+        }
     }
 
     private openSnackBar(message: string) {
@@ -60,11 +70,11 @@ export class SettingsComponent implements OnInit {
 
     deleteUser() {
         if (confirm("Ste prepričani, da želite izbrisati svoj račun?")) {
-            console.log("Implement delete functionality here");
-            // todo: add deleteUser to api, service
-            this.userDataService.deleteUser(this.userDataService.userId).then(resp => {
+            let userId = this.userDataService.getUserId();
+            this.userDataService.deleteUser(userId).then(resp => {
                 if (resp === null) {
                     // successfully deleted user
+                    this.userData = null;
                     this.deleteError = "";
                     alert("Uporabnik uspešno izbrisan");
                     this.router.navigateByUrl("/first-page");
@@ -75,22 +85,15 @@ export class SettingsComponent implements OnInit {
         }
     }
 
-    public sendData(): void {
-        let data;
+    public updateUser(): void {
         if (this.userForm.name.valid && this.userForm.surname.valid && this.userForm.password.valid) {
             this.loading = true;
-            console.log("success");
-            data = {
-                name: this.userForm.name.value,
-                surname: this.userForm.surname.value,
-                pass: this.userForm.password.value,
-            };
-            this.userDataService.updateUserSettings(data).then(userPopulated => {
-                this.userData = userPopulated;
-                this.userForm.password.reset();
-                this.openSnackBar("Podatki uspešno posodobljeni!");
-                this.loading = false;
-            });
+            let data = new UserSettings(
+                this.userForm.name.value,
+                this.userForm.surname.value,
+                this.userForm.password.value
+            );
+            this.userDataService.updateUser(data);
         }
     }
 }

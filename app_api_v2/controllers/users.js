@@ -27,17 +27,18 @@ const getUserById = (req, res) => {
     }
     User.findById(idUser)
         .select("_id groupIds username name surname mail balance")
-        .populate("groupIds", "_id name balance adminIds userIds expenses")
+        // .populate("groupIds", "_id name balance adminIds userIds expenses")
         .exec((error, user) => {
-            if (error) {
+            if (!user || (error && error.kind === "ObjectId")) {
+                res.status(404).json({ message: `Could not find user with id: ${idUser}` });
+            } else if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
-            } else if (!user) {
-                res.status(404).json({ message: "User not found" });
             } else {
                 res.status(200).json(user);
             }
         });
 };
+// todo: MAYBE ALREADY DONE IN GROUPS CONTROLLER make a special response for getting all groups of user with details
 
 // DONE
 const updateUser = (req, res) => {
