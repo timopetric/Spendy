@@ -14,6 +14,7 @@ router.put("/users/:idUser", ctrlUser.updateUser);
 router.delete("/users/:idUser", ctrlUser.deleteUser);
 router.post("/users", ctrlUser.addUser);
 
+router.get("/users/:idUser/groups", ctrlUser.getGroupsByUserId);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START

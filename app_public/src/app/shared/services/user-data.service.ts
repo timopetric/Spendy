@@ -17,7 +17,7 @@ export class UserDataService {
     constructor(private http: HttpClient) {}
 
     getUserId() {
-        return "5fe23e8f897c371df4f57693"; // todo: get from token
+        return "5fc44bd3f35a902b3000803c"; // todo: get from token
     }
 
     getUserUpdateListener() {

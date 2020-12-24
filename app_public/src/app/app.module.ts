@@ -34,6 +34,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
     declarations: [
@@ -73,6 +74,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
         MatIconModule,
         MatProgressSpinnerModule,
         MatSnackBarModule,
+        NgSelectModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

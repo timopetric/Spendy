@@ -1,15 +1,17 @@
 <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
 <mat-card>
-    <div class="container-fluid">
+    <div id="spinner-and-error-msg">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+    </div>
+    <div *ngIf="!loading" class="container-fluid">
         <div class="row">
             <div class="col-9 col-md-4">
                 <div class="form-group">
                     <label><p class="font-weight-light py-0 my-0">Izberi pogled skupine</p></label>
-                    <select id="idGroup" class="custom-select" onchange="onGroupChange()" required>
-                        <option *ngFor="let skupina of skupine" value="{{ skupina._id }}">
-                            {{ skupina.name }}
-                        </option>
-                    </select>
+                    <ng-select (change)="onGroupChange(groupSelected)" [(ngModel)]="groupSelected" [clearable]="false">
+                        <ng-option *ngFor="let group of userGroupsData" [value]="group._id">{{ group.name }}</ng-option>
+                    </ng-select>
                 </div>
             </div>
             <div class="col-3 col-md-8 d-flex justify-content-end">
