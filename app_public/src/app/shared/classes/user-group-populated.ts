@@ -1,6 +1,8 @@
-export class User {
+import { Group } from "./group";
+
+export class UserGroupPopulated {
     _id: string;
-    groupIds: string[];
+    groupIds: Group[];
     username: string;
     name: string;
     surname: string;

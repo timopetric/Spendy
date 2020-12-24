@@ -1,205 +1,167 @@
 <app-navbar-main></app-navbar-main>
 
 <main>
-    <div class="container bootstrap snippet">
-        <div class="row">
-            <div class="col-sm-10">
-                <h1>{{ user.username }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <!--left col-->
-                <div class="image-upload">
-                    <label for="file-input">
-                        <img
-                            alt="avatar"
-                            class="avatar img-circle img-thumbnail"
-                            src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                        />
-                    </label>
-                    <input id="file-input" type="file" />
-                    <!--<h6>Upload a different photo...</h6>-->
-                    <!--<input type="file" class="text-center center-block file-upload">-->
-                </div>
-                <br />
+    <!--<div class="container">-->
+    <!--    <div class="row">-->
+    <!--        <div class="col-sm-3">-->
+    <!--            <mat-card>-->
+    <!--                <mat-card-header>-->
+    <!--                    <img mat-card-avatar src="assets/icons/user-silhouette.png" alt="Uporabniška slika" />-->
+    <!--                    <mat-card-title>{{ user.username }}</mat-card-title>-->
+    <!--                    <mat-card-subtitle>Uporabniško ime</mat-card-subtitle>-->
+    <!--                </mat-card-header>-->
+    <!--                <mat-card-content-->
+    <!--                    ><span class="pull-left"><strong>Število skupin</strong>:</span>-->
+    <!--                    {{ stevilo_skupin }}-->
+    <!--                </mat-card-content>-->
+    <!--                &lt;!&ndash;<mat-card-actions>&ndash;&gt;-->
+    <!--                &lt;!&ndash;    <button mat-raised-button>SPREMENI SLIKO</button>&ndash;&gt;-->
+    <!--                &lt;!&ndash;</mat-card-actions>&ndash;&gt;-->
+    <!--            </mat-card>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div id="spinner-and-error-msg">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+    </div>
 
-                <!--<div class="panel panel-default">
-                    <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
-                </div>-->
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col col-lg-9 p-0">
+                <mat-card *ngIf="!loading">
+                    <mat-card-header>
+                        <img mat-card-avatar src="assets/icons/user-silhouette.png" alt="Uporabniška slika" />
+                        <mat-card-title>
+                            <h3>{{ userData.name }} {{ userData.surname }}</h3>
+                        </mat-card-title>
+                        <!--<mat-card-subtitle>Uporabnik</mat-card-subtitle>-->
+                        <mat-card-subtitle> Število skupin: {{ userGroupsNumber }} </mat-card-subtitle>
+                    </mat-card-header>
 
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">
-                        Pregled <i class="fa fa-dashboard fa-1x"></i>
-                    </li>
-                    <li class="list-group-item text-right" id="stSkupin">
-                        <span class="pull-left"><strong>Število skupin</strong></span>
-                        {{ stevilo_skupin }}
-                    </li>
-                </ul>
-            </div>
-            <!--/col-3-->
-            <div class="col-sm-9">
-                <ul class="nav nav-tabs">
-                    <li><a routerLink="/profil" id="nastavitve">Podatki</a></li>
-                </ul>
+                    <mat-card-content>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="settings">
+                                <form (submit)="updateUser()" class="form">
+                                    <!--ime-->
+                                    <div class="form-group">
+                                        <mat-card-title>Ime</mat-card-title>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Vnesite željeno ime</mat-label>
+                                            <input
+                                                matInput
+                                                [formControl]="userForm.name"
+                                                required
+                                                name="name"
+                                                placeholder="Janez"
+                                                title="Vnesite željeno ime"
+                                                type="text"
+                                            />
+                                            <mat-error *ngIf="userForm.name.invalid">{{ nameError }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
 
-                <div class="tab-content">
-                    <!--<div class="tab-pane active" id="messages">
+                                    <!--priimek-->
+                                    <div class="form-group">
+                                        <mat-card-title>Priimek</mat-card-title>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Vnesite željen priimek</mat-label>
+                                            <input
+                                                required
+                                                matInput
+                                                [formControl]="userForm.surname"
+                                                name="surname"
+                                                placeholder="Novak"
+                                                title="Vnesite željen priimek"
+                                                type="text"
+                                            />
+                                            <mat-error *ngIf="userForm.surname.invalid">{{ surnameError }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
 
-                      <h2></h2>
+                                    <!--geslo-->
+                                    <div class="form-group">
+                                        <mat-card-title>Geslo</mat-card-title>
+                                        <mat-card-subtitle
+                                            >Geslo mora biti dolgo vsaj 8 znakov, mora vsebovati male in velike črke,
+                                            številke in specialne znake.<br />Primer: dobroGeslo123&&A
+                                        </mat-card-subtitle>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Vnesite željeno novo geslo</mat-label>
+                                            <input
+                                                required
+                                                matInput
+                                                [formControl]="userForm.password"
+                                                name="password1"
+                                                placeholder="Geslo"
+                                                title="Vnesite svoje novo geslo"
+                                                type="password"
+                                                [type]="passwordHide ? 'password' : 'text'"
+                                            />
+                                            <button
+                                                mat-icon-button
+                                                matSuffix
+                                                (click)="passwordHide = !passwordHide"
+                                                [attr.aria-label]="'Hide password'"
+                                                [attr.aria-pressed]="passwordHide"
+                                            >
+                                                <mat-icon>{{
+                                                    passwordHide ? "visibility_off" : "visibility"
+                                                }}</mat-icon>
+                                            </button>
+                                            <mat-error *ngIf="userForm.password.invalid">{{ passwordError }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
 
-
-                      <form action="##" class="form" id="registrationForm1" method="post">
-                        <div class="form-group">
-
-                          <div class="col-xl-3">
-                            <label for="first_name"><h4>Ime</h4></label>
-                            <h6>Janez</h6>
-                          </div>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-
-                          <div class="col-xl-3">
-                            <label for="last_name"><h4>Priimek</h4></label>
-                            <h6>Novak</h6>
-                          </div>
-                        </div>
-                        <hr>
-
-                        <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="phone"><h4>Telefon</h4></label>
-                            <p>++38631000000</p>
-                          </div>
-                        </div>
-                        <hr>
-
-                        <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="email"><h4>Email</h4></label>
-                            <p>janeznovak@gmail.com</p>
-                          </div>
-                        </div>
-
-                      </form>
-
-                    </div>-->
-                    <div class="tab-pane active" id="settings">
-                        <form
-                            action="/settings"
-                            class="form"
-                            id="registrationForm"
-                            method="post"
-                            id="forma"
-                        >
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>Ime</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="first_name"
-                                        name="name"
-                                        placeholder="Janez"
-                                        title="enter your first name if any."
-                                        type="text"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="last_name"><h4>Priimek</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="last_name"
-                                        name="surname"
-                                        placeholder="Novak"
-                                        title="enter your last name if any."
-                                        type="text"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="email"><h4>Email</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="email"
-                                        name="mail"
-                                        placeholder="nekaj@email.com"
-                                        title="enter your email."
-                                        type="email"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="password"><h4>Geslo</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="password"
-                                        name="password"
-                                        placeholder="Geslo"
-                                        title="enter your password."
-                                        type="password"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="password2"><h4>Ponovite geslo</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="password2"
-                                        name="password1"
-                                        placeholder="Geslo"
-                                        title="enter your password2."
-                                        type="password"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="password2"><h4>Limit</h4></label>
-                                    <input
-                                        class="form-control"
-                                        id="limit"
-                                        name="limit"
-                                        placeholder="350€"
-                                        title="enter your password2."
-                                        type="password"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <br />
+                                    <!--limit-->
+                                    <!--<div class="form-group">-->
+                                    <!--    <mat-card-title>Limit</mat-card-title>-->
+                                    <!--    <mat-form-field appearance="outline">-->
+                                    <!--        <mat-label>Vnesite željen limit</mat-label>-->
+                                    <!--        <input-->
+                                    <!--            required-->
+                                    <!--            matInput-->
+                                    <!--            [formControl]="user.limit"-->
+                                    <!--            name="limit"-->
+                                    <!--            placeholder="350"-->
+                                    <!--            title="Vnesite željen limit"-->
+                                    <!--            type="number"-->
+                                    <!--        />-->
+                                    <!--        <span matSuffix>€</span>-->
+                                    <!--        <mat-error *ngIf="user.limit.invalid">{{ limitError }}</mat-error>-->
+                                    <!--    </mat-form-field>-->
+                                    <!--</div>-->
                                     <button
+                                        mat-raised-button
+                                        color="primary"
                                         type="submit"
-                                        class="btn btn-primary"
-                                        onclick="bandidate()"
+                                        [disabled]="
+                                            userForm.name.invalid ||
+                                            userForm.surname.invalid ||
+                                            userForm.password.invalid
+                                        "
                                     >
-                                        Shrani
+                                        POTRDI SPREMEMBE
                                     </button>
-                                    <!--<button class="btn btn-lg btn-success pull-right" id="gumb" type="submit"><i
-                                            class="glyphicon glyphicon-ok-sign"></i>Shrani
-                                    </button>-->
-                                    <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                                </div>
+                                    &nbsp;
+                                    <button mat-raised-button color="warn" (click)="deleteUser()">IZBRIS RAČUNA</button>
+                                    <mat-error *ngIf="deleteError">{{ deleteError }}</mat-error>
+
+                                    <!--<button-->
+                                    <!--    mat-raised-button-->
+                                    <!--    color="accent"-->
+                                    <!--    (click)="userDataService.getUserGroupPopulatedData()"-->
+                                    <!--&gt;-->
+                                    <!--    Osveži user service-->
+                                    <!--</button>-->
+                                </form>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <!--/tab-pane-->
+                        </div>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <!--/tab-content-->
+            <!--/col-9-->
         </div>
-        <!--/col-9-->
     </div>
     <!--/row-->
 </main>

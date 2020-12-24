@@ -11,7 +11,6 @@ const API_URL = environment.apiUrl + "/users";
     providedIn: "root",
 })
 export class SpendyDataService implements OnInit {
-    ngOnInit() {}
-
     constructor(private http: HttpClient) {}
+    ngOnInit() {}
 }

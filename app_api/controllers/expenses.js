@@ -47,10 +47,7 @@ const getExpensesByGroupId2 = async (req, res) => {
     isExpenditure = isExpenditure != null || undefined ? { isExpenditure: isExpenditure } : {};
     cena = cena != null || undefined ? { cost: { $gte: cena } } : {};
     datum = datum != null || undefined ? { sort: { date: -1 } } : {};
-    queryinput =
-        queryinput != null || undefined
-            ? { category_name: { $regex: new RegExp(queryinput, "i") } }
-            : {};
+    queryinput = queryinput != null || undefined ? { category_name: { $regex: new RegExp(queryinput, "i") } } : {};
 
     const match = Object.assign(isExpenditure, cena, queryinput);
     const options = Object.assign(datum);
@@ -131,8 +128,7 @@ const dodajExpense = (req, res, group) => {
         (error, expense) => {
             if (!expense) {
                 return res.status(404).json({
-                    message:
-                        "Ne najdem expensa s podanim enoličnim identifikatorjem idGroup." + error,
+                    message: "Ne najdem expensa s podanim enoličnim identifikatorjem idGroup." + error,
                 });
             }
             if (error) {
@@ -158,8 +154,7 @@ const deleteExpense = (req, res) => {
 
     if (!idGroup || !idExpense) {
         return res.status(404).json({
-            message:
-                "Ne najdem Groupe oz. Expensa, " + "idGroup in idExpense sta obvezna parametra.",
+            message: "Ne najdem Groupe oz. Expensa, " + "idGroup in idExpense sta obvezna parametra.",
         });
     }
     Group.findById(idGroup)
@@ -205,8 +200,7 @@ const updateExpense = (req, res) => {
     console.log(req.body);
     if (!req.params.idExpense || !req.params.idGroup) {
         return res.status(404).json({
-            message:
-                "Ne najdem groupe oz. expensa, " + "idExpense in idGroup sta obvezna parametra.",
+            message: "Ne najdem groupe oz. expensa, " + "idExpense in idGroup sta obvezna parametra.",
         });
     }
     Group.findById(req.params.idGroup)
