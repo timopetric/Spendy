@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Expense } from "../../classes/expense";
+import { ExpensesDataService } from "../../services/expenses-data.service";
 
 @Component({
     selector: "app-search",
@@ -6,7 +8,30 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
-    constructor() {}
+    public expenses: Expense[];
+    public message: string;
+    private idGroup = "5fbeb5e3a48a39a6199e6719";
+    constructor(private expensesData: ExpensesDataService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.getExpensesByGroupId(this.idGroup);
+    }
+
+    private getExpensesByGroupId = (idGroup: string): void => {
+        this.message = "Fetching expenses data";
+        this.expensesData
+            .getExpensesByGroupId(idGroup)
+            .then(expenses => {
+                console.log(expenses);
+                this.message = expenses.length > 0 ? "" : "There are no expenses";
+                this.expenses = expenses;
+            })
+            .catch(error => {
+                this.showError(error);
+            });
+    };
+
+    private showError = (napaka: any): void => {
+        this.message = napaka.message || napaka;
+    };
 }

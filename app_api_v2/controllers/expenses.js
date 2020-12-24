@@ -19,6 +19,11 @@ const getAllExpenses = (req, res) => {
 //GET EXPENSE BY ID
 const getExpenseById = (req, res) => {
     const idExpense = req.params.idExpense;
+
+    if (!idExpense) {
+        return res.status(400).json({ message: "Parameter idExpense must be defind" });
+    }
+
     Expense.findById(idExpense).exec((error, expense) => {
         if (error) {
             res.status(500).json({ message: "Error in database", error: error });
@@ -33,6 +38,11 @@ const getExpenseById = (req, res) => {
 //GET EXPENSES BY GROUP ID
 const getExpensesByGroupId = (req, res) => {
     const idGroup = req.params.idGroup;
+
+    if (!idGroup) {
+        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+    }
+
     Group.findById(idGroup)
         .select("expenses")
         .populate("expenses")
@@ -48,7 +58,7 @@ const getExpensesByGroupId = (req, res) => {
 };
 
 ////GET ALL EXPENSES OF GROUP
-const getExpensesByGroupIdWithQueries = async (req, res) => {
+const getExpensesByGroupIdWithQueries = (req, res) => {
     //console.log("getExpensesByGroupId2 with query params" + req.query);
     let isExpenditure = req.query.isExpenditure;
     let cena = req.query.cena;
@@ -65,7 +75,12 @@ const getExpensesByGroupIdWithQueries = async (req, res) => {
     //console.log(match);
     //console.log(req.params);
     const idGroup = req.params.idGroup;
-    Group.findById(idGroup)
+
+    if (!idGroup) {
+        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+    }
+
+    Group.findById(idGroup, { _id: false })
         .select("expenses")
         .populate({
             path: "expenses",
@@ -86,23 +101,22 @@ const getExpensesByGroupIdWithQueries = async (req, res) => {
 //DODAJ EXPENSE GROUPI
 const addExpenseToGroup = (req, res) => {
     const idGroup = req.params.idGroup;
-    console.log(idGroup);
-    if (idGroup) {
-        Group.findById(req.params.idGroup).exec((error, group) => {
-            if (error) {
-                res.status(500).json({ message: "Error in database. 1", error: error });
-            } else if (!group) {
-                res.status(404).json({ message: `Cant find group with idGroup:${idGroup}` });
-            } else {
-                //console.log("grupa:  " + group);
-                createExpenseAndAddToGroup(req, res, group);
-            }
-        });
-    } else {
-        res.status(400).json({
-            message: "Parameter idGroup must be defind.",
-        });
+
+    if (!idGroup) {
+        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+
     }
+
+    Group.findById(idGroup).exec((error, group) => {
+        if (error) {
+            res.status(500).json({ message: "Error in database.", error: error });
+        } else if (!group) {
+            res.status(404).json({ message: `Cant find group with idGroup:${idGroup}` });
+        } else {
+            //console.log("grupa:  " + group);
+            createExpenseAndAddToGroup(req, res, group);
+        }
+    });
 };
 
 const createExpenseAndAddToGroup = (req, res, group) => {
@@ -117,7 +131,11 @@ const createExpenseAndAddToGroup = (req, res, group) => {
         return res.status(400).json({ message: "Parameter created_by is not defind" });
     }
 
-    const groupId = req.params.idGroup;
+    const idGroup = req.params.idGroup;
+
+    if (!idGroup) {
+        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+    }
 
     Expense.create(
         {
@@ -125,7 +143,7 @@ const createExpenseAndAddToGroup = (req, res, group) => {
             cost: cost,
             date: date,
             category_name: category_name,
-            groupId: groupId,
+            groupId: idGroup,
             description: description,
             created_by: created_by,
         },
@@ -177,13 +195,17 @@ const deleteExpenseOfGroup = (req, res) => {
 const deleteExpenseOfGroupHelper = (req, res, group) => {
     const idExpense = req.params.idExpense;
 
-    group.expenses.remove(idExpense);
+    if (!idExpense) {
+        return res.status(400).json({ message: "Parameter idExpense must be defind" });
+    }
+
     Expense.findByIdAndRemove(idExpense, (error, expense) => {
         if (error) {
             res.status(500).json({ message: "Error in database cant find group", error: error });
         } else if (!expense) {
             res.status(404).json({ message: `Cant find expense with idExpense ${idExpense}` });
         } else {
+            group.expenses.remove(idExpense);
             group.save((error2, groupWithoutExpense) => {
                 if (error2) {
                     res.status(500).json({

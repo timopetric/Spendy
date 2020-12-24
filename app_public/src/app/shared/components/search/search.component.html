@@ -3,5 +3,103 @@
 <main>
     <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
 
-    <p>search works</p>
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">NASLOV</h1>
+                        <p class="lead text-muted">PODNASLOV</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="content" class="container search bg-grey px-3 mb-3">
+        <div class="container-fluid">
+            <div class="input-group mb-3">
+                <input
+                    type="text"
+                    id="searchLogin"
+                    class="form-control"
+                    placeholder="Isci po dohodkih/odhodkih"
+                    aria-label="Recipient's username"
+                    aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" onClick="onClick()" type="button">
+                        <i class="fa fa-search"></i>Search
+                    </button>
+                </div>
+            </div>
+            <div class="row mx-0">
+                <div class="mr-auto">
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-primary dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Sortiraj
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/search?isExpenditure=true">Odhodki</a>
+                            <a class="dropdown-item" href="/search?isExpenditure=false">Prihodki</a>
+                            <a class="dropdown-item" href="/search?date=desc">Datum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid" *ngFor="let aktivnost of expenses">
+                <div
+                    id="modal1"
+                    class="card my-2 cursor-pointer"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    [attr.date]="aktivnost.category_name"
+                    [attr.date]="aktivnost.date"
+                    [attr.description]="aktivnost.description"
+                    [attr.isExpenditure]="aktivnost.cost"
+                    [attr.isExpenditure]="aktivnost.isExpenditure"
+                    [attr.expenseId]="aktivnost._id"
+                >
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-1 d-flex flex-column justify-content-center">
+                                <i
+                                    [ngClass]="aktivnost.isExpenditure ? 'fas fa-arrow-down' : 'fas fa-arrow-up'"
+                                    [style.color]="aktivnost.isExpenditure ? '#cb3b3b' : '#45a72d'"
+                                    style="font-size: 48px"
+                                ></i>
+                            </div>
+                            <div class="col-lg-11">
+                                <div class="row mx-0">
+                                    <div class="mr-auto"></div>
+                                    <div>
+                                        <p class="font-weight-light">{{ aktivnost.date | date: "dd/MM/yy" }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mx-0">
+                                    <div class="mr-auto">
+                                        <h4>{{ aktivnost.category_name }}</h4>
+                                    </div>
+                                    <div>
+                                        <h4>{{ aktivnost.cost }} €</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </main>

@@ -21,9 +21,12 @@
     <!--        </div>-->
     <!--    </div>-->
     <!--</div>-->
+    <div id="spinner-and-error-msg">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+    </div>
 
     <div class="container">
-        <mat-spinner *ngIf="loading"></mat-spinner>
         <div class="row d-flex justify-content-center">
             <div class="col col-lg-9 p-0">
                 <mat-card *ngIf="!loading">
@@ -33,13 +36,13 @@
                             <h3>{{ userData.name }} {{ userData.surname }}</h3>
                         </mat-card-title>
                         <!--<mat-card-subtitle>Uporabnik</mat-card-subtitle>-->
-                        <mat-card-subtitle> Število skupin: {{ stevilo_skupin }} </mat-card-subtitle>
+                        <mat-card-subtitle> Število skupin: {{ userGroupsNumber }} </mat-card-subtitle>
                     </mat-card-header>
 
                     <mat-card-content>
                         <div class="tab-content">
                             <div class="tab-pane active" id="settings">
-                                <form (submit)="sendData()" class="form">
+                                <form (submit)="updateUser()" class="form">
                                     <!--ime-->
                                     <div class="form-group">
                                         <mat-card-title>Ime</mat-card-title>
@@ -140,6 +143,10 @@
                                     >
                                         POTRDI SPREMEMBE
                                     </button>
+                                    &nbsp;
+                                    <button mat-raised-button color="warn" (click)="deleteUser()">IZBRIS RAČUNA</button>
+                                    <mat-error *ngIf="deleteError">{{ deleteError }}</mat-error>
+
                                     <!--<button-->
                                     <!--    mat-raised-button-->
                                     <!--    color="accent"-->

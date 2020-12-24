@@ -1,65 +1,82 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { User } from "../classes/user.model";
-import { UserGroupPopulated } from "../classes/user-group-populated";
+import { UserSettings } from "../classes/UserSettings";
+import { Subject } from "rxjs";
 
 const API_URL = environment.apiUrl + "/users";
 
 @Injectable({
     providedIn: "root",
 })
-export class UserDataService implements OnInit {
-    constructor(private http: HttpClient) {
-        this.getUserGroupPopulatedData().then(userPopulated => {
-            this.userPopulated = userPopulated;
+export class UserDataService {
+    private user: User = null;
+    private userUpdated = new Subject<{ message: string; user: User }>();
+
+    constructor(private http: HttpClient) {}
+
+    getUserId() {
+        return "5fe23e8f897c371df4f57693"; // todo: get from token
+    }
+
+    getUserUpdateListener() {
+        return this.userUpdated.asObservable();
+    }
+
+    private handleUpdateUserData(data, message?: string) {
+        this.user = data as User;
+        this.userUpdated.next({
+            message: message || "OK",
+            user: { ...this.user },
         });
     }
-
-    userId = "5fc44bd3f35a902b3000803c"; // todo: get from token
-
-    public userPopulated: UserGroupPopulated = new UserGroupPopulated();
-    numOfGroups = 0;
-    public user: User = new User();
-
-    ngOnInit() {}
-
-    public getUserGroupPopulatedData() {
-        return this.http
-            .get(`${API_URL}/${this.userId}`)
-            .toPromise()
-            .then((response: any) => {
-                this.userPopulated = response as UserGroupPopulated;
-                this.numOfGroups = this.userPopulated.groupIds.length;
-                return response as UserGroupPopulated;
-            })
-            .catch(UserDataService.obdelajNapako);
+    private handleUpdateUserError(error) {
+        this.userUpdated.next({
+            message: error.error["message"],
+            user: null,
+        });
+        return UserDataService.handleError(error);
     }
 
-    public updateUserSettings(data) {
-        return this.http
-            .put(`${API_URL}/${this.userId}`, data)
-            .toPromise()
-            .then((response: any) => {
-                this.user = response as User;
-                console.log(this.user);
-            })
-            .then(() => {
-                // update current user data
-                return this.getUserGroupPopulatedData().then(userPopulated => {
-                    this.userPopulated = userPopulated;
-                    this.numOfGroups = this.userPopulated.groupIds.length;
-                    return this.userPopulated;
-                });
-            })
-            .catch(UserDataService.obdelajNapako);
+    getUser(online?: boolean) {
+        if (online == true || this.user == null) {
+            this.http.get(`${API_URL}/${this.getUserId()}`).subscribe(
+                data => this.handleUpdateUserData(data),
+                error => this.handleUpdateUserError(error)
+            );
+        } else {
+            // return cached user data
+            this.userUpdated.next({
+                message: "OK",
+                user: { ...this.user },
+            });
+        }
     }
 
-    private static obdelajNapako(napaka: any): Promise<any> {
-        console.error(
-            "There has been an error",
-            napaka.error["message"] || napaka.error.errmsg || napaka.message || napaka
+    updateUser(data: UserSettings) {
+        this.http.put(`${API_URL}/${this.getUserId()}`, data).subscribe(
+            data => this.handleUpdateUserData(data, "UPDATED"),
+            error => this.handleUpdateUserError(error)
         );
-        return Promise.reject(napaka.error["message"] || napaka.error.errmsg || napaka.message || napaka);
+    }
+
+    deleteUser(idUser: string) {
+        return this.http
+            .delete(`${API_URL}/${idUser}`)
+            .toPromise()
+            .then((response: any) => {
+                this.handleUpdateUserData(response);
+                return response;
+            })
+            .catch(UserDataService.handleError);
+    }
+
+    private static handleError(error: any): Promise<any> {
+        console.error(
+            "There has been an error: " + error.error["message"],
+            error.error["error"] || error.error.errmsg || error.message || error
+        );
+        return Promise.reject(error.error["message"] || error.error.errmsg || error.message || error);
     }
 }
