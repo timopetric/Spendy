@@ -8,6 +8,13 @@ const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
 var ctrlAuthentication = require("../controllers/authentication");
 
+const jwt = require('express-jwt');
+const avtentikacija = jwt({
+    secret: process.env.JWT_GESLO,
+    userProperty: 'payload',
+    algorithms: ['HS256']
+});
+
 /* Avtentikacija */
 router.post('/registracija', ctrlAuthentication.registracija);
 router.post('/prijava', ctrlAuthentication.prijava);
@@ -38,6 +45,8 @@ router.post('/prijava', ctrlAuthentication.prijava);
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/name/:name", ctrlUser.getUserByName);
+router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
+router.delete("/users/:userId", avtentikacija, ctrlUser.deleteUser);
 
 // END----------------------------USERS---------------------------------END
 

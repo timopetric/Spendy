@@ -122,8 +122,48 @@ const getUserById = (req, res) => {
 };
 
 
+const updateUser = (req, res) => {
+    if (!req.params.idUser) {
+        return res.status(404).json({
+            message: "Ne najdem userja, " + "idUser je obvezen parameter.",
+        });
+    }
+    User.findByIdAndUpdate(req.params.idUser, req.body, (err, result) => {
+        if (!result) {
+            return res.status(404).json({
+                message: "Ne najdem userja, idUser ni veljaven. " + err,
+            });
+        }
+        if (err) {
+            return res.status(500).json(err);
+        } else {
+            // vrne še ne posodobljen
+            User.findById(result._id).exec((err, user) => {
+                if (!user) {
+                    return res.status(500).json(err);
+                }
+                return res.status(200).json(user);
+            });
+        }
+    });
+};
+
+
+const deleteUser = (req, res) => {
+    const id = req.params.userId;
+    const ObjectId = mongoose.Types.ObjectId;
+
+    User.deleteOne({ _id: ObjectId(id) }, function (error, result) {
+        console.log(result);
+        if (error) res.status(404).json(result);
+        else res.status(200).json(result);
+    });
+};
+
 module.exports = {
     getAllUsers,
     getUserByName,
-    getUserById
+    getUserById,
+    updateUser,
+    deleteUser
 };

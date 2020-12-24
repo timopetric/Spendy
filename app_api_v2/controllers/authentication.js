@@ -79,7 +79,9 @@ const registracija = (req, res) => {
     uporabnik.username = req.body.username;
     uporabnik.nastaviGeslo(req.body.geslo);
     uporabnik.save(napaka => {
+        console.log("Sem prišel do sem");
         if (napaka) {
+            console.log("Sem v napaki.");
             res.status(500).json(napaka);
         } else {
             // addGroupToUserWhenRegister(uporabnik);
