@@ -11,6 +11,7 @@ import { SignupComponent } from "../../shared/components/signup/signup.component
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
 import { GroupsComponent } from "../../shared/components/groups/groups.component";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
+import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 
 const routes: Routes = [
     {
@@ -57,6 +58,10 @@ const routes: Routes = [
     {
         path: "signup",
         component: SignupComponent,
+    },
+    {
+        path: "add_expenses",
+        component: AddExpensesComponent,
     },
 
     // { path: '**', component: PageNotFoundComponent }

@@ -39,8 +39,6 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
 
-import { MatSnackBarModule } from "@angular/material/snack-bar";
-
 @NgModule({
     declarations: [
         HtmlBreakLinesPipe,

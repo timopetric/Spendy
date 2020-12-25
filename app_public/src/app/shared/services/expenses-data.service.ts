@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { Expense } from "../classes/expense";
+import { addExpense } from "../classes/addExpense";
 import { Group } from "../classes/group";
 
 @Injectable({
@@ -20,8 +21,8 @@ export class ExpensesDataService {
 
     private GROUP_ID = "5fbeb5e3a48a39a6199e6719";
 
-    public addExpenseToGroup(idGroup: string, expense: Expense): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses`;
+    public addExpenseToGroup(idGroup: string, expense: addExpense): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses`;
         return this.http
             .post(url, expense)
             .toPromise()

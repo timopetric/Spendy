@@ -31,7 +31,6 @@ export class SpendyDataService {
 
     public postExpense(Expense) {
         let data = Expense;
-        console.log(data);
         const httpOptions = {};
 
         console.log(Expense.group);
@@ -39,8 +38,7 @@ export class SpendyDataService {
             .post(`${API_URL}/groups/${Expense.group}/expenses`, data, httpOptions)
             .toPromise()
             .then(res => {
-                console.log("Adding Expense succesful");
-                console.log(Expense);
+                return true;
             })
             .catch(napaka => {
                 console.log(napaka);

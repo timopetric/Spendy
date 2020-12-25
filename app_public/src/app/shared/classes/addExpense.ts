@@ -1,10 +1,9 @@
-export class Expense {
-    date: Date;
-    _id: string;
+export class addExpense {
     isExpenditure: boolean;
     cost: number;
+    date: Date;
     category_name: string;
-    groupId: string;
+    group: string;
     description: string;
     created_by: string;
 }

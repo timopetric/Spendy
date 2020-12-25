@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~11.0.3",
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
+    "@material/snackbar": "^8.0.0",
     "@nth-cloud/ng-toggle": "^6.0.0",
     "chart.js": "^2.9.4",
     "ng2-charts": "^2.4.2",

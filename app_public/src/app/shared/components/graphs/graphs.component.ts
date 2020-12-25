@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: "app-graphs",
@@ -6,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./graphs.component.css"],
 })
 export class GraphsComponent implements OnInit {
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
     public prihodki;
     public odhodki;
