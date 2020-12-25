@@ -41,6 +41,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { GroupsModalSettingsComponent } from "./shared/components/groups/groups-modal-settings/groups-modal-settings.component";
 import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
+import { ProfileComponent } from "./shared/components/profile/profile.component";
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-
         LoginComponent,
         SignupComponent,
         MapDictToArrayPipe,
+        ProfileComponent,
         SettingsComponent,
         GroupsModalSettingsComponent,
         GroupsModalUserAddComponent,

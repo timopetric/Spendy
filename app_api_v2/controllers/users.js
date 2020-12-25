@@ -205,4 +205,59 @@ const getGroupsByUserId = async (req, res) => {
         });
 };
 
-module.exports = { getAllUsers, updateUser, getUserById, deleteUser, addUser, getGroupsByUserId };
+/**
+ * GET /api/v2/users/name/:name
+ * return a user by his name
+ * @swagger
+ *  /users/name:
+ *   get:
+ *    summary: Get a user
+ *    description: Get a user by their name
+ *    tags: [Users]
+ *    parameters:
+ *     - in: path
+ *       name: name
+ *       description: the name of the user
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: Metka
+ *    responses:
+ *     "200":
+ *      description: A user object
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: '#/components/schemas/Error'
+ *     "400":
+ *      description: Napaka zahteve, manjkajo obvezni parametri.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/components/schemas/Error'
+ *        example:
+ *         sporočilo: Parametra lng in lat sta obvezna.
+ *     "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */
+const getUserByName = (req, res) => {
+    const name = req.params.name;
+    User.findOne()
+        .where("name")
+        .equals(name)
+        .exec((napaka, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    Sporočilo: "Uporabnik s tem imenom ne obstaja",
+                });
+            } else if (napaka) {
+                return res.status(500).json(napaka);
+            } else {
+                return res.status(200).json(user);
+            }
+        });
+};
+
+module.exports = { getAllUsers, updateUser, getUserById, deleteUser, addUser, getGroupsByUserId, getUserByName };
