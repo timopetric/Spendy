@@ -87,6 +87,7 @@ userSchema.methods.generirajJwt = () => {
         _id: this._id,
         mail: this.mail,
         ime: this.ime,
+        username: this.username,
         exp: parseInt(datumPoteka.getTime() / 1000, 10)
     }, process.env.JWT_GESLO);
 };

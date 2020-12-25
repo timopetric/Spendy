@@ -43,7 +43,9 @@ const addGroupToUserWhenRegister = (user) => {
     );
 };
 const registracija = (req, res) => {
-    if (!req.body.name || !req.body.mail || !req.body.geslo) {
+    if (!req.body.name || !req.body.mail || !req.body.pass) {
+        // console.log("################################");
+        // console.log(req.body);
         return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
     }
 
@@ -77,7 +79,7 @@ const registracija = (req, res) => {
     uporabnik.mail = req.body.mail;
     uporabnik.balance = req.body.balance;
     uporabnik.username = req.body.username;
-    uporabnik.nastaviGeslo(req.body.geslo);
+    uporabnik.nastaviGeslo(req.body.pass);
     uporabnik.save(napaka => {
         console.log("Sem prišel do sem");
         if (napaka) {
@@ -85,13 +87,14 @@ const registracija = (req, res) => {
             res.status(500).json(napaka);
         } else {
             // addGroupToUserWhenRegister(uporabnik);
+            console.log("Sem v ustvarjanju uporabnika");
             res.status(200).json({"žeton": uporabnik.generirajJwt()});
         }
     });
 };
 
 const prijava = (req, res) => {
-    if (!req.body.mail || !req.body.geslo) {
+    if (!req.body.mail || !req.body.pass) {
         return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
     }
     passport.authenticate('local', (napaka, uporabnik, informacije) => {

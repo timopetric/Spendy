@@ -5,13 +5,12 @@
 <main>
     <div class="main">
         <form class="box col-sm-12 col-xl-6" id="forma" action="">
+            <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
             <div class="form-group"></div>
             <h1>Prijava</h1>
             <input placeholder="Epoštni Naslov" type="email" id="email" />
             <input placeholder="Geslo" type="password" id="password" />
-            <button class="btn btn-primary" id="PrijavaGumb" type="submit" onclick="validate()">
-                Prijava
-            </button>
+            <button class="btn btn-primary" id="PrijavaGumb" type="submit" onclick="validate()">Prijava</button>
             <a class="nav-link" routerLink="/signup">Registracija</a>
         </form>
     </div>
