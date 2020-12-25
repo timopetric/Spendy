@@ -1,113 +1,91 @@
-const passport = require('passport');
-const mongoose = require('mongoose');
-const Uporabnik = mongoose.model('User');
+const passport = require("passport");
+const mongoose = require("mongoose");
+const Group = mongoose.model("Group");
+const Uporabnik = mongoose.model("User");
 
+const SpendyError = require("./SpendyError");
 
-const addGroupToUserWhenRegister = (user) => {
-
-    const USER_GROUP_NAME = `Uporabnik ${user.name}`;
-
-    // create special one man group
-    Group.create(
-        {
-            name: USER_GROUP_NAME,
-            balance: 0.0,
-            userIds: [],
-            adminIds: [user._id],
-            expenses: [user._id],
-        },
-        (err, group) => {
-            if (err) {
-                console.log(err);
-                res.status(400).json(err);
-            } else if (!group) {
-                return res.status(404).json({
-                    message: "Ustvarjanje skupine za uporabnika je bilo neuspešno",
-                });
-            }
-            group.save((err, group) => {
-                if (err) {
-                    let eMsg =
-                        "Error updating the user and admin ids in the newly created group: " +
-                        err;
-                    console.log(eMsg);
-                    res.status(400).json({message: eMsg});
-                } else {
-                    console.log(
-                        "Group user and admin ids successfully updated: " + group
-                    );
-                    res.status(201).json(user); // return the created user
-                }
-            })
-        }
-    );
-};
 const registracija = (req, res) => {
-    if (!req.body.name || !req.body.mail || !req.body.pass) {
-        // console.log("################################");
-        // console.log(req.body);
-        return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+    const reqName = req.body.name;
+    const reqSurname = req.body.surname;
+    const reqUsername = req.body.username;
+    const reqMail = req.body.mail;
+    const reqPass = req.body.pass;
+
+    if (!reqUsername || !reqName || !reqSurname || !reqMail || !reqPass) {
+        return res.status(404).json({
+            message: "Parameters username, name, surname, mail, pass must be supplied in the body",
+        });
     }
 
     if (req.body.groupIds !== undefined) {
         return res.status(404).json({
-            message: "groupIds ne sme biti definiran. Dodate ga lahko kasneje",
+            message: "groupIds must not be defined",
         });
     }
 
-    // let nekej = Uporabnik.findOne()
-    //     .where("name")
-    //     .equals(name)
-    //     .exec((napaka, user) => {
-    //         if (!user) {
-    //             return false
-    //         } else if (napaka) {
-    //             return res.status(500).json(napaka);
-    //         } else {
-    //             true;
-    //         }
-    //     });
-    // if (nekej) {
-    //     return res.status(404).json( {
-    //         message: "Uporabnik s tem elektronskim naslovom že obstaja",
-    //     })
-    // }
-
-    const uporabnik = new Uporabnik();
-    uporabnik.name = req.body.name;
-    uporabnik.surname = req.body.surname
-    uporabnik.mail = req.body.mail;
-    uporabnik.balance = req.body.balance;
-    uporabnik.username = req.body.username;
-    uporabnik.nastaviGeslo(req.body.pass);
-    uporabnik.save(napaka => {
-        console.log("Sem prišel do sem");
-        if (napaka) {
-            console.log("Sem v napaki.");
-            res.status(500).json(napaka);
-        } else {
-            // addGroupToUserWhenRegister(uporabnik);
-            console.log("Sem v ustvarjanju uporabnika");
-            res.status(200).json({"žeton": uporabnik.generirajJwt()});
-        }
-    });
+    // create special one man group
+    const USER_GROUP_NAME = `${reqMail}`;
+    const BALANCE_STARTING = 0.0;
+    Group.create({
+        name: USER_GROUP_NAME,
+        balance: BALANCE_STARTING,
+        userIds: [],
+        adminIds: [],
+        expenses: [],
+    })
+        .then((group) => {
+            // console.log("1");
+            const user = new Uporabnik();
+            user.name = reqName;
+            user.surname = reqSurname;
+            user.mail = reqMail;
+            user.balance = BALANCE_STARTING;
+            user.username = reqUsername;
+            user.groupIds = [group._id];
+            user.nastaviGeslo(reqPass);
+            return user.save();
+        })
+        .then((user) => {
+            // console.log("3");
+            // add userid to the users of the group
+            return Group.findByIdAndUpdate(user.groupIds[0], { userIds: [user._id], adminIds: [user._id] }).then(() => {
+                return user;
+            });
+        })
+        .then((user) => {
+            // console.log("4");
+            res.status(200).json({ žeton: user.generirajJwt() });
+        })
+        .catch((error) => {
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else if (error.code === 11000 && error.keyValue) {
+                // 11000 is mongo duplicate key error
+                res.status(409).json({
+                    message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
+                    error: error,
+                });
+            } else {
+                console.log(error);
+                res.status(500).json({ message: "Error in database", error: error });
+            }
+        });
 };
 
 const prijava = (req, res) => {
     if (!req.body.mail || !req.body.pass) {
-        return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+        return res.status(400).json({ sporočilo: "Zahtevani so vsi podatki" });
     }
-    passport.authenticate('local', (napaka, uporabnik, informacije) => {
-        if (napaka)
-            return res.status(500).json(napaka);
+    passport.authenticate("local", (napaka, uporabnik, informacije) => {
+        if (napaka) return res.status(500).json(napaka);
         if (uporabnik) {
-            res.status(200).json({"žeton": uporabnik.generirajJwt()});
+            res.status(200).json({ žeton: uporabnik.generirajJwt() });
         } else {
             res.status(401).json(informacije);
         }
     })(req, res);
 };
-
 
 module.exports = {
     registracija,

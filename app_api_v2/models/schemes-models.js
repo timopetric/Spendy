@@ -2,8 +2,8 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
 ////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
 // todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
@@ -60,21 +60,16 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-
 //kreira zgoščeno in naključno vrednost iz podanega gesla pri registraciji, samega gesla pa ne hrani nikjer in se zavrže
-userSchema.methods.nastaviGeslo = function(geslo) {
-    this.nakljucnaVrednost = crypto.randomBytes(16).toString('hex');
-    this.zgoscenaVrednost = crypto
-        .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
-        .toString('hex');
+userSchema.methods.nastaviGeslo = function (geslo) {
+    this.nakljucnaVrednost = crypto.randomBytes(16).toString("hex");
+    this.zgoscenaVrednost = crypto.pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, "sha512").toString("hex");
 };
 
 //za preverjanje ustreznosti gesla pri prijavi. Ponovno gesla se ne hrani nikjer, ampak se generira nova zgoščena vrednost iz
 //podanega gesla pri prijavi in se primerja z naključno vrednostjo uporabnika z istim mailom, ki je unikaten
-userSchema.methods.preveriGeslo = function(geslo) {
-    let zgoscenaVrednost = crypto
-        .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
-        .toString('hex');
+userSchema.methods.preveriGeslo = function (geslo) {
+    let zgoscenaVrednost = crypto.pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, "sha512").toString("hex");
     return this.zgoscenaVrednost === zgoscenaVrednost;
 };
 
@@ -83,19 +78,21 @@ userSchema.methods.generirajJwt = () => {
     const datumPoteka = new Date();
     datumPoteka.setDate(datumPoteka.getDate() + 7);
 
-    return jwt.sign({
-        _id: this._id,
-        mail: this.mail,
-        ime: this.ime,
-        username: this.username,
-        exp: parseInt(datumPoteka.getTime() / 1000, 10)
-    }, process.env.JWT_GESLO);
+    return jwt.sign(
+        {
+            _id: this._id,
+            mail: this.mail,
+            ime: this.ime,
+            username: this.username,
+            exp: parseInt(datumPoteka.getTime() / 1000, 10),
+        },
+        process.env.JWT_GESLO
+    );
 };
 
 const userModel = mongoose.model("User", userSchema);
 
 // mongoose.model('Uporabnik', uporabnikiShema, 'Uporabniki');
-
 
 ////////////////////////////////////// GROUPS SCHEMA: /////////////////////////////////////////////////////////
 
