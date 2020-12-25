@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         if (!this.prijavniPodatki.mail || !this.prijavniPodatki.pass) {
+            // console.log(this.prijavniPodatki);
             this.napakaNaObrazcu = "Zahtevani so vsi podatki, prosim poskusite znova!";
         } else {
             this.izvediPrijavo();
