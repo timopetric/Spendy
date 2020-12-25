@@ -9,7 +9,7 @@ import { SearchComponent } from "../../shared/components/search/search.component
 import { LoginComponent } from "../../shared/components/login/login.component";
 import { SignupComponent } from "../../shared/components/signup/signup.component";
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
-import { GroupsComponent } from "../../shared/components/groups/groups.component";
+import { GroupsMainComponent } from "../../shared/components/groups/groups-main/groups-main.component";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
 
 const routes: Routes = [
@@ -36,7 +36,7 @@ const routes: Routes = [
     },
     {
         path: "groups",
-        component: GroupsComponent,
+        component: GroupsMainComponent,
     },
     {
         path: "first-page",

@@ -3,6 +3,7 @@ import { Group } from "../classes/group";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { GroupsPopulatedUsersModel } from "../classes/groups-populated-users.model";
 
 const API_URL_GROUPS = environment.apiUrl + "/groups";
 const API_URL_USERS = environment.apiUrl + "/users";
@@ -11,11 +12,11 @@ const API_URL_USERS = environment.apiUrl + "/users";
     providedIn: "root",
 })
 export class GroupsDataService {
-    private groupsUpdated = new Subject<{ message: string; groups: Group[] }>();
+    private groupsUpdated = new Subject<{ message: string; groups: GroupsPopulatedUsersModel[] }>();
     private groupSelectionUpdate = new Subject<string>();
     constructor(private http: HttpClient) {}
 
-    private groups: Group[] = null;
+    private groups: GroupsPopulatedUsersModel[] = null;
     private groupSelected = "";
 
     getUserId() {
@@ -30,15 +31,23 @@ export class GroupsDataService {
     }
 
     // --------- get all groups of user ---------
-    getGroupsByUser() {
-        let url = `${API_URL_USERS}/${this.getUserId()}/groups`;
-        this.http.get(url).subscribe(
-            data => this.handleUpdateUserGroupsData(data),
-            error => this.handleUpdateUserGroupsError(error)
-        );
+    getGroupsByUser(online?: boolean) {
+        // todo: add update timer - when 1 minute is over get new data from api
+        if (online == true || this.groups == null) {
+            let url = `${API_URL_USERS}/${this.getUserId()}/groups?populate=userIds`;
+            this.http.get(url).subscribe(
+                data => this.handleUpdateUserGroupsData(data),
+                error => this.handleUpdateUserGroupsError(error)
+            );
+        } else {
+            this.groupsUpdated.next({
+                message: "OK",
+                groups: [...this.groups],
+            });
+        }
     }
     private handleUpdateUserGroupsData(data, message?: string) {
-        this.groups = data as Group[];
+        this.groups = data as GroupsPopulatedUsersModel[];
         this.groupsUpdated.next({
             message: message || "OK",
             groups: [...this.groups],

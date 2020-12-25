@@ -16,7 +16,7 @@ import { OverviewComponent } from "./shared/components/overview/overview.compone
 import { GraphsComponent } from "./shared/components/graphs/graphs.component";
 import { AnalysisComponent } from "./shared/components/analysis/analysis.component";
 import { SearchComponent } from "./shared/components/search/search.component";
-import { GroupsComponent } from "./shared/components/groups/groups.component";
+import { GroupsMainComponent } from "./shared/components/groups/groups-main/groups-main.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
@@ -35,6 +35,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { MatListModule } from "@angular/material/list";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatDialogModule } from "@angular/material/dialog";
+import { GroupsModalSettingsComponent } from "./shared/components/groups/groups-modal-settings/groups-modal-settings.component";
+import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-modal-user-add/groups-modal-user-add.component";
+import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 
 @NgModule({
     declarations: [
@@ -50,11 +56,14 @@ import { NgSelectModule } from "@ng-select/ng-select";
         GraphsComponent,
         AnalysisComponent,
         SearchComponent,
-        GroupsComponent,
+        GroupsMainComponent,
         LoginComponent,
         SignupComponent,
         MapDictToArrayPipe,
         SettingsComponent,
+        GroupsModalSettingsComponent,
+        GroupsModalUserAddComponent,
+        GroupsModalGroupAddComponent,
     ],
     imports: [
         BrowserModule,
@@ -75,6 +84,9 @@ import { NgSelectModule } from "@ng-select/ng-select";
         MatProgressSpinnerModule,
         MatSnackBarModule,
         NgSelectModule,
+        MatListModule,
+        MatExpansionModule,
+        MatDialogModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

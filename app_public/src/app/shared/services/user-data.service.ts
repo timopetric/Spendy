@@ -40,6 +40,7 @@ export class UserDataService {
     }
 
     getUser(online?: boolean) {
+        // todo: add update timer - when 1 minute is over get new data from api
         if (online == true || this.user == null) {
             this.http.get(`${API_URL}/${this.getUserId()}`).subscribe(
                 data => this.handleUpdateUserData(data),

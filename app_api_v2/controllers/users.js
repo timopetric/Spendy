@@ -106,7 +106,7 @@ const addUser = (req, res) => {
         });
     }
 
-    const USER_GROUP_NAME = `${reqMail}`;
+    const USER_GROUP_NAME = `${reqUsername}`;
     const BALANCE_STARTING = 0.0;
 
     // create special one man group
@@ -166,6 +166,13 @@ const getGroupsByUserId = async (req, res) => {
     if (!idUser) {
         return res.status(400).json({ message: "Parameter idUser must be defined" });
     }
+    const populate = req.query.populate;
+    let populateField = "";
+    let populateFields = "";
+    if (populate && populate === "userIds") {
+        populateField = "userIds";
+        populateFields = "_id username name surname mail";
+    }
 
     User.findById(idUser)
         .then((user) => {
@@ -176,7 +183,9 @@ const getGroupsByUserId = async (req, res) => {
                     _id: {
                         $in: user.groupIds,
                     },
-                }).select("_id name balance userIds adminIds expenses");
+                })
+                    .populate(populateField, populateFields)
+                    .select("_id name balance userIds adminIds expenses");
             }
         })
         .then((groups) => {

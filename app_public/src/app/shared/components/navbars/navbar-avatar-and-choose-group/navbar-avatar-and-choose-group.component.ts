@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
-import { Group } from "../../../classes/group";
+import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-users.model";
 
 @Component({
     selector: "app-navbar-avatar-and-choose-group",
@@ -13,7 +13,7 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 
-    userGroupsData: Group[] = [];
+    userGroupsData: GroupsPopulatedUsersModel[] = [];
     groupSelected = "";
     loading = true;
     apiError = "";
@@ -22,7 +22,7 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
         this.loading = true;
         this.userGroupsDataSub = this.groupsDataService
             .getUserGroupsUpdateListener()
-            .subscribe((data: { message: string; groups: Group[] }) => {
+            .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
                 this.loading = false;
             });
