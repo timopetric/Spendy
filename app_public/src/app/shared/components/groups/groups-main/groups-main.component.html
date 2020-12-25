@@ -37,15 +37,18 @@
                                         </mat-icon>
                                     </div>
 
-                                    <div class="col-8">{{ user.name }}</div>
+                                    <div class="col-8">
+                                        <b *ngIf="user._id === getUserId()">{{ user.name }} {{ user.surname }}</b>
+                                        <span *ngIf="user._id !== getUserId()">{{ user.name }} {{ user.surname }}</span>
+                                    </div>
 
                                     <button
                                         class="col-2"
                                         mat-button
                                         *ngIf="
-                                            group.adminIds.includes(this.getUserId()) &&
+                                            group.adminIds.includes(getUserId()) &&
                                             group.userIds.length > 1 &&
-                                            this.getUserId() !== user._id &&
+                                            getUserId() !== user._id &&
                                             !group.adminIds.includes(user._id)
                                         "
                                         (click)="removeUserFromGroup(group, user._id)"
@@ -64,7 +67,11 @@
                                 >
                                     Dodaj uporabnika
                                 </button>
-                                <button mat-raised-button color="accent" (click)="openModalGroupSettings(group)">
+                                <button
+                                    mat-raised-button
+                                    color="accent"
+                                    (click)="openModalGroupSettings({ group: group, userId: getUserId() })"
+                                >
                                     Nastavitve
                                 </button>
                             </mat-action-row>

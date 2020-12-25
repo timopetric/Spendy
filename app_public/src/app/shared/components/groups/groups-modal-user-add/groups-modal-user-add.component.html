@@ -1,1 +1,36 @@
-<p>groups-modal-user-add works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{ group.name }}</h3>
+        </mat-card-title>
+        <mat-card-subtitle>Ime skupine</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <br />
+        <form class="form">
+            <div class="form-group">
+                <mat-card-title>Dodaj uporabnika</mat-card-title>
+                <mat-form-field appearance="outline" class="col-12">
+                    <mat-label>Vnesite email uporabnika, ki ga želite dodati skupini</mat-label>
+                    <input
+                        matInput
+                        [formControl]="dataForm.mail"
+                        required
+                        name="name"
+                        placeholder="janez123@email.si"
+                        title="Vnesite željeno ime"
+                        type="text"
+                    />
+                    <mat-error *ngIf="dataForm.mail.invalid">{{ mailError }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-action-row>
+                <button mat-raised-button color="primary" (click)="addUser()" [disabled]="dataForm.mail.invalid">
+                    Dodaj uporabnika&nbsp;&nbsp;&nbsp;<mat-icon>person_add</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-card-content>
+</mat-card>

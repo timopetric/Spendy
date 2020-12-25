@@ -1,12 +1,67 @@
-<h1 mat-dialog-title>Hi {{ group.name }}</h1>
-<div mat-dialog-content>
-    <p>What's your favorite animal?</p>
-    <mat-form-field>
-        <mat-label>{{ group._id }}</mat-label>
-        <input matInput [(ngModel)]="group.name" />
-    </mat-form-field>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="group._id">Ok</button>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{ data.group.name }}</h3>
+        </mat-card-title>
+        <mat-card-subtitle>Ime skupine</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <br />
+        <form class="form">
+            <div class="form-group">
+                <mat-card-title>Spremeni ime skupine</mat-card-title>
+                <mat-form-field appearance="outline" class="col-12">
+                    <mat-label>Vnesite željeno ime skupine</mat-label>
+                    <input
+                        matInput
+                        [formControl]="dataForm.name"
+                        required
+                        name="name"
+                        placeholder="Družina"
+                        title="Vnesite željeno ime"
+                        type="text"
+                    />
+                    <mat-error *ngIf="dataForm.name.invalid">{{ nameError }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <!--<div class="form-group">-->
+            <!--    <mat-card-title>Limit</mat-card-title>-->
+            <!--    <mat-form-field appearance="outline" class="col-12">-->
+            <!--        <mat-label>Vnesite željen limit</mat-label>-->
+            <!--        <input-->
+            <!--            required-->
+            <!--            matInput-->
+            <!--            [formControl]="dataForm.limit"-->
+            <!--            name="limit"-->
+            <!--            placeholder="350"-->
+            <!--            title="Vnesite željen limit"-->
+            <!--            type="number"-->
+            <!--        />-->
+            <!--        <span matSuffix>€</span>-->
+            <!--        <mat-error *ngIf="dataForm.limit.invalid">{{ limitError }}</mat-error>-->
+            <!--    </mat-form-field>-->
+            <!--</div>-->
+            <mat-action-row>
+                <button
+                    mat-raised-button
+                    cdkFocusInitial
+                    color="primary"
+                    (click)="updateGroup()"
+                    [disabled]="dataForm.name.invalid"
+                >
+                    POTRDI SPREMEMBE&nbsp;&nbsp;&nbsp;<mat-icon>check</mat-icon>
+                </button>
+                <button
+                    mat-raised-button
+                    color="warn"
+                    [disabled]="!data.group.adminIds.includes(data.userId)"
+                    (click)="deleteGroup()"
+                >
+                    IZBRIŠI&nbsp;&nbsp;&nbsp;<mat-icon>delete</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -34,7 +34,7 @@ export class UserDataService {
     private handleUpdateUserError(error) {
         this.userUpdated.next({
             message: error.error["message"],
-            user: null,
+            user: { ...this.user },
         });
         return UserDataService.handleError(error);
     }

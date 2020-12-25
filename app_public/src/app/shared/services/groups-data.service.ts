@@ -73,6 +73,59 @@ export class GroupsDataService {
         this.groupSelectionUpdate.next(this.groupSelected);
     }
 
+    // --------- update group -----------
+    updateGroup(data: { name: string }, idGroup: string) {
+        this.http.put(`${API_URL_GROUPS}/${idGroup}`, data).subscribe(
+            data => this.handleUpdateGroupData(data, "UPDATED"),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    updateGroupAddUser(data: { mail: string }, idGroup: string) {
+        this.http.post(`${API_URL_GROUPS}/${idGroup}/users`, data).subscribe(
+            data => this.handleUpdateGroupData(data, "UPDATED"),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    updateGroupRemoveUser(idUser: string, idGroup: string) {
+        this.http.delete(`${API_URL_GROUPS}/${idGroup}/users/${idUser}`).subscribe(
+            data => this.handleUpdateGroupData(data, "UPDATED"),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    deleteGroup(idGroup: string) {
+        this.http.delete(`${API_URL_GROUPS}/${idGroup}`).subscribe(
+            data => this.handleUpdateGroupData(data, "DELETED", idGroup),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    private handleUpdateGroupData(data?, message?: string, groupId?: string) {
+        if (data && message !== "DELETED") {
+            let groupNew = data as GroupsPopulatedUsersModel;
+            // delete old group from groups
+            this.groups = this.groups.filter(group => group._id !== groupNew._id);
+            // add new group to groups
+            this.groups = [...this.groups, groupNew];
+            this.groupsUpdated.next({
+                message: message || "OK",
+                groups: [...this.groups],
+            });
+            this.setCurrentGroup(groupNew._id);
+        } else if (message === "DELETED") {
+            this.groups = this.groups.filter(group => group._id !== groupId);
+            this.groupsUpdated.next({
+                message: "UPDATED",
+                groups: [...this.groups],
+            });
+        }
+    }
+    private handleUpdateGroupError(error) {
+        this.groupsUpdated.next({
+            message: error.error["message"],
+            groups: [...this.groups],
+        });
+        return GroupsDataService.handleError(error);
+    }
+
     private static handleError(error: any): Promise<any> {
         console.error(
             "There has been an error: " + error.error["message"],
