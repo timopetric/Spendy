@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-header>
         <mat-card-title>
-            <h3>{{ group.name }}</h3>
+            <h3>{{ data.group.name }}</h3>
         </mat-card-title>
         <mat-card-subtitle>Ime skupine</mat-card-subtitle>
     </mat-card-header>
@@ -53,7 +53,12 @@
                 >
                     POTRDI SPREMEMBE&nbsp;&nbsp;&nbsp;<mat-icon>check</mat-icon>
                 </button>
-                <button mat-raised-button color="warn" (click)="deleteGroup()">
+                <button
+                    mat-raised-button
+                    color="warn"
+                    [disabled]="!data.group.adminIds.includes(data.userId)"
+                    (click)="deleteGroup()"
+                >
                     IZBRIŠI&nbsp;&nbsp;&nbsp;<mat-icon>delete</mat-icon>
                 </button>
             </mat-action-row>

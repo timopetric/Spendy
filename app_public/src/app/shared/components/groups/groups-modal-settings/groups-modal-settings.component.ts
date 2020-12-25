@@ -12,13 +12,13 @@ import { GroupSettings } from "../../../classes/GroupSettings";
 export class GroupsModalSettingsComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<GroupsModalSettingsComponent>,
-        @Inject(MAT_DIALOG_DATA) public group: GroupsPopulatedUsersModel
+        @Inject(MAT_DIALOG_DATA) public data: { group: GroupsPopulatedUsersModel; userId: string }
     ) {}
 
     ngOnInit() {}
 
     public dataForm = {
-        name: new FormControl(this.group.name, [
+        name: new FormControl(this.data.group.name, [
             Validators.required,
             Validators.minLength(3),
             Validators.maxLength(25),
@@ -32,7 +32,7 @@ export class GroupsModalSettingsComponent implements OnInit {
         console.log("DELETE");
 
         if (confirm("Res želite izbrisati to skupino?")) {
-            console.log("yes, delete " + this.group.name);
+            // console.log("yes, delete " + this.data.group.name);
             this.dialogRef.close(new GroupSettings(null, true));
         }
     }

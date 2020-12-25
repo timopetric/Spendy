@@ -31,7 +31,7 @@ const getGroupById = async (req, res) => {
     Group.findById(idGroup)
         .populate("expenses")
         .populate("userIds", "_id groupIds username name surname mail balance")
-        .populate("adminIds", "_id groupIds username name surname mail balance")
+        // .populate("adminIds", "_id groupIds username name surname mail balance")
         .exec((error, group) => {
             if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
@@ -75,6 +75,48 @@ const crateNewGroup = (req, res) => {
             }
         }
     );
+};
+
+const removeUserFromGroup = async (req, res) => {
+    const idGroup = req.params.idGroup;
+    const idUser = req.params.idUser;
+
+    if (!idGroup || !idUser) {
+        return res.status(400).json({ message: "Parameter idGroup and idUser must be defined" });
+    }
+
+    User.findById(idUser)
+        .select("_id username name surname mail")
+        .then((user) => {
+            if (!user) {
+                throw new SpendyError("User with this id does not exist", 404);
+            } else {
+                return Group.findByIdAndUpdate(
+                    idGroup,
+                    { $pull: { userIds: user._id, adminIds: user._id } },
+                    { upsert: true }
+                )
+                    .select("_id name balance userIds adminIds expenses")
+                    .populate("userIds", "_id username name surname mail");
+            }
+        })
+        .then((group) => {
+            if (!group) {
+                throw new SpendyError("Group with this id does not exist", 404);
+            } else {
+                res.status(200).json(group);
+            }
+        })
+        .catch((error) => {
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else if (error.kind === "ObjectId") {
+                res.status(404).json({ message: `Could not find user with id to remove from this group` });
+            } else {
+                console.log(error);
+                res.status(500).json({ message: "Error in database", error: error });
+            }
+        });
 };
 
 const addUserToGroup = async (req, res) => {
@@ -250,13 +292,13 @@ const deleteUserFromGroup = (req, res) => {
     });
 };
 
-// ALI JE PROBLEM ČE IZBRIŠEMO SKUPINO SKUPINO UPORABNIKA
+// TODO: ALI JE PROBLEM ČE IZBRIŠEMO SKUPINO UPORABNIKA?
 const removeGroupById = (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
         return res.status(404).json({
-            message: "Parameter idGroup must be defind",
+            message: "Parameter idGroup must be defined",
         });
     }
 
@@ -307,4 +349,5 @@ module.exports = {
     addUserToGroup,
     updateGroup,
     removeGroupById,
+    removeUserFromGroup,
 };

@@ -32,6 +32,7 @@ router.put("/groups/:idGroup", ctrlGroups.updateGroup);
 
 router.get("/groups", ctrlGroups.getAllGroups);
 router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
+router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
 router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 

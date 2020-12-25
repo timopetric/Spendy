@@ -67,19 +67,19 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         this.groupsDataService.setCurrentGroup(idGroup);
     }
 
-    openModalGroupSettings(group: GroupsPopulatedUsersModel): void {
+    openModalGroupSettings(data: { group: GroupsPopulatedUsersModel; userId: string }): void {
         let dialogRef = this.dialog.open(GroupsModalSettingsComponent, {
             width: "50rem",
-            data: group,
+            data: data,
         });
 
         dialogRef.afterClosed().subscribe((result?: GroupSettings) => {
             if (result && result.deleteGroup) {
                 // TODO
+                this.groupsDataService.deleteGroup(data.group._id);
             } else if (result && result.name) {
-                this.groupsDataService.updateGroup({ name: result.name }, group._id);
+                this.groupsDataService.updateGroup({ name: result.name }, data.group._id);
             }
-            // this.userGroupsData = this.userGroupsData.filter(groupTmp => groupTmp !== group);
         });
     }
 
@@ -99,8 +99,9 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
     }
 
     removeUserFromGroup(group: GroupsPopulatedUsersModel, userId: string): void {
-        console.log(group._id + ", " + userId);
-        console.log(group);
+        if (confirm("Res želite odstraniti tega uporabnika iz te skupine?")) {
+            this.groupsDataService.updateGroupRemoveUser(userId, group._id);
+        }
     }
 
     openModalGroupAdd(): void {}

@@ -177,7 +177,7 @@ const getGroupsByUserId = async (req, res) => {
     User.findById(idUser)
         .then((user) => {
             if (!user) {
-                throw new SpendyError("User does with this id does not exist.", 404);
+                throw new SpendyError("User with this id does not exist.", 404);
             } else {
                 return Group.find({
                     _id: {

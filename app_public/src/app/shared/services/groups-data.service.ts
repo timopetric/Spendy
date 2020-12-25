@@ -86,17 +86,37 @@ export class GroupsDataService {
             error => this.handleUpdateGroupError(error)
         );
     }
-    private handleUpdateGroupData(data, message?: string) {
-        let groupNew = data as GroupsPopulatedUsersModel;
-        // delete old group from groups
-        this.groups = this.groups.filter(group => group._id !== groupNew._id);
-        // add new group to groups
-        this.groups = [...this.groups, groupNew];
-        this.groupsUpdated.next({
-            message: message || "OK",
-            groups: [...this.groups],
-        });
-        this.setCurrentGroup(groupNew._id);
+    updateGroupRemoveUser(idUser: string, idGroup: string) {
+        this.http.delete(`${API_URL_GROUPS}/${idGroup}/users/${idUser}`).subscribe(
+            data => this.handleUpdateGroupData(data, "UPDATED"),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    deleteGroup(idGroup: string) {
+        this.http.delete(`${API_URL_GROUPS}/${idGroup}`).subscribe(
+            data => this.handleUpdateGroupData(data, "DELETED", idGroup),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
+    private handleUpdateGroupData(data?, message?: string, groupId?: string) {
+        if (data && message !== "DELETED") {
+            let groupNew = data as GroupsPopulatedUsersModel;
+            // delete old group from groups
+            this.groups = this.groups.filter(group => group._id !== groupNew._id);
+            // add new group to groups
+            this.groups = [...this.groups, groupNew];
+            this.groupsUpdated.next({
+                message: message || "OK",
+                groups: [...this.groups],
+            });
+            this.setCurrentGroup(groupNew._id);
+        } else if (message === "DELETED") {
+            this.groups = this.groups.filter(group => group._id !== groupId);
+            this.groupsUpdated.next({
+                message: "UPDATED",
+                groups: [...this.groups],
+            });
+        }
     }
     private handleUpdateGroupError(error) {
         this.groupsUpdated.next({
