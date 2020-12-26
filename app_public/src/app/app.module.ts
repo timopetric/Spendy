@@ -15,7 +15,7 @@ import { FirstPageNavbarComponent } from "./shared/components/navbars/navbar-fir
 import { OverviewComponent } from "./shared/components/overview/overview.component";
 import { GraphsComponent } from "./shared/components/graphs/graphs.component";
 import { AnalysisComponent } from "./shared/components/analysis/analysis.component";
-import { SearchComponent } from "./shared/components/search/search.component";
+import { SearchComponent } from "./shared/components/search/search-main/search.component";
 import { GroupsMainComponent } from "./shared/components/groups/groups-main/groups-main.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
@@ -38,10 +38,12 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { MatListModule } from "@angular/material/list";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDialogModule } from "@angular/material/dialog";
+import { NgxPaginationModule } from "ngx-pagination";
 import { GroupsModalSettingsComponent } from "./shared/components/groups/groups-modal-settings/groups-modal-settings.component";
 import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 import { ProfileComponent } from "./shared/components/profile/profile.component";
+import { ExpenseComponent } from "./shared/components/search/expense/expense.component";
 
 @NgModule({
     declarations: [
@@ -66,6 +68,7 @@ import { ProfileComponent } from "./shared/components/profile/profile.component"
         GroupsModalSettingsComponent,
         GroupsModalUserAddComponent,
         GroupsModalGroupAddComponent,
+        ExpenseComponent,
     ],
     imports: [
         BrowserModule,
@@ -89,6 +92,7 @@ import { ProfileComponent } from "./shared/components/profile/profile.component"
         MatListModule,
         MatExpansionModule,
         MatDialogModule,
+        NgxPaginationModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

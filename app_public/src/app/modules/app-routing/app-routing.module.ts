@@ -5,7 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { OverviewComponent } from "../../shared/components/overview/overview.component";
 import { GraphsComponent } from "../../shared/components/graphs/graphs.component";
 import { AnalysisComponent } from "../../shared/components/analysis/analysis.component";
-import { SearchComponent } from "../../shared/components/search/search.component";
+
 import { LoginComponent } from "../../shared/components/login/login.component";
 import { SignupComponent } from "../../shared/components/signup/signup.component";
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
@@ -13,6 +13,7 @@ import { GroupsMainComponent } from "../../shared/components/groups/groups-main/
 import { ProfileComponent } from "../../shared/components/profile/profile.component";
 import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
+import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
 
 const routes: Routes = [
     {

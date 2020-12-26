@@ -13,7 +13,7 @@ export class ExpensesDataService {
     private API_URL = environment.apiUrl;
     private API_URL_EXPENSES = environment.apiUrl + "/expenses";
 
-    private GROUP_ID = "5fbeb5e3a48a39a6199e6719";
+    private GROUP_ID = "5fc3b42d42a9c61684ffd07c";
 
     public addExpenseToGroup(idGroup: string, expense: Expense): Promise<Expense[]> {
         const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses`;
@@ -30,6 +30,22 @@ export class ExpensesDataService {
             .get(url)
             .toPromise()
             .then(odgovor => odgovor["expenses"] as Expense[])
+            .catch(this.proccesError);
+    }
+
+    public getExpensesByGroupIdPaginated(idGroup: string, page: number): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/page/${page}`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => {
+                let result = {
+                    aktivnosti: odgovor["docs"],
+                    count: odgovor["totalDocs"],
+                };
+                console.log(result);
+                return result as any;
+            })
             .catch(this.proccesError);
     }
 
