@@ -8,11 +8,6 @@ import { Group } from "../classes/group";
 @Injectable({
     providedIn: "root",
 })
-
-/* router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
-router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
-router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
-router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup); */
 export class ExpensesDataService {
     constructor(private http: HttpClient) {}
 

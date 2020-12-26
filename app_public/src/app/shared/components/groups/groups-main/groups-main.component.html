@@ -1,0 +1,198 @@
+<app-navbar-main></app-navbar-main>
+
+<main>
+    <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title> <h2>Skupine</h2> </mat-card-title>
+            <mat-card-subtitle>Moje skupine</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="container row">
+                <div class="col-sm-12 col-md-6 col-xl-4 pb-3 pr-0" *ngFor="let group of userGroupsData">
+                    <mat-accordion>
+                        <mat-expansion-panel [expanded]="group._id === groupSelected">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <mat-icon class="mr-3">groups</mat-icon> {{ group.name }}
+                                </mat-panel-title>
+                                <mat-panel-description>{{ group.balance }}&nbsp;€</mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <mat-divider></mat-divider>
+
+                            <mat-list>
+                                <mat-list-item *ngFor="let user of group.userIds" class="row">
+                                    <div class="col-2">
+                                        <mat-icon mat-list-icon *ngIf="group.adminIds.includes(user._id)">
+                                            admin_panel_settings
+                                        </mat-icon>
+                                        <mat-icon
+                                            mat-list-icon
+                                            *ngIf="group.userIds.includes(user) && !group.adminIds.includes(user._id)"
+                                        >
+                                            account_circle
+                                        </mat-icon>
+                                    </div>
+
+                                    <div class="col-8">
+                                        <b *ngIf="user._id === getUserId()">{{ user.name }} {{ user.surname }}</b>
+                                        <span *ngIf="user._id !== getUserId()">{{ user.name }} {{ user.surname }}</span>
+                                    </div>
+
+                                    <button
+                                        class="col-2"
+                                        mat-button
+                                        *ngIf="
+                                            group.adminIds.includes(getUserId()) &&
+                                            group.userIds.length > 1 &&
+                                            getUserId() !== user._id &&
+                                            !group.adminIds.includes(user._id)
+                                        "
+                                        (click)="removeUserFromGroup(group, user._id)"
+                                    >
+                                        <mat-icon color="warn">remove_circle</mat-icon>
+                                    </button>
+                                </mat-list-item>
+                            </mat-list>
+
+                            <mat-action-row class="pr-3">
+                                <button
+                                    mat-raised-button
+                                    color="primary"
+                                    [value]="group._id"
+                                    (click)="openModalGroupUserAdd(group)"
+                                >
+                                    Dodaj uporabnika
+                                </button>
+                                <button
+                                    mat-raised-button
+                                    color="accent"
+                                    (click)="openModalGroupSettings({ group: group, userId: getUserId() })"
+                                >
+                                    Nastavitve
+                                </button>
+                            </mat-action-row>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+
+            <mat-action-row>
+                <button mat-raised-button color="primary">
+                    Dodaj skupino&nbsp;&nbsp;&nbsp;<mat-icon>group_add</mat-icon>
+                </button>
+            </mat-action-row>
+
+            <!--<div class="container-fluid bg-grey px-3" id="content">-->
+            <!--    <div class="container">-->
+            <!--        <div class="row">-->
+            <!--            <div *ngFor="let group of userGroupsData" class="col-sm-6 col-md-6 col-lg-4 col-xl-3" id="prvi">-->
+            <!--                <div class="accordion" id="accordionExample1">-->
+            <!--                    <div class="card" [class.bg-danger]="group._id === groupSelected">-->
+            <!--                        <div class="card-header" id="headingOne">-->
+            <!--                            <div class="m-0 p-0">-->
+            <!--                                <div class="row m-0 p-0">-->
+            <!--                                    <div class="col-10 m-0 p-0">-->
+            <!--                                        <button-->
+            <!--                                            class="btn btn-link btn-block text-left text-white"-->
+            <!--                                            style="overflow: hidden; white-space: nowrap"-->
+            <!--                                            type="button"-->
+            <!--                                            data-toggle="collapse"-->
+            <!--                                            data-target="#collapse"-->
+            <!--                                            aria-expanded="false"-->
+            <!--                                            aria-controls="collapseOne"-->
+            <!--                                        >-->
+            <!--                                            {{ group.name }}-->
+            <!--                                        </button>-->
+            <!--                                    </div>-->
+            <!--                                    <button-->
+            <!--                                        mat-button-->
+            <!--                                        type="button"-->
+            <!--                                        class="col-2 p-0 btn"-->
+            <!--                                        data-toggle="modal"-->
+            <!--                                        data-target="#spremeniSkupino"-->
+            <!--                                        id="groupSettings"-->
+            <!--                                    >-->
+            <!--                                        <img-->
+            <!--                                            src="assets/icons/gear.svg"-->
+            <!--                                            height="30px"-->
+            <!--                                            style="filter: invert()"-->
+            <!--                                        />-->
+            <!--                                    </button>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+
+            <!--                        <div-->
+            <!--                            id="collapse"-->
+            <!--                            class="collapse"-->
+            <!--                            aria-labelledby="headingOne"-->
+            <!--                            data-parent="#accordionExample1"-->
+            <!--                        >-->
+            <!--                            <div class="card-body">-->
+            <!--                                <ul class="list-group">-->
+            <!--                                    &lt;!&ndash;<li&ndash;&gt;-->
+            <!--                                    &lt;!&ndash;    class="list-group-item d-flex justify-content-between align-items-center"&ndash;&gt;-->
+            <!--                                    &lt;!&ndash;&gt;&ndash;&gt;-->
+            <!--                                    &lt;!&ndash;    {{ group.adminIds }}&ndash;&gt;-->
+            <!--                                    &lt;!&ndash;    <span class="badge badge-primary badge-pill">Admin</span>&ndash;&gt;-->
+            <!--                                    &lt;!&ndash;</li>&ndash;&gt;-->
+            <!--                                    <li-->
+            <!--                                        *ngFor="let member of group.userIds"-->
+            <!--                                        class="list-group-item d-flex justify-content-between align-items-center"-->
+            <!--                                    >-->
+            <!--                                        {{ member.name }}-->
+            <!--                                        &lt;!&ndash;<span class="badge badge-primary badge-pill">2</span>>&ndash;&gt;-->
+            <!--                                        <div class="d-flex justify-content-end flex-column">-->
+            <!--                                            <button type="button" class="btn">-->
+            <!--                                                <img src="assets/icons/delete-icon.svg" height="20px" />-->
+            <!--                                            </button>-->
+            <!--                                        </div>-->
+            <!--                                    </li>-->
+            <!--                                </ul>-->
+            <!--                                <button-->
+            <!--                                    type="button"-->
+            <!--                                    class="btn btn-primary"-->
+            <!--                                    data-toggle="modal"-->
+            <!--                                    data-target="#dodajClana"-->
+            <!--                                    data-whatever="janeznovak"-->
+            <!--                                    id="dodajHitro1"-->
+            <!--                                >-->
+            <!--                                    Dodaj člana-->
+            <!--                                </button>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <!--            <button-->
+            <!--                type="button"-->
+            <!--                class="btn"-->
+            <!--                data-toggle="modal"-->
+            <!--                data-target="#dodajSkupino"-->
+            <!--                id="novaSkupina"-->
+            <!--            >-->
+            <!--                <svg-->
+            <!--                    width="4em"-->
+            <!--                    height="4em"-->
+            <!--                    viewBox="0 0 16 16"-->
+            <!--                    class="bi bi-plus"-->
+            <!--                    fill="currentColor"-->
+            <!--                    xmlns="http://www.w3.org/2000/svg"-->
+            <!--                >-->
+            <!--                    <path-->
+            <!--                        fill-rule="evenodd"-->
+            <!--                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"-->
+            <!--                    />-->
+            <!--                </svg>-->
+            <!--            </button>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </mat-card-content>
+    </mat-card>
+</main>

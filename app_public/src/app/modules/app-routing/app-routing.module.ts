@@ -9,7 +9,9 @@ import { SearchComponent } from "../../shared/components/search/search.component
 import { LoginComponent } from "../../shared/components/login/login.component";
 import { SignupComponent } from "../../shared/components/signup/signup.component";
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
-import { GroupsComponent } from "../../shared/components/groups/groups.component";
+import { GroupsMainComponent } from "../../shared/components/groups/groups-main/groups-main.component";
+import { ProfileComponent } from "../../shared/components/profile/profile.component";
+import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 
@@ -37,7 +39,7 @@ const routes: Routes = [
     },
     {
         path: "groups",
-        component: GroupsComponent,
+        component: GroupsMainComponent,
     },
     {
         path: "first-page",
@@ -45,7 +47,7 @@ const routes: Routes = [
     },
     {
         path: "profile",
-        component: OverviewComponent,
+        component: ProfileComponent,
     },
     {
         path: "settings",

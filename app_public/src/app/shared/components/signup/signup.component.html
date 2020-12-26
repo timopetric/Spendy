@@ -4,23 +4,48 @@
 <!-- ################ main body ################ -->
 <main>
     <div class="main">
-        <form action="/signup" method="post" class="box col-sm-12 col-xl-6" id="toJePost">
+        <form (submit)="posiljanjePodatkov()" autocomplete="off" class="box col-sm-12 col-xl-6" id="toJePost">
+            <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
             <div class="form-group"></div>
             <h1>Registracija</h1>
-            <input placeholder="Ime" type="text" id="name1" name="name" />
-            <input placeholder="Priimek" type="text" id="lastName1" name="surname" />
-            <input placeholder="Epoštni Naslov" type="email" id="email" name="email" />
-            <input placeholder="Uporabniško ime" type="text" id="username" name="username" />
-            <input placeholder="Geslo" type="password" id="password" name="password" />
-            <input placeholder="Ponovite geslo" type="password" id="password1" name="password1" />
-            <button
-                class="btn btn-primary"
-                type="submit"
-                id="registracijaGumb"
-                onclick="validate()"
-            >
-                Registracija
-            </button>
+            <input
+                placeholder="Ime"
+                type="text"
+                id="name1"
+                name="name"
+                class="form-control"
+                [(ngModel)]="prijavniPodatki.name"
+            />
+            <input
+                placeholder="Priimek"
+                type="text"
+                id="lastName1"
+                name="surname"
+                [(ngModel)]="prijavniPodatki.surname"
+            />
+            <input
+                placeholder="Epoštni Naslov"
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="prijavniPodatki.mail"
+            />
+            <!--            <input placeholder="Uporabniško ime" type="text" id="username" name="username" [(ngModel)]="prijavniPodatki.username"/>-->
+            <input
+                placeholder="Geslo"
+                type="password"
+                id="password"
+                name="password"
+                [(ngModel)]="prijavniPodatki.pass"
+            />
+            <input
+                placeholder="Ponovite geslo"
+                type="password"
+                id="password1"
+                name="password1"
+                [(ngModel)]="prijavniPodatki.passAgain"
+            />
+            <button class="btn btn-primary" type="submit" id="registracijaGumb">Registracija</button>
         </form>
     </div>
 </main>

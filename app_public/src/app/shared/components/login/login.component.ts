@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "../../services/authentication.service";
 
 @Component({
     selector: "app-login",
@@ -10,7 +12,38 @@ import { Component, OnInit } from "@angular/core";
     ],
 })
 export class LoginComponent implements OnInit {
-    constructor() {}
+    public napakaNaObrazcu = "";
 
-    ngOnInit(): void {}
+    public prijavniPodatki = {
+        mail: "",
+        pass: "",
+    };
+
+    // public vsebinaStrani = {
+    //     glava: {
+    //         naslov: "Kreiranje novega uporabniškega računa",
+    //         podnaslov: ""
+    //     },
+    //     stranskaOrodnaVrstica: ""
+    // }
+
+    constructor(private usmerjevalnik: Router, private authenticationService: AuthenticationService) {}
+    public posiljanjePodatkov(): void {
+        this.napakaNaObrazcu = "";
+        if (!this.prijavniPodatki.mail || !this.prijavniPodatki.pass) {
+            // console.log(this.prijavniPodatki);
+            this.napakaNaObrazcu = "Zahtevani so vsi podatki, prosim poskusite znova!";
+        } else {
+            this.izvediPrijavo();
+        }
+    }
+
+    private izvediPrijavo(): void {
+        this.authenticationService
+            .prijava(this.prijavniPodatki)
+            .then(() => this.usmerjevalnik.navigateByUrl("/"))
+            .catch(sporocilo => (this.napakaNaObrazcu = sporocilo));
+    }
+
+    ngOnInit() {}
 }

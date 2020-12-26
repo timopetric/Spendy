@@ -1,47 +1,61 @@
 import { Injectable, OnInit } from "@angular/core";
 import { User } from "../classes/user.model";
+import { UserLogin } from "../classes/user-login";
+import { UserSignup } from "../classes/user-signup";
 import { Subject } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { environment } from "../../../environments/environment";
 
-const API_URL = environment.apiUrl;
+import { AuthenticationResult } from "../classes/authentication-result";
+
+const API_URL = environment.apiUrl + "/users";
 
 @Injectable({
     providedIn: "root",
 })
-export class SpendyDataService {
+export class SpendyDataService implements OnInit {
     constructor(private http: HttpClient) {}
+    ngOnInit() {}
+    private apiUrl = "http://localhost:3000/api/v2";
 
-    public getExpenses(skupinaId): any {
-        return this.http
-            .get(`${API_URL}/groups/${skupinaId}/expenses?isExpenditure=true&date=desc`)
-            .toPromise()
-            .then((responseExpenses: any) => {
-                let expenses = responseExpenses.expenses;
-                this.http
-                    .get(`${API_URL}/groups/${skupinaId}/expenses?isExpenditure=false&date=desc`)
-                    .toPromise()
-                    .then((responseIncome: any) => {
-                        let income = responseIncome.expenses;
-                        return { income: income, expenses: expenses };
-                    });
-            });
+    public prijava(userLogin: UserLogin): Promise<AuthenticationResult> {
+        return this.avtentikacijaLogin("prijava", userLogin);
     }
 
-    public postExpense(Expense) {
-        let data = Expense;
-        const httpOptions = {};
+    public registracija(userSignup: UserSignup): Promise<AuthenticationResult> {
+        return this.avtentikacijaSignup("registracija", userSignup);
+    }
 
-        console.log(Expense.group);
+    private avtentikacija(urlNaslov: string, user: User): Promise<AuthenticationResult> {
+        const url: string = `${this.apiUrl}/${urlNaslov}`;
         return this.http
-            .post(`${API_URL}/groups/${Expense.group}/expenses`, data, httpOptions)
+            .post(url, user)
             .toPromise()
-            .then(res => {
-                return true;
-            })
-            .catch(napaka => {
-                console.log(napaka);
-            });
+            .then(rezultat => rezultat as AuthenticationResult)
+            .catch(this.obdelajNapako);
+    }
+
+    private avtentikacijaLogin(urlNaslov: string, userLogin: UserLogin): Promise<AuthenticationResult> {
+        const url: string = `${this.apiUrl}/${urlNaslov}`;
+        return this.http
+            .post(url, userLogin)
+            .toPromise()
+            .then(rezultat => rezultat as AuthenticationResult)
+            .catch(this.obdelajNapako);
+    }
+
+    private avtentikacijaSignup(urlNaslov: string, userSignup: UserSignup): Promise<AuthenticationResult> {
+        const url: string = `${this.apiUrl}/${urlNaslov}`;
+        return this.http
+            .post(url, userSignup)
+            .toPromise()
+            .then(rezultat => rezultat as AuthenticationResult)
+            .catch(this.obdelajNapako);
+    }
+
+    private obdelajNapako(napaka: any): Promise<any> {
+        console.error("Prišlo je do napake neke čudne", napaka);
+        return Promise.reject(napaka.message || napaka);
     }
 }
