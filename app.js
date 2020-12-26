@@ -1,13 +1,20 @@
+require('dotenv').config();
+
 var createError = require("http-errors");
 var express = require("express");
 var hbs = require("hbs");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+//za passport
+var passport = require('passport');
 
 require("./app_server/views/helpers/hbsh.js");
 
+
 require("./app_api_v2/models/db");
+//za passport
+require('./app_api_v2/configuration/passport');
 
 var indexRouter = require("./app_server/routes/index");
 var indexApi = require("./app_api/routes/index");
@@ -27,11 +34,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "app_public")));
+//za inicializacijo passporta
+app.use(passport.initialize());
 
 // CORS
 app.use("/api", (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT,OPTIONS");
     next();
 });
@@ -45,6 +54,13 @@ app.use(express.static(path.join(__dirname, "public")));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
+});
+
+// Obvladovanje napak zaradi avtentikacije
+app.use((err, req, res, next) => {
+    if (err.name == "UnauthorizedError") {
+        res.status(401).json({"sporočilo": err.name + ": " + err.message});
+    }
 });
 
 // error handler

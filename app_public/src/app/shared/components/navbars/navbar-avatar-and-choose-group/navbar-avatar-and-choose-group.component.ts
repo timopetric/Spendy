@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
 import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-users.model";
+import { AuthenticationService } from "../../../services/authentication.service";
 
 @Component({
     selector: "app-navbar-avatar-and-choose-group",
@@ -9,11 +10,18 @@ import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-use
     styleUrls: ["./navbar-avatar-and-choose-group.component.css"],
 })
 export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
-    constructor(private groupsDataService: GroupsDataService) {}
+    constructor(private groupsDataService: GroupsDataService, private authenticationService: AuthenticationService) {}
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 
+    getUsernameFromToken() {
+        let { username } = this.authenticationService.vrniTrenutnegaUporabnika();
+        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        return username;
+    }
+
     userGroupsData: GroupsPopulatedUsersModel[] = [];
+    username: string = "";
     groupSelected = "";
     loading = true;
     apiError = "";
@@ -31,6 +39,8 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
         });
         this.groupsDataService.getGroupsByUser();
         this.groupsDataService.getCurrentGroup();
+
+        this.username = this.getUsernameFromToken() || "";
     }
 
     ngOnDestroy() {

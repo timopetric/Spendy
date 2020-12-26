@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { User } from "../classes/user.model";
 import { UserSettings } from "../classes/UserSettings";
 import { Subject } from "rxjs";
+import { AuthenticationService } from "./authentication.service";
 
 const API_URL = environment.apiUrl + "/users";
 
@@ -14,10 +15,12 @@ export class UserDataService {
     private user: User = null;
     private userUpdated = new Subject<{ message: string; user: User }>();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 
     getUserId() {
-        return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
+        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        return _id;
     }
 
     getUserUpdateListener() {
