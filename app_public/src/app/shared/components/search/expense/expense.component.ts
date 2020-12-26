@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Expense } from "../../classes/expense";
+import { Expense } from "src/app/shared/classes/expense";
 
 @Component({
     selector: "app-expense",
