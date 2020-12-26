@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const mongoosePaginate = require("mongoose-paginate-v2");
 ////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
 // todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
 const currencySchema = new mongoose.Schema(
@@ -121,6 +121,7 @@ const groupSchema = new mongoose.Schema(
         collection: "Groups",
     }
 );
+groupSchema.plugin(mongoosePaginate);
 const groupModel = mongoose.model("Group", groupSchema);
 
 /////////////////////////////////////////// EXPENSE SCHEMA: ////////////////////////////////////////////////////
@@ -157,4 +158,5 @@ const expenseSchema = new mongoose.Schema(
         collection: "Expenses",
     }
 );
+expenseSchema.plugin(mongoosePaginate);
 const expenseModel = mongoose.model("Expense", expenseSchema);
