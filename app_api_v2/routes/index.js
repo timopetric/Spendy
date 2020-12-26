@@ -6,14 +6,28 @@ const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
+var ctrlAuthentication = require("../controllers/authentication");
+
+const jwt = require("express-jwt");
+const avtentikacija = jwt({
+    secret: process.env.JWT_GESLO,
+    userProperty: "payload",
+    algorithms: ["HS256"],
+});
+
+/* Avtentikacija */
+router.post("/registracija", ctrlAuthentication.registracija);
+router.post("/prijava", ctrlAuthentication.prijava);
 
 //START--------------------------USERS-------------------------------START
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/:idUser", ctrlUser.getUserById);
-router.put("/users/:idUser", ctrlUser.updateUser);
+router.put("/users/:idUser", ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
 router.delete("/users/:idUser", ctrlUser.deleteUser);
-router.post("/users", ctrlUser.addUser);
+// router.post("/users", ctrlUser.addUser);
+router.get("/users/name/:name", ctrlUser.getUserByName);
 
+router.get("/users/:idUser/groups", ctrlUser.getGroupsByUserId);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START
@@ -27,9 +41,11 @@ router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQue
 router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
 router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
 router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
+router.put("/groups/:idGroup", ctrlGroups.updateGroup);
 
 router.get("/groups", ctrlGroups.getAllGroups);
 router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
+router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
 router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
