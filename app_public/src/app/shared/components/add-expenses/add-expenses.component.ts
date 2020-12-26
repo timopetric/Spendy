@@ -1,20 +1,35 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { SpendyDataService } from "../../services/spendy-data.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ExpensesDataService } from "../../services/expenses-data.service";
 import { addExpense } from "../../classes/addExpense";
+import { GroupsDataService } from "../../services/groups-data.service";
+import { AuthenticationService } from "../../services/authentication.service";
+import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.model";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "app-add-expenses",
     templateUrl: "./add-expenses.component.html",
     styleUrls: ["./add-expenses.component.css", "../../../../assets/stylesheets/add_expenses_button.css"],
 })
-export class AddExpensesComponent implements OnInit {
+export class AddExpensesComponent implements OnInit, OnDestroy {
     constructor(
         private SpendyDataService: SpendyDataService,
         private _snackBar: MatSnackBar,
-        private expensesData: ExpensesDataService
+        private expensesData: ExpensesDataService,
+        private groupsDataService: GroupsDataService,
+        private authenticationService: AuthenticationService
     ) {}
+    private userGroupsDataSub: Subscription;
+    public selectedGroupId = null;
+
+    getIdFromToken() {
+        let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
+        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        return _id || "";
+    }
+    userGroupsData: GroupsPopulatedUsersModel[] = [];
 
     public dateError = false;
     public costError = false;
@@ -33,9 +48,9 @@ export class AddExpensesComponent implements OnInit {
         cost: 0,
         date: null,
         category_name: "Hrana",
-        group: "",
+        group: null,
         description: "",
-        created_by: "5fe087f6fabe4b365c8a7998",
+        created_by: this.getIdFromToken(),
     };
 
     public ponastavi() {
@@ -47,7 +62,7 @@ export class AddExpensesComponent implements OnInit {
             category_name: "Hrana",
             group: "",
             description: "",
-            created_by: "5fe087f6fabe4b365c8a7998",
+            created_by: this.getIdFromToken(),
         };
     }
 
@@ -73,7 +88,8 @@ export class AddExpensesComponent implements OnInit {
     }
 
     public postExpense() {
-        this.Expense.group = "5fe087f6fabe4b365c8a7998";
+        this.Expense.group = this.selectedGroupId;
+        console.log(this.Expense);
         if (this.isFilled()) {
             this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
                 this.ponastavi();
@@ -81,5 +97,17 @@ export class AddExpensesComponent implements OnInit {
             });
         }
     }
-    ngOnInit(): void {}
+
+    ngOnInit(): void {
+        this.userGroupsDataSub = this.groupsDataService
+            .getUserGroupsUpdateListener()
+            .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
+                this.userGroupsData = data.groups;
+                this.selectedGroupId = this.userGroupsData[0]._id;
+            });
+        this.groupsDataService.getGroupsByUser();
+    }
+    ngOnDestroy() {
+        this.userGroupsDataSub.unsubscribe();
+    }
 }
