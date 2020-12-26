@@ -20,6 +20,7 @@ export class ExpensesDataService {
     private API_URL_EXPENSES = environment.apiUrl + "/expenses";
 
     private GROUP_ID = "5fbeb5e3a48a39a6199e6719";
+    public expenses: Expense[] = [];
 
     public addExpenseToGroup(idGroup: string, expense: addExpense): Promise<Expense[]> {
         const url: string = `${this.API_URL}/groups/${idGroup}/expenses`;
@@ -31,7 +32,16 @@ export class ExpensesDataService {
     }
 
     public getExpensesByGroupId(idGroup: string): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses`;
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses?date=desc`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => odgovor["expenses"] as Expense[])
+            .catch(this.proccesError);
+    }
+
+    public getExpensesByGroupIdQuery(idGroup: string, query: string): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses?${query}`;
         return this.http
             .get(url)
             .toPromise()

@@ -48,11 +48,23 @@
                                         type="number"
                                         [(ngModel)]="Expense.cost"
                                         name="cost"
+                                        (change)="isGood()"
                                     />
+                                    <div *ngIf="costError" style="color: red">
+                                        Vnesite vrednost večjo od 0 in zaokrožite do centa!
+                                    </div>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
                                     Datum veljave:
-                                    <input id="date" required type="date" name="date" [(ngModel)]="Expense.date" />
+                                    <input
+                                        id="date"
+                                        (change)="isGood()"
+                                        required
+                                        type="date"
+                                        name="date"
+                                        [(ngModel)]="Expense.date"
+                                    />
+                                    <div *ngIf="dateError" style="color: red">Izberite veljaven datum!</div>
                                 </div>
                             </div>
 
@@ -95,8 +107,12 @@
                                     aria-label="search"
                                     name="description"
                                     [(ngModel)]="Expense.description"
+                                    (change)="isGood()"
                                     required
                                 />
+                                <div *ngIf="descriptionError" style="color: red">
+                                    Vnesite opis dolžine vsaj treh znakov!
+                                </div>
                             </div>
 
                             <input id="uporabnikTrenutni" style="visibility: hidden" name="created_by" />

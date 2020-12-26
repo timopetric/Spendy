@@ -16,6 +16,10 @@ export class AddExpensesComponent implements OnInit {
         private expensesData: ExpensesDataService
     ) {}
 
+    public dateError = false;
+    public costError = false;
+    public descriptionError = false;
+
     toggler: any = {
         onColor: "danger",
         offColor: "success",
@@ -35,6 +39,7 @@ export class AddExpensesComponent implements OnInit {
     };
 
     public ponastavi() {
+        this.isFilled();
         this.Expense = {
             isExpenditure: false,
             cost: 0,
@@ -47,12 +52,18 @@ export class AddExpensesComponent implements OnInit {
     }
 
     private isFilled() {
-        if (this.Expense.cost == 0) return false;
-        if (this.Expense.description == "") return false;
-        if (this.Expense.date == null) {
-            return false;
-        }
-        return true;
+        this.Expense.cost == 0 ? (this.costError = true) : (this.costError = false);
+        Math.floor(this.Expense.cost * 100) / 100 == 0 ? (this.costError = true) : (this.costError = false);
+        this.Expense.description.length == 0 ? (this.descriptionError = true) : (this.descriptionError = false);
+        this.Expense.date == null ? (this.dateError = true) : (this.dateError = false);
+        console.log(this.Expense.date);
+        return !(this.costError || this.descriptionError || this.dateError);
+    }
+
+    public isGood() {
+        if (this.Expense.cost !== 0) this.costError = false;
+        if (this.Expense.description.length >= 3) this.descriptionError = false;
+        if (this.Expense.date !== null) this.dateError = false;
     }
 
     private openSnackBar(message: string) {
@@ -63,14 +74,11 @@ export class AddExpensesComponent implements OnInit {
 
     public postExpense() {
         this.Expense.group = "5fe087f6fabe4b365c8a7998";
-        console.log(this.Expense);
         if (this.isFilled()) {
             this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
                 this.ponastavi();
                 this.openSnackBar("Expense uspešno dodan!!!");
             });
-        } else {
-            alert("izpolnite vsa polja");
         }
     }
     ngOnInit(): void {}
