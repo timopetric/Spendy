@@ -3,13 +3,15 @@ import { SHRAMBA_BRSKALNIKA } from "../classes/storage";
 import { UserSignup } from "../classes/user-signup";
 import { UserLogin } from "../classes/user-login";
 import { AuthenticationResult } from "../classes/authentication-result";
-import { SpendyDataService } from "../services/spendy-data.service";
+import { SpendyDataService } from "./spendy-data.service";
+import { UserTokenData } from "../classes/user-token-data";
 
 @Injectable({
     providedIn: "root",
 })
 export class AuthenticationService {
     constructor(@Inject(SHRAMBA_BRSKALNIKA) private shramba: Storage, private spendyDataService: SpendyDataService) {}
+
     private b64Utf8(niz: string): string {
         return decodeURIComponent(
             Array.prototype.map
@@ -47,7 +49,7 @@ export class AuthenticationService {
             // Na podlagi koristne vsebine pogledamo veljavnost. S tem boo dosegli, da bo nekatere stvari lahko videl
             // le prijavljen uporabnik
             const koristnaVsebina = JSON.parse(atob(zeton.split(".")[1]));
-            return koristnaVsebina.datumPoteka > Date.now() / 1000;
+            return koristnaVsebina.exp > Date.now() / 1000;
         } else {
             return false;
         }
@@ -63,11 +65,14 @@ export class AuthenticationService {
         this.shramba.setItem("spendysp-zeton", zeton);
     }
 
-    public vrniTrenutnegaUporabnika(): UserSignup {
+    public vrniTrenutnegaUporabnika(): UserTokenData {
+        // console.log(this.jePrijavljen());
+
         if (this.jePrijavljen()) {
             const zeton: string = this.vrniZeton();
-            const { mail, name, surname } = JSON.parse(this.b64Utf8(zeton.split(".")[1]));
-            return { mail, name, surname } as UserSignup;
+            const { _id, username, mail, name, surname } = JSON.parse(this.b64Utf8(zeton.split(".")[1]));
+            // console.log({ _id, username, mail, name, surname });
+            return { _id, username, mail, name, surname } as UserTokenData; // UserTokenData(_id, username, mail, name, surname);
         }
     }
 }

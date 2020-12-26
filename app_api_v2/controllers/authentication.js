@@ -25,7 +25,7 @@ const registracija = (req, res) => {
     }
 
     // create special one man group
-    const USER_GROUP_NAME = `${reqMail}`;
+    const USER_GROUP_NAME = `Skupina ${reqMail}`;
     const BALANCE_STARTING = 0.0;
     Group.create({
         name: USER_GROUP_NAME,

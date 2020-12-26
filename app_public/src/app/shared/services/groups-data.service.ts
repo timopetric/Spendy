@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { GroupsPopulatedUsersModel } from "../classes/groups-populated-users.model";
+import { AuthenticationService } from "./authentication.service";
 
 const API_URL_GROUPS = environment.apiUrl + "/groups";
 const API_URL_USERS = environment.apiUrl + "/users";
@@ -14,13 +15,15 @@ const API_URL_USERS = environment.apiUrl + "/users";
 export class GroupsDataService {
     private groupsUpdated = new Subject<{ message: string; groups: GroupsPopulatedUsersModel[] }>();
     private groupSelectionUpdate = new Subject<string>();
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 
     private groups: GroupsPopulatedUsersModel[] = null;
     private groupSelected = "";
 
     getUserId() {
-        return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
+        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        return _id;
     }
 
     getGroupSelectionUpdateListener() {

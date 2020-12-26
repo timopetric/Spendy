@@ -74,16 +74,17 @@ userSchema.methods.preveriGeslo = function (geslo) {
 };
 
 //ko se uporabnik prijavi dobi žeton, ki ima nek omejen čas trajanja, ta je pri nas 7 dni oziroma en teden
-userSchema.methods.generirajJwt = () => {
+userSchema.methods.generirajJwt = function () {
     const datumPoteka = new Date();
     datumPoteka.setDate(datumPoteka.getDate() + 7);
 
     return jwt.sign(
         {
             _id: this._id,
-            mail: this.mail,
-            ime: this.ime,
             username: this.username,
+            mail: this.mail,
+            name: this.name,
+            surname: this.surname,
             exp: parseInt(datumPoteka.getTime() / 1000, 10),
         },
         process.env.JWT_GESLO
