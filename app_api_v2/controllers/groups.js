@@ -370,28 +370,28 @@ const removeGroupById = (req, res) => {
             //console.log(deletedGroup.expenses);
             try {
                 const deleted = await Expense.deleteMany({ _id: { $in: deletedGroup.expenses } });
-                console.log(deleted);
-                console.log(deletedGroup);
+                // console.log(deleted);
+                // console.log(deletedGroup);
                 return deletedGroup;
             } catch (error) {
                 //console.log("nek error je kao");
-                console.log(error);
+                // console.log(error);
                 throw new SpendyError("Cant delete expenses of group", 404);
             }
         })
         .then(async (deletedGroup) => {
-            console.log("hehe tle se ustau");
-            console.log(deletedGroup);
+            // console.log("hehe tle se ustau");
+            // console.log(deletedGroup);
             try {
                 const updated = await User.updateMany(
                     { _id: { $in: deletedGroup.userIds } },
                     { $pull: { groupIds: { $in: [idGroup] } } },
                     { multi: true }
                 );
-                console.log(updated);
+                // console.log(updated);
                 return deletedGroup;
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 throw new SpendyError("Cant update users of group", 404);
             }
         })

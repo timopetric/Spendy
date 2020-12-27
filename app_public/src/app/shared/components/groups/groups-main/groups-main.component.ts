@@ -10,6 +10,8 @@ import { GroupsModalUserAddComponent } from "../groups-modal-user-add/groups-mod
 import { GroupsModalGroupAddComponent } from "../groups-modal-group-add/groups-modal-group-add.component";
 import { AuthenticationService } from "../../../services/authentication.service";
 
+const MAX_GROUP_COUNT = 10;
+
 @Component({
     selector: "app-groups-main",
     templateUrl: "./groups-main.component.html",
@@ -29,6 +31,8 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
     groupSelected = "";
     loading = true;
     apiError = "";
+    groupCount = 0;
+    MAX_GROUP_COUNT = 10;
 
     getUserId() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
@@ -42,6 +46,7 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
             .getUserGroupsUpdateListener()
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
+                this.groupCount = data.groups.length;
                 if (data.message === "UPDATED") {
                     this.openSnackBar("Podatki uspešno posodobljeni!");
                 } else if (data.message !== "OK") {
