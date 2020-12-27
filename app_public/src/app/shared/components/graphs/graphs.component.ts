@@ -159,5 +159,7 @@ export class GraphsComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();
+        this.odhodkiSum = 0;
+        this.prihodkiSum = 0;
     }
 }
