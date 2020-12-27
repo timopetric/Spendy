@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ExpensesDataService } from "../../services/expenses-data.service";
 import { Expense } from "../../classes/expense";
 import { ChartData, ChartDataSets, ChartOptions, ChartType } from "chart.js";
@@ -13,7 +13,7 @@ import { Subscription } from "rxjs";
     templateUrl: "./overview.component.html",
     styleUrls: ["./overview.component.css"],
 })
-export class OverviewComponent implements OnInit {
+export class OverviewComponent implements OnInit, OnDestroy {
     constructor(
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
@@ -194,7 +194,6 @@ export class OverviewComponent implements OnInit {
             }
             for (let i = 0; i < this.userGroupsData.length; i++) {
                 if (this.userGroupsData[i]._id == data) {
-                    console.log("ratal napisat funkcijo");
                     this.skupinaBalance = this.userGroupsData[i].balance;
                 }
             }
@@ -203,5 +202,8 @@ export class OverviewComponent implements OnInit {
         this.groupsDataService.getCurrentGroup();
         this.uporabnik.username = this.getUsernameFromToken() || "";
         this.getUser();
+    }
+    ngOnDestroy() {
+        this.userGroupsDataSub.unsubscribe();
     }
 }

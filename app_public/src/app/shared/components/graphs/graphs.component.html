@@ -26,12 +26,34 @@
                 <div class="card rounded-0">
                     <div class="card-body row">
                         <div class="col-sm-12 col-lg-6 mb-5">
-                            <h1 class="container-fluid d-flex justify-content-center">Odhodki</h1>
-                            <canvas height="40%" id="expensesChart" width="50%"></canvas>
+                            <h1 class="container-fluid d-flex justify-content-center">Prihodki</h1>
+                            <canvas
+                                baseChart
+                                [datasets]="prihodkiChartData"
+                                [labels]="prihodkiChartLabels"
+                                [options]="barChartOptions"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType"
+                                height="40%"
+                                id="expensesChart"
+                                width="50%"
+                            >
+                            </canvas>
                         </div>
                         <div class="col-sm-12 col-lg-6 mb-5">
-                            <h1 class="container-fluid d-flex justify-content-center">Prihodki</h1>
-                            <canvas height="40%" id="incomeChart" width="50%"></canvas>
+                            <h1 class="container-fluid d-flex justify-content-center">Odhodki</h1>
+                            <canvas
+                                baseChart
+                                [datasets]="odhodkiChartData"
+                                [labels]="odhodkiChartLabels"
+                                [options]="barChartOptions"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType"
+                                height="40%"
+                                id="incomeChart"
+                                width="50%"
+                            >
+                            </canvas>
                         </div>
                         <!--<div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
@@ -41,7 +63,17 @@
                         </div>-->
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">Tortni</h1>
-                            <canvas height="40%" id="vsChart" width="50%"></canvas>
+                            <canvas
+                                baseChart
+                                height="40%"
+                                id="vsChart"
+                                width="50%"
+                                [datasets]="pieChartData"
+                                [labels]="pieChartLabels"
+                                [legend]="pieChartLegend"
+                                [chartType]="pieChartType"
+                            >
+                            </canvas>
                         </div>
                     </div>
                 </div>
