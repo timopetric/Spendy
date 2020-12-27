@@ -5,6 +5,12 @@
 	"groupIds": [
 		{
 			"$oid": "5fe7cc18e0fe833da436fbdd"
+		},
+		{
+			"$oid": "5fe8ff1f67c57310401aca35"
+		},
+		{
+			"$oid": "5fe8ff2367c57310401aca36"
 		}
 	],
 	"name": "a",
@@ -18,7 +24,91 @@
 		"$date": "2020-12-26T23:49:44.933Z"
 	},
 	"updated_at": {
-		"$date": "2020-12-26T23:49:44.933Z"
+		"$date": "2020-12-27T21:39:47.515Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe8ff5667c57310401aca38"
+	},
+	"groupIds": [
+		{
+			"$oid": "5fe8ff5667c57310401aca37"
+		},
+		{
+			"$oid": "5fe8ff2367c57310401aca36"
+		}
+	],
+	"name": "Metka",
+	"surname": "Novak",
+	"mail": "b@b.b",
+	"balance": 0,
+	"username": "b@b.b",
+	"nakljucnaVrednost": "e5dd7e9409abfa25aa026590133eb84e",
+	"zgoscenaVrednost": "3278d3571f707c96f50fc55cbc557b6fd9c04dc28f1348b4ec00d8d48c7d0df9a1b51101d58652fdc75dd582554e2a8f105e3299b4c42652f3b0c8006f195370",
+	"created_at": {
+		"$date": "2020-12-27T21:40:38.555Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T21:42:06.079Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe8ff6c67c57310401aca3a"
+	},
+	"groupIds": [
+		{
+			"$oid": "5fe8ff6c67c57310401aca39"
+		},
+		{
+			"$oid": "5fe8ff2367c57310401aca36"
+		},
+		{
+			"$oid": "5fe8ff1f67c57310401aca35"
+		}
+	],
+	"name": "Janez",
+	"surname": "Novak",
+	"mail": "c@c.c",
+	"balance": 0,
+	"username": "c@c.c",
+	"nakljucnaVrednost": "89766b2385cc576c58627f3b2112ba36",
+	"zgoscenaVrednost": "9ec5450c812d5ec7cf463b9bd3c9ada7388d62a46bfef834a4ae530fd4512b67021df92db322dc47f2785c14ffddd135ad1d792369f1b6a57e6038a3c046540e",
+	"created_at": {
+		"$date": "2020-12-27T21:41:00.131Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T21:42:33.787Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe8ff7f67c57310401aca3c"
+	},
+	"groupIds": [
+		{
+			"$oid": "5fe8ff7f67c57310401aca3b"
+		},
+		{
+			"$oid": "5fe8ff1f67c57310401aca35"
+		}
+	],
+	"name": "Andrej",
+	"surname": "Kavčič",
+	"mail": "d@d.d",
+	"balance": 0,
+	"username": "d@d.d",
+	"nakljucnaVrednost": "a48527a7bbd0ef601bd9b710f60a19e7",
+	"zgoscenaVrednost": "732beef4a9959ea727c1801f9c24cea0db7c31f182f4a7938e749b3bcaa4a656aebe9c8d86f4a4035908e0cce6d795a7cfc7db27a9553aa47197c5665068d2a4",
+	"created_at": {
+		"$date": "2020-12-27T21:41:19.257Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T21:42:25.114Z"
 	},
 	"__v": 0
 }]

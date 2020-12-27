@@ -176,7 +176,6 @@ const addExpenseToGroup = (req, res) => {
 
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
-
     }
 
     Group.findById(idGroup).exec((error, group) => {
@@ -193,11 +192,15 @@ const addExpenseToGroup = (req, res) => {
 
 const createExpenseAndAddToGroup = (req, res, group) => {
     const isExpenditure = req.body.isExpenditure;
-    const cost = req.body.cost;
+    const cost = parseFloat(req.body.cost);
     const date = req.body.date;
     const category_name = req.body.category_name;
     const description = req.body.description;
     const created_by = req.body.created_by;
+
+    if (typeof cost !== "number") {
+        return res.status(400).json({ message: "Body element cost must be a number" });
+    }
 
     if (!created_by) {
         return res.status(400).json({ message: "Parameter created_by is not defind" });
@@ -226,6 +229,7 @@ const createExpenseAndAddToGroup = (req, res, group) => {
                 res.status(404).json({ message: "Cant create expense" });
             } else {
                 group.expenses.push(expense._id);
+                group.balance += isExpenditure ? -cost : cost;
                 group.save((error2, savedGroup) => {
                     if (error2) {
                         res.status(500).json({

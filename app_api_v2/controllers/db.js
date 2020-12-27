@@ -17,9 +17,19 @@ const json2mongo = require("json2mongo");
 
 ////GET ALL EXPENSES OF GROUP
 const importDbData = async (req, res) => {
-    const userData = json2mongo(require("../models/user-data-exported.json"));
-    const groupData = json2mongo(require("../models/group-data-exported.json"));
-    const expenseData = json2mongo(require("../models/expense-data-exported.json"));
+    let userJson, groupJson, expenseJson;
+    try {
+        userJson = require("../models/user-data-exported.json");
+        groupJson = require("../models/group-data-exported.json");
+        expenseJson = require("../models/expense-data-exported.json");
+    } catch (err) {
+        res.status(409).json(err);
+        console.log(err);
+    }
+
+    const userData = json2mongo(userJson);
+    const groupData = json2mongo(groupJson);
+    const expenseData = json2mongo(expenseJson);
 
     // const userData = require("../models/user-data.json");
     // const groupData = require("../models/groups-data.json");

@@ -21,7 +21,7 @@ const getAllGroups = async (req, res) => {
 
 //GET GROUP BY ID
 const getGroupById = async (req, res) => {
-    const idGroup = req.params.id;
+    const idGroup = req.params.idGroup;
 
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
@@ -146,7 +146,7 @@ const removeUserFromGroup = async (req, res) => {
         return res.status(400).json({ message: "Parameter idGroup and idUser must be defined" });
     }
 
-    User.findById(idUser)
+    User.findByIdAndUpdate(idUser, { $pull: { groupIds: idGroup } })
         .select("_id username name surname mail")
         .then((user) => {
             if (!user) {
@@ -189,16 +189,22 @@ const addUserToGroup = async (req, res) => {
         return res.status(400).json({ message: "Parameter idGroup and mailOfUser must be defined" });
     }
 
-    User.findOne({ mail: mailOfUser })
-        .select("_id username name surname mail")
+    // console.log("#################################");
+    // console.log(idGroup);
+
+    Group.findById(idGroup)
+        .then((group) => {
+            return User.findOneAndUpdate({ mail: mailOfUser }, { $addToSet: { groupIds: group._id } }).select(
+                "_id username name surname mail"
+            );
+        })
         .then((user) => {
             if (!user) {
                 throw new SpendyError("User with this mail does not exist", 404);
-            } else {
+            } else
                 return Group.findByIdAndUpdate(idGroup, { $addToSet: { userIds: user._id } }, { upsert: true })
                     .select("_id name balance userIds adminIds expenses")
                     .populate("userIds", "_id username name surname mail");
-            }
         })
         .then((group) => {
             if (!group) {
