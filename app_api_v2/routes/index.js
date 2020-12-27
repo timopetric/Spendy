@@ -45,6 +45,7 @@ router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 router.put("/groups/:idGroup", ctrlGroups.updateGroup);
 
 router.get("/groups", ctrlGroups.getAllGroups);
+router.get("/groups/:idGroup", ctrlGroups.getGroupById);
 router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
 router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
 router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
