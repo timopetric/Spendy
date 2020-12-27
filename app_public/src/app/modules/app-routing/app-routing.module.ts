@@ -14,6 +14,7 @@ import { ProfileComponent } from "../../shared/components/profile/profile.compon
 import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
+import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
 
 const routes: Routes = [
     {
@@ -60,6 +61,10 @@ const routes: Routes = [
     {
         path: "signup",
         component: SignupComponent,
+    },
+    {
+        path: "db",
+        component: DbImportDropComponent,
     },
 
     // { path: '**', component: PageNotFoundComponent }

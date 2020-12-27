@@ -1,0 +1,25 @@
+[{
+	"_id": {
+		"$oid": "5fe7cc18e0fe833da436fbde"
+	},
+	"groupIds": [
+		{
+			"$oid": "5fe7cc18e0fe833da436fbdd"
+		}
+	],
+	"name": "a",
+	"surname": "a",
+	"mail": "a@a.a",
+	"balance": 0,
+	"username": "a@a.a",
+	"nakljucnaVrednost": "1ba6c6f14e5437c38233c2cab752904d",
+	"zgoscenaVrednost": "f7ef99fe6fc524fa693d138e1fdf2ecc4a547b432e9b2e51446f035c9b8199a2e40b7ef56872b69a78d77e1ada80bef08b1d87a2224657b68612571220360e2e",
+	"created_at": {
+		"$date": "2020-12-26T23:49:44.933Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-26T23:49:44.933Z"
+	},
+	"__v": 0
+}]
+

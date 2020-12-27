@@ -52,7 +52,8 @@ router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------DB IMPORT-------------------------------START
-
+router.get("/db/import", ctrlDb.importDbData);
+router.get("/db/drop", ctrlDb.dropDb);
 // END----------------------------DB IMPORT---------------------------------END
 
 //START--------------------------SWAGGER-------------------------------START

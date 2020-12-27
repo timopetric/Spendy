@@ -1,0 +1,26 @@
+[{
+	"_id": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"balance": 0,
+	"userIds": [
+		{
+			"$oid": "5fe7cc18e0fe833da436fbde"
+		}
+	],
+	"adminIds": [
+		{
+			"$oid": "5fe7cc18e0fe833da436fbde"
+		}
+	],
+	"expenses": [],
+	"name": "Skupina a@a.a",
+	"created_at": {
+		"$date": "2020-12-26T23:49:44.866Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-26T23:49:44.965Z"
+	},
+	"__v": 0
+}]
+

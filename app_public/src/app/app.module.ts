@@ -44,6 +44,7 @@ import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-m
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 import { ProfileComponent } from "./shared/components/profile/profile.component";
 import { ExpenseComponent } from "./shared/components/search/expense/expense.component";
+import { DbImportDropComponent } from "./shared/components/db-import-drop/db-import-drop.component";
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { ExpenseComponent } from "./shared/components/search/expense/expense.com
         GroupsModalUserAddComponent,
         GroupsModalGroupAddComponent,
         ExpenseComponent,
+        DbImportDropComponent,
     ],
     imports: [
         BrowserModule,

@@ -19,6 +19,7 @@
     "express-jwt": "^6.0.0",
     "hbs": "*",
     "http-errors": "^1.8.0",
+    "json2mongo": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "5.10.15",
     "mongoose-paginate-v2": "^1.3.13",
