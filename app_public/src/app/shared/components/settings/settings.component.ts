@@ -73,7 +73,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     private openSnackBar(message: string) {
         this._snackBar.open(message, "skrij", {
-            duration: 5000,
+            duration: 10000,
         });
     }
 

@@ -5,8 +5,11 @@
 
     <mat-card>
         <mat-card-header>
-            <mat-card-title> <h2>Skupine</h2> </mat-card-title>
-            <mat-card-subtitle>Moje skupine</mat-card-subtitle>
+            <mat-card-title>
+                <h2>Moje skupine ({{ groupCount }}/{{ MAX_GROUP_COUNT }})</h2>
+                <!--Dodate lahko še {{ MAX_GROUP_COUNT - groupCount }} novih skupin-->
+            </mat-card-title>
+            <mat-card-subtitle>Dodate lahko še {{ MAX_GROUP_COUNT - groupCount }} novih skupin</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content>
@@ -81,7 +84,12 @@
             </div>
 
             <mat-action-row>
-                <button mat-raised-button color="primary">
+                <button
+                    (click)="openModalGroupAdd()"
+                    [disabled]="groupCount >= MAX_GROUP_COUNT"
+                    mat-raised-button
+                    color="primary"
+                >
                     Dodaj skupino&nbsp;&nbsp;&nbsp;<mat-icon>group_add</mat-icon>
                 </button>
             </mat-action-row>

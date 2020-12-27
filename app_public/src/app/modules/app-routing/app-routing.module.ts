@@ -15,6 +15,7 @@ import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/enviro
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
+import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
 
 const routes: Routes = [
     {
@@ -65,6 +66,10 @@ const routes: Routes = [
     {
         path: "add_expenses",
         component: AddExpensesComponent,
+    },
+    {
+        path: "db",
+        component: DbImportDropComponent,
     },
 
     // { path: '**', component: PageNotFoundComponent }

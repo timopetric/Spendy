@@ -45,6 +45,7 @@ router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 router.put("/groups/:idGroup", ctrlGroups.updateGroup);
 
 router.get("/groups", ctrlGroups.getAllGroups);
+router.post("/groups", ctrlGroups.createAndAddToUser);
 router.get("/groups/:idGroup", ctrlGroups.getGroupById);
 router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
 router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
@@ -52,7 +53,8 @@ router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------DB IMPORT-------------------------------START
-
+router.get("/db/import", ctrlDb.importDbData);
+router.get("/db/drop", ctrlDb.dropDb);
 // END----------------------------DB IMPORT---------------------------------END
 
 //START--------------------------SWAGGER-------------------------------START
