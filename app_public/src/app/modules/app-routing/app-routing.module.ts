@@ -13,12 +13,13 @@ import { GroupsMainComponent } from "../../shared/components/groups/groups-main/
 import { ProfileComponent } from "../../shared/components/profile/profile.component";
 import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
+import { ProfileForHistoryComponent } from "../../shared/components/profile-for-history/profile-for-history.component";
 
 const routes: Routes = [
     {
         path: "",
         pathMatch: "full",
-        redirectTo: "overview",
+        redirectTo: "first-page",
     },
     {
         path: "overview",
@@ -59,6 +60,10 @@ const routes: Routes = [
     {
         path: "signup",
         component: SignupComponent,
+    },
+    {
+        path: "profile-for-history",
+        component: ProfileForHistoryComponent,
     },
 
     // { path: '**', component: PageNotFoundComponent }

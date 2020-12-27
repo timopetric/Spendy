@@ -7,7 +7,7 @@
         <div class="container bootstrap snippet">
             <div class="row">
                 <div class="col-sm-10">
-                    <h1>{{ uporabnik.username }}</h1>
+                    <h1>{{ userData.mail }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -15,12 +15,7 @@
                     <!--left col-->
                     <div class="image-upload">
                         <label for="file-input">
-                            <img
-                                alt="avatar"
-                                class="avatar img-circle img-thumbnail"
-                                src="icons/user-1.png"
-                                type="file"
-                            />
+                            <img mat-card-avatar src="assets/icons/user-silhouette.png" alt="Uporabniška slika" />
                         </label>
                         <input id="file-input" type="file" />
                         <!--<h6>Upload a different photo...</h6>-->
@@ -36,7 +31,7 @@
                         <li class="list-group-item text-muted">Pregled <i class="fa fa-dashboard fa-1x"></i></li>
                         <li class="list-group-item text-right" id="stSkupin">
                             <span class="pull-left"><strong>Število skupin</strong></span>
-                            {{ uporabnik.stSkupin }}
+                            {{ userGroupNumber }}
                         </li>
                     </ul>
                 </div>
@@ -54,14 +49,14 @@
                                 <div class="form-group">
                                     <div class="col-xl-3">
                                         <h4>Ime</h4>
-                                        <h6>{{ uporabnik.name }}</h6>
+                                        <h6>{{ userData.name }}</h6>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="form-group">
                                     <div class="col-xl-3">
                                         <h4>Priimek</h4>
-                                        <h6>{{ uporabnik.surname }}</h6>
+                                        <h6>{{ userData.surname }}</h6>
                                     </div>
                                 </div>
                                 <hr />
@@ -69,7 +64,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <h4>Email</h4>
-                                        <p>{{ uporabnik.mail }}</p>
+                                        <p>{{ userData.mail }}</p>
                                     </div>
                                 </div>
                             </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication.service";
+import { HistoryService } from "../../services/history.service";
 
 @Component({
     selector: "app-login",
@@ -27,7 +28,11 @@ export class LoginComponent implements OnInit {
     //     stranskaOrodnaVrstica: ""
     // }
 
-    constructor(private usmerjevalnik: Router, private authenticationService: AuthenticationService) {}
+    constructor(
+        private usmerjevalnik: Router,
+        private authenticationService: AuthenticationService,
+        private historyService: HistoryService
+    ) {}
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         if (!this.prijavniPodatki.mail || !this.prijavniPodatki.pass) {
@@ -41,7 +46,7 @@ export class LoginComponent implements OnInit {
     private izvediPrijavo(): void {
         this.authenticationService
             .prijava(this.prijavniPodatki)
-            .then(() => this.usmerjevalnik.navigateByUrl("/"))
+            .then(() => this.usmerjevalnik.navigateByUrl("/overview"))
             .catch(sporocilo => (this.napakaNaObrazcu = sporocilo));
     }
 

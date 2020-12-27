@@ -55,7 +55,10 @@ export class SpendyDataService implements OnInit {
     }
 
     private obdelajNapako(napaka: any): Promise<any> {
-        console.error("Prišlo je do napake neke čudne", napaka);
-        return Promise.reject(napaka.message || napaka);
+        console.error(
+            "Prišlo je do napake čudne",
+            napaka.error["sporočilo"] || napaka.error.errmsg || napaka.message || napaka
+        );
+        return Promise.reject(napaka.error["sporočilo"] || napaka.error.errmsg || napaka.message || napaka);
     }
 }

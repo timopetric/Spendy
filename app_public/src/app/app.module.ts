@@ -42,6 +42,7 @@ import { GroupsModalSettingsComponent } from "./shared/components/groups/groups-
 import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 import { ProfileComponent } from "./shared/components/profile/profile.component";
+import { ProfileForHistoryComponent } from "./shared/components/profile-for-history/profile-for-history.component";
 
 @NgModule({
     declarations: [
@@ -66,6 +67,7 @@ import { ProfileComponent } from "./shared/components/profile/profile.component"
         GroupsModalSettingsComponent,
         GroupsModalUserAddComponent,
         GroupsModalGroupAddComponent,
+        ProfileForHistoryComponent,
     ],
     imports: [
         BrowserModule,
