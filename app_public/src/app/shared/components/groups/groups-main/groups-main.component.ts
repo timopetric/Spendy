@@ -7,6 +7,8 @@ import { GroupsModalSettingsComponent } from "../groups-modal-settings/groups-mo
 import { GroupSettings } from "../../../classes/GroupSettings";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { GroupsModalUserAddComponent } from "../groups-modal-user-add/groups-modal-user-add.component";
+import { GroupsModalGroupAddComponent } from "../groups-modal-group-add/groups-modal-group-add.component";
+import { AuthenticationService } from "../../../services/authentication.service";
 
 @Component({
     selector: "app-groups-main",
@@ -17,7 +19,8 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
     constructor(
         private groupsDataService: GroupsDataService,
         public dialog: MatDialog,
-        private _snackBar: MatSnackBar
+        private _snackBar: MatSnackBar,
+        private authenticationService: AuthenticationService
     ) {}
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
@@ -28,7 +31,9 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
     apiError = "";
 
     getUserId() {
-        return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
+        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
+        return _id;
     }
 
     ngOnInit() {
@@ -59,7 +64,7 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
 
     private openSnackBar(message: string) {
         this._snackBar.open(message, "skrij", {
-            duration: 5000,
+            duration: 10000,
         });
     }
 
@@ -79,6 +84,19 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
                 this.groupsDataService.deleteGroup(data.group._id);
             } else if (result && result.name) {
                 this.groupsDataService.updateGroup({ name: result.name }, data.group._id);
+            }
+        });
+    }
+
+    openModalGroupAdd() {
+        let dialogRef = this.dialog.open(GroupsModalGroupAddComponent, {
+            width: "50rem",
+        });
+
+        dialogRef.afterClosed().subscribe((groupName?: string) => {
+            console.log("dobil nazaj iz modalnega za dodajanje skupine: " + groupName);
+            if (groupName) {
+                this.groupsDataService.addGroup({ idUser: this.getUserId(), groupName: groupName });
             }
         });
     }
@@ -103,6 +121,4 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
             this.groupsDataService.updateGroupRemoveUser(userId, group._id);
         }
     }
-
-    openModalGroupAdd(): void {}
 }
