@@ -2,5 +2,13 @@
     "tabWidth": 4,
     "semi": true,
     "bracketSpacing": true,
-    "printWidth": 120
+    "printWidth": 120,
+    "overrides": [
+        {
+            "files": "*.yaml",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }

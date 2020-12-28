@@ -81,11 +81,11 @@ var swaggerOptions = {
         servers: [{ url: "http://localhost:3000/api/v2" }, { url: "http://sp-spendy.herokuapp.com/api/v2" }],
     },
     apis: [
-        "app_api_v2/documentation/expenses.js",
-        "app_api_v2/documentation/groups.js",
-        "app_api_v2/documentation/users.js",
-        "app_api_v2/documentation/basics.js",
-        "app_api_v2/documentation/schemes.js",
+        "app_api_v2/documentation/expenses.yaml",
+        "app_api_v2/documentation/groups.yaml",
+        "app_api_v2/documentation/users.yaml",
+        "app_api_v2/documentation/basics.yaml",
+        "app_api_v2/documentation/schemes.yaml",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);
