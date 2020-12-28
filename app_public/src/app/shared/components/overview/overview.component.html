@@ -3,7 +3,7 @@
 <main>
     <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
 
-    <div id="spinner-and-error-msg">
+    <div class="spinner-and-error-msg">
         <mat-spinner *ngIf="loading"></mat-spinner>
     </div>
     <div *ngIf="!loading">
@@ -84,6 +84,9 @@
                                     <h6 class="font-weight-bold mb-0">Graficni prikaz porabe</h6>
                                 </div>
                                 <div class="card-body">
+                                    <div class="spinner-and-error-msg">
+                                        <mat-spinner *ngIf="loading"></mat-spinner>
+                                    </div>
                                     <canvas
                                         baseChart
                                         height="150"
@@ -125,13 +128,13 @@
                                             </div>
                                             <div class="align-self-center">
                                                 <div *ngIf="expense.isExpenditure">
-                                                    Kategorija: {{ expense.category_name }}, cena: -
-                                                    {{ expense.cost }} €
+                                                    cena: -{{ expense.cost }}€, opis:
+                                                    {{ expense.description | shortenDescription }}
                                                 </div>
 
                                                 <div *ngIf="!expense.isExpenditure">
-                                                    Kategorija: {{ expense.category_name }}, cena: +
-                                                    {{ expense.cost }} €
+                                                    cena: +{{ expense.cost }}€, opis:
+                                                    {{ expense.description | shortenDescription }}
                                                 </div>
                                             </div>
                                         </div>

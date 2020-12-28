@@ -168,6 +168,9 @@
                         <div *ngFor="let coin of coins" class="col-sm-12 col-lg-6 mb-5">
                             <div>
                                 <h1 class="container-fluid d-flex justify-content-center">
+                                    <div class="spinner-and-error-msg">
+                                        <mat-spinner *ngIf="loading"></mat-spinner>
+                                    </div>
                                     {{ coin.name }}
                                 </h1>
                                 <canvas

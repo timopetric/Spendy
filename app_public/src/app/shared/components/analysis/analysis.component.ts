@@ -10,7 +10,7 @@ import { ChartDataSets, ChartType } from "chart.js";
 })
 export class AnalysisComponent implements OnInit {
     constructor(private kriptoService: KriptoService) {}
-
+    public loading = true;
     public startDate = "";
     public endDate = "";
     public bitcoinMeja = 15000;
@@ -70,10 +70,12 @@ export class AnalysisComponent implements OnInit {
                     graphColor: graphColor,
                 };
                 this.coins.push(tmpObject);
+                this.loading = false;
             });
     }
 
     public getGraphs() {
+        this.loading = true;
         this.coins = [];
         this.getGraphData("bitcoin");
         this.getGraphData("ripple");
