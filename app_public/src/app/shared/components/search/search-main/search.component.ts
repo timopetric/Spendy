@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Expense } from "../../../classes/expense";
 import { ExpensesDataService } from "../../../services/expenses-data.service";
 import { AuthenticationService } from "../../../services/authentication.service";
@@ -10,8 +10,9 @@ import { Subscription } from "rxjs";
     templateUrl: "./search.component.html",
     styleUrls: ["./search.component.css"],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
     constructor(private expensesData: ExpensesDataService, private groupsDataService: GroupsDataService) {}
+
     private groupSelectionSub: Subscription;
     public groupSelected = "";
 
@@ -30,6 +31,10 @@ export class SearchComponent implements OnInit {
             this.getExpensesByGroupId(data);
         });
         this.groupsDataService.getCurrentGroup();
+    }
+
+    ngOnDestroy(): void {
+        this.groupSelectionSub.unsubscribe();
     }
 
     private getExpensesByGroupId = (idGroup: string): void => {
