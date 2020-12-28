@@ -27,6 +27,9 @@
                     <div class="card-body row">
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">Prihodki</h1>
+                            <div class="spinner-and-error-msg">
+                                <mat-spinner *ngIf="loading"></mat-spinner>
+                            </div>
                             <canvas
                                 baseChart
                                 [datasets]="prihodkiChartData"
@@ -42,6 +45,9 @@
                         </div>
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">Odhodki</h1>
+                            <div class="spinner-and-error-msg">
+                                <mat-spinner *ngIf="loading"></mat-spinner>
+                            </div>
                             <canvas
                                 baseChart
                                 [datasets]="odhodkiChartData"
@@ -63,6 +69,9 @@
                         </div>-->
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">Tortni</h1>
+                            <div class="spinner-and-error-msg">
+                                <mat-spinner *ngIf="loading"></mat-spinner>
+                            </div>
                             <canvas
                                 baseChart
                                 height="40%"

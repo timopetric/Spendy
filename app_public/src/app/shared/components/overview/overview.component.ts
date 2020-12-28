@@ -122,60 +122,55 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
 
     public makeGraphData(groupId: string) {
-        this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=false&date=desc").then(res => {
-            let tmp = res;
-            let tmpData = [];
-            for (let i = 0; i < tmp.length; i++) {
-                tmpData.push(tmp[i].cost);
-                const datum = new Date(tmp[i].date);
-                const d = datum.getDate();
-                const m = datum.getMonth() + 1;
-                const l = datum.getFullYear();
-                this.barChartLabels.push(`${d}. ${m}, ${l}`);
-            }
-            const podatki = {
-                data: tmpData,
-                label: "prihodki",
-                backgroundColor: "rgb(104,255,99)",
-                borderColor: "rgb(104,255,99)",
-            };
-            this.barChartData.push(podatki);
-            if (this.barChartData.length == 3) {
-                for (let i = 0; i < 3; i++) {
-                    if (this.barChartData[i] && this.barChartData[i].data.length == 0) {
-                        this.barChartData.splice(i, 1);
-                    }
+        this.expensesData
+            .getExpensesByGroupIdQuery(groupId, "isExpenditure=false&date=desc")
+            .then(res => {
+                this.barChartData = [];
+                this.barChartLabels = [];
+                let tmp = res;
+                let tmpData = [];
+                for (let i = 0; i < tmp.length; i++) {
+                    tmpData.push(tmp[i].cost);
+                    const datum = new Date(tmp[i].date);
+                    const d = datum.getDate();
+                    const m = datum.getMonth() + 1;
+                    const l = datum.getFullYear();
+                    this.barChartLabels.push(`${d}. ${m}, ${l}`);
                 }
-            }
-        });
-        this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=true&date=desc").then(res => {
-            let tmp = res;
-            let tmpData = [];
-            for (let i = 0; i < tmp.length; i++) {
-                tmpData.push(tmp[i].cost);
+                const podatki = {
+                    data: tmpData,
+                    label: "prihodki",
+                    backgroundColor: "rgb(104,255,99)",
+                    borderColor: "rgb(104,255,99)",
+                };
+                this.barChartData.push(podatki);
+            })
+            .then(tmp12 => {
+                this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=true&date=desc").then(res1 => {
+                    let tmp = res1;
+                    let tmpData = [];
+                    for (let i = 0; i < tmp.length; i++) {
+                        tmpData.push(tmp[i].cost);
 
-                const datum = new Date(tmp[i].date);
-                const d = datum.getDate();
-                const m = datum.getMonth() + 1;
-                const l = datum.getFullYear();
+                        const datum = new Date(tmp[i].date);
+                        const d = datum.getDate();
+                        const m = datum.getMonth() + 1;
+                        const l = datum.getFullYear();
 
-                this.barChartLabels.push(`${d}. ${m}, ${l}`);
-            }
-            const podatki = {
-                data: tmpData,
-                label: "odhodki",
-                backgroundColor: "rgb(255, 99, 132)",
-                borderColor: "rgb(255, 99, 132)",
-            };
-            this.barChartData.push(podatki);
-            if (this.barChartData.length == 3) {
-                for (let i = 0; i < 3; i++) {
-                    if (this.barChartData[i] && this.barChartData[i].data.length == 0) {
-                        this.barChartData.splice(i, 1);
+                        this.barChartLabels.push(`${d}. ${m}, ${l}`);
                     }
-                }
-            }
-        });
+                    const podatki = {
+                        data: tmpData,
+                        label: "odhodki",
+                        backgroundColor: "rgb(255, 99, 132)",
+                        borderColor: "rgb(255, 99, 132)",
+                    };
+                    this.barChartData.push(podatki);
+                    if (this.barChartData.length > 2) {
+                        this.barChartData.splice(2, 2);
+                    }
+                });
+            });
     }
 
     ngOnInit(): void {
@@ -188,6 +183,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.loading = false;
             this.groupSelected = data;
+            this.barChartData = [];
+            this.barChartLabels = [];
             if (this.groupSelected.length > 0) {
                 this.getExpenses(this.groupSelected);
                 this.makeGraphData(this.groupSelected);
@@ -205,5 +202,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();
+        this.groupSelectionSub.unsubscribe();
+        this.barChartData = [];
+        this.barChartLabels = [];
     }
 }
