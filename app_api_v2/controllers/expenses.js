@@ -136,6 +136,7 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
         options: { expenses: { $slice: [0, 3] } },
         //offset: 1 * 10,
     };
+    
     */
     // prettier-ignore
     Group.findById(idGroup,"expenses")
