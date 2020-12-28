@@ -1,0 +1,22 @@
+# GET /api/v2/groups
+/groups:
+  get:
+    summary: Get all groups
+    description: Returns a list of all groups
+    tags: [Groups]
+    responses:
+      "200":
+        description: An array of groups
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Group_bare"
+      "404":
+        description: No user was found
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"

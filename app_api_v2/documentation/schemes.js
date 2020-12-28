@@ -1,4 +1,4 @@
-/**
+/** ############# ERROR: [500] "Error in database" ##########
  * @swagger
  *  components:
  *    schemas:
@@ -100,6 +100,46 @@
  *            type: boolean
  *            description: Mail address of the user
  *            example: j_novak@email.com
+ */
+
+/** ########################## GET /api/v2/groups [Group_bare] ############################
+ * @swagger
+ *  components:
+ *    schemas:
+ *      Group_bare:
+ *        type: object
+ *        description: Returns all groups in the database
+ *        properties:
+ *          balance:
+ *            type: number
+ *            description: Current balance of the group in €
+ *            example: 100.9
+ *          userIds:
+ *            type: array
+ *            items:
+ *              type: string
+ *            description: A list of valid(existing) user IDs
+ *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+ *          adminIds:
+ *            type: array
+ *            items:
+ *              type: string
+ *            description: A list of valid(existing) user IDs
+ *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+ *          expenses:
+ *            type: array
+ *            items:
+ *              type: string
+ *            description: A list of valid(existing) expense IDs
+ *            example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+ *          _id:
+ *            type: string
+ *            description: Internal database ID of the group
+ *            example: 5fc44bd3f35a902b3000803c
+ *          name:
+ *            type: string
+ *            description: Name of the user
+ *            example: Janez
  */
 
 /**
