@@ -13,9 +13,34 @@ export class AnalysisComponent implements OnInit {
 
     public startDate = "";
     public endDate = "";
+    public bitcoinMeja = 15000;
+    public bitcashMeja = 0.00045;
+    public rippleMeja = 0.41;
+    public bitcoinInvest = false;
+    public bitcashInvest = false;
+    public rippleInvest = false;
+
+    public changeMeja() {
+        let bitcoin = this.coins.find(x => x.name == "Bitcoin");
+        let bitcash = this.coins.find(x => x.name == "Bitcash");
+        let ripple = this.coins.find(x => x.name == "Ripple");
+        let bitcoinPrice = bitcoin.data[0].data[bitcoin.data[0].data.length - 1];
+        let bitcashPrice = bitcash.data[0].data[bitcash.data[0].data.length - 1];
+        let ripplePrice = ripple.data[0].data[ripple.data[0].data.length - 1];
+        if (bitcoinPrice < this.bitcoinMeja) {
+            this.bitcoinInvest = true;
+        } else this.bitcoinInvest = false;
+        if (bitcashPrice < this.bitcashMeja) {
+            this.bitcashInvest = true;
+        } else this.bitcashInvest = false;
+        if (ripplePrice < this.rippleMeja) {
+            this.rippleInvest = true;
+        } else this.rippleInvest = false;
+    }
+
     public datum = {
-        zacetek: new Date("2020.12.01"),
-        konec: new Date("2020.12.15"),
+        zacetek: "2020-12-01",
+        konec: "2020-12-15",
     };
 
     public coins = [];
@@ -57,12 +82,6 @@ export class AnalysisComponent implements OnInit {
 
     ngOnInit(): void {
         this.getGraphs();
-    }
-
-    public izpisiDatum() {
-        console.log("DATUMA");
-        console.log(this.toUnix(new Date(this.datum.zacetek)));
-        console.log(this.datum.konec);
     }
 
     private toUnix(datum) {

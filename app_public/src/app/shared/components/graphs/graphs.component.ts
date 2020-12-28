@@ -64,80 +64,83 @@ export class GraphsComponent implements OnInit, OnDestroy {
     };
 
     public makeGraphData(groupId: string) {
-        this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=false&date=desc").then(res => {
-            let tmp = res;
-            let tmpData = [];
-            for (let i = 0; i < tmp.length; i++) {
-                tmpData.push(tmp[i].cost);
-                this.prihodkiSum += tmp[i].cost;
-                const datum = new Date(tmp[i].date);
-                const d = datum.getDate();
-                const m = datum.getMonth() + 1;
-                const l = datum.getFullYear();
-                this.prihodkiChartLabels.push(`${d}. ${m}, ${l}`);
-            }
-            const podatki = {
-                data: tmpData,
-                label: "prihodki",
-                backgroundColor: "rgb(104,255,99)",
-                borderColor: "rgb(104,255,99)",
-            };
+        this.expensesData
+            .getExpensesByGroupIdQuery(groupId, "isExpenditure=false&date=desc")
+            .then(res => {
+                this.prihodkiChartData = [];
+                this.prihodkiChartLabels = [];
+                this.odhodkiChartData = [];
+                this.odhodkiChartLabels = [];
+                this.pieChartData = [];
+                this.odhodkiSum = 0;
+                this.prihodkiSum = 0;
+                let tmp = res;
+                let tmpData = [];
+                for (let i = 0; i < tmp.length; i++) {
+                    tmpData.push(tmp[i].cost);
+                    this.prihodkiSum += tmp[i].cost;
+                    const datum = new Date(tmp[i].date);
+                    const d = datum.getDate();
+                    const m = datum.getMonth() + 1;
+                    const l = datum.getFullYear();
+                    this.prihodkiChartLabels.push(`${d}. ${m}, ${l}`);
+                }
+                const podatki = {
+                    data: tmpData,
+                    label: "prihodki",
+                    backgroundColor: "rgb(104,255,99)",
+                    borderColor: "rgb(104,255,99)",
+                };
 
-            this.prihodkiChartData.push(podatki);
-            if (this.prihodkiChartData.length == 2) {
-                for (let i = 0; i < 2; i++) {
+                this.prihodkiChartData.push(podatki);
+                /*
+            if (this.prihodkiChartData.length >= 2) {
+                for (let i = 0; i < this.prihodkiChartData.length ; i++) {
                     if (this.prihodkiChartData[i] && this.prihodkiChartData[i].data.length == 0) {
                         this.prihodkiChartData.splice(i, 1);
                     }
                 }
-            }
-            if (this.prihodkiSum !== 0 && this.odhodkiSum !== 0) {
-                const podatkiPie = {
-                    data: [this.prihodkiSum, this.odhodkiSum],
-                    backgroundColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
-                    borderColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
-                };
-                this.pieChartData.push(podatkiPie);
-            }
-        });
-        this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=true&date=desc").then(res => {
-            let tmp = res;
-            let tmpData = [];
-            for (let i = 0; i < tmp.length; i++) {
-                tmpData.push(tmp[i].cost);
-                this.odhodkiSum += tmp[i].cost;
-                const datum = new Date(tmp[i].date);
-                const d = datum.getDate();
-                const m = datum.getMonth() + 1;
-                const l = datum.getFullYear();
+            }*/
+            })
+            .then(tmp => {
+                this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=true&date=desc").then(res => {
+                    let tmp = res;
+                    let tmpData = [];
+                    for (let i = 0; i < tmp.length; i++) {
+                        tmpData.push(tmp[i].cost);
+                        this.odhodkiSum += tmp[i].cost;
+                        const datum = new Date(tmp[i].date);
+                        const d = datum.getDate();
+                        const m = datum.getMonth() + 1;
+                        const l = datum.getFullYear();
 
-                this.odhodkiChartLabels.push(`${d}. ${m}, ${l}`);
-            }
-            const podatki = {
-                data: tmpData,
-                label: "odhodki",
-                backgroundColor: "rgb(255, 99, 132)",
-                borderColor: "rgb(255, 99, 132)",
-            };
-            this.odhodkiChartData.push(podatki);
-            if (this.odhodkiChartData.length == 2) {
-                for (let i = 0; i < 2; i++) {
-                    if (this.odhodkiChartData[i] && this.odhodkiChartData[i].data.length == 0) {
-                        this.odhodkiChartData.splice(i, 1);
+                        this.odhodkiChartLabels.push(`${d}. ${m}, ${l}`);
+                    }
+                    const podatki = {
+                        data: tmpData,
+                        label: "odhodki",
+                        backgroundColor: "rgb(255, 99, 132)",
+                        borderColor: "rgb(255, 99, 132)",
+                    };
+                    this.odhodkiChartData.push(podatki);
+                    /*
+                if (this.odhodkiChartData.length >= 2) {
+                    for (let i = 1; i < this.odhodkiChartData.length; i++) {
+
+                        this.odhodkiChartData.slice(i, 1);
+
                     }
                 }
-            }
+  */
 
-            if (this.prihodkiSum !== 0 && this.odhodkiSum !== 0) {
-                const podatkiPie = {
-                    data: [this.prihodkiSum, this.odhodkiSum],
-                    backgroundColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
-                    borderColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
-                };
-                console.log(this.prihodkiSum, this.odhodkiSum);
-                this.pieChartData.push(podatkiPie);
-            }
-        });
+                    const podatkiPie = {
+                        data: [this.prihodkiSum, this.odhodkiSum],
+                        backgroundColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
+                        borderColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
+                    };
+                    this.pieChartData.push(podatkiPie);
+                });
+            });
     }
 
     ngOnInit(): void {
@@ -150,6 +153,15 @@ export class GraphsComponent implements OnInit, OnDestroy {
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.loading = false;
             this.groupSelected = data;
+
+            this.prihodkiChartData = [];
+            this.prihodkiChartLabels = [];
+            this.odhodkiChartData = [];
+            this.odhodkiChartLabels = [];
+            this.pieChartData = [];
+            this.odhodkiSum = 0;
+            this.prihodkiSum = 0;
+
             if (this.groupSelected.length > 0) {
                 this.makeGraphData(this.groupSelected);
             }
@@ -159,6 +171,12 @@ export class GraphsComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();
+        this.groupSelectionSub.unsubscribe();
+        this.prihodkiChartData = [];
+        this.prihodkiChartLabels = [];
+        this.odhodkiChartData = [];
+        this.odhodkiChartLabels = [];
+        this.pieChartData = [];
         this.odhodkiSum = 0;
         this.prihodkiSum = 0;
     }
