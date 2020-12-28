@@ -71,6 +71,49 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error"
+#POST /api/v2/group/{idGroup}/expenses
+post:
+  summary: Add expense to group
+  description: Add new expense to group
+  tags: [Groups]
+  parameters:
+    - in: path
+      name: idGroup
+      description: unique identifier of Group
+      schema:
+        type: string
+      required: true
+      example: 5ded18eb51386c3799833191
+  requestBody:
+    description: New expense which will be added to group
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Expense"
+  responses:
+    "200":
+      description: message for successful adding
+      content:
+        application/json:
+          schema:
+            type: string
+            items: "Adding was successful"
+
+    "500":
+      description: Error in database
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: "#/components/schemas/Error"
+    "404":
+      description: Expense was not found
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: "#/components/schemas/Error"
 
 #GET /api/v2/group/{idGroup}/expenses/page/{page}
 /group/{idGroup}/expenses/page/{page}:
@@ -113,12 +156,15 @@
           type: string
         required: false
         examples:
-          Expenditures:
-            value: true
-            summary: get only expenditures
-          Incomes:
-            value: false
-            summary: get only incomes
+          example: Rdec avto
+      - in: query
+        name: date
+        description: Get only Activites sorted by date in descending order
+        schema:
+          type: string
+        required: false
+        examples:
+          example: desc
     responses:
       "200":
         description: Array of group Expenses
