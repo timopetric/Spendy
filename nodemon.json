@@ -1,0 +1,10 @@
+{
+    "watch": [
+        "*.*",
+        "app_api_v2/documentation/basics.yaml",
+        "app_api_v2/documentation/expenses.yaml",
+        "app_api_v2/documentation/groups.yaml",
+        "app_api_v2/documentation/schemes.yaml",
+        "app_api_v2/documentation/users.yaml"
+    ]
+}
