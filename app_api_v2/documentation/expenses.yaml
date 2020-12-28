@@ -33,7 +33,6 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error"
-
 #GET /api/v2/group/{idGroup}/expenses
 /group/{idGroup}/expenses:
   get:
