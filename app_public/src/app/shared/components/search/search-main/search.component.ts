@@ -67,7 +67,7 @@ export class SearchComponent implements OnInit {
 
         if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
 
-        this.getExpensesByGroupId(this.groupSelecte);
+        this.getExpensesByGroupId(this.groupSelected);
     }
 
     private showError = (napaka: any): void => {

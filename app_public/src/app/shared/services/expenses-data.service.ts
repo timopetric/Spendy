@@ -47,7 +47,7 @@ export class ExpensesDataService {
         query: string,
         search: string
     ): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/page/${page}?${query}${search}`;
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/page/${page}?${query}${search}`;
         return this.http
             .get(url)
             .toPromise()
