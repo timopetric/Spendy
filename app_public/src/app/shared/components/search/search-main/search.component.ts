@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Expense } from "../../../classes/expense";
 import { ExpensesDataService } from "../../../services/expenses-data.service";
+import { AuthenticationService } from "../../../services/authentication.service";
+import { GroupsDataService } from "../../../services/groups-data.service";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "app-search",
@@ -8,17 +11,25 @@ import { ExpensesDataService } from "../../../services/expenses-data.service";
     styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
+    constructor(private expensesData: ExpensesDataService, private groupsDataService: GroupsDataService) {}
+    private groupSelectionSub: Subscription;
+    public groupSelected = "";
+
     public expenses: Expense[];
     public message: string;
-    private idGroup = "5fc3b42d42a9c61684ffd07c";
     public p: number = 1;
-    constructor(private expensesData: ExpensesDataService) {}
     public count: number;
+
     public query: string = "";
     public search: string = "";
     public searchq: string = "";
     ngOnInit(): void {
-        this.getExpensesByGroupId(this.idGroup);
+        this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
+            this.groupSelected = data;
+            this.p = 1;
+            this.getExpensesByGroupId(data);
+        });
+        this.groupsDataService.getCurrentGroup();
     }
 
     private getExpensesByGroupId = (idGroup: string): void => {
@@ -38,7 +49,7 @@ export class SearchComponent implements OnInit {
 
     public inc(page) {
         this.p = page;
-        this.getExpensesByGroupId(this.idGroup);
+        this.getExpensesByGroupId(this.groupSelected);
         console.log(page);
     }
 
@@ -56,7 +67,7 @@ export class SearchComponent implements OnInit {
 
         if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
 
-        this.getExpensesByGroupId(this.idGroup);
+        this.getExpensesByGroupId(this.groupSelecte);
     }
 
     private showError = (napaka: any): void => {

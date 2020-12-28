@@ -50,6 +50,7 @@ import { DbImportDropComponent } from "./shared/components/db-import-drop/db-imp
 
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
 import { FormatirajDatumPipe } from "./shared/pipes/formatiraj-datum.pipe";
+import { ShortenDescriptionPipe } from "./shared/pipes/shorten-description.pipe";
 
 @NgModule({
     declarations: [
@@ -78,6 +79,7 @@ import { FormatirajDatumPipe } from "./shared/pipes/formatiraj-datum.pipe";
         ExpenseComponent,
         DbImportDropComponent,
         FormatirajDatumPipe,
+        ShortenDescriptionPipe,
     ],
     imports: [
         BrowserModule,
