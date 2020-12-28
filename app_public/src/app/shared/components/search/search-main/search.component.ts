@@ -14,6 +14,9 @@ export class SearchComponent implements OnInit {
     public p: number = 1;
     constructor(private expensesData: ExpensesDataService) {}
     public count: number;
+    public query: string = "";
+    public search: string = "";
+    public searchq: string = "";
     ngOnInit(): void {
         this.getExpensesByGroupId(this.idGroup);
     }
@@ -21,7 +24,7 @@ export class SearchComponent implements OnInit {
     private getExpensesByGroupId = (idGroup: string): void => {
         this.message = "Fetching expenses data";
         this.expensesData
-            .getExpensesByGroupIdPaginated(idGroup, this.p)
+            .getExpensesByGroupIdPaginated(idGroup, this.p, this.query, this.searchq)
             .then(expenses => {
                 console.log(expenses);
                 this.message = expenses.length > 0 ? "" : "There are no expenses";
@@ -32,14 +35,27 @@ export class SearchComponent implements OnInit {
                 this.showError(error);
             });
     };
+
     public inc(page) {
         this.p = page;
         this.getExpensesByGroupId(this.idGroup);
         console.log(page);
     }
 
-    public dec() {
-        this.p = this.p - 1;
+    public filterActivities(page, query, search) {
+        this.p = page;
+        this.query = query;
+        this.p = 1;
+
+        if (search != "") {
+            this.searchq = query != "" ? `&search=${search}` : `search=${search}`;
+        } else {
+            this.search = "";
+            this.searchq = "";
+        }
+
+        if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
+
         this.getExpensesByGroupId(this.idGroup);
     }
 

@@ -146,6 +146,7 @@
  *    schemas:
  *      Expense:
  *        type: object
+ *        description: Expense object
  *        required:
  *          - isExpenditure
  *          - cost

@@ -153,7 +153,8 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
                 res.status(500).json(error)
             })
             */
-           Expense.paginate({_id : {$in: expenses['expenses']}},{limit: 4, page: page})
+           const match = Object.assign({_id : {$in: expenses['expenses']}}, isExpenditure, cena, queryinput);
+           Expense.paginate(match,{limit: 4, page: page ,options})
            .then(exp =>{
             //console.log(exp)
                 res.status(200).json(exp)
@@ -176,7 +177,6 @@ const addExpenseToGroup = (req, res) => {
 
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
-
     }
 
     Group.findById(idGroup).exec((error, group) => {

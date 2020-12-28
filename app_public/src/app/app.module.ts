@@ -49,6 +49,7 @@ import { ExpenseComponent } from "./shared/components/search/expense/expense.com
 import { DbImportDropComponent } from "./shared/components/db-import-drop/db-import-drop.component";
 
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
+import { FormatirajDatumPipe } from "./shared/pipes/formatiraj-datum.pipe";
 
 @NgModule({
     declarations: [
@@ -76,6 +77,7 @@ import { NgToggleModule } from "@nth-cloud/ng-toggle";
         GroupsModalGroupAddComponent,
         ExpenseComponent,
         DbImportDropComponent,
+        FormatirajDatumPipe,
     ],
     imports: [
         BrowserModule,

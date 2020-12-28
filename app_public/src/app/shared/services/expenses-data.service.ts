@@ -43,8 +43,13 @@ export class ExpensesDataService {
             .catch(this.proccesError);
     }
 
-    public getExpensesByGroupIdPaginated(idGroup: string, page: number): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/page/${page}`;
+    public getExpensesByGroupIdPaginated(
+        idGroup: string,
+        page: number,
+        query: string,
+        search: string
+    ): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/page/${page}?${query}${search}`;
         return this.http
             .get(url)
             .toPromise()
