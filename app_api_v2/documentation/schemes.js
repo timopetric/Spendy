@@ -174,8 +174,8 @@
  *            example:
  *          created_by:
  *            type: string
- *            description: Username of the creator
- *            example: j_novak123
+ *            description: user ID
+ *            example: "8fc0cca0cd9e25474436rd32"
  *          description:
  *            type: string
  *            description: A description od the expense
