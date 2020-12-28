@@ -43,6 +43,7 @@ import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-m
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 import { ProfileComponent } from "./shared/components/profile/profile.component";
 import { ProfileForHistoryComponent } from "./shared/components/profile-for-history/profile-for-history.component";
+import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
 
 @NgModule({
     declarations: [
@@ -68,6 +69,7 @@ import { ProfileForHistoryComponent } from "./shared/components/profile-for-hist
         GroupsModalUserAddComponent,
         GroupsModalGroupAddComponent,
         ProfileForHistoryComponent,
+        ChangeColorPipe,
     ],
     imports: [
         BrowserModule,

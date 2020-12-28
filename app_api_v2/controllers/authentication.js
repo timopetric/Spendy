@@ -63,7 +63,9 @@ const registracija = (req, res) => {
             } else if (error.code === 11000 && error.keyValue) {
                 // 11000 is mongo duplicate key error
                 res.status(409).json({
-                    message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
+                    // message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
+                    // TODO: TO SEM SPREMENIL. VPRAŠAJ TIMOTA, ČE JE KUL.
+                    sporočilo: "Uporabnik s to elektronsko pošto že obstaja!",
                     error: error,
                 });
             } else {

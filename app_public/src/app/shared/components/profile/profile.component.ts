@@ -64,6 +64,7 @@ export class ProfileComponent implements OnInit {
             .getUserUpdateListener()
             .subscribe((user: { message: string; user: User }) => {
                 this.userData = user.user;
+                this.userGroupNumber = this.userData.groupIds.length;
                 this.updateFieldsAndSaveUser(user);
             });
         this.userDataService.getUser();

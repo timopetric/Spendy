@@ -12,9 +12,10 @@ mat-form-field {
 }
 
 .mat-card-avatar {
-    width: 4rem;
-    height: 100%;
+    width: 6rem;
+    /*height: 100%;*/
     border-radius: 50%;
+    height: 6em;
 }
 
 #spinner-and-error-msg {
@@ -26,4 +27,54 @@ mat-form-field {
 
 mat-spinner {
     margin: auto;
+}
+
+h1 {
+    color: #5a6268;
+    /*margin-left: 100px;*/
+    align-content: center;
+}
+
+h6 {
+    color: #cb3b3b;
+}
+/*span {*/
+/*    color: red;*/
+
+/*}*/
+
+span > .red {
+    color: greenyellow !important;
+}
+
+.red {
+    background-color: greenyellow !important;
+}
+
+.green {
+    color: green;
+}
+
+#green {
+    color: green;
+}
+
+.blabla {
+    color: greenyellow;
+}
+
+#blablabla {
+    color: greenyellow;
+}
+
+::ng-deep .red {
+    color: red;
+}
+
+::ng-deep .green {
+    color: green;
+}
+
+::ng-deep .orange {
+    color: #cb3b3b;
 }
