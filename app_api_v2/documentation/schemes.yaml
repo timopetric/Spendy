@@ -11,7 +11,7 @@ components:
           type: string
       example:
         message: Error in database
-        error: optional json error
+        error: optional error describing the database error
 
     User:
       type: object
@@ -55,7 +55,7 @@ components:
           description: A list of valid(existing) group IDs
           example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
 
-    ########################## GETapi/v2/users [User_getAllUsers] ############################
+    ####### GET api/v2/users [User_getAllUsers] ######
     User_getAllUsers:
       type: object
       description: Returns all users in the database
@@ -90,8 +90,8 @@ components:
           type: boolean
           description: Mail address of the user
           example: j_novak@email.com
-    ########################## GETapi/v2/groups [Group_bare] ############################
 
+    ########################## GETapi/v2/groups [Group_bare] ############################
     Group_bare:
       type: object
       description: Returns all groups in the database
@@ -124,8 +124,8 @@ components:
           example: 5fc44bd3f35a902b3000803c
         name:
           type: string
-          description: Name of the user
-          example: Janez
+          description: Name of the group
+          example: Skupina 10
 
     Group:
       type: object

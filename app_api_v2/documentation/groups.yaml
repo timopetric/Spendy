@@ -1,4 +1,5 @@
-# GET /api/v2/groups
+# /api/v2/groups
+#paths:
 /groups:
   get:
     summary: Get all groups
@@ -13,10 +14,21 @@
               type: array
               items:
                 $ref: "#/components/schemas/Group_bare"
-      "404":
-        description: No user was found
+      "500":
+        description: Error in database
         content:
           application/json:
             schema:
-              items:
-                $ref: "#/components/schemas/Error"
+              $ref: "#/components/schemas/Error"
+      "404":
+        description: No group was found
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: Groups not found
+#  /groups/{idGroup}:
+#    get:
+#      summary: Get one detailed group
+#      description: Get group with populated expenses and userIds
