@@ -16,7 +16,6 @@ import { SettingsComponent } from "../../shared/components/settings/settings.com
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
 import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
-import { ProfileForHistoryComponent } from "../../shared/components/profile-for-history/profile-for-history.component";
 
 const routes: Routes = [
     {
@@ -71,10 +70,6 @@ const routes: Routes = [
     {
         path: "db",
         component: DbImportDropComponent,
-    },
-    {
-        path: "profile-for-history",
-        component: ProfileForHistoryComponent,
     },
 
     // { path: '**', component: PageNotFoundComponent }

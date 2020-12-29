@@ -51,7 +51,6 @@ import { DbImportDropComponent } from "./shared/components/db-import-drop/db-imp
 import { NgToggleModule } from "@nth-cloud/ng-toggle";
 import { FormatirajDatumPipe } from "./shared/pipes/formatiraj-datum.pipe";
 import { ShortenDescriptionPipe } from "./shared/pipes/shorten-description.pipe";
-import { ProfileForHistoryComponent } from "./shared/components/profile-for-history/profile-for-history.component";
 import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "./shared/components/search/modals/detail-modal/detail-modal.component";
@@ -85,7 +84,6 @@ import { DetailModalUpdateComponent } from "./shared/components/search/modals/de
         DbImportDropComponent,
         FormatirajDatumPipe,
         ShortenDescriptionPipe,
-        ProfileForHistoryComponent,
         ChangeColorPipe,
         DetailModalComponent,
         DetailModalUpdateComponent,
