@@ -5,28 +5,20 @@
     </button>
 </div>
 <div class="modal-body">
-    <form id="urediExpense" action="" method="post" role="form">
+    <form id="urediExpense" [formGroup]="activityForm" (ngSubmit)="submit()">
         <div class="form-group">
             <label for="kategorija">Kategorija</label>
             <input
                 type="text"
                 class="form-control"
                 id="kategorija"
-                name="category_name"
                 placeholder="Vnesite kategorijo"
-                value="{{ activity.category_name }}"
+                formControlName="category_name"
             />
         </div>
         <div class="form-group">
             <label for="znesek">Znesek</label>
-            <input
-                type="text"
-                class="form-control"
-                id="znesek"
-                placeholder="Vnesite znesek"
-                name="cost"
-                value="{{ activity.cost }}"
-            />
+            <input type="text" class="form-control" id="znesek" placeholder="Vnesite znesek" formControlName="cost" />
         </div>
         <div class="form-group">
             <label for="opis">Opis</label>
@@ -35,20 +27,20 @@
                 class="form-control"
                 id="opis"
                 placeholder="Vnesite opis aktivnosti"
-                name="description"
-                value="{{ activity.description }}"
+                formControlName="description"
             />
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="prihodek" value="false" />
+            <input class="form-check-input" type="radio" id="prihodek" formControlName="isExpenditure" value="false" />
             <label class="form-check-label" for="radioProhodek">Prihodek</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="odhodek" value="true" />
+            <input class="form-check-input" type="radio" id="odhodek" formControlName="isExpenditure" value="true" />
             <label class="form-check-label" for="radioOdhodek">Odhodek</label>
         </div>
+
+        <div class="modal-footer">
+            <button id="formButtonSubmit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
-</div>
-<div class="modal-footer">
-    <button id="formButtonSubmit" type="submit" class="btn btn-primary">Submit</button>
 </div>
