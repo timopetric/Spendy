@@ -18,7 +18,10 @@ mongoose.set("returnOriginal", false); // when findbyidandupdate - return the up
 let dbURI = "mongodb://localhost/SpendyDB";
 if (process.env.NODE_ENV === "production") {
     dbURI = process.env.MONGODB_CLOUD_URI;
+} else if (process.env.NODE_ENV === "docker") {
+    dbURI = "mongodb://sp-spendy-mongodb/SpendyDB";
 }
+
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -38,10 +41,10 @@ mongoose.connection.on("disconnected", () => {
     console.log("Mongoose ni povezan.");
 });
 
-const pravilnaZaustavitev = (message, povratniKlic) => {
+const pravilnaZaustavitev = (message, callback) => {
     mongoose.connection.close(() => {
         console.log(`Mongoose je zaprl povezavo preko '${message}'`);
-        povratniKlic();
+        callback();
     });
 };
 
