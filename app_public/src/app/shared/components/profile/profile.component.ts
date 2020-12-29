@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { UserDataService } from "../../services/user-data.service";
 import { Subscription } from "rxjs";
 import { User } from "../../classes/user.model";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-profile",
@@ -22,8 +23,11 @@ export class ProfileComponent implements OnInit {
         private uporabnikService: UporabnikService,
         private authenticationService: AuthenticationService,
         private usmerjevalnik: Router,
-        private userDataService: UserDataService
-    ) {}
+        private userDataService: UserDataService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Profil");
+    }
     // constructor() { }
 
     private userDataSub: Subscription;
