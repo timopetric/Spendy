@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication.service";
+import { HistoryService } from "../../services/history.service";
+import { Validators, FormGroup, FormControl } from "@angular/forms";
+import { strict } from "assert";
 
 @Component({
     selector: "app-signup",
@@ -32,7 +35,11 @@ export class SignupComponent implements OnInit {
     //     stranskaOrodnaVrstica: ""
     // }
 
-    constructor(private usmerjevalnik: Router, private authenticationService: AuthenticationService) {}
+    constructor(
+        private usmerjevalnik: Router,
+        private authenticationService: AuthenticationService,
+        private historyService: HistoryService
+    ) {}
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         this.prijavniPodatki.balance = 0;
@@ -45,6 +52,12 @@ export class SignupComponent implements OnInit {
             !this.prijavniPodatki.surname
         ) {
             this.napakaNaObrazcu = "Zahtevani so vsi podatki, prosim poskusite znova!";
+        } else if (!this.validateNameAndSurname(this.prijavniPodatki.name)) {
+            this.napakaNaObrazcu = "Ime ni pravlne oblike!";
+        } else if (!this.validateNameAndSurname(this.prijavniPodatki.surname)) {
+            this.napakaNaObrazcu = "Priimek ni pravilne oblike!";
+        } else if (!this.emailTest(this.prijavniPodatki.mail)) {
+            this.napakaNaObrazcu = "Elektronska pošta ni pravline oblike!";
         } else if (this.prijavniPodatki.pass != this.prijavniPodatki.passAgain) {
             this.napakaNaObrazcu = "Gesli morata biti enaki! Po vsej verjetnosti ste se zmotili pri enemu.";
         } else {
@@ -55,8 +68,18 @@ export class SignupComponent implements OnInit {
     private izvediRegistracijo(): void {
         this.authenticationService
             .registracija(this.prijavniPodatki)
-            .then(() => this.usmerjevalnik.navigateByUrl("/"))
+            .then(() => this.usmerjevalnik.navigateByUrl("/overview"))
             .catch(sporocilo => (this.napakaNaObrazcu = sporocilo));
+    }
+    public emailTest(mail: string): boolean {
+        const regularExpression = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        console.log("sem tle");
+        return regularExpression.test(String(mail).toLowerCase());
+    }
+
+    public validateNameAndSurname(name: String): boolean {
+        const regularExrpession = /^[a-z ,.'-]+$/i; //;
+        return regularExrpession.test(String(name).toLowerCase());
     }
 
     ngOnInit() {}

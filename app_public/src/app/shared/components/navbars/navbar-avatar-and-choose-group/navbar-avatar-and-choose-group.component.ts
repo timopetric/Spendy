@@ -3,6 +3,7 @@ import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
 import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-users.model";
 import { AuthenticationService } from "../../../services/authentication.service";
+import { HistoryService } from "../../../services/history.service";
 
 @Component({
     selector: "app-navbar-avatar-and-choose-group",
@@ -10,7 +11,11 @@ import { AuthenticationService } from "../../../services/authentication.service"
     styleUrls: ["./navbar-avatar-and-choose-group.component.css"],
 })
 export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
-    constructor(private groupsDataService: GroupsDataService, private authenticationService: AuthenticationService) {}
+    constructor(
+        private groupsDataService: GroupsDataService,
+        private authenticationService: AuthenticationService,
+        private historyService: HistoryService
+    ) {}
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 
@@ -50,5 +55,9 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
 
     onGroupChange(idGroup: string) {
         this.groupsDataService.setCurrentGroup(idGroup);
+    }
+
+    public odjava(): void {
+        this.authenticationService.odjava();
     }
 }

@@ -6,23 +6,18 @@
     <main>
         <div class="container bootstrap snippet">
             <div class="row">
-                <div class="col-sm-10">
-                    <h1>{{ uporabnik.username }}</h1>
+                <div class="col-sm-10" id="UIme">
+                    <h1>Uporabniško ime: {{ userData.mail }}</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-3">
                     <!--left col-->
-                    <div class="image-upload">
-                        <label for="file-input">
-                            <img
-                                alt="avatar"
-                                class="avatar img-circle img-thumbnail"
-                                src="icons/user-1.png"
-                                type="file"
-                            />
-                        </label>
-                        <input id="file-input" type="file" />
+                    <div class="image-upload text-center">
+                        <!--                        <label for="file-input">-->
+                        <img mat-card-avatar src="assets/icons/user-silhouette.png" alt="Uporabniška slika" />
+                        <!--                        </label>-->
+                        <!--                        <input id="file-input" type="file" />-->
                         <!--<h6>Upload a different photo...</h6>-->
                         <!--<input type="file" class="text-center center-block file-upload">-->
                     </div>
@@ -35,8 +30,14 @@
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Pregled <i class="fa fa-dashboard fa-1x"></i></li>
                         <li class="list-group-item text-right" id="stSkupin">
-                            <span class="pull-left"><strong>Število skupin</strong></span>
-                            {{ uporabnik.stSkupin }}
+                            <!--                            <span class="pull-left" style="background-color: #1c7430"><strong>Število skupin</strong></span>-->
+                            <!--                            <span class="pull-left" [innerHTML]="userGroupNumber | changeColor"><strong>Število skupin</strong></span>-->
+                            <p [innerHTML]="userGroupNumber | changeColor"></p>
+                            <!--                            <span style="color: red">*</span>-->
+                            <!--                            <p [innerHTML]="userGroupNumber | changeColor"></p>-->
+                            <!--                            <span style="background-color: #1c7430"><strong>NEKEJ</strong></span>-->
+                            <!--                            <div [innerHTML]="userGroupNumber | changeColor"></div>-->
+                            {{ userGroupNumber }}
                         </li>
                     </ul>
                 </div>
@@ -54,14 +55,14 @@
                                 <div class="form-group">
                                     <div class="col-xl-3">
                                         <h4>Ime</h4>
-                                        <h6>{{ uporabnik.name }}</h6>
+                                        <h6>{{ userData.name }}</h6>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="form-group">
                                     <div class="col-xl-3">
                                         <h4>Priimek</h4>
-                                        <h6>{{ uporabnik.surname }}</h6>
+                                        <h6>{{ userData.surname }}</h6>
                                     </div>
                                 </div>
                                 <hr />
@@ -69,7 +70,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <h4>Email</h4>
-                                        <p>{{ uporabnik.mail }}</p>
+                                        <h6>{{ userData.mail }}</h6>
                                     </div>
                                 </div>
                             </form>

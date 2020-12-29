@@ -48,7 +48,7 @@ export class AuthenticationService {
         if (zeton) {
             // Na podlagi koristne vsebine pogledamo veljavnost. S tem boo dosegli, da bo nekatere stvari lahko videl
             // le prijavljen uporabnik
-            const koristnaVsebina = JSON.parse(atob(zeton.split(".")[1]));
+            const koristnaVsebina = JSON.parse(this.b64Utf8(zeton.split(".")[1]));
             return koristnaVsebina.exp > Date.now() / 1000;
         } else {
             return false;
