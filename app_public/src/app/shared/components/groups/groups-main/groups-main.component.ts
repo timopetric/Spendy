@@ -9,6 +9,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { GroupsModalUserAddComponent } from "../groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "../groups-modal-group-add/groups-modal-group-add.component";
 import { AuthenticationService } from "../../../services/authentication.service";
+import { Title } from "@angular/platform-browser";
 
 const MAX_GROUP_COUNT = 10;
 
@@ -22,8 +23,11 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         private groupsDataService: GroupsDataService,
         public dialog: MatDialog,
         private _snackBar: MatSnackBar,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Skupine");
+    }
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 

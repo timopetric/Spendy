@@ -6,6 +6,7 @@ import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "../modals/detail-modal/detail-modal.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-search",
@@ -16,8 +17,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     constructor(
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
-        private modalService: NgbModal
-    ) {}
+        private modalService: NgbModal,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Stroški");
+    }
 
     private groupSelectionSub: Subscription;
     public groupSelected = "";

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { KriptoService } from "../../services/kripto.service";
 import { Color, Label } from "ng2-charts";
 import { ChartDataSets, ChartType } from "chart.js";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-analysis",
@@ -9,7 +10,9 @@ import { ChartDataSets, ChartType } from "chart.js";
     styleUrls: ["./analysis.component.css"],
 })
 export class AnalysisComponent implements OnInit {
-    constructor(private kriptoService: KriptoService) {}
+    constructor(private kriptoService: KriptoService, private titleService: Title) {
+        this.titleService.setTitle("Analiza");
+    }
     public loading = true;
     public startDate = "";
     public endDate = "";
