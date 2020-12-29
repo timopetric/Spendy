@@ -2,6 +2,11 @@ import { Component, OnInit, setTestabilityGetter } from "@angular/core";
 import { UporabnikService } from "../../services/uporabnik.service";
 import { HttpClient } from "@angular/common/http";
 import { count } from "rxjs/operators";
+import { AuthenticationService } from "../../services/authentication.service";
+import { Router } from "@angular/router";
+import { UserDataService } from "../../services/user-data.service";
+import { Subscription } from "rxjs";
+import { User } from "../../classes/user.model";
 
 @Component({
     selector: "app-profile",
@@ -13,10 +18,18 @@ import { count } from "rxjs/operators";
     ],
 })
 export class ProfileComponent implements OnInit {
-    constructor(private uporabnikService: UporabnikService) {}
+    constructor(
+        private uporabnikService: UporabnikService,
+        private authenticationService: AuthenticationService,
+        private usmerjevalnik: Router,
+        private userDataService: UserDataService
+    ) {}
     // constructor() { }
 
+    private userDataSub: Subscription;
     public uporabnik: Uporabnik;
+    userData: User = new User();
+    userGroupNumber = 0;
 
     // @ts-ignore
     private pridobiUporabnika(): void {
@@ -38,9 +51,34 @@ export class ProfileComponent implements OnInit {
         this.uporabnik.stSkupin = count;
     }
 
+    private gaVrzemVen(): void {
+        if (!this.authenticationService.jePrijavljen()) {
+            this.usmerjevalnik.navigateByUrl("/login");
+        }
+    }
+
     ngOnInit(): void {
-        this.pridobiUporabnika();
+        // this.pridobiUporabnika();
+        this.gaVrzemVen();
+        this.userDataSub = this.userDataService
+            .getUserUpdateListener()
+            .subscribe((user: { message: string; user: User }) => {
+                this.userData = user.user;
+                this.userGroupNumber = this.userData.groupIds.length;
+                this.updateFieldsAndSaveUser(user);
+            });
+        this.userDataService.getUser(true);
         // this.pridobiStSkupin();
+    }
+
+    private updateFieldsAndSaveUser(data: { message: string; user: User }) {
+        if (data.user !== null) {
+            this.userData = data.user;
+        } else {
+            console.log("Can not find user");
+            // this.apiError = data.message;
+            // this.loading = true;
+        }
     }
 }
 
