@@ -4,6 +4,8 @@ import { ExpensesDataService } from "../../../services/expenses-data.service";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
+import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { DetailModalComponent } from "../modals/detail-modal/detail-modal.component";
 
 @Component({
     selector: "app-search",
@@ -11,7 +13,11 @@ import { Subscription } from "rxjs";
     styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-    constructor(private expensesData: ExpensesDataService, private groupsDataService: GroupsDataService) {}
+    constructor(
+        private expensesData: ExpensesDataService,
+        private groupsDataService: GroupsDataService,
+        private modalService: NgbModal
+    ) {}
 
     private groupSelectionSub: Subscription;
     public groupSelected = "";
@@ -73,6 +79,11 @@ export class SearchComponent implements OnInit, OnDestroy {
         if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
 
         this.getExpensesByGroupId(this.groupSelected);
+    }
+
+    openModal(activityData) {
+        const modalRef = this.modalService.open(DetailModalComponent, { centered: true, size: "lg" });
+        modalRef.componentInstance.activity = activityData;
     }
 
     private showError = (napaka: any): void => {

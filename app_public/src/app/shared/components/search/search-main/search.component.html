@@ -8,8 +8,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-9 col-md-8">
-                        <h1 class="font-weight-bold mb-0">NASLOV</h1>
-                        <p class="lead text-muted">PODNASLOV</p>
+                        <h1 class="font-weight-bold mb-0">Poišči aktivnosti</h1>
+                        <p class="lead text-muted">Poglej si svoje aktivnosti in jih urejaj</p>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,16 @@
                 class="container-fluid"
                 *ngFor="let aktivnost of expenses | paginate: { itemsPerPage: 4, currentPage: p, totalItems: count }"
             >
-                <app-expense *ngIf="aktivnost" [aktivnost]="aktivnost"></app-expense>
+                <app-expense *ngIf="aktivnost" [aktivnost]="aktivnost" (click)="openModal(aktivnost)"></app-expense>
             </div>
 
             <div class="paginate">
                 <pagination-controls (pageChange)="inc($event)" autoHide="true"></pagination-controls>
             </div>
         </section>
+
+        <div class="container-fluid d-flex">
+            <a href="/add_expenses" class="btn btn-success w-100 px-3"> Dodaj nove aktivnosti </a>
+        </div>
     </div>
 </main>

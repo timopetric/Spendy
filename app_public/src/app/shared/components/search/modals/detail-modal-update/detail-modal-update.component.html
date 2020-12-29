@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h5 class="modal-title">Uredi aktivnost</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="urediExpense" action="" method="post" role="form">
+        <div class="form-group">
+            <label for="kategorija">Kategorija</label>
+            <input
+                type="text"
+                class="form-control"
+                id="kategorija"
+                name="category_name"
+                placeholder="Vnesite kategorijo"
+                value="{{ activity.category_name }}"
+            />
+        </div>
+        <div class="form-group">
+            <label for="znesek">Znesek</label>
+            <input
+                type="text"
+                class="form-control"
+                id="znesek"
+                placeholder="Vnesite znesek"
+                name="cost"
+                value="{{ activity.cost }}"
+            />
+        </div>
+        <div class="form-group">
+            <label for="opis">Opis</label>
+            <input
+                type="text"
+                class="form-control"
+                id="opis"
+                placeholder="Vnesite opis aktivnosti"
+                name="description"
+                value="{{ activity.description }}"
+            />
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="prihodek" value="false" />
+            <label class="form-check-label" for="radioProhodek">Prihodek</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="odhodek" value="true" />
+            <label class="form-check-label" for="radioOdhodek">Odhodek</label>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button id="formButtonSubmit" type="submit" class="btn btn-primary">Submit</button>
+</div>
