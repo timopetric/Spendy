@@ -81,9 +81,15 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.getExpensesByGroupId(this.groupSelected);
     }
 
-    openModal(activityData) {
+    public openModal(activityData) {
         const modalRef = this.modalService.open(DetailModalComponent, { centered: true, size: "lg" });
         modalRef.componentInstance.activity = activityData;
+        modalRef.result.then(result => {
+            if (result.message.message === "Deleting was successful") {
+                this.expenses = this.expenses.filter(item => item._id !== result.item);
+                console.log(this.expenses);
+            }
+        });
     }
 
     private showError = (napaka: any): void => {
