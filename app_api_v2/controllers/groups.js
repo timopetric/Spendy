@@ -29,53 +29,54 @@ const getGroupById = async (req, res) => {
 
     // TODO: populate only needed fields in expenses
     Group.findById(idGroup)
-        .populate("expenses")
+        .select("_id name balance userIds adminIds expenses")
+        .populate("expenses", "_id isExpenditure cost date category_name created_by groupId description")
         .populate("userIds", "_id groupIds username name surname mail balance")
-        // .populate("adminIds", "_id groupIds username name surname mail balance")
         .exec((error, group) => {
-            if (error) {
+            if (!group) {
+                res.status(404).json({ message: `Group with id ${idGroup} not found` });
+            } else if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
-            } else if (!group) {
-                res.status(404).json({ message: `Group with ${idGroup} not found` });
             } else {
                 res.status(200).json(group);
             }
         });
 };
 
+// NOT USED
 //CREATE GROUP
-const crateNewGroup = (req, res) => {
-    const name = req.body.name;
-    const balance = req.body.balance;
-    const userIds = req.body.category_name;
-    const adminIds = req.body.adminIds;
-    const expenses = req.body.expenses;
-    Group.create(
-        {
-            name: name,
-            balance: balance,
-            userIds: userIds,
-            adminIds: adminIds,
-            expenses: expenses,
-        },
-        (error, group) => {
-            if (error) {
-                res.status(500).json({ message: "Error in database cant create group", error: error });
-            } else if (!group) {
-                res.status(404).json({ message: `Cant create group` });
-            } else {
-                res.status(200).json({
-                    _id: group._id,
-                    name: group.name,
-                    userIds: group.userIds,
-                    adminIds: group.adminIds,
-                    expenses: group.expenses,
-                    balance: group.balance,
-                });
-            }
-        }
-    );
-};
+// const crateNewGroup = (req, res) => {
+//     const name = req.body.name;
+//     const balance = req.body.balance;
+//     const userIds = req.body.category_name;
+//     const adminIds = req.body.adminIds;
+//     const expenses = req.body.expenses;
+//     Group.create(
+//         {
+//             name: name,
+//             balance: balance,
+//             userIds: userIds,
+//             adminIds: adminIds,
+//             expenses: expenses,
+//         },
+//         (error, group) => {
+//             if (error) {
+//                 res.status(500).json({ message: "Error in database cant create group", error: error });
+//             } else if (!group) {
+//                 res.status(404).json({ message: `Cant create group` });
+//             } else {
+//                 res.status(200).json({
+//                     _id: group._id,
+//                     name: group.name,
+//                     userIds: group.userIds,
+//                     adminIds: group.adminIds,
+//                     expenses: group.expenses,
+//                     balance: group.balance,
+//                 });
+//             }
+//         }
+//     );
+// };
 
 const createAndAddToUser = (req, res) => {
     const idUser = req.body.idUser;
@@ -125,12 +126,6 @@ const createAndAddToUser = (req, res) => {
         .catch((error) => {
             if (error instanceof SpendyError) {
                 res.status(error.respCode).json({ message: error.message });
-            } else if (error.code === 11000 && error.keyValue) {
-                // 11000 is mongo duplicate key error
-                res.status(409).json({
-                    message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
-                    error: error,
-                });
             } else {
                 console.log(error);
                 res.status(500).json({ message: "Error in database", error: error });
@@ -412,7 +407,6 @@ const removeGroupById = (req, res) => {
 module.exports = {
     getAllGroups,
     getGroupById,
-    crateNewGroup,
     addUserToGroup,
     updateGroup,
     removeGroupById,
