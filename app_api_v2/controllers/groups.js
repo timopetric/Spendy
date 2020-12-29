@@ -29,7 +29,7 @@ const getGroupById = async (req, res) => {
 
     // TODO: populate only needed fields in expenses
     Group.findById(idGroup)
-        .populate("expenses")
+        .populate("expenses", "_id isExpenditure cost date category_name created_by groupId description")
         .populate("userIds", "_id groupIds username name surname mail balance")
         // .populate("adminIds", "_id groupIds username name surname mail balance")
         .exec((error, group) => {
