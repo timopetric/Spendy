@@ -14,12 +14,12 @@ passport.use(
                 if (napaka) return pkKoncano(napaka);
                 if (!uporabnik) {
                     return pkKoncano(null, false, {
-                        sporočilo: "Napačno uporabniško ime",
+                        sporočilo: "Napačno uporabniško ime ali geslo",
                     });
                 }
                 if (!uporabnik.preveriGeslo(geslo)) {
                     return pkKoncano(null, false, {
-                        sporočilo: "Napačno geslo",
+                        sporočilo: "Napačno uporabniško ime ali geslo",
                     });
                 }
                 return pkKoncano(null, uporabnik);
