@@ -1,9 +1,24 @@
 ############# ERROR: [500] "Error in database" ##########
 components:
+  examples:
+    Error_groupId:
+      summary: Group not found
+      value:
+        message: Group with this id does not exist
+    Error_userId:
+      summary: User not found
+      value:
+        message: User with this id does not exist
+    Error_mail:
+      summary: User with this mail not found
+      value:
+        message: User with this mail does not exist
+
   schemas:
     Error:
       type: object
       description: Returns errors
+      required: -message
       properties:
         message:
           type: string
@@ -126,6 +141,31 @@ components:
           description: Current balance of the user in €
           example: 100.9
 
+    User_selection_bare:
+      type: object
+      description: Returns all users in the database
+      properties:
+        _id:
+          type: string
+          description: Internal database ID of the user
+          example: 5fe7cc18e0fe833da436fbde
+        name:
+          type: string
+          description: Name of the user
+          example: Janez
+        surname:
+          type: string
+          description: Surname of the user
+          example: Novak
+        mail:
+          type: boolean
+          description: Mail address of the user
+          example: j_novak@email.com
+        username:
+          type: string
+          description: Username of the user
+          example: janez123
+
     ########################## GETapi/v2/groups [Group_bare] ############################
     Group_bare:
       type: object
@@ -174,8 +214,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/User_selection"
-        #          description: A list of valid(existing) user IDs
-        #          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
         adminIds:
           type: array
           items:
@@ -186,6 +224,72 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Expense_selection"
+        _id:
+          type: string
+          description: Internal database ID of the group
+          example: 5fc44bd3f35a902b3000803c
+        name:
+          type: string
+          description: Name of the group
+          example: Skupina 10
+
+    Group_populatedUserIds:
+      type: object
+      description: Returns all groups in the database
+      properties:
+        balance:
+          type: number
+          description: Current balance of the group in €
+          example: 100.9
+        userIds:
+          type: array
+          items:
+            $ref: "#/components/schemas/User_selection_bare"
+        adminIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+        expenses:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) expense IDs
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+        _id:
+          type: string
+          description: Internal database ID of the group
+          example: 5fc44bd3f35a902b3000803c
+        name:
+          type: string
+          description: Name of the group
+          example: Skupina 10
+
+    Group_createNew_response:
+      type: object
+      description: Returns all groups in the database
+      properties:
+        balance:
+          type: number
+          description: Current balance of the group in €
+          example: 0
+        userIds:
+          type: array
+          items:
+            $ref: "#/components/schemas/User_selection_bare"
+        adminIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+        expenses:
+          type: array
+          items:
+            type: string
+          description: An empty list of expense ids
+          example: []
         _id:
           type: string
           description: Internal database ID of the group
@@ -227,6 +331,7 @@ components:
             type: string
           description: A list of valid(existing) expense IDs
           example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+
     Expense:
       type: object
       description: Expense object
@@ -312,3 +417,30 @@ components:
           type: string
           description: A valid(existing) group ID
           example: "5fe7cc18e0fe833da436fbdd"
+
+    Group_createNew_request:
+      type: object
+      description: Expense object
+      required:
+        - idUser
+        - groupName
+      properties:
+        idUser:
+          type: string
+          description: user ID
+          example: "5fe7cc18e0fe833da436fbde"
+        groupName:
+          type: string
+          description: A name to give to the group
+          example: "Skupina 20"
+
+    Group_addUser:
+      type: object
+      description: Add user to group body
+      required:
+        - mail
+      properties:
+        mail:
+          type: string
+          description: Email of the user you want to add to the group
+          example: "b@b.b"
