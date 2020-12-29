@@ -1,0 +1,128 @@
+<app-navbar-main></app-navbar-main>
+
+<main>
+    <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
+
+    <div class="container-fluid bg-grey px-3" id="content">
+        <section class="bg-light py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8">
+                        <h1 class="font-weight-bold mb-0">Dodaj stroške/prihodke</h1>
+                        <p class="lead text-muted">Dodajte svoje stroške in prihodke.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section>
+            <div id="uspesnoDodanExpense" class="bg-success text-justify text-lg-center" style='visibility: {{uspesno}}'>Uspešno dodano!</div>
+        </section> -->
+
+        <section class="bg-mix py-3">
+            <div class="container-fluid">
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        <form (ngSubmit)="postExpense()">
+                            <div class="form-group">
+                                <div>
+                                    <ng-toggle
+                                        onColor="{{ toggler.onColor }}"
+                                        onText="{{ toggler.onText }}"
+                                        offColor="{{ toggler.offColor }}"
+                                        offText="{{ toggler.offText }}"
+                                        [(ngModel)]="Expense.isExpenditure"
+                                        name="toggler"
+                                    >
+                                    </ng-toggle>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <label for="cost">Vnesite vrednost v €: </label>
+                                    <input
+                                        id="cost"
+                                        min="0"
+                                        placeholder="Vrednost v €"
+                                        required
+                                        step="0.01"
+                                        type="number"
+                                        [(ngModel)]="Expense.cost"
+                                        name="cost"
+                                        (change)="isGood()"
+                                    />
+                                    <div *ngIf="costError" style="color: red">
+                                        Vnesite vrednost večjo od 0 in zaokrožite do centa!
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    Datum veljave:
+                                    <input
+                                        id="date"
+                                        (change)="isGood()"
+                                        required
+                                        type="date"
+                                        name="date"
+                                        [(ngModel)]="Expense.date"
+                                    />
+                                    <div *ngIf="dateError" style="color: red">Izberite veljaven datum!</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <select
+                                        id="category_name"
+                                        class="custom-select"
+                                        name="category_name"
+                                        [(ngModel)]="Expense.category_name"
+                                        required
+                                    >
+                                        <option value="Hrana">Hrana</option>
+                                        <option value="Avto">Avto</option>
+                                        <option value="Treningi">Treningi</option>
+                                        <option value="Igrice">Igrice</option>
+                                        <option value="Žepnina">Žepnina</option>
+                                        <option value="Plača">Plača</option>
+                                        <option value="Luksuz">Luksuz</option>
+                                    </select>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="form-group col-sm-12 col-md-6">
+                                    <ng-select
+                                        name="group"
+                                        *ngFor="let group of userGroupsData"
+                                        [(ngModel)]="selectedGroupId"
+                                        [clearable]="false"
+                                    >
+                                        <ng-option [value]="group._id">{{ group.name }}</ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div>
+                                <input
+                                    id="description"
+                                    class="form-control mb-3"
+                                    type="search"
+                                    placeholder="Kratek opis stroška/dohodka"
+                                    aria-label="search"
+                                    name="description"
+                                    [(ngModel)]="Expense.description"
+                                    (change)="isGood()"
+                                    required
+                                />
+                                <div *ngIf="descriptionError" style="color: red">
+                                    Vnesite opis dolžine vsaj treh znakov!
+                                </div>
+                            </div>
+
+                            <input id="uporabnikTrenutni" style="visibility: hidden" name="created_by" />
+                            <button class="container-fluid d-flex justify-content-center btn btn-primary" type="submit">
+                                Shrani Expense
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

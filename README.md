@@ -198,6 +198,7 @@ NAVODILA ZA NAMESTITEV IN ZAGON:
 ## 4. LP
 
 SPA aplikacija na eni strani
+//ne pozabit pri vspostavljanju lokalnega okolja treba nastavit okoljsko spremenljivko za JWT žeton
 
 ## 5. LP
 

@@ -2,7 +2,6 @@
 
 <main>
     <app-navbar-avatar-and-choose-group></app-navbar-avatar-and-choose-group>
-
     <div class="container-fluid bg-grey px-3" id="content">
         <section class="bg-light py-3">
             <div class="container-fluid">
@@ -49,10 +48,12 @@
                                     <span class="input-group-text">Ripple meja</span>
                                 </div>
                                 <input
+                                    name="rippleMeja"
+                                    [(ngModel)]="rippleMeja"
+                                    (change)="changeMeja()"
                                     id="rippleMeja"
                                     type="number"
                                     step="any"
-                                    value="7500.35"
                                     class="form-control"
                                     aria-label="Meja v €"
                                 />
@@ -66,10 +67,12 @@
                                     <span class="input-group-text">Bitcoin meja</span>
                                 </div>
                                 <input
+                                    name="bitcoinMeja"
+                                    (change)="changeMeja()"
+                                    [(ngModel)]="bitcoinMeja"
                                     id="bitcoinMeja"
                                     type="number"
                                     step="any"
-                                    value="300.75"
                                     class="form-control"
                                     aria-label="Meja v €"
                                 />
@@ -83,10 +86,12 @@
                                     <span class="input-group-text">Bitcash meja</span>
                                 </div>
                                 <input
+                                    name="bitcashMeja"
+                                    [(ngModel)]="bitcashMeja"
+                                    (change)="changeMeja()"
                                     id="bitcashMeja"
                                     type="number"
                                     step="any"
-                                    value="17999.99"
                                     class="form-control"
                                     aria-label="Meja v €"
                                 />
@@ -94,10 +99,34 @@
                                     <span class="input-group-text">€</span>
                                 </div>
                             </div>
-                            <div class="container-fluid d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Potrdi</button>
-                            </div>
                         </form>
+                        <span class="col-sm-12 col-lg-6 mb-5">
+                            <h1 class="container-fluid d-flex justify-content-center">To invest or not to invest</h1>
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ripple</span>
+                                </div>
+                                <span *ngIf="rippleInvest" class="input-group-text bg-success">INVEST!</span>
+                                <span *ngIf="!rippleInvest" class="input-group-text bg-danger">Not to invest!</span>
+                            </div>
+
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bitcoin</span>
+                                </div>
+                                <span *ngIf="bitcoinInvest" class="input-group-text bg-success">INVEST!</span>
+                                <span *ngIf="!bitcoinInvest" class="input-group-text bg-danger">Not to invest!</span>
+                            </div>
+                            <div class="input-group mb-3 container-fluid d-flex justify-content-center">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Bitcash</span>
+                                </div>
+                                <span *ngIf="bitcashInvest" class="input-group-text bg-success">INVEST!</span>
+                                <span *ngIf="!bitcashInvest" class="input-group-text bg-danger">Not to invest!</span>
+                            </div>
+                        </span>
+
+                        <!--
 
                         <span class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">Predikcija</h1>
@@ -121,7 +150,8 @@
                                 <span class="input-group-text bg-success">+60€</span>
                             </div>
                         </span>
-                        <!--
+
+
                         <div class="col-sm-12 col-lg-6 mb-5">
                             <h1 class="container-fluid d-flex justify-content-center">
                                 Predikcijski graf
@@ -135,10 +165,12 @@
 
                         -->
 
-                        <!-- TODO: to ne dela dobr-->
                         <div *ngFor="let coin of coins" class="col-sm-12 col-lg-6 mb-5">
                             <div>
                                 <h1 class="container-fluid d-flex justify-content-center">
+                                    <div class="spinner-and-error-msg">
+                                        <mat-spinner *ngIf="loading"></mat-spinner>
+                                    </div>
                                     {{ coin.name }}
                                 </h1>
                                 <canvas

@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
                 this.userGroupNumber = this.userData.groupIds.length;
                 this.updateFieldsAndSaveUser(user);
             });
-        this.userDataService.getUser();
+        this.userDataService.getUser(true);
         // this.pridobiStSkupin();
     }
 

@@ -19,6 +19,23 @@ export class SpendyDataService implements OnInit {
     ngOnInit() {}
     private apiUrl = "http://localhost:3000/api/v2";
 
+    public getDropDatabase(): Promise<any> {
+        const url: string = `${this.apiUrl}/db/drop`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => odgovor)
+            .catch(napaka => Promise.reject(napaka.error || napaka.message || napaka));
+    }
+    public getImportDatabase(): Promise<any> {
+        const url: string = `${this.apiUrl}/db/import`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => odgovor)
+            .catch(napaka => Promise.reject(napaka.error || napaka.message || napaka));
+    }
+
     public prijava(userLogin: UserLogin): Promise<AuthenticationResult> {
         return this.avtentikacijaLogin("prijava", userLogin);
     }

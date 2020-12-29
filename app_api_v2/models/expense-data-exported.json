@@ -1,0 +1,5475 @@
+[{
+	"_id": {
+		"$oid": "5fe91499d715641384094a0b"
+	},
+	"date": {
+		"$date": "2020-12-18T18:27:17.084Z"
+	},
+	"isExpenditure": false,
+	"cost": 731,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.143Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.143Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a0c"
+	},
+	"date": {
+		"$date": "2020-12-24T16:39:18.738Z"
+	},
+	"isExpenditure": true,
+	"cost": 1407,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.205Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.205Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a0d"
+	},
+	"date": {
+		"$date": "2020-12-11T04:46:07.014Z"
+	},
+	"isExpenditure": false,
+	"cost": 1013,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.233Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.233Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a0e"
+	},
+	"date": {
+		"$date": "2020-12-27T05:17:33.585Z"
+	},
+	"isExpenditure": false,
+	"cost": 886,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.259Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.259Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a0f"
+	},
+	"date": {
+		"$date": "2020-12-11T23:32:19.289Z"
+	},
+	"isExpenditure": true,
+	"cost": 1085,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.285Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.285Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a10"
+	},
+	"date": {
+		"$date": "2020-12-18T02:31:35.083Z"
+	},
+	"isExpenditure": true,
+	"cost": 1066,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.311Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.311Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a11"
+	},
+	"date": {
+		"$date": "2020-12-17T15:30:13.343Z"
+	},
+	"isExpenditure": true,
+	"cost": 751,
+	"category_name": "Health",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.358Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.358Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a12"
+	},
+	"date": {
+		"$date": "2020-12-16T06:25:32.836Z"
+	},
+	"isExpenditure": false,
+	"cost": 31,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.389Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.389Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a13"
+	},
+	"date": {
+		"$date": "2020-12-25T15:53:51.546Z"
+	},
+	"isExpenditure": true,
+	"cost": 1328,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.416Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.416Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a14"
+	},
+	"date": {
+		"$date": "2020-12-19T22:23:06.431Z"
+	},
+	"isExpenditure": true,
+	"cost": 389,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.44Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.44Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a15"
+	},
+	"date": {
+		"$date": "2020-12-18T00:05:42.403Z"
+	},
+	"isExpenditure": true,
+	"cost": 844,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.463Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.463Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a16"
+	},
+	"date": {
+		"$date": "2020-12-13T07:20:59.528Z"
+	},
+	"isExpenditure": false,
+	"cost": 29,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.486Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.486Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a17"
+	},
+	"date": {
+		"$date": "2020-12-13T12:21:36.78Z"
+	},
+	"isExpenditure": true,
+	"cost": 1070,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.511Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.511Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a18"
+	},
+	"date": {
+		"$date": "2020-12-23T04:21:29.907Z"
+	},
+	"isExpenditure": true,
+	"cost": 513,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.535Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.535Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a19"
+	},
+	"date": {
+		"$date": "2020-12-16T19:37:50.838Z"
+	},
+	"isExpenditure": false,
+	"cost": 1266,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.555Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.555Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1a"
+	},
+	"date": {
+		"$date": "2020-12-13T12:58:23.064Z"
+	},
+	"isExpenditure": true,
+	"cost": 1497,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.577Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.577Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1b"
+	},
+	"date": {
+		"$date": "2020-12-24T20:17:31.482Z"
+	},
+	"isExpenditure": false,
+	"cost": 627,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.601Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.601Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1c"
+	},
+	"date": {
+		"$date": "2020-12-24T13:07:55.913Z"
+	},
+	"isExpenditure": false,
+	"cost": 169,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.622Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.622Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1d"
+	},
+	"date": {
+		"$date": "2020-12-12T04:58:47.501Z"
+	},
+	"isExpenditure": false,
+	"cost": 534,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.648Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.648Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1e"
+	},
+	"date": {
+		"$date": "2020-12-14T22:52:12.283Z"
+	},
+	"isExpenditure": true,
+	"cost": 1156,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.672Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.672Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a1f"
+	},
+	"date": {
+		"$date": "2020-12-15T03:46:55.721Z"
+	},
+	"isExpenditure": true,
+	"cost": 236,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.697Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.697Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a20"
+	},
+	"date": {
+		"$date": "2020-12-25T03:36:39.507Z"
+	},
+	"isExpenditure": true,
+	"cost": 487,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.72Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.72Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a21"
+	},
+	"date": {
+		"$date": "2020-12-17T08:21:33.219Z"
+	},
+	"isExpenditure": false,
+	"cost": 444,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.747Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.747Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a22"
+	},
+	"date": {
+		"$date": "2020-12-18T18:30:21.107Z"
+	},
+	"isExpenditure": false,
+	"cost": 505,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.769Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.769Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a23"
+	},
+	"date": {
+		"$date": "2020-12-23T19:30:53.065Z"
+	},
+	"isExpenditure": true,
+	"cost": 1176,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.794Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.794Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a24"
+	},
+	"date": {
+		"$date": "2020-12-16T01:34:02.807Z"
+	},
+	"isExpenditure": true,
+	"cost": 249,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.816Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.816Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a25"
+	},
+	"date": {
+		"$date": "2020-12-18T14:26:52.965Z"
+	},
+	"isExpenditure": true,
+	"cost": 494,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.843Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.843Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a26"
+	},
+	"date": {
+		"$date": "2020-12-22T03:41:26.961Z"
+	},
+	"isExpenditure": false,
+	"cost": 437,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.866Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.866Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a27"
+	},
+	"date": {
+		"$date": "2020-12-17T07:55:10.385Z"
+	},
+	"isExpenditure": false,
+	"cost": 23,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.889Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.889Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a28"
+	},
+	"date": {
+		"$date": "2020-12-25T11:36:31.636Z"
+	},
+	"isExpenditure": true,
+	"cost": 414,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.913Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.913Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a29"
+	},
+	"date": {
+		"$date": "2020-12-12T19:21:46.038Z"
+	},
+	"isExpenditure": true,
+	"cost": 309,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.936Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.936Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a2a"
+	},
+	"date": {
+		"$date": "2020-12-20T14:02:31.174Z"
+	},
+	"isExpenditure": false,
+	"cost": 1126,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.959Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.959Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe91499d715641384094a2b"
+	},
+	"date": {
+		"$date": "2020-12-22T23:34:34.342Z"
+	},
+	"isExpenditure": true,
+	"cost": 1402,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:21.986Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:21.986Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a2c"
+	},
+	"date": {
+		"$date": "2020-12-20T06:38:28.191Z"
+	},
+	"isExpenditure": true,
+	"cost": 209,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.014Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.014Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a2d"
+	},
+	"date": {
+		"$date": "2020-12-12T16:14:52.199Z"
+	},
+	"isExpenditure": false,
+	"cost": 478,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.04Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.04Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a2e"
+	},
+	"date": {
+		"$date": "2020-12-11T07:32:37.717Z"
+	},
+	"isExpenditure": false,
+	"cost": 22,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.077Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.077Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a2f"
+	},
+	"date": {
+		"$date": "2020-12-21T08:12:03.052Z"
+	},
+	"isExpenditure": false,
+	"cost": 1043,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.104Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.104Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a30"
+	},
+	"date": {
+		"$date": "2020-12-11T10:47:07.282Z"
+	},
+	"isExpenditure": false,
+	"cost": 1484,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.125Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.125Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a31"
+	},
+	"date": {
+		"$date": "2020-12-22T21:37:58.824Z"
+	},
+	"isExpenditure": false,
+	"cost": 805,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.152Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.152Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a32"
+	},
+	"date": {
+		"$date": "2020-12-11T18:10:53.702Z"
+	},
+	"isExpenditure": true,
+	"cost": 1099,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe7cc18e0fe833da436fbdd"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.176Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.176Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a33"
+	},
+	"date": {
+		"$date": "2020-12-15T22:11:40.435Z"
+	},
+	"isExpenditure": true,
+	"cost": 1322,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.201Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.201Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a34"
+	},
+	"date": {
+		"$date": "2020-12-17T21:45:12.283Z"
+	},
+	"isExpenditure": false,
+	"cost": 156,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.221Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.221Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a35"
+	},
+	"date": {
+		"$date": "2020-12-14T14:52:17.821Z"
+	},
+	"isExpenditure": true,
+	"cost": 608,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.242Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.242Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a36"
+	},
+	"date": {
+		"$date": "2020-12-22T23:25:00.514Z"
+	},
+	"isExpenditure": true,
+	"cost": 409,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.265Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.265Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a37"
+	},
+	"date": {
+		"$date": "2020-12-21T23:35:38.66Z"
+	},
+	"isExpenditure": false,
+	"cost": 827,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.285Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.285Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a38"
+	},
+	"date": {
+		"$date": "2020-12-26T18:16:06.931Z"
+	},
+	"isExpenditure": true,
+	"cost": 1358,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.305Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.305Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a39"
+	},
+	"date": {
+		"$date": "2020-12-24T11:30:19.151Z"
+	},
+	"isExpenditure": false,
+	"cost": 557,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.326Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.326Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3a"
+	},
+	"date": {
+		"$date": "2020-12-15T21:57:48.646Z"
+	},
+	"isExpenditure": false,
+	"cost": 847,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.364Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.364Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3b"
+	},
+	"date": {
+		"$date": "2020-12-24T07:32:20.117Z"
+	},
+	"isExpenditure": false,
+	"cost": 1447,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.391Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.391Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3c"
+	},
+	"date": {
+		"$date": "2020-12-14T13:56:50.574Z"
+	},
+	"isExpenditure": true,
+	"cost": 84,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.415Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.415Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3d"
+	},
+	"date": {
+		"$date": "2020-12-12T07:53:11.275Z"
+	},
+	"isExpenditure": false,
+	"cost": 382,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.446Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.446Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3e"
+	},
+	"date": {
+		"$date": "2020-12-13T07:51:27.979Z"
+	},
+	"isExpenditure": false,
+	"cost": 730,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.472Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.472Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a3f"
+	},
+	"date": {
+		"$date": "2020-12-14T06:33:33.775Z"
+	},
+	"isExpenditure": true,
+	"cost": 480,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.497Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.497Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a40"
+	},
+	"date": {
+		"$date": "2020-12-22T13:50:54.075Z"
+	},
+	"isExpenditure": false,
+	"cost": 1345,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.519Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.519Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a41"
+	},
+	"date": {
+		"$date": "2020-12-19T23:58:01.956Z"
+	},
+	"isExpenditure": true,
+	"cost": 492,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.547Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.547Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a42"
+	},
+	"date": {
+		"$date": "2020-12-15T21:16:10.565Z"
+	},
+	"isExpenditure": false,
+	"cost": 967,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.57Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.57Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a43"
+	},
+	"date": {
+		"$date": "2020-12-16T02:46:50.149Z"
+	},
+	"isExpenditure": true,
+	"cost": 906,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.606Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.606Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a44"
+	},
+	"date": {
+		"$date": "2020-12-14T13:35:57.626Z"
+	},
+	"isExpenditure": false,
+	"cost": 673,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.639Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.639Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a45"
+	},
+	"date": {
+		"$date": "2020-12-25T03:25:26.537Z"
+	},
+	"isExpenditure": true,
+	"cost": 584,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.668Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.668Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a46"
+	},
+	"date": {
+		"$date": "2020-12-26T05:06:00.924Z"
+	},
+	"isExpenditure": false,
+	"cost": 759,
+	"category_name": "Health",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.691Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.691Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a47"
+	},
+	"date": {
+		"$date": "2020-12-22T07:53:09.719Z"
+	},
+	"isExpenditure": false,
+	"cost": 814,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.715Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.715Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a48"
+	},
+	"date": {
+		"$date": "2020-12-26T14:15:06.026Z"
+	},
+	"isExpenditure": false,
+	"cost": 798,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.739Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.739Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a49"
+	},
+	"date": {
+		"$date": "2020-12-19T18:25:27.768Z"
+	},
+	"isExpenditure": false,
+	"cost": 494,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.766Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.766Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4a"
+	},
+	"date": {
+		"$date": "2020-12-21T20:08:16.56Z"
+	},
+	"isExpenditure": false,
+	"cost": 1015,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.788Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.788Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4b"
+	},
+	"date": {
+		"$date": "2020-12-26T11:54:59.919Z"
+	},
+	"isExpenditure": true,
+	"cost": 1388,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.823Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.823Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4c"
+	},
+	"date": {
+		"$date": "2020-12-16T07:42:56.909Z"
+	},
+	"isExpenditure": false,
+	"cost": 851,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.853Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.853Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4d"
+	},
+	"date": {
+		"$date": "2020-12-19T06:16:51.349Z"
+	},
+	"isExpenditure": false,
+	"cost": 563,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.877Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.877Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4e"
+	},
+	"date": {
+		"$date": "2020-12-13T03:48:46.877Z"
+	},
+	"isExpenditure": false,
+	"cost": 1302,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.899Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.899Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a4f"
+	},
+	"date": {
+		"$date": "2020-12-23T15:08:25.834Z"
+	},
+	"isExpenditure": true,
+	"cost": 610,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.925Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.925Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a50"
+	},
+	"date": {
+		"$date": "2020-12-22T03:33:51.94Z"
+	},
+	"isExpenditure": true,
+	"cost": 717,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.948Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.948Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a51"
+	},
+	"date": {
+		"$date": "2020-12-20T20:04:33.186Z"
+	},
+	"isExpenditure": false,
+	"cost": 1361,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.971Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.971Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ad715641384094a52"
+	},
+	"date": {
+		"$date": "2020-12-12T15:18:25.237Z"
+	},
+	"isExpenditure": false,
+	"cost": 1435,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:22.994Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:22.994Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a53"
+	},
+	"date": {
+		"$date": "2020-12-27T03:27:22.581Z"
+	},
+	"isExpenditure": false,
+	"cost": 1488,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.02Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.02Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a54"
+	},
+	"date": {
+		"$date": "2020-12-21T04:17:17.781Z"
+	},
+	"isExpenditure": false,
+	"cost": 803,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.046Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.046Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a55"
+	},
+	"date": {
+		"$date": "2020-12-14T21:28:11.523Z"
+	},
+	"isExpenditure": false,
+	"cost": 1449,
+	"category_name": "Health",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.07Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.07Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a56"
+	},
+	"date": {
+		"$date": "2020-12-14T08:39:46.777Z"
+	},
+	"isExpenditure": false,
+	"cost": 751,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.095Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.095Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a57"
+	},
+	"date": {
+		"$date": "2020-12-25T15:17:03.151Z"
+	},
+	"isExpenditure": true,
+	"cost": 86,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.119Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.119Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a58"
+	},
+	"date": {
+		"$date": "2020-12-13T08:18:14.552Z"
+	},
+	"isExpenditure": true,
+	"cost": 304,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.144Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.144Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a59"
+	},
+	"date": {
+		"$date": "2020-12-23T05:27:19.753Z"
+	},
+	"isExpenditure": true,
+	"cost": 1089,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff1f67c57310401aca35"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.171Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.171Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5a"
+	},
+	"date": {
+		"$date": "2020-12-16T20:29:39.515Z"
+	},
+	"isExpenditure": true,
+	"cost": 303,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.199Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.199Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5b"
+	},
+	"date": {
+		"$date": "2020-12-10T19:54:44.735Z"
+	},
+	"isExpenditure": true,
+	"cost": 1386,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.229Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.229Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5c"
+	},
+	"date": {
+		"$date": "2020-12-27T08:47:30.708Z"
+	},
+	"isExpenditure": true,
+	"cost": 1016,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.254Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.254Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5d"
+	},
+	"date": {
+		"$date": "2020-12-11T06:19:25.77Z"
+	},
+	"isExpenditure": false,
+	"cost": 173,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.278Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.278Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5e"
+	},
+	"date": {
+		"$date": "2020-12-24T13:51:44.517Z"
+	},
+	"isExpenditure": false,
+	"cost": 1298,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.298Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.298Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a5f"
+	},
+	"date": {
+		"$date": "2020-12-21T20:48:05.253Z"
+	},
+	"isExpenditure": true,
+	"cost": 1012,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.319Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.319Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a60"
+	},
+	"date": {
+		"$date": "2020-12-26T03:19:14.287Z"
+	},
+	"isExpenditure": true,
+	"cost": 649,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.349Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.349Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a61"
+	},
+	"date": {
+		"$date": "2020-12-15T14:37:56.232Z"
+	},
+	"isExpenditure": true,
+	"cost": 1158,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.373Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.373Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a62"
+	},
+	"date": {
+		"$date": "2020-12-17T23:12:05.681Z"
+	},
+	"isExpenditure": false,
+	"cost": 381,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.394Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.394Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a63"
+	},
+	"date": {
+		"$date": "2020-12-18T02:20:59.374Z"
+	},
+	"isExpenditure": false,
+	"cost": 941,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.416Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.416Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a64"
+	},
+	"date": {
+		"$date": "2020-12-20T16:46:27.382Z"
+	},
+	"isExpenditure": false,
+	"cost": 431,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.436Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.436Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a65"
+	},
+	"date": {
+		"$date": "2020-12-24T10:56:27.529Z"
+	},
+	"isExpenditure": false,
+	"cost": 1250,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.458Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.458Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a66"
+	},
+	"date": {
+		"$date": "2020-12-16T11:55:26.967Z"
+	},
+	"isExpenditure": true,
+	"cost": 707,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe7cc18e0fe833da436fbde",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.479Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.479Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a67"
+	},
+	"date": {
+		"$date": "2020-12-11T08:38:46.867Z"
+	},
+	"isExpenditure": true,
+	"cost": 1264,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.5Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.5Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a68"
+	},
+	"date": {
+		"$date": "2020-12-12T05:44:16.897Z"
+	},
+	"isExpenditure": false,
+	"cost": 758,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.521Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.521Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a69"
+	},
+	"date": {
+		"$date": "2020-12-19T01:18:34.291Z"
+	},
+	"isExpenditure": true,
+	"cost": 1101,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.545Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.545Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6a"
+	},
+	"date": {
+		"$date": "2020-12-15T07:50:15.187Z"
+	},
+	"isExpenditure": false,
+	"cost": 1380,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.567Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.567Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6b"
+	},
+	"date": {
+		"$date": "2020-12-13T07:08:21.563Z"
+	},
+	"isExpenditure": false,
+	"cost": 764,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.586Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.586Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6c"
+	},
+	"date": {
+		"$date": "2020-12-16T00:33:27.582Z"
+	},
+	"isExpenditure": true,
+	"cost": 1357,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.606Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.606Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6d"
+	},
+	"date": {
+		"$date": "2020-12-25T04:15:57.848Z"
+	},
+	"isExpenditure": false,
+	"cost": 602,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.63Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.63Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6e"
+	},
+	"date": {
+		"$date": "2020-12-11T00:21:30.522Z"
+	},
+	"isExpenditure": false,
+	"cost": 18,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.65Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.65Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a6f"
+	},
+	"date": {
+		"$date": "2020-12-17T08:07:09.49Z"
+	},
+	"isExpenditure": false,
+	"cost": 804,
+	"category_name": "Health",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.678Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.678Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a70"
+	},
+	"date": {
+		"$date": "2020-12-20T08:06:49.259Z"
+	},
+	"isExpenditure": true,
+	"cost": 1119,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.699Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.699Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a71"
+	},
+	"date": {
+		"$date": "2020-12-12T05:53:14.122Z"
+	},
+	"isExpenditure": false,
+	"cost": 748,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.719Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.719Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a72"
+	},
+	"date": {
+		"$date": "2020-12-17T16:49:47.876Z"
+	},
+	"isExpenditure": true,
+	"cost": 301,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.738Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.738Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a73"
+	},
+	"date": {
+		"$date": "2020-12-15T20:57:39.027Z"
+	},
+	"isExpenditure": true,
+	"cost": 1222,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.759Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.759Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a74"
+	},
+	"date": {
+		"$date": "2020-12-25T20:07:34.494Z"
+	},
+	"isExpenditure": true,
+	"cost": 115,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.785Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.785Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a75"
+	},
+	"date": {
+		"$date": "2020-12-20T01:59:12.58Z"
+	},
+	"isExpenditure": false,
+	"cost": 1313,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.807Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.807Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a76"
+	},
+	"date": {
+		"$date": "2020-12-25T19:41:46.422Z"
+	},
+	"isExpenditure": false,
+	"cost": 1182,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.828Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.828Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a77"
+	},
+	"date": {
+		"$date": "2020-12-14T22:06:01.986Z"
+	},
+	"isExpenditure": false,
+	"cost": 984,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.848Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.848Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a78"
+	},
+	"date": {
+		"$date": "2020-12-17T01:13:09.007Z"
+	},
+	"isExpenditure": false,
+	"cost": 958,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.867Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.867Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a79"
+	},
+	"date": {
+		"$date": "2020-12-25T02:35:17.064Z"
+	},
+	"isExpenditure": true,
+	"cost": 1358,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.888Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.888Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a7a"
+	},
+	"date": {
+		"$date": "2020-12-18T04:57:52.388Z"
+	},
+	"isExpenditure": true,
+	"cost": 1241,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.908Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.908Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a7b"
+	},
+	"date": {
+		"$date": "2020-12-19T16:41:11.734Z"
+	},
+	"isExpenditure": true,
+	"cost": 425,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.928Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.928Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a7c"
+	},
+	"date": {
+		"$date": "2020-12-21T11:50:28.9Z"
+	},
+	"isExpenditure": false,
+	"cost": 816,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.948Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.948Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a7d"
+	},
+	"date": {
+		"$date": "2020-12-19T01:50:12.586Z"
+	},
+	"isExpenditure": true,
+	"cost": 528,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.968Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.968Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149bd715641384094a7e"
+	},
+	"date": {
+		"$date": "2020-12-10T18:26:07.885Z"
+	},
+	"isExpenditure": true,
+	"cost": 673,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:23.988Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:23.988Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a7f"
+	},
+	"date": {
+		"$date": "2020-12-23T08:33:19.51Z"
+	},
+	"isExpenditure": true,
+	"cost": 320,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.011Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.011Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a80"
+	},
+	"date": {
+		"$date": "2020-12-16T00:36:09.629Z"
+	},
+	"isExpenditure": false,
+	"cost": 887,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff2367c57310401aca36"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.036Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.036Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a81"
+	},
+	"date": {
+		"$date": "2020-12-27T02:25:54.132Z"
+	},
+	"isExpenditure": false,
+	"cost": 536,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.057Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.057Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a82"
+	},
+	"date": {
+		"$date": "2020-12-22T11:19:37.591Z"
+	},
+	"isExpenditure": true,
+	"cost": 1477,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.077Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.077Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a83"
+	},
+	"date": {
+		"$date": "2020-12-26T15:49:35.797Z"
+	},
+	"isExpenditure": false,
+	"cost": 1343,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.099Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.099Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a84"
+	},
+	"date": {
+		"$date": "2020-12-13T15:18:53.839Z"
+	},
+	"isExpenditure": true,
+	"cost": 1436,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.122Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.122Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a85"
+	},
+	"date": {
+		"$date": "2020-12-10T19:57:06.214Z"
+	},
+	"isExpenditure": true,
+	"cost": 197,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.142Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.142Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a86"
+	},
+	"date": {
+		"$date": "2020-12-21T18:35:05.386Z"
+	},
+	"isExpenditure": true,
+	"cost": 979,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.161Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.161Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a87"
+	},
+	"date": {
+		"$date": "2020-12-17T06:12:42.582Z"
+	},
+	"isExpenditure": false,
+	"cost": 467,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.182Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.182Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a88"
+	},
+	"date": {
+		"$date": "2020-12-15T01:35:31.413Z"
+	},
+	"isExpenditure": true,
+	"cost": 562,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.199Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.199Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a89"
+	},
+	"date": {
+		"$date": "2020-12-27T09:10:11.931Z"
+	},
+	"isExpenditure": true,
+	"cost": 238,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.219Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.219Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8a"
+	},
+	"date": {
+		"$date": "2020-12-16T06:53:05.945Z"
+	},
+	"isExpenditure": false,
+	"cost": 194,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.24Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.24Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8b"
+	},
+	"date": {
+		"$date": "2020-12-23T12:22:45.397Z"
+	},
+	"isExpenditure": false,
+	"cost": 192,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.259Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.259Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8c"
+	},
+	"date": {
+		"$date": "2020-12-16T02:30:27.431Z"
+	},
+	"isExpenditure": false,
+	"cost": 522,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.278Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.278Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8d"
+	},
+	"date": {
+		"$date": "2020-12-18T15:36:03.363Z"
+	},
+	"isExpenditure": true,
+	"cost": 1144,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.298Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.298Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8e"
+	},
+	"date": {
+		"$date": "2020-12-15T16:45:57.224Z"
+	},
+	"isExpenditure": true,
+	"cost": 68,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.315Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.315Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a8f"
+	},
+	"date": {
+		"$date": "2020-12-15T02:30:44.497Z"
+	},
+	"isExpenditure": false,
+	"cost": 426,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.341Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.341Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a90"
+	},
+	"date": {
+		"$date": "2020-12-13T09:58:12.226Z"
+	},
+	"isExpenditure": false,
+	"cost": 294,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.379Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.379Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a91"
+	},
+	"date": {
+		"$date": "2020-12-27T06:21:48.381Z"
+	},
+	"isExpenditure": true,
+	"cost": 900,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.411Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.411Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a92"
+	},
+	"date": {
+		"$date": "2020-12-11T12:34:59.509Z"
+	},
+	"isExpenditure": false,
+	"cost": 1104,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.438Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.438Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a93"
+	},
+	"date": {
+		"$date": "2020-12-12T04:06:49.874Z"
+	},
+	"isExpenditure": false,
+	"cost": 1343,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.467Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.467Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a94"
+	},
+	"date": {
+		"$date": "2020-12-23T04:34:02.035Z"
+	},
+	"isExpenditure": false,
+	"cost": 1074,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.489Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.489Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a95"
+	},
+	"date": {
+		"$date": "2020-12-25T03:38:24.783Z"
+	},
+	"isExpenditure": false,
+	"cost": 1328,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.509Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.509Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a96"
+	},
+	"date": {
+		"$date": "2020-12-23T08:50:46.816Z"
+	},
+	"isExpenditure": true,
+	"cost": 85,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.528Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.528Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a97"
+	},
+	"date": {
+		"$date": "2020-12-20T09:14:39.704Z"
+	},
+	"isExpenditure": false,
+	"cost": 1381,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.549Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.549Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a98"
+	},
+	"date": {
+		"$date": "2020-12-15T15:31:40.973Z"
+	},
+	"isExpenditure": false,
+	"cost": 1271,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.571Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.571Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a99"
+	},
+	"date": {
+		"$date": "2020-12-12T03:03:54.087Z"
+	},
+	"isExpenditure": false,
+	"cost": 558,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.592Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.592Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9a"
+	},
+	"date": {
+		"$date": "2020-12-15T16:42:34.925Z"
+	},
+	"isExpenditure": true,
+	"cost": 858,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.611Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.611Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9b"
+	},
+	"date": {
+		"$date": "2020-12-25T05:21:35.018Z"
+	},
+	"isExpenditure": true,
+	"cost": 1279,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.633Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.633Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9c"
+	},
+	"date": {
+		"$date": "2020-12-16T17:52:41.712Z"
+	},
+	"isExpenditure": true,
+	"cost": 533,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.654Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.654Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9d"
+	},
+	"date": {
+		"$date": "2020-12-20T21:39:19.709Z"
+	},
+	"isExpenditure": true,
+	"cost": 757,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.673Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.673Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9e"
+	},
+	"date": {
+		"$date": "2020-12-18T11:44:13.513Z"
+	},
+	"isExpenditure": false,
+	"cost": 251,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.695Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.695Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094a9f"
+	},
+	"date": {
+		"$date": "2020-12-23T00:24:27.547Z"
+	},
+	"isExpenditure": true,
+	"cost": 991,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.716Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.716Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa0"
+	},
+	"date": {
+		"$date": "2020-12-20T14:04:23.462Z"
+	},
+	"isExpenditure": true,
+	"cost": 24,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.736Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.736Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa1"
+	},
+	"date": {
+		"$date": "2020-12-18T21:39:12.445Z"
+	},
+	"isExpenditure": false,
+	"cost": 1435,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.758Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.758Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa2"
+	},
+	"date": {
+		"$date": "2020-12-15T16:49:25.447Z"
+	},
+	"isExpenditure": false,
+	"cost": 493,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.782Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.782Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa3"
+	},
+	"date": {
+		"$date": "2020-12-20T04:07:48.298Z"
+	},
+	"isExpenditure": false,
+	"cost": 578,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.804Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.804Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa4"
+	},
+	"date": {
+		"$date": "2020-12-20T10:21:10.681Z"
+	},
+	"isExpenditure": false,
+	"cost": 1341,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.821Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.821Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa5"
+	},
+	"date": {
+		"$date": "2020-12-18T12:36:32.713Z"
+	},
+	"isExpenditure": false,
+	"cost": 1499,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.857Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.857Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa6"
+	},
+	"date": {
+		"$date": "2020-12-14T01:25:14.117Z"
+	},
+	"isExpenditure": true,
+	"cost": 890,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.882Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.882Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa7"
+	},
+	"date": {
+		"$date": "2020-12-14T07:19:59.477Z"
+	},
+	"isExpenditure": true,
+	"cost": 1443,
+	"category_name": "Games",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.904Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.904Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa8"
+	},
+	"date": {
+		"$date": "2020-12-15T22:40:27.012Z"
+	},
+	"isExpenditure": true,
+	"cost": 1399,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff5667c57310401aca37"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff5667c57310401aca38",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.922Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.922Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aa9"
+	},
+	"date": {
+		"$date": "2020-12-22T02:19:16.939Z"
+	},
+	"isExpenditure": false,
+	"cost": 397,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.941Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.941Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aaa"
+	},
+	"date": {
+		"$date": "2020-12-20T15:37:45.849Z"
+	},
+	"isExpenditure": true,
+	"cost": 1387,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.964Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.964Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149cd715641384094aab"
+	},
+	"date": {
+		"$date": "2020-12-27T05:00:39.028Z"
+	},
+	"isExpenditure": true,
+	"cost": 698,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:24.983Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:24.983Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aac"
+	},
+	"date": {
+		"$date": "2020-12-18T06:13:44.9Z"
+	},
+	"isExpenditure": false,
+	"cost": 902,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.003Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.003Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aad"
+	},
+	"date": {
+		"$date": "2020-12-18T22:29:32.825Z"
+	},
+	"isExpenditure": false,
+	"cost": 1272,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.025Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.025Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aae"
+	},
+	"date": {
+		"$date": "2020-12-10T22:34:41.532Z"
+	},
+	"isExpenditure": true,
+	"cost": 173,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.047Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.047Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aaf"
+	},
+	"date": {
+		"$date": "2020-12-11T23:55:43.98Z"
+	},
+	"isExpenditure": false,
+	"cost": 1175,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.071Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.071Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab0"
+	},
+	"date": {
+		"$date": "2020-12-23T09:43:16.787Z"
+	},
+	"isExpenditure": true,
+	"cost": 1380,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.093Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.093Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab1"
+	},
+	"date": {
+		"$date": "2020-12-24T12:35:11.111Z"
+	},
+	"isExpenditure": false,
+	"cost": 1329,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.118Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.118Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab2"
+	},
+	"date": {
+		"$date": "2020-12-19T18:52:38.515Z"
+	},
+	"isExpenditure": false,
+	"cost": 1495,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.146Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.146Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab3"
+	},
+	"date": {
+		"$date": "2020-12-25T16:01:06.282Z"
+	},
+	"isExpenditure": true,
+	"cost": 1322,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.168Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.168Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab4"
+	},
+	"date": {
+		"$date": "2020-12-11T06:51:24.389Z"
+	},
+	"isExpenditure": true,
+	"cost": 847,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.191Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.191Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab5"
+	},
+	"date": {
+		"$date": "2020-12-21T11:53:01.193Z"
+	},
+	"isExpenditure": true,
+	"cost": 955,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.212Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.212Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab6"
+	},
+	"date": {
+		"$date": "2020-12-19T16:11:09.769Z"
+	},
+	"isExpenditure": true,
+	"cost": 1118,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.237Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.237Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab7"
+	},
+	"date": {
+		"$date": "2020-12-11T15:29:35.509Z"
+	},
+	"isExpenditure": false,
+	"cost": 843,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.262Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.262Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab8"
+	},
+	"date": {
+		"$date": "2020-12-14T04:16:03.788Z"
+	},
+	"isExpenditure": true,
+	"cost": 1078,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.285Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.285Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ab9"
+	},
+	"date": {
+		"$date": "2020-12-25T20:20:42.625Z"
+	},
+	"isExpenditure": false,
+	"cost": 447,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.306Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.306Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aba"
+	},
+	"date": {
+		"$date": "2020-12-15T10:16:42.041Z"
+	},
+	"isExpenditure": true,
+	"cost": 316,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.326Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.326Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094abb"
+	},
+	"date": {
+		"$date": "2020-12-19T03:50:30.285Z"
+	},
+	"isExpenditure": true,
+	"cost": 489,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.358Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.358Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094abc"
+	},
+	"date": {
+		"$date": "2020-12-23T02:32:35.177Z"
+	},
+	"isExpenditure": true,
+	"cost": 259,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.384Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.384Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094abd"
+	},
+	"date": {
+		"$date": "2020-12-22T05:08:49.993Z"
+	},
+	"isExpenditure": true,
+	"cost": 1248,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.408Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.408Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094abe"
+	},
+	"date": {
+		"$date": "2020-12-13T00:24:51.064Z"
+	},
+	"isExpenditure": false,
+	"cost": 1378,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.427Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.427Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094abf"
+	},
+	"date": {
+		"$date": "2020-12-19T06:21:52.54Z"
+	},
+	"isExpenditure": true,
+	"cost": 493,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.447Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.447Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac0"
+	},
+	"date": {
+		"$date": "2020-12-26T03:10:53.858Z"
+	},
+	"isExpenditure": true,
+	"cost": 450,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.468Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.468Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac1"
+	},
+	"date": {
+		"$date": "2020-12-23T19:58:23.459Z"
+	},
+	"isExpenditure": false,
+	"cost": 352,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.486Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.486Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac2"
+	},
+	"date": {
+		"$date": "2020-12-22T17:34:40.341Z"
+	},
+	"isExpenditure": true,
+	"cost": 698,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.518Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.518Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac3"
+	},
+	"date": {
+		"$date": "2020-12-25T00:55:22.114Z"
+	},
+	"isExpenditure": false,
+	"cost": 471,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.539Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.539Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac4"
+	},
+	"date": {
+		"$date": "2020-12-11T19:28:28.596Z"
+	},
+	"isExpenditure": false,
+	"cost": 705,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.56Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.56Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac5"
+	},
+	"date": {
+		"$date": "2020-12-23T12:32:26.929Z"
+	},
+	"isExpenditure": true,
+	"cost": 668,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.579Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.579Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac6"
+	},
+	"date": {
+		"$date": "2020-12-14T21:19:40.329Z"
+	},
+	"isExpenditure": true,
+	"cost": 165,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.598Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.598Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac7"
+	},
+	"date": {
+		"$date": "2020-12-20T07:43:24.739Z"
+	},
+	"isExpenditure": true,
+	"cost": 298,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.619Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.619Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac8"
+	},
+	"date": {
+		"$date": "2020-12-19T23:47:31.007Z"
+	},
+	"isExpenditure": true,
+	"cost": 474,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.639Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.639Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ac9"
+	},
+	"date": {
+		"$date": "2020-12-14T02:31:49.475Z"
+	},
+	"isExpenditure": true,
+	"cost": 680,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.659Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.659Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094aca"
+	},
+	"date": {
+		"$date": "2020-12-17T08:17:31.182Z"
+	},
+	"isExpenditure": false,
+	"cost": 668,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.678Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.678Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094acb"
+	},
+	"date": {
+		"$date": "2020-12-15T12:08:03.78Z"
+	},
+	"isExpenditure": true,
+	"cost": 1020,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.697Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.697Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094acc"
+	},
+	"date": {
+		"$date": "2020-12-16T22:53:21.323Z"
+	},
+	"isExpenditure": true,
+	"cost": 627,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.715Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.715Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094acd"
+	},
+	"date": {
+		"$date": "2020-12-12T21:42:18.182Z"
+	},
+	"isExpenditure": false,
+	"cost": 1148,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.735Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.735Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ace"
+	},
+	"date": {
+		"$date": "2020-12-16T17:40:49.783Z"
+	},
+	"isExpenditure": false,
+	"cost": 964,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.754Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.754Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094acf"
+	},
+	"date": {
+		"$date": "2020-12-18T09:49:42.885Z"
+	},
+	"isExpenditure": true,
+	"cost": 1408,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.774Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.774Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad0"
+	},
+	"date": {
+		"$date": "2020-12-25T13:06:40.26Z"
+	},
+	"isExpenditure": true,
+	"cost": 1098,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff6c67c57310401aca39"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff6c67c57310401aca3a",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.793Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.793Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad1"
+	},
+	"date": {
+		"$date": "2020-12-21T17:44:28.259Z"
+	},
+	"isExpenditure": true,
+	"cost": 384,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.811Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.811Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad2"
+	},
+	"date": {
+		"$date": "2020-12-14T11:33:38.293Z"
+	},
+	"isExpenditure": true,
+	"cost": 768,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.832Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.832Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad3"
+	},
+	"date": {
+		"$date": "2020-12-25T01:38:03.5Z"
+	},
+	"isExpenditure": false,
+	"cost": 143,
+	"category_name": "Automotive",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.856Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.856Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad4"
+	},
+	"date": {
+		"$date": "2020-12-23T12:39:51.01Z"
+	},
+	"isExpenditure": false,
+	"cost": 338,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.875Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.875Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad5"
+	},
+	"date": {
+		"$date": "2020-12-23T03:46:03.921Z"
+	},
+	"isExpenditure": true,
+	"cost": 38,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.895Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.895Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad6"
+	},
+	"date": {
+		"$date": "2020-12-19T21:14:37.8Z"
+	},
+	"isExpenditure": true,
+	"cost": 324,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.917Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.917Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad7"
+	},
+	"date": {
+		"$date": "2020-12-11T07:18:15.775Z"
+	},
+	"isExpenditure": false,
+	"cost": 759,
+	"category_name": "Kids",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.938Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.938Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad8"
+	},
+	"date": {
+		"$date": "2020-12-19T07:43:32.451Z"
+	},
+	"isExpenditure": true,
+	"cost": 816,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.958Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.958Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149dd715641384094ad9"
+	},
+	"date": {
+		"$date": "2020-12-21T06:24:00.568Z"
+	},
+	"isExpenditure": false,
+	"cost": 51,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:25.982Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:25.982Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ada"
+	},
+	"date": {
+		"$date": "2020-12-25T03:34:08.177Z"
+	},
+	"isExpenditure": false,
+	"cost": 1220,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.011Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.011Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094adb"
+	},
+	"date": {
+		"$date": "2020-12-18T04:08:47.168Z"
+	},
+	"isExpenditure": true,
+	"cost": 539,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.035Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.035Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094adc"
+	},
+	"date": {
+		"$date": "2020-12-12T19:34:34.783Z"
+	},
+	"isExpenditure": true,
+	"cost": 577,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.053Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.053Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094add"
+	},
+	"date": {
+		"$date": "2020-12-20T07:55:16.418Z"
+	},
+	"isExpenditure": true,
+	"cost": 849,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.075Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.075Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ade"
+	},
+	"date": {
+		"$date": "2020-12-27T04:59:04.89Z"
+	},
+	"isExpenditure": true,
+	"cost": 686,
+	"category_name": "Home",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.092Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.092Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094adf"
+	},
+	"date": {
+		"$date": "2020-12-16T00:47:33.634Z"
+	},
+	"isExpenditure": false,
+	"cost": 467,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.113Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.113Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae0"
+	},
+	"date": {
+		"$date": "2020-12-24T01:27:11.79Z"
+	},
+	"isExpenditure": false,
+	"cost": 1026,
+	"category_name": "Industrial",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.138Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.138Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae1"
+	},
+	"date": {
+		"$date": "2020-12-20T15:40:28.646Z"
+	},
+	"isExpenditure": false,
+	"cost": 1131,
+	"category_name": "Health",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.159Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.159Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae2"
+	},
+	"date": {
+		"$date": "2020-12-19T04:59:50.446Z"
+	},
+	"isExpenditure": false,
+	"cost": 858,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.177Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.177Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae3"
+	},
+	"date": {
+		"$date": "2020-12-22T01:37:29.795Z"
+	},
+	"isExpenditure": true,
+	"cost": 682,
+	"category_name": "Baby",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.199Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.199Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae4"
+	},
+	"date": {
+		"$date": "2020-12-18T06:09:50.596Z"
+	},
+	"isExpenditure": true,
+	"cost": 732,
+	"category_name": "Tools",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.223Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.223Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae5"
+	},
+	"date": {
+		"$date": "2020-12-25T11:38:26.307Z"
+	},
+	"isExpenditure": false,
+	"cost": 314,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.244Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.244Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae6"
+	},
+	"date": {
+		"$date": "2020-12-20T06:09:36.225Z"
+	},
+	"isExpenditure": true,
+	"cost": 962,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.264Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.264Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae7"
+	},
+	"date": {
+		"$date": "2020-12-22T06:38:02.743Z"
+	},
+	"isExpenditure": false,
+	"cost": 1229,
+	"category_name": "Grocery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.285Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.285Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae8"
+	},
+	"date": {
+		"$date": "2020-12-23T00:33:30.052Z"
+	},
+	"isExpenditure": false,
+	"cost": 1394,
+	"category_name": "Sports",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.31Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.31Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094ae9"
+	},
+	"date": {
+		"$date": "2020-12-11T04:46:26.297Z"
+	},
+	"isExpenditure": true,
+	"cost": 1400,
+	"category_name": "Toys",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.33Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.33Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aea"
+	},
+	"date": {
+		"$date": "2020-12-18T13:09:51.309Z"
+	},
+	"isExpenditure": false,
+	"cost": 512,
+	"category_name": "Electronics",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.361Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.361Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aeb"
+	},
+	"date": {
+		"$date": "2020-12-16T16:16:52.497Z"
+	},
+	"isExpenditure": false,
+	"cost": 1287,
+	"category_name": "Garden",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.384Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.384Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aec"
+	},
+	"date": {
+		"$date": "2020-12-27T07:58:10.256Z"
+	},
+	"isExpenditure": false,
+	"cost": 1352,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.407Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.407Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aed"
+	},
+	"date": {
+		"$date": "2020-12-26T03:46:52.507Z"
+	},
+	"isExpenditure": false,
+	"cost": 315,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.427Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.427Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aee"
+	},
+	"date": {
+		"$date": "2020-12-15T22:58:58.484Z"
+	},
+	"isExpenditure": false,
+	"cost": 657,
+	"category_name": "Beauty",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.445Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.445Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094aef"
+	},
+	"date": {
+		"$date": "2020-12-20T01:11:16.388Z"
+	},
+	"isExpenditure": true,
+	"cost": 1099,
+	"category_name": "Computers",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.464Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.464Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af0"
+	},
+	"date": {
+		"$date": "2020-12-14T15:36:39.429Z"
+	},
+	"isExpenditure": false,
+	"cost": 931,
+	"category_name": "Books",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.485Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.485Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af1"
+	},
+	"date": {
+		"$date": "2020-12-27T09:31:13.584Z"
+	},
+	"isExpenditure": true,
+	"cost": 1020,
+	"category_name": "Shoes",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.508Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.508Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af2"
+	},
+	"date": {
+		"$date": "2020-12-10T23:55:32.911Z"
+	},
+	"isExpenditure": false,
+	"cost": 534,
+	"category_name": "Outdoors",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.526Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.526Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af3"
+	},
+	"date": {
+		"$date": "2020-12-11T08:28:18.244Z"
+	},
+	"isExpenditure": true,
+	"cost": 328,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.546Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.546Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af4"
+	},
+	"date": {
+		"$date": "2020-12-21T16:20:10.126Z"
+	},
+	"isExpenditure": true,
+	"cost": 77,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.567Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.567Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af5"
+	},
+	"date": {
+		"$date": "2020-12-13T21:54:30.491Z"
+	},
+	"isExpenditure": true,
+	"cost": 544,
+	"category_name": "Movies",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Football Is Good For Training And Recreational Purposes",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.586Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.586Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af6"
+	},
+	"date": {
+		"$date": "2020-12-18T06:57:17.72Z"
+	},
+	"isExpenditure": true,
+	"cost": 112,
+	"category_name": "Music",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.608Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.608Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af7"
+	},
+	"date": {
+		"$date": "2020-12-21T03:59:55.429Z"
+	},
+	"isExpenditure": true,
+	"cost": 1152,
+	"category_name": "Clothing",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.626Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.626Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "5fe9149ed715641384094af8"
+	},
+	"date": {
+		"$date": "2020-12-12T21:39:31.28Z"
+	},
+	"isExpenditure": true,
+	"cost": 814,
+	"category_name": "Jewelery",
+	"groupId": {
+		"$oid": "5fe8ff7f67c57310401aca3b"
+	},
+	"description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+	"created_by": "5fe8ff7f67c57310401aca3c",
+	"created_at": {
+		"$date": "2020-12-27T23:11:26.646Z"
+	},
+	"updated_at": {
+		"$date": "2020-12-27T23:11:26.646Z"
+	},
+	"__v": 0
+}]
+

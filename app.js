@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 var createError = require("http-errors");
 var express = require("express");
@@ -7,14 +7,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 //za passport
-var passport = require('passport');
+var passport = require("passport");
 
 require("./app_server/views/helpers/hbsh.js");
 
-
 require("./app_api_v2/models/db");
 //za passport
-require('./app_api_v2/configuration/passport');
+require("./app_api_v2/configuration/passport");
 
 var indexRouter = require("./app_server/routes/index");
 var indexApi = require("./app_api/routes/index");
@@ -59,7 +58,7 @@ app.use(function (req, res, next) {
 // Obvladovanje napak zaradi avtentikacije
 app.use((err, req, res, next) => {
     if (err.name == "UnauthorizedError") {
-        res.status(401).json({"sporočilo": err.name + ": " + err.message});
+        res.status(401).json({ sporočilo: err.name + ": " + err.message });
     }
 });
 

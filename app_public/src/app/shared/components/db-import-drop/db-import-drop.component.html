@@ -1,0 +1,12 @@
+<app-first-page-navbar></app-first-page-navbar>
+
+<main>
+    <button (click)="getImport()" mat-raised-button color="primary">Import to DB</button>
+    <br /><br />
+    <button (click)="getDrop()" mat-raised-button color="primary">Drop the DB</button>
+    <br /><br />
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div *ngIf="message">{{ message }}</div>
+    <br />
+    <button routerLink="/first-page" mat-raised-button color="accent">Go to first page</button>
+</main>

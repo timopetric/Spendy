@@ -2,6 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const mongoosePaginate = require("mongoose-paginate-v2");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
@@ -38,16 +39,16 @@ const userSchema = new mongoose.Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: "Group",
-                validate: {
-                    validator: function (groupId) {
-                        return new Promise(function (resolve) {
-                            groupModel.find({ _id: groupId }, function (err, docs) {
-                                resolve(docs.length === 1);
-                            });
-                        });
-                    },
-                    message: (props) => `Group with id '${props.value}' is not a valid group!`,
-                },
+                // validate: {
+                //     validator: function (groupId) {
+                //         return new Promise(function (resolve) {
+                //             groupModel.find({ _id: groupId }, function (err, docs) {
+                //                 resolve(docs.length === 1);
+                //             });
+                //         });
+                //     },
+                //     message: (props) => `Group with id '${props.value}' is not a valid group!`,
+                // },
             },
         ],
     },
@@ -106,48 +107,48 @@ const groupSchema = new mongoose.Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: "User",
-                validate: {
-                    validator: function (userId) {
-                        return new Promise(function (resolve) {
-                            userModel.find({ _id: userId }, function (err, docs) {
-                                resolve(docs.length === 1);
-                            });
-                        });
-                    },
-                    message: (props) => `User with id '${props.value}' is not a valid user!`,
-                },
+                // validate: {
+                //     validator: function (userId) {
+                //         return new Promise(function (resolve) {
+                //             userModel.find({ _id: userId }, function (err, docs) {
+                //                 resolve(docs.length === 1);
+                //             });
+                //         });
+                //     },
+                //     message: (props) => `User with id '${props.value}' is not a valid user!`,
+                // },
             },
         ],
         adminIds: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "User",
-                validate: {
-                    validator: function (userId) {
-                        return new Promise(function (resolve) {
-                            userModel.find({ _id: userId }, function (err, docs) {
-                                resolve(docs.length === 1);
-                            });
-                        });
-                    },
-                    message: (props) => `User with id '${props.value}' is not a valid user!`,
-                },
+                // validate: {
+                //     validator: function (userId) {
+                //         return new Promise(function (resolve) {
+                //             userModel.find({ _id: userId }, function (err, docs) {
+                //                 resolve(docs.length === 1);
+                //             });
+                //         });
+                //     },
+                //     message: (props) => `User with id '${props.value}' is not a valid user!`,
+                // },
             },
         ],
         expenses: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "Expense",
-                validate: {
-                    validator: function (expenseId) {
-                        return new Promise(function (resolve) {
-                            expenseModel.find({ _id: expenseId }, function (err, docs) {
-                                resolve(docs.length === 1);
-                            });
-                        });
-                    },
-                    message: (props) => `Expense with id '${props.value}' is not a valid expense!`,
-                },
+                // validate: {
+                //     validator: function (expenseId) {
+                //         return new Promise(function (resolve) {
+                //             expenseModel.find({ _id: expenseId }, function (err, docs) {
+                //                 resolve(docs.length === 1);
+                //             });
+                //         });
+                //     },
+                //     message: (props) => `Expense with id '${props.value}' is not a valid expense!`,
+                // },
             },
         ],
     },
@@ -159,6 +160,7 @@ const groupSchema = new mongoose.Schema(
         collection: "Groups",
     }
 );
+groupSchema.plugin(mongoosePaginate);
 const groupModel = mongoose.model("Group", groupSchema);
 
 /////////////////////////////////////////// EXPENSE SCHEMA: ////////////////////////////////////////////////////
@@ -175,16 +177,16 @@ const expenseSchema = new mongoose.Schema(
             type: Schema.Types.ObjectId,
             ref: "Group",
             required: true,
-            validate: {
-                validator: function (groupId) {
-                    return new Promise(function (resolve) {
-                        groupModel.find({ _id: groupId }, function (err, docs) {
-                            resolve(docs.length === 1);
-                        });
-                    });
-                },
-                message: (props) => `Group with id '${props.value}' is not a valid group!`,
-            },
+            // validate: {
+            //     validator: function (groupId) {
+            //         return new Promise(function (resolve) {
+            //             groupModel.find({ _id: groupId }, function (err, docs) {
+            //                 resolve(docs.length === 1);
+            //             });
+            //         });
+            //     },
+            //     message: (props) => `Group with id '${props.value}' is not a valid group!`,
+            // },
         },
     },
     {
@@ -195,4 +197,5 @@ const expenseSchema = new mongoose.Schema(
         collection: "Expenses",
     }
 );
+expenseSchema.plugin(mongoosePaginate);
 const expenseModel = mongoose.model("Expense", expenseSchema);

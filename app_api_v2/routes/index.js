@@ -38,19 +38,23 @@ router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
 // START--------------------------GROUPS-------------------------------START
 //router.get("/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
 router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
+router.get("/groups/:idGroup/expenses/page/:page", ctrlExpenses.getExpensesByGroupIdWithQueriesWithPagination);
 router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
 router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
 router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
 router.put("/groups/:idGroup", ctrlGroups.updateGroup);
 
 router.get("/groups", ctrlGroups.getAllGroups);
+router.post("/groups", ctrlGroups.createAndAddToUser);
+router.get("/groups/:idGroup", ctrlGroups.getGroupById);
 router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
 router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
 router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------DB IMPORT-------------------------------START
-
+router.get("/db/import", ctrlDb.importDbData);
+router.get("/db/drop", ctrlDb.dropDb);
 // END----------------------------DB IMPORT---------------------------------END
 
 //START--------------------------SWAGGER-------------------------------START
@@ -77,11 +81,11 @@ var swaggerOptions = {
         servers: [{ url: "http://localhost:3000/api/v2" }, { url: "http://sp-spendy.herokuapp.com/api/v2" }],
     },
     apis: [
-        "app_api_v2/documentation/expenses.js",
-        "app_api_v2/documentation/groups.js",
-        "app_api_v2/documentation/users.js",
-        "app_api_v2/documentation/basics.js",
-        "app_api_v2/documentation/schemes.js",
+        "app_api_v2/documentation/expenses.yaml",
+        "app_api_v2/documentation/groups.yaml",
+        "app_api_v2/documentation/users.yaml",
+        "app_api_v2/documentation/basics.yaml",
+        "app_api_v2/documentation/schemes.yaml",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);

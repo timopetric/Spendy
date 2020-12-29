@@ -3,6 +3,8 @@ const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
 
+const mongoosePaginate = require("mongoose-paginate-v2");
+
 //GET ALL EXPENSES
 const getAllExpenses = (req, res) => {
     Expense.find({}).exec((error, expenses) => {
@@ -98,10 +100,82 @@ const getExpensesByGroupIdWithQueries = (req, res) => {
         });
 };
 
+const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
+    //console.log("getExpensesByGroupId2 with query params" + req.query);
+    let isExpenditure = req.query.isExpenditure;
+    let cena = req.query.cena;
+    let datum = req.query.date;
+    let queryinput = req.query.search;
+    const page = req.params.page;
+
+    isExpenditure = isExpenditure != null || undefined ? { isExpenditure: isExpenditure } : {};
+    cena = cena != null || undefined ? { cost: { $gte: cena } } : {};
+    datum = datum != null || undefined ? { sort: { date: -1 } } : {};
+    queryinput = queryinput != null || undefined ? { category_name: { $regex: new RegExp(queryinput, "i") } } : {};
+
+    const match = Object.assign(isExpenditure, cena, queryinput);
+    const options = Object.assign(datum);
+    //console.log(match);
+    //console.log(req.params);
+    const idGroup = req.params.idGroup;
+
+    if (!idGroup) {
+        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+    }
+    /*
+    const options = {
+        select: "expenses",
+        populate: {
+            path: "expenses",
+            select: "isExpenditure date _id",
+            match: match,
+            options: options2,
+        },
+        page: 1,
+        limit: 3,
+        options: { expenses: { $slice: [0, 3] } },
+        //offset: 1 * 10,
+    };
+    
+    */
+    // prettier-ignore
+    Group.findById(idGroup,"expenses")
+        .then(expenses => {
+            /*
+            Expense.find({_id : {$in: expenses['expenses']}})
+            .skip((page-1)*4)
+            .limit(4)
+            .then(exp =>{
+                //console.log(exp)
+                res.status(200).json(exp)
+            })
+            .catch(error =>{
+                console.log(error)
+                res.status(500).json(error)
+            })
+            */
+           const match = Object.assign({_id : {$in: expenses['expenses']}}, isExpenditure, cena, queryinput);
+           Expense.paginate(match,{limit: 4, page: page ,options})
+           .then(exp =>{
+            //console.log(exp)
+                res.status(200).json(exp)
+            })
+            .catch(error =>{
+                console.log(error)
+                res.status(500).json(error)
+            })
+        })
+        .catch(error => {
+            //console.log(error)
+
+            res.status(500).json(error)
+        })
+};
+
 //DODAJ EXPENSE GROUPI
 const addExpenseToGroup = (req, res) => {
     const idGroup = req.params.idGroup;
-    console.log(idGroup);
+
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
     }
@@ -120,11 +194,15 @@ const addExpenseToGroup = (req, res) => {
 
 const createExpenseAndAddToGroup = (req, res, group) => {
     const isExpenditure = req.body.isExpenditure;
-    const cost = req.body.cost;
+    const cost = parseFloat(req.body.cost);
     const date = req.body.date;
     const category_name = req.body.category_name;
     const description = req.body.description;
     const created_by = req.body.created_by;
+
+    if (typeof cost !== "number") {
+        return res.status(400).json({ message: "Body element cost must be a number" });
+    }
 
     if (!created_by) {
         return res.status(400).json({ message: "Parameter created_by is not defind" });
@@ -148,14 +226,18 @@ const createExpenseAndAddToGroup = (req, res, group) => {
         },
         (error, expense) => {
             if (error) {
-                res.status(500).json({ message: "Error in database cant create expense", error: error });
+                res.status(500).json({ message: "Error in database cant create expense 2", error: error });
             } else if (!expense) {
                 res.status(404).json({ message: "Cant create expense" });
             } else {
                 group.expenses.push(expense._id);
+                group.balance += isExpenditure ? -cost : cost;
                 group.save((error2, savedGroup) => {
                     if (error2) {
-                        res.status(500).json({ message: "Error in database cant save group with new expense" });
+                        res.status(500).json({
+                            message: "Error in database cant save group with new expense",
+                            error: error2,
+                        });
                     } else if (!savedGroup) {
                         res.status(404).json({ message: "Error cant get group" });
                     } else {
@@ -267,4 +349,5 @@ module.exports = {
     addExpenseToGroup,
     deleteExpenseOfGroup,
     updateExpense,
+    getExpensesByGroupIdWithQueriesWithPagination,
 };

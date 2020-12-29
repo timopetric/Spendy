@@ -15,13 +15,15 @@ import { FirstPageNavbarComponent } from "./shared/components/navbars/navbar-fir
 import { OverviewComponent } from "./shared/components/overview/overview.component";
 import { GraphsComponent } from "./shared/components/graphs/graphs.component";
 import { AnalysisComponent } from "./shared/components/analysis/analysis.component";
-import { SearchComponent } from "./shared/components/search/search.component";
+import { SearchComponent } from "./shared/components/search/search-main/search.component";
 import { GroupsMainComponent } from "./shared/components/groups/groups-main/groups-main.component";
 import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
+import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
+
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SettingsComponent } from "./shared/components/settings/settings.component";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
@@ -38,10 +40,17 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { MatListModule } from "@angular/material/list";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDialogModule } from "@angular/material/dialog";
+import { NgxPaginationModule } from "ngx-pagination";
 import { GroupsModalSettingsComponent } from "./shared/components/groups/groups-modal-settings/groups-modal-settings.component";
 import { GroupsModalUserAddComponent } from "./shared/components/groups/groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "./shared/components/groups/groups-modal-group-add/groups-modal-group-add.component";
 import { ProfileComponent } from "./shared/components/profile/profile.component";
+import { ExpenseComponent } from "./shared/components/search/expense/expense.component";
+import { DbImportDropComponent } from "./shared/components/db-import-drop/db-import-drop.component";
+
+import { NgToggleModule } from "@nth-cloud/ng-toggle";
+import { FormatirajDatumPipe } from "./shared/pipes/formatiraj-datum.pipe";
+import { ShortenDescriptionPipe } from "./shared/pipes/shorten-description.pipe";
 import { ProfileForHistoryComponent } from "./shared/components/profile-for-history/profile-for-history.component";
 import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
 
@@ -65,14 +74,20 @@ import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
         MapDictToArrayPipe,
         ProfileComponent,
         SettingsComponent,
+        AddExpensesComponent,
         GroupsModalSettingsComponent,
         GroupsModalUserAddComponent,
         GroupsModalGroupAddComponent,
+        ExpenseComponent,
+        DbImportDropComponent,
+        FormatirajDatumPipe,
+        ShortenDescriptionPipe,
         ProfileForHistoryComponent,
         ChangeColorPipe,
     ],
     imports: [
         BrowserModule,
+        NgToggleModule,
         BrowserAnimationsModule,
         ChartsModule,
         AppRoutingModule,
@@ -93,6 +108,7 @@ import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
         MatListModule,
         MatExpansionModule,
         MatDialogModule,
+        NgxPaginationModule,
     ],
     providers: [],
     bootstrap: [FrameComponent],

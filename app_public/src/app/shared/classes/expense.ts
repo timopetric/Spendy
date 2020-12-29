@@ -6,4 +6,5 @@ export class Expense {
     category_name: string;
     groupId: string;
     description: string;
+    created_by: string;
 }

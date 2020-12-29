@@ -1,1 +1,36 @@
-<p>groups-modal-group-add works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Kreirajte novo skupino</h3>
+        </mat-card-title>
+        <mat-card-subtitle>Trenutna akcija</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <br />
+        <form class="form">
+            <div class="form-group">
+                <mat-card-title>Kreiraj skupino</mat-card-title>
+                <mat-form-field appearance="outline" class="col-12">
+                    <mat-label>Vnesite ime nove skupine</mat-label>
+                    <input
+                        matInput
+                        [formControl]="dataForm.groupName"
+                        required
+                        name="name"
+                        placeholder="Skupina 3"
+                        title="Vnesite željeno ime"
+                        type="text"
+                    />
+                    <mat-error *ngIf="dataForm.groupName.invalid">{{ groupNameError }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-action-row>
+                <button mat-raised-button color="primary" (click)="addUser()" [disabled]="dataForm.groupName.invalid">
+                    Dodaj skupino&nbsp;&nbsp;&nbsp;<mat-icon>person_add</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -21,7 +21,7 @@ const getAllGroups = async (req, res) => {
 
 //GET GROUP BY ID
 const getGroupById = async (req, res) => {
-    const idGroup = req.params.id;
+    const idGroup = req.params.idGroup;
 
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defind" });
@@ -29,52 +29,108 @@ const getGroupById = async (req, res) => {
 
     // TODO: populate only needed fields in expenses
     Group.findById(idGroup)
-        .populate("expenses")
+        .select("_id name balance userIds adminIds expenses")
+        .populate("expenses", "_id isExpenditure cost date category_name created_by groupId description")
         .populate("userIds", "_id groupIds username name surname mail balance")
-        // .populate("adminIds", "_id groupIds username name surname mail balance")
         .exec((error, group) => {
-            if (error) {
+            if (!group) {
+                res.status(404).json({ message: `Group with id ${idGroup} not found` });
+            } else if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
-            } else if (!group) {
-                res.status(404).json({ message: `Group with ${idGroup} not found` });
             } else {
                 res.status(200).json(group);
             }
         });
 };
 
+// NOT USED
 //CREATE GROUP
-const crateNewGroup = (req, res) => {
-    const name = req.body.name;
-    const balance = req.body.balance;
-    const userIds = req.body.category_name;
-    const adminIds = req.body.adminIds;
-    const expenses = req.body.expenses;
-    Group.create(
-        {
-            name: name,
-            balance: balance,
-            userIds: userIds,
-            adminIds: adminIds,
-            expenses: expenses,
-        },
-        (error, group) => {
-            if (error) {
-                res.status(500).json({ message: "Error in database cant create group", error: error });
-            } else if (!group) {
-                res.status(404).json({ message: `Cant create group` });
-            } else {
-                res.status(200).json({
-                    _id: group._id,
-                    name: group.name,
-                    userIds: group.userIds,
-                    adminIds: group.adminIds,
-                    expenses: group.expenses,
-                    balance: group.balance,
+// const crateNewGroup = (req, res) => {
+//     const name = req.body.name;
+//     const balance = req.body.balance;
+//     const userIds = req.body.category_name;
+//     const adminIds = req.body.adminIds;
+//     const expenses = req.body.expenses;
+//     Group.create(
+//         {
+//             name: name,
+//             balance: balance,
+//             userIds: userIds,
+//             adminIds: adminIds,
+//             expenses: expenses,
+//         },
+//         (error, group) => {
+//             if (error) {
+//                 res.status(500).json({ message: "Error in database cant create group", error: error });
+//             } else if (!group) {
+//                 res.status(404).json({ message: `Cant create group` });
+//             } else {
+//                 res.status(200).json({
+//                     _id: group._id,
+//                     name: group.name,
+//                     userIds: group.userIds,
+//                     adminIds: group.adminIds,
+//                     expenses: group.expenses,
+//                     balance: group.balance,
+//                 });
+//             }
+//         }
+//     );
+// };
+
+const createAndAddToUser = (req, res) => {
+    const idUser = req.body.idUser;
+    const groupName = req.body.groupName;
+
+    if (!idUser || !groupName) {
+        return res.status(404).json({
+            message: "idUser and groupName must present present in the body",
+        });
+    }
+
+    // create one man group and add it to the user
+    const BALANCE_STARTING = 0.0;
+
+    User.findById(idUser)
+        .then((user) => {
+            if (!user) throw new SpendyError("User with this id not found", 404);
+            else
+                return Group.create({
+                    name: groupName,
+                    balance: BALANCE_STARTING,
+                    userIds: [user._id],
+                    adminIds: [user._id],
+                    expenses: [],
                 });
+        })
+        .then((group) => {
+            // console.log("3");
+            // add userid to the users of the group
+            return User.findByIdAndUpdate(idUser, {
+                $push: {
+                    groupIds: group._id,
+                },
+            }).then(() => {
+                return group;
+            });
+        })
+        .then((group) => {
+            return Group.findById(group._id)
+                .select("_id name balance userIds adminIds expenses")
+                .populate("userIds", "_id username name surname mail");
+        })
+        .then((group) => {
+            // console.log("4");
+            res.status(200).json(group);
+        })
+        .catch((error) => {
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else {
+                console.log(error);
+                res.status(500).json({ message: "Error in database", error: error });
             }
-        }
-    );
+        });
 };
 
 const removeUserFromGroup = async (req, res) => {
@@ -85,7 +141,7 @@ const removeUserFromGroup = async (req, res) => {
         return res.status(400).json({ message: "Parameter idGroup and idUser must be defined" });
     }
 
-    User.findById(idUser)
+    User.findByIdAndUpdate(idUser, { $pull: { groupIds: idGroup } })
         .select("_id username name surname mail")
         .then((user) => {
             if (!user) {
@@ -128,16 +184,22 @@ const addUserToGroup = async (req, res) => {
         return res.status(400).json({ message: "Parameter idGroup and mailOfUser must be defined" });
     }
 
-    User.findOne({ mail: mailOfUser })
-        .select("_id username name surname mail")
+    // console.log("#################################");
+    // console.log(idGroup);
+
+    Group.findById(idGroup)
+        .then((group) => {
+            return User.findOneAndUpdate({ mail: mailOfUser }, { $addToSet: { groupIds: group._id } }).select(
+                "_id username name surname mail"
+            );
+        })
         .then((user) => {
             if (!user) {
                 throw new SpendyError("User with this mail does not exist", 404);
-            } else {
+            } else
                 return Group.findByIdAndUpdate(idGroup, { $addToSet: { userIds: user._id } }, { upsert: true })
                     .select("_id name balance userIds adminIds expenses")
                     .populate("userIds", "_id username name surname mail");
-            }
         })
         .then((group) => {
             if (!group) {
@@ -240,57 +302,57 @@ const updateGroup = (req, res) => {
 //     });
 // };
 
-const deleteUserFromGroup = (req, res) => {
-    const idGroup = req.params.idGroup;
-    const idUser = req.params.idUser;
-
-    if (!idGroup || !idUser) {
-        return res.status(404).json({
-            message: "Parameter idGroup and idUser must be defind",
-        });
-    }
-
-    Group.findById(idGroup).exec((error, group) => {
-        if (error) {
-            res.status(500).json({ message: "Error in database cant find group", error: error });
-        } else if (!group) {
-            res.status(404).json({ message: `Cant find group with id ${idGroup}` });
-        } else {
-            group.userIds.remove(idUser);
-            group.save((error2, savedGroup) => {
-                if (error2) {
-                    res.status(500).json({ message: "Error in database cant save group without user", error: error });
-                } else if (!savedGroup) {
-                    res.status(404).json({ message: `Cant save group without user ${idUser}` });
-                } else {
-                    User.findById(idUser).exec((userErr, user) => {
-                        if (userErr) {
-                            res.status(500).json({ message: "Error in database cant find user", error: error });
-                        } else if (!user) {
-                            res.status(404).json({ message: `Cant find user with id: ${idUser}` });
-                        } else {
-                            user.groupIds.remove(idGroup);
-                            user.save((saveUserErr, savedUser) => {
-                                if (saveUserErr) {
-                                    res.status(500).json({
-                                        message: "Error in database cant save user without idGroup",
-                                        error: error,
-                                    });
-                                } else if (!savedUser) {
-                                    res.status(404).json({
-                                        message: `Error in database cant save user without idGroup with idUser : ${idUser}`,
-                                    });
-                                } else {
-                                    res.status(200).json({ message: "Deleting was successfully" });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    });
-};
+// const deleteUserFromGroup = (req, res) => {
+//     const idGroup = req.params.idGroup;
+//     const idUser = req.params.idUser;
+//
+//     if (!idGroup || !idUser) {
+//         return res.status(404).json({
+//             message: "Parameter idGroup and idUser must be defind",
+//         });
+//     }
+//
+//     Group.findById(idGroup).exec((error, group) => {
+//         if (error) {
+//             res.status(500).json({ message: "Error in database cant find group", error: error });
+//         } else if (!group) {
+//             res.status(404).json({ message: `Cant find group with id ${idGroup}` });
+//         } else {
+//             group.userIds.remove(idUser);
+//             group.save((error2, savedGroup) => {
+//                 if (error2) {
+//                     res.status(500).json({ message: "Error in database cant save group without user", error: error });
+//                 } else if (!savedGroup) {
+//                     res.status(404).json({ message: `Cant save group without user ${idUser}` });
+//                 } else {
+//                     User.findById(idUser).exec((userErr, user) => {
+//                         if (userErr) {
+//                             res.status(500).json({ message: "Error in database cant find user", error: error });
+//                         } else if (!user) {
+//                             res.status(404).json({ message: `Cant find user with id: ${idUser}` });
+//                         } else {
+//                             user.groupIds.remove(idGroup);
+//                             user.save((saveUserErr, savedUser) => {
+//                                 if (saveUserErr) {
+//                                     res.status(500).json({
+//                                         message: "Error in database cant save user without idGroup",
+//                                         error: error,
+//                                     });
+//                                 } else if (!savedUser) {
+//                                     res.status(404).json({
+//                                         message: `Error in database cant save user without idGroup with idUser : ${idUser}`,
+//                                     });
+//                                 } else {
+//                                     res.status(200).json({ message: "Deleting was successfully" });
+//                                 }
+//                             });
+//                         }
+//                     });
+//                 }
+//             });
+//         }
+//     });
+// };
 
 // TODO: ALI JE PROBLEM ČE IZBRIŠEMO SKUPINO UPORABNIKA?
 const removeGroupById = (req, res) => {
@@ -309,28 +371,28 @@ const removeGroupById = (req, res) => {
             //console.log(deletedGroup.expenses);
             try {
                 const deleted = await Expense.deleteMany({ _id: { $in: deletedGroup.expenses } });
-                console.log(deleted);
-                console.log(deletedGroup);
+                // console.log(deleted);
+                // console.log(deletedGroup);
                 return deletedGroup;
             } catch (error) {
                 //console.log("nek error je kao");
-                console.log(error);
+                // console.log(error);
                 throw new SpendyError("Cant delete expenses of group", 404);
             }
         })
         .then(async (deletedGroup) => {
-            console.log("hehe tle se ustau");
-            console.log(deletedGroup);
+            // console.log("hehe tle se ustau");
+            // console.log(deletedGroup);
             try {
                 const updated = await User.updateMany(
                     { _id: { $in: deletedGroup.userIds } },
                     { $pull: { groupIds: { $in: [idGroup] } } },
                     { multi: true }
                 );
-                console.log(updated);
+                // console.log(updated);
                 return deletedGroup;
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 throw new SpendyError("Cant update users of group", 404);
             }
         })
@@ -345,9 +407,9 @@ const removeGroupById = (req, res) => {
 module.exports = {
     getAllGroups,
     getGroupById,
-    crateNewGroup,
     addUserToGroup,
     updateGroup,
     removeGroupById,
     removeUserFromGroup,
+    createAndAddToUser,
 };

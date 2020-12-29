@@ -2,26 +2,20 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { Expense } from "../classes/expense";
+import { addExpense } from "../classes/addExpense";
 import { Group } from "../classes/group";
 
 @Injectable({
     providedIn: "root",
 })
-
-/* router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
-router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
-router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
-router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup); */
 export class ExpensesDataService {
     constructor(private http: HttpClient) {}
 
     private API_URL = environment.apiUrl;
     private API_URL_EXPENSES = environment.apiUrl + "/expenses";
 
-    private GROUP_ID = "5fbeb5e3a48a39a6199e6719";
-
-    public addExpenseToGroup(idGroup: string, expense: Expense): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses`;
+    public addExpenseToGroup(idGroup: string, expense: addExpense): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses`;
         return this.http
             .post(url, expense)
             .toPromise()
@@ -30,7 +24,7 @@ export class ExpensesDataService {
     }
 
     public getExpensesByGroupId(idGroup: string): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses`;
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses?date=desc`;
         return this.http
             .get(url)
             .toPromise()
@@ -38,8 +32,38 @@ export class ExpensesDataService {
             .catch(this.proccesError);
     }
 
+    public getExpensesByGroupIdQuery(idGroup: string, query: string): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses?${query}`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => odgovor["expenses"] as Expense[])
+            .catch(this.proccesError);
+    }
+
+    public getExpensesByGroupIdPaginated(
+        idGroup: string,
+        page: number,
+        query: string,
+        search: string
+    ): Promise<Expense[]> {
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/page/${page}?${query}${search}`;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(odgovor => {
+                let result = {
+                    aktivnosti: odgovor["docs"],
+                    count: odgovor["totalDocs"],
+                };
+                console.log(result);
+                return result as any;
+            })
+            .catch(this.proccesError);
+    }
+
     public deleteExpenseByGroupId(idGroup: string, idExpense: string): Promise<string> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/${idExpense}`;
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/${idExpense}`;
         return this.http
             .delete(url)
             .toPromise()
@@ -48,7 +72,7 @@ export class ExpensesDataService {
     }
 
     public updateExpenseInGroup(idGroup: string, idExpense: string, expense: Expense): Promise<string> {
-        const url: string = `${this.API_URL}/groups/${this.GROUP_ID}/expenses/${idExpense}`;
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/${idExpense}`;
         return this.http
             .put(url, expense)
             .toPromise()

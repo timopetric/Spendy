@@ -101,6 +101,12 @@ export class GroupsDataService {
             error => this.handleUpdateGroupError(error)
         );
     }
+    addGroup(data: { idUser: string; groupName: string }) {
+        this.http.post(`${API_URL_GROUPS}`, data).subscribe(
+            data => this.handleUpdateGroupData(data, "UPDATED"),
+            error => this.handleUpdateGroupError(error)
+        );
+    }
     private handleUpdateGroupData(data?, message?: string, groupId?: string) {
         if (data && message !== "DELETED") {
             let groupNew = data as GroupsPopulatedUsersModel;
@@ -119,6 +125,7 @@ export class GroupsDataService {
                 message: "UPDATED",
                 groups: [...this.groups],
             });
+            if (this.groups.length > 0) this.setCurrentGroup(this.groups[0]._id);
         }
     }
     private handleUpdateGroupError(error) {

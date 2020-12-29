@@ -68,4 +68,10 @@ router.get("/db/import", ctrlDb.importDbData);
 router.get("/db/drop", ctrlDb.dropDb);
 // END----------------------------DB IMPORT---------------------------------END
 
+
+// CORS fix
+router.options("/*", function (req, res) {
+    res.status(200).json("OK");
+});
+
 module.exports = router;

@@ -2,13 +2,91 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
+var json2mongo = require("json2mongo");
+
+////////////////////////////////////////////////////////////////////////////
+// run this in project root with mongodb database running in docker to get the database export
+// Users:
+// docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Users > ./app_api/models/user-data-exported.json
+// Groups:
+// docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Groups > ./app_api/models/group-data-exported.json
+// Expenses:
+// docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Expenses > ./app_api/models/expense-data-exported.json
+// DONT FORGET TO CHECK FOR EMPTY FILES AND ADD "[]" TO THEM (W/O ")
+////////////////////////////////////////////////////////////////////////////
 
 ////GET ALL EXPENSES OF GROUP
 const importDbData = async (req, res) => {
-    const userData = require("../models/user-data.json");
-    const groupData = require("../models/groups-data.json");
-    const expenseData = require("../models/expenses-data.json");
+    const userData = json2mongo(require("../models/user-data-exported.json"));
+    const groupData = json2mongo(require("../models/group-data-exported.json"));
+    const expenseData = json2mongo(require("../models/expense-data-exported.json"));
 
+    // const userData = require("../models/user-data.json");
+    // const groupData = require("../models/groups-data.json");
+    // const expenseData = require("../models/expenses-data.json");
+
+    // let userObjs = json2mongo(userData);
+    // let userDbList = [];
+    //
+    // for (let i = 0; i < userObjs.length; i++) {
+    //     let userObj = userObjs[i];
+    //     // console.log(userObj);
+    //     let user = new User();
+    //     user._id = userObj._id;
+    //     user.name = userObj.name;
+    //     user.username = userObj.username;
+    //     user.surname = userObj.surname;
+    //     user.mail = userObj.mail;
+    //     user.balance = userObj.balance;
+    //     user.nakljucnaVrednost = userObj.nakljucnaVrednost;
+    //     user.zgoscenaVrednost = userObj.zgoscenaVrednost;
+    //     user.groupIds = [];
+    //     await user.save();
+    //     // console.log(user);
+    //     userDbList.push(user);
+    // }
+    // // console.log(userDbList);
+    //
+    // let groupObjs = json2mongo(groupData);
+    // let groupDbList = [];
+    //
+    // for (let i = 0; i < groupObjs.length; i++) {
+    //     let groupObj = groupObjs[i];
+    //     // console.log(groupObj);
+    //     let group = new Group();
+    //     group._id = groupObj._id;
+    //     group.name = groupObj.name;
+    //     group.balance = ObjectId(groupObj.balance);
+    //     group.userIds = groupObj.userIds;
+    //     console.log(groupObj);
+    //     console.log(group.userIds);
+    //     // for (let j = 0; j < groupObj.userIds; j++) {
+    //     //     group.userIds.push(groupObj.userIds[j]);
+    //     // }
+    //     group.adminIds = groupObj.adminIds;
+    //     // for (let j = 0; j < groupObj.adminIds; j++) {
+    //     //     group.adminIds.push(groupObj.adminIds[j]);
+    //     // }
+    //     group.expenses = [];
+    //     await group.save();
+    //     // console.log(group);
+    //     groupDbList.push(group);
+    // }
+
+    // console.log(groupDbList);
+
+    // let resMessage = [];
+    //
+    // console.log(userObjs);
+    // User.collection.insertMany(userObjs, function (err, result) {
+    //     if (!err) {
+    //         console.log(result.result);
+    //         console.log(result.result.ok === result.result.n);
+    //     }
+    //     // console.log(err, result);
+    // });
+
+    // res.status(200).json("kek");
     let resMessage = [];
 
     Group.insertMany(groupData, function (err1, result) {

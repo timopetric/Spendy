@@ -1,0 +1,191 @@
+# /api/v2/groups
+paths:
+  # DONE
+  /groups:
+    get:
+      summary: Get all groups
+      description: Returns a list of all groups
+      tags: [Groups]
+      responses:
+        "200":
+          description: An array of groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Group_bare"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No group was found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Groups not found"
+
+    # DONE
+    post:
+      summary: Create a new group
+      description: Create a new group and add it to user
+      tags: [Groups]
+      requestBody:
+        description: Podatki za registracijo
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Group_createNew_request"
+      responses:
+        "200":
+          description: One detailed group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_createNew_response"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "User with this id not found"
+
+  # DONE
+  /groups/{idGroup}:
+    get:
+      summary: Get one detailed group
+      description: Get group with populated expenses and userIds
+      tags: [Groups]
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe7cc18e0fe833da436fbdd
+      responses:
+        "200":
+          description: One detailed group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_populatedExpensesUserIds"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No group was found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Group with id: 5fe7cc18e0fe833da436fbds not found"
+
+  /groups/{idGroup}/users/{idUser}:
+    delete:
+      summary: Remove a user from a group
+      description: Remove a user with id {idUser} from the group with id {idGroup}
+      tags: [Groups]
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe7cc18e0fe833da436fbdd
+        - in: path
+          name: idUser
+          description: id of the user
+          schema:
+            type: string
+          required: true
+          example: 5fe7cc18e0fe833da436fbde
+      responses:
+        "200":
+          description: A group without user with id {idUser}
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_populatedUserIds"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Invalid prameters error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                group not found:
+                  $ref: "#/components/examples/Error_groupId"
+                user not found:
+                  $ref: "#/components/examples/Error_userId"
+
+  /groups/{idGroup}/users:
+    post:
+      summary: Add a user to a group
+      description: Add a user with id {idUser} to the group with id {idGroup}
+      tags: [Groups]
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe7cc18e0fe833da436fbdd
+      requestBody:
+        description: Body of the request
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Group_addUser"
+      responses:
+        "200":
+          description: A group with added user with id {idUser}
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_populatedUserIds"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Invalid body or parameter error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                group not found:
+                  $ref: "#/components/examples/Error_groupId"
+                user not found:
+                  $ref: "#/components/examples/Error_mail"
