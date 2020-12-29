@@ -248,20 +248,23 @@ const updateGroup = (req, res) => {
 
     // DONE please ask before changing response selections and populations. lePigeon
     Group.findByIdAndUpdate(idGroup, req.body)
-        .select("_id name balance userIds adminIds expenses")
-        .populate("userIds", "_id username name surname mail")
         .then((groupUpdated) => {
             if (!groupUpdated) {
                 throw new SpendyError("Group with this id does not exist", 404);
             } else {
-                res.status(200).json(groupUpdated);
+                return Group.findById(idGroup)
+                    .select("_id name balance userIds adminIds expenses")
+                    .populate("userIds", "_id username name surname mail");
             }
+        })
+        .then((group) => {
+            res.status(200).json(group);
         })
         .catch((error) => {
             if (error instanceof SpendyError) {
                 res.status(error.respCode).json({ message: error.message });
             } else if (error.kind === "ObjectId") {
-                res.status(404).json({ message: `Could not find group with id: ${idGroup}` });
+                res.status(404).json({ message: `Group with this id does not exist` });
             } else {
                 console.log(error);
                 res.status(500).json({ message: `Error in database`, error: error });
@@ -404,6 +407,50 @@ const removeGroupById = (req, res) => {
         });
 };
 
+const getGroupsByUserId = async (req, res) => {
+    const idUser = req.params.idUser;
+    if (!idUser) {
+        return res.status(400).json({ message: "Parameter idUser must be defined" });
+    }
+    const populate = req.query.populate;
+    let populateField = "";
+    let populateFields = "";
+    if (populate && populate === "userIds") {
+        populateField = "userIds";
+        populateFields = "_id username name surname mail";
+    }
+
+    User.findById(idUser)
+        .then((user) => {
+            if (!user) {
+                throw new SpendyError("User with this id does not exist.", 404);
+            } else {
+                return Group.find({
+                    _id: {
+                        $in: user.groupIds,
+                    },
+                })
+                    .populate(populateField, populateFields)
+                    .select("_id name balance userIds adminIds expenses");
+            }
+        })
+        .then((groups) => {
+            if (!groups) {
+                throw new SpendyError("This user does not have any groups.", 404);
+            } else {
+                res.status(200).json(groups);
+            }
+        })
+        .catch((error) => {
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else {
+                console.log(error);
+                res.status(500).json({ message: "Error in database", error: error });
+            }
+        });
+};
+
 module.exports = {
     getAllGroups,
     getGroupById,
@@ -412,4 +459,5 @@ module.exports = {
     removeGroupById,
     removeUserFromGroup,
     createAndAddToUser,
+    getGroupsByUserId,
 };

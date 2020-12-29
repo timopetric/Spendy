@@ -100,6 +100,50 @@ paths:
               example:
                 message: "Group with id: 5fe7cc18e0fe833da436fbds not found"
 
+    put:
+      summary: Update a group
+      description: Update a group with supplied body elements
+      tags: [Groups]
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe7cc18e0fe833da436fbdd
+      requestBody:
+        description: Body of the request
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Group_update"
+      responses:
+        "200":
+          description: One detailed group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_populatedUserIds"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No group was found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                groupId is required:
+                  $ref: "#/components/examples/Error_groupId_required"
+                group not found:
+                  $ref: "#/components/examples/Error_groupId"
+
   /groups/{idGroup}/users/{idUser}:
     delete:
       summary: Remove a user from a group

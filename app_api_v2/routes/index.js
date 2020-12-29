@@ -27,7 +27,7 @@ router.delete("/users/:idUser", ctrlUser.deleteUser);
 // router.post("/users", ctrlUser.addUser);
 router.get("/users/name/:name", ctrlUser.getUserByName);
 
-router.get("/users/:idUser/groups", ctrlUser.getGroupsByUserId);
+router.get("/users/:idUser/groups", ctrlGroups.getGroupsByUserId);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START

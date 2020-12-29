@@ -13,6 +13,10 @@ components:
       summary: User with this mail not found
       value:
         message: User with this mail does not exist
+    Error_groupId_required:
+      summary: groupId is required
+      value:
+        message: Parameter {idGroup} must be supplied
 
   schemas:
     Error:
@@ -265,6 +269,37 @@ components:
           type: string
           description: Name of the group
           example: Skupina 10
+
+    Group_update:
+      type: object
+      description: Update the name of the group
+      properties:
+        balance:
+          type: number
+          description: Current balance of the group in €
+          example: 100.9
+        userIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: [5fc01ba0cd9e25474436be60, 5fe8ff7f67c57310401aca3c]
+        adminIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: [5fc01ba0cd9e25474436be60, 5fe8ff7f67c57310401aca3c]
+        expenses:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) expense IDs
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
+        name:
+          type: string
+          description: New name of the group
+          example: Skupina 42
 
     Group_createNew_response:
       type: object
