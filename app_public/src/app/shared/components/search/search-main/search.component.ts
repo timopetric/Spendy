@@ -34,11 +34,18 @@ export class SearchComponent implements OnInit, OnDestroy {
     public query: string = "";
     public search: string = "";
     public searchq: string = "";
+
+    loading = true;
+    apiError = "";
+
     ngOnInit(): void {
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.groupSelected = data;
             this.p = 1;
+            //if (data != null && data != undefined && data != "") {
+            //console.log(data);
             this.getExpensesByGroupId(data);
+            //}
         });
         // this.groupsDataService.getCurrentGroup();
     }
@@ -48,6 +55,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     private getExpensesByGroupId = (idGroup: string): void => {
+        this.loading = true;
         this.message = "Fetching expenses data";
         this.expensesData
             .getExpensesByGroupIdPaginated(idGroup, this.p, this.query, this.searchq)
@@ -56,9 +64,12 @@ export class SearchComponent implements OnInit, OnDestroy {
                 this.message = expenses.length > 0 ? "" : "There are no expenses";
                 this.expenses = expenses["aktivnosti"];
                 this.count = expenses["count"];
+                this.loading = false;
+                this.apiError = "";
             })
             .catch(error => {
                 this.showError(error);
+                this.apiError = "Prislo je do napake pri pridobivanju podatkov";
             });
     };
 

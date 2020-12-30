@@ -63,6 +63,11 @@
             </div>
         </div>
 
+        <div id="spinner-and-error-msg" class="wrapper">
+            <mat-spinner class="inner" *ngIf="loading"></mat-spinner>
+            <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+        </div>
+
         <section class="bg-mix py-3">
             <div
                 class="container-fluid"
