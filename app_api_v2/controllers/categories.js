@@ -53,6 +53,9 @@ const createCategoryAndAddToGroup = (req, res) => {
       if(error){
         res.status(500).json({ message: "Error in database", error: error });
       }
+      if(res1.length == 0) {
+        res.status(400).json({ message: "Group doesnt yet have categories"});
+      }
       let exists = false;
       for(let i = 0 ; i < res1[0].categories.length ; i++){
         let tmp = res1[0].categories[i];
@@ -78,17 +81,27 @@ const createCategoriesForGroup = (req,res) => {
   if(!idGroup){
     res.status(400).json({ message: "idGroup is required!" });
   }
-
-  Category.create(
-    {categories: [{name: "hrana"}], groupId: idGroup},
-    (error, categories) => {
-      if (error) {
+  Category.find({ groupId: idGroup})
+    .select("categories")
+    .exec((error, groupCategories) => {
+      if(error){
         res.status(500).json({ message: "Error in database cant create categories for group", error: error });
-      } else if (!categories) {
-        res.status(404).json({ message: "Cant create categories" });
+      }
+      if(!groupCategories){
+        Category.create(
+          {categories: [{name: "Hrana"},{name: "Luksuz"},{name: "Plača"},{name: "Oblačila"}], groupId: idGroup},
+          (error, categories) => {
+            if (error) {
+              res.status(500).json({ message: "Error in database cant create categories for group", error: error });
+            } else if (!categories) {
+              res.status(404).json({ message: "Cant create categories" });
+            }else{
+              console.log(categories);
+              res.status(200).json({ message: "Adding was successful" });
+            }
+          });
       }else{
-        console.log(categories);
-        res.status(200).json({ message: "Adding was successful" });
+        res.status(409).json({message: "categories for this group already exist!"});
       }
     });
 };
@@ -125,6 +138,9 @@ const updateCategoryForGroup = (req,res) => {
         .then((res1) => {
         if (error) {
           res.status(500).json({ message: "Error in database", error: error });
+        }
+        else if(res1.length == 0) {
+          res.status(400).json({ message: "Group doesnt yet have categories"});
         } else{
           let exists = false;
           for(let i = 0 ; i < res1[0].categories.length ; i++){

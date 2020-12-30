@@ -12,7 +12,7 @@ const categoriesSchema = new mongoose.Schema(
     {
         categories: [
           {
-            name: {type: String, unique:true}
+            name: {type: String}
           },
         ],
         groupId: {

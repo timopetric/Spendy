@@ -9,7 +9,6 @@ import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.
 import { Observable, Subscription } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { map, startWith } from "rxjs/operators";
-import { Subscription } from "rxjs";
 import { Title } from "@angular/platform-browser";
 
 @Component({
