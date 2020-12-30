@@ -6,22 +6,30 @@ const mongoosePaginate = require("mongoose-paginate-v2");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-////////////////////////////////////// CURRENCIES SCHEMA: /////////////////////////////////////////////////////////
-// todo: dodaj še eno shemo hranjenje cen valut, ki se pridobijo enkrat na dan (za grafe)
-const currencySchema = new mongoose.Schema(
+////////////////////////////////////// CATEGORIES SCHEMA: /////////////////////////////////////////////////////////
+// todo: dodaj še eno shemo hranjenje kategorij
+const categoriesSchema = new mongoose.Schema(
     {
-        name: { type: String, required: true },
-        price: { type: Number, required: true, min: 0 },
+        categories: [
+          {
+            name: {type: String}
+          },
+        ],
+        groupId: {
+          ref: "Group",
+          type: Schema.Types.ObjectId,
+        }
+
     },
     {
         timestamps: {
             createdAt: "created_at",
             updatedAt: "updated_at",
         },
-        collection: "Currencies",
+        collection: "Categories",
     }
 );
-const currencyModel = mongoose.model("Currency", currencySchema);
+const categoriesModel = mongoose.model("Category", categoriesSchema);
 
 ////////////////////////////////////// USER SCHEMA: /////////////////////////////////////////////////////////
 

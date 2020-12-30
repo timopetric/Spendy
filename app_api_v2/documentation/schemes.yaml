@@ -483,3 +483,52 @@ components:
           type: string
           description: Email of the user you want to add to the group
           example: "b@b.b"
+
+    Categories:
+      type: object
+      description: Get categories of a group
+      required:
+        - GroupId
+      properties:
+        groupId:
+          type: string
+          description: GroupId of the group of which the categories are
+          example: "5fe7cc18e0fe833da436fbdd"
+
+    addCategory:
+      type: object
+      description: Schema for addings categories to group
+      requred:
+        - category_name
+      properties:
+        category_name:
+          type: string
+          description: Category name to be added in group categories
+          example: "Božičnica"
+
+    deleteCategory:
+      type: object
+      description: Schema for deleting categories from group
+      requred:
+        - category_name
+      properties:
+        category_name:
+          type: string
+          description: Category name to be deleted from group categories
+          example: "Hrana"
+
+    updateCategory:
+      type: object
+      description: Schema for updating categories to group
+      requred:
+        - category_name
+        - new_category_name
+      properties:
+        category_name:
+          type: string
+          description: OLD category name to be changed in group categories
+          example: "Hrana"
+        new_category_name:
+          type: string
+          description: NEW category name to be added in group categories
+          example: "Božičnica"

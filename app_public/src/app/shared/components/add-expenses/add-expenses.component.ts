@@ -6,7 +6,9 @@ import { addExpense } from "../../classes/addExpense";
 import { GroupsDataService } from "../../services/groups-data.service";
 import { AuthenticationService } from "../../services/authentication.service";
 import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.model";
-import { Subscription } from "rxjs";
+import { Observable, Subscription } from "rxjs";
+import { FormControl } from "@angular/forms";
+import { map, startWith } from "rxjs/operators";
 import { Title } from "@angular/platform-browser";
 
 @Component({
@@ -27,6 +29,15 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
     }
     private userGroupsDataSub: Subscription;
     public selectedGroupId = null;
+
+    categories = [];
+    filteredCategories: Observable<string[]>;
+    myControl = new FormControl();
+
+    private _filter(value: string): string[] {
+        const filterValue = value.toLowerCase();
+        return this.categories.filter(options => options.name.toLowerCase().indexOf(filterValue) === 0);
+    }
 
     getIdFromToken() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
@@ -75,7 +86,6 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         Math.floor(this.Expense.cost * 100) / 100 == 0 ? (this.costError = true) : (this.costError = false);
         this.Expense.description.length == 0 ? (this.descriptionError = true) : (this.descriptionError = false);
         this.Expense.date == null ? (this.dateError = true) : (this.dateError = false);
-        console.log(this.Expense.date);
         return !(this.costError || this.descriptionError || this.dateError);
     }
 
@@ -93,7 +103,10 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     public postExpense() {
         this.Expense.group = this.selectedGroupId;
-        console.log(this.Expense);
+        this.groupsDataService.addCategory(this.Expense.group, this.Expense.category_name).then(() => {
+            this.categories.push({ name: this.Expense.category_name });
+            this.updateCategories();
+        });
         if (this.isFilled()) {
             this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
                 this.ponastavi();
@@ -102,12 +115,23 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         }
     }
 
+    public updateCategories() {
+        this.filteredCategories = this.myControl.valueChanges.pipe(
+            startWith(""),
+            map(value => this._filter(value))
+        );
+    }
+
     ngOnInit(): void {
         this.userGroupsDataSub = this.groupsDataService
             .getUserGroupsUpdateListener()
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
                 this.selectedGroupId = this.userGroupsData[0]._id;
+                this.groupsDataService.getCategoriesOfGroup(this.selectedGroupId).then(res => {
+                    this.categories = res[0].categories;
+                    this.updateCategories();
+                });
             });
         this.groupsDataService.getGroupsByUser();
     }
