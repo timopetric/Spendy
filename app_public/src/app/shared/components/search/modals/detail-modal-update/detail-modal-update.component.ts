@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Expense } from "src/app/shared/classes/expense";
+import { ExpensesDataService } from "src/app/shared/services/expenses-data.service";
 
 @Component({
     selector: "app-detail-modal-update",
@@ -9,7 +10,11 @@ import { Expense } from "src/app/shared/classes/expense";
     styleUrls: ["./detail-modal-update.component.css"],
 })
 export class DetailModalUpdateComponent implements OnInit {
-    constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {}
+    constructor(
+        private modalService: NgbModal,
+        public activeModal: NgbActiveModal,
+        private expensesData: ExpensesDataService
+    ) {}
 
     @Input() activity: Expense;
 
@@ -31,5 +36,11 @@ export class DetailModalUpdateComponent implements OnInit {
 
     public submit() {
         console.log(this.activityForm.value);
+        this.expensesData
+            .updateExpenseInGroup(this.activity.groupId, this.activity._id, this.activityForm.value)
+            .then(result => {
+                this.activeModal.close({ message: result["message"], expense: result["expense"] });
+            })
+            .catch(error => {});
     }
 }

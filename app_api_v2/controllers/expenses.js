@@ -334,6 +334,7 @@ const updateExpense = (req, res) => {
                     } else {
                         res.status(200).json({
                             message: `Updating was successful`,
+                            expense: updatedExpense,
                         });
                     }
                 });
