@@ -479,3 +479,14 @@ components:
           type: string
           description: Email of the user you want to add to the group
           example: "b@b.b"
+
+    Categories:
+      type: object
+      description: Get categories of a group
+      required:
+        - GroupId
+      properties:
+        groupId:
+          type: string
+          description: GroupId of the group of which the categories are
+          example: "TODOTAPRAVGA"

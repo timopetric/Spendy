@@ -6,6 +6,7 @@ const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
+const ctrlCategories = require("../controllers/categories");
 var ctrlAuthentication = require("../controllers/authentication");
 
 const jwt = require("express-jwt");
@@ -52,6 +53,16 @@ router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
 router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
+// START--------------------------CATEGORIES-------------------------------START
+router.post("/groups/:idGroup/categories/add", ctrlCategories.createCategoriesForGroup);
+router.post("/groups/:idGroup/categories", ctrlCategories.createCategoryAndAddToGroup);
+router.get("/groups/:idGroup/categories", ctrlCategories.getCategoriesByGroupId);
+router.delete("/groups/:idGroup/categories", ctrlCategories.deleteCategoryForGroup);
+router.put("/groups/:idGroup/categories", ctrlCategories.updateCategoryForGroup);
+
+// END----------------------------CATEGORIES---------------------------------END
+
+
 // START--------------------------DB IMPORT-------------------------------START
 router.get("/db/import", ctrlDb.importDbData);
 router.get("/db/drop", ctrlDb.dropDb);
@@ -86,6 +97,7 @@ var swaggerOptions = {
         "app_api_v2/documentation/users.yaml",
         "app_api_v2/documentation/basics.yaml",
         "app_api_v2/documentation/schemes.yaml",
+        "app_api_v2/documentation/categories.yaml",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);

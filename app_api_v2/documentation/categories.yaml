@@ -1,0 +1,218 @@
+#GET /api/v2/groups/{idGroup}/categories
+post:
+  summary: Get categories by groupId
+  description: Returns categories of a group
+  tags: [Categories]
+  parameters:
+    - in: path
+      name: idGroup
+      description: unique identifier of a group
+      schema:
+        type: string
+      required: true
+      example: 5ded18eb51386c3799833191
+  responses:
+    "200":
+      description: Categories element
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Categories"
+    "500":
+      description: Error in database
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: "#/components/schemas/Error"
+    "404":
+      description: Categories with specified groupId dont exist
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: "#/components/schemas/Error"
+
+paths:
+  group/{idGroup}/categories:
+    get:
+      summary: Get categories by groupId
+      description: Returns categories of a group
+      tags: [ Categories ]
+      parameters:
+        - in: path
+          name: idGroup
+          description: unique identifier of a group
+          schema:
+            type: string
+          required: true
+          example: 5ded18eb51386c3799833191
+      responses:
+        "200":
+          description: Categories element
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Categories"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Error"
+        "404":
+          description: Categories with specified groupId dont exist
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Error"
+
+
+    post:
+      summary: Post one category in group with specified groupId
+      description: Posts another category (if not already existing) into group, specified by groupId, categories
+      tags: [ Categories ]
+      parameters:
+        - in: path
+          name: idGroup
+          description: unique identifier of a group
+          schema:
+            type: string
+          required: true
+          example: 5ded18eb51386c3799833191
+        - in: query
+            name: category_name
+            description: unique name for a category
+            schema:
+              type: string
+            required: true
+            example: "Žepnina"
+      responses:
+        "201":
+          description: Category successfully added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Categories"
+        "400":
+          description: GroupId parameter not provided or Category name not provided
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Error"
+
+        "409":
+          description: Category with such name already exists
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Error"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Error"
+
+    put:
+      summary: Updates category name with another name provided
+        description: Updates specified category name with a given new name, if the new one doesn't exist in categories yet.
+        tags: [ Categories ]
+        parameters:
+          - in: path
+            name: idGroup
+            description: unique identifier of a group
+            schema:
+              type: string
+            required: true
+            example: 5ded18eb51386c3799833191
+          - in: query
+              name: category_name
+              description: unique EXISTING name of a category
+              schema:
+                type: string
+              required: true
+              example: "Žepnina"
+          - in: query
+              name: new_category_name
+              description: unique NEW name for a category
+              schema:
+                type: string
+              required: true
+              example: "Božičnica"
+        responses:
+          "201":
+            description: Category successfully updated
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Categories"
+          "400":
+            description: GroupId, new_category_name or category_name not provided.
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: "#/components/schemas/Error"
+
+          "409":
+            description: Category with such name already exists (for new_category_name)
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: "#/components/schemas/Error"
+          "500":
+            description: Error in database
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes category from group categories
+        description: Deletes specified category from group categories.
+        tags: [ Categories ]
+        parameters:
+          - in: path
+            name: idGroup
+            description: unique identifier of a group
+            schema:
+              type: string
+            required: true
+            example: 5ded18eb51386c3799833191
+          - in: query
+              name: category_name
+              description: unique EXISTING name of a category
+              schema:
+                type: string
+              required: true
+              example: "Žepnina"
+
+        responses:
+          "204":
+            description: Category successfully deleted
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Categories"
+          "400":
+            description: GroupId or which category you want to delete is not specified.
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: "#/components/schemas/Error"
+          "500":
+            description: Error in database
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: "#/components/schemas/Error"
+

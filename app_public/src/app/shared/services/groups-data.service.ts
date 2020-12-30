@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { GroupsPopulatedUsersModel } from "../classes/groups-populated-users.model";
 import { AuthenticationService } from "./authentication.service";
+import { group } from "@angular/animations";
 
 const API_URL_GROUPS = environment.apiUrl + "/groups";
 const API_URL_USERS = environment.apiUrl + "/users";
@@ -31,6 +32,14 @@ export class GroupsDataService {
     }
     getUserGroupsUpdateListener() {
         return this.groupsUpdated.asObservable();
+    }
+
+    //---------- get all categories of a group ------------
+    getCategoriesOfGroup(groupId) {
+        return this.http.get(`${API_URL_GROUPS}/${groupId}/categories`).toPromise();
+    }
+    public addCategory(groupId, category) {
+        return this.http.post(`${API_URL_GROUPS}/${groupId}/categories`, { category_name: category }).toPromise();
     }
 
     // --------- get all groups of user ---------
