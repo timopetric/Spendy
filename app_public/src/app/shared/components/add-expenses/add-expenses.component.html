@@ -94,9 +94,9 @@
                                             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                                                 <mat-option
                                                     *ngFor="let category of filteredCategories | async"
-                                                    [value]="category.name"
+                                                    [value]="category"
                                                 >
-                                                    {{ category.name }}
+                                                    {{ category }}
                                                 </mat-option>
                                             </mat-autocomplete>
                                         </mat-form-field>

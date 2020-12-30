@@ -41,7 +41,7 @@ export class KriptoService {
                 for (let i = 0; i < resData.length; i++) {
                     const datum = new Date(resData[i][0]);
                     const d = datum.getDate();
-                    const m = datum.getMonth();
+                    const m = datum.getMonth() + 1;
                     const l = datum.getFullYear();
                     labels.push(`${d}. ${m}, ${l}`);
                 }
