@@ -406,6 +406,9 @@ const removeGroupById = (req, res) => {
             //console.log(deletedGroup.expenses);
             try {
                 const deleted = await Expense.deleteMany({ _id: { $in: deletedGroup.expenses } });
+                await ctrlCategories.deleteCategoriesOfGroup(idGroup).exec((error, category) => {
+                    if (error) throw new SpendyError("Could not find and delete category for this group", 404);
+                });
                 // console.log(deleted);
                 // console.log(deletedGroup);
                 return deletedGroup;

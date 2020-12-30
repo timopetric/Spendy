@@ -23,8 +23,8 @@ const getCategoriesByGroupId = (req, res) => {
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
-    Category.find({ groupId: idGroup })
-        .select("categories")
+    Category.findOne({ groupId: idGroup })
+        .select("_id categories")
         .exec((error, groupCategories) => {
             if (error) {
                 res.status(500).json({ message: "Error in database", error: error });
@@ -47,14 +47,14 @@ const createCategoryAndAddToGroup = (req, res) => {
         return res.status(400).json({ message: "Body element category_name must be provided" });
     }
 
-    Category.find({ groupId: idGroup })
+    Category.findOne({ groupId: idGroup })
         .then((category) => {
-            if (category.length === 0) {
+            if (!category) {
                 throw new SpendyError("Group doesnt yet have categories", 400);
             } else {
                 Category.findOneAndUpdate({ groupId: idGroup }, { $addToSet: { categories: category_name } }).then(
                     (category) => {
-                        res.status(201).json({ message: "category added" });
+                        res.status(201).json({ message: "Category added" });
                     }
                 );
             }
@@ -73,13 +73,13 @@ const createCategoriesForGroup = (req, res) => {
     if (!idGroup) {
         res.status(400).json({ message: "idGroup is required!" });
     }
-    Category.find({ groupId: idGroup })
+    Category.findOne({ groupId: idGroup })
         .select("categories")
         .exec((error, category) => {
             if (error) {
                 res.status(500).json({ message: "Error in database cant create categories for group", error: error });
             }
-            if (!category || category.length === 0) {
+            if (!category) {
                 createGroupCategories(idGroup)
                     .then((categories) => {
                         if (!categories) {
@@ -132,6 +132,10 @@ const deleteCategoryForGroup = (req, res) => {
     });
 };
 
+const deleteCategoriesOfGroup = (idGroup) => {
+    return Category.findOneAndDelete({ groupId: idGroup });
+};
+
 const updateCategoryForGroup = (req, res) => {
     const idGroup = req.params.idGroup;
     const toDelete = req.body.category_name;
@@ -173,4 +177,5 @@ module.exports = {
     getCategoriesByGroupId,
     updateCategoryForGroup,
     createGroupCategories,
+    deleteCategoriesOfGroup,
 };
