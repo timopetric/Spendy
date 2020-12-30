@@ -6,6 +6,7 @@ import { User } from "../../classes/user.model";
 import { Router } from "@angular/router";
 import { UserSettings } from "../../classes/UserSettings";
 import { Subscription } from "rxjs";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-settings",
@@ -13,7 +14,14 @@ import { Subscription } from "rxjs";
     styleUrls: ["./settings.component.css"],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
-    constructor(public userDataService: UserDataService, private _snackBar: MatSnackBar, private router: Router) {}
+    constructor(
+        public userDataService: UserDataService,
+        private _snackBar: MatSnackBar,
+        private router: Router,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Nastavitve");
+    }
     private userDataSub: Subscription;
 
     loading = true;

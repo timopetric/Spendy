@@ -13,6 +13,14 @@ components:
       summary: User with this mail not found
       value:
         message: User with this mail does not exist
+    Error_groupId_required:
+      summary: groupId is required
+      value:
+        message: Parameter {idGroup} must be supplied
+    Error_group_update_error:
+      summary: Group could not be found/updated
+      value:
+        message: Group with this id does not exist or could not be updated using the data in request body
 
   schemas:
     Error:
@@ -338,6 +346,37 @@ components:
           description: Name of the group
           example: Skupina 10
 
+    Group_update:
+      type: object
+      description: Update the name of the group
+      properties:
+        balance:
+          type: number
+          description: Current balance of the group in €
+          example: 100.9
+        userIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: [5fe7cc18e0fe833da436fbde, 5fe8ff5667c57310401aca38]
+        adminIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) user IDs
+          example: [5fe8ff5667c57310401aca38]
+        expenses:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) expense IDs
+          example: [5fc01ba0cd9e25474436be60, 5fba7cb28a41eb7ee6452713]
+        name:
+          type: string
+          description: New name of the group
+          example: Skupina 42
+
     Group_createNew_response:
       type: object
       description: Returns all groups in the database
@@ -499,7 +538,7 @@ components:
       properties:
         idUser:
           type: string
-          description: user ID
+          description: ID of the user that will be the owner of the gorup
           example: "5fe7cc18e0fe833da436fbde"
         groupName:
           type: string
@@ -517,6 +556,55 @@ components:
           description: Email of the user you want to add to the group
           example: "b@b.b"
 
+    Categories:
+      type: object
+      description: Get categories of a group
+      required:
+        - GroupId
+      properties:
+        groupId:
+          type: string
+          description: GroupId of the group of which the categories are
+          example: "5fe7cc18e0fe833da436fbdd"
+
+    addCategory:
+      type: object
+      description: Schema for addings categories to group
+      requred:
+        - category_name
+      properties:
+        category_name:
+          type: string
+          description: Category name to be added in group categories
+          example: "Božičnica"
+
+    deleteCategory:
+      type: object
+      description: Schema for deleting categories from group
+      requred:
+        - category_name
+      properties:
+        category_name:
+          type: string
+          description: Category name to be deleted from group categories
+          example: "Hrana"
+
+    updateCategory:
+      type: object
+      description: Schema for updating categories to group
+      requred:
+        - category_name
+        - new_category_name
+      properties:
+        category_name:
+          type: string
+          description: OLD category name to be changed in group categories
+          example: "Hrana"
+        new_category_name:
+          type: string
+          description: NEW category name to be added in group categories
+          example: "Božičnica"
+          
     User_getUserById:
       type: object
       description: Returns a user with specified id

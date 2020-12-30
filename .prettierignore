@@ -146,3 +146,5 @@ app_public/yarn-error.log
 app_public/testem.log
 app_public/typings
 # ------------------------- from angular app_public gitignore END ---------------------
+
+app_public/build/**

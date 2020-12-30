@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { KriptoService } from "../../services/kripto.service";
 import { Color, Label } from "ng2-charts";
 import { ChartDataSets, ChartType } from "chart.js";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-analysis",
@@ -9,7 +10,9 @@ import { ChartDataSets, ChartType } from "chart.js";
     styleUrls: ["./analysis.component.css"],
 })
 export class AnalysisComponent implements OnInit {
-    constructor(private kriptoService: KriptoService) {}
+    constructor(private kriptoService: KriptoService, private titleService: Title) {
+        this.titleService.setTitle("Analiza");
+    }
     public loading = true;
     public startDate = "";
     public endDate = "";
@@ -84,6 +87,16 @@ export class AnalysisComponent implements OnInit {
 
     ngOnInit(): void {
         this.getGraphs();
+
+        this.datum.zacetek = this.toDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+        this.datum.konec = this.toDate(new Date(Date.now()));
+    }
+
+    private toDate(datum) {
+        const d = datum.getDate();
+        const m = datum.getMonth() + 1;
+        const l = datum.getFullYear();
+        return `${l}-${m}-${d}`;
     }
 
     private toUnix(datum) {

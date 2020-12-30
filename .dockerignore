@@ -7,3 +7,5 @@ docker-compose*
 .gitignore
 README.md
 LICENSE
+app_public/**
+!app_public/build/**

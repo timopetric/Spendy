@@ -161,50 +161,6 @@ const deleteUser = (req, res) => {
 //         });
 // };
 
-const getGroupsByUserId = async (req, res) => {
-    const idUser = req.params.idUser;
-    if (!idUser) {
-        return res.status(400).json({ message: "Parameter idUser must be defined" });
-    }
-    const populate = req.query.populate;
-    let populateField = "";
-    let populateFields = "";
-    if (populate && populate === "userIds") {
-        populateField = "userIds";
-        populateFields = "_id username name surname mail";
-    }
-
-    User.findById(idUser)
-        .then((user) => {
-            if (!user) {
-                throw new SpendyError("User with this id does not exist.", 404);
-            } else {
-                return Group.find({
-                    _id: {
-                        $in: user.groupIds,
-                    },
-                })
-                    .populate(populateField, populateFields)
-                    .select("_id name balance userIds adminIds expenses");
-            }
-        })
-        .then((groups) => {
-            if (!groups) {
-                throw new SpendyError("This user does not have any groups.", 404);
-            } else {
-                res.status(200).json(groups);
-            }
-        })
-        .catch((error) => {
-            if (error instanceof SpendyError) {
-                res.status(error.respCode).json({ message: error.message });
-            } else {
-                console.log(error);
-                res.status(500).json({ message: "Error in database", error: error });
-            }
-        });
-};
-
 /**
  * GET /api/v2/users/name/:name
  * return a user by his name
@@ -261,4 +217,4 @@ const getUserByName = (req, res) => {
         });
 };
 
-module.exports = { getAllUsers, updateUser, getUserById, deleteUser, getGroupsByUserId, getUserByName };
+module.exports = { getAllUsers, updateUser, getUserById, deleteUser, getUserByName };

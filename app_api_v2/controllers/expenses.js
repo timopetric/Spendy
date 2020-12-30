@@ -23,7 +23,7 @@ const getExpenseById = (req, res) => {
     const idExpense = req.params.idExpense;
 
     if (!idExpense) {
-        return res.status(400).json({ message: "Parameter idExpense must be defind" });
+        return res.status(400).json({ message: "Parameter idExpense must be defined" });
     }
 
     Expense.findById(idExpense).exec((error, expense) => {
@@ -42,7 +42,7 @@ const getExpensesByGroupId = (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
 
     Group.findById(idGroup)
@@ -79,7 +79,7 @@ const getExpensesByGroupIdWithQueries = (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
 
     Group.findById(idGroup, { _id: false })
@@ -120,7 +120,7 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
     /*
     const options = {
@@ -177,7 +177,7 @@ const addExpenseToGroup = (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
 
     Group.findById(idGroup).exec((error, group) => {
@@ -205,13 +205,13 @@ const createExpenseAndAddToGroup = (req, res, group) => {
     }
 
     if (!created_by) {
-        return res.status(400).json({ message: "Parameter created_by is not defind" });
+        return res.status(400).json({ message: "Parameter created_by is not defined" });
     }
 
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
 
     Expense.create(
@@ -255,7 +255,7 @@ const deleteExpenseOfGroup = (req, res) => {
     const idExpense = req.params.idExpense;
 
     if (!idGroup || !idExpense) {
-        return res.status(400).json({ message: "Parameters idGroup and idExpense must be defind" });
+        return res.status(400).json({ message: "Parameters idGroup and idExpense must be defined" });
     }
 
     Group.findById(idGroup)
@@ -277,7 +277,7 @@ const deleteExpenseOfGroupHelper = (req, res, group) => {
     const idExpense = req.params.idExpense;
 
     if (!idExpense) {
-        return res.status(400).json({ message: "Parameter idExpense must be defind" });
+        return res.status(400).json({ message: "Parameter idExpense must be defined" });
     }
 
     Expense.findByIdAndRemove(idExpense, (error, expense) => {
@@ -309,7 +309,7 @@ const updateExpense = (req, res) => {
     const idGroup = req.params.idGroup;
     const idExpense = req.params.idExpense;
     if (!idExpense || !idGroup) {
-        return res.status(400).json({ message: "Parameters idGroup and idExpense must be defind" });
+        return res.status(400).json({ message: "Parameters idGroup and idExpense must be defined" });
     }
 
     Group.findById(idGroup)
@@ -334,6 +334,7 @@ const updateExpense = (req, res) => {
                     } else {
                         res.status(200).json({
                             message: `Updating was successful`,
+                            expense: updatedExpense,
                         });
                     }
                 });

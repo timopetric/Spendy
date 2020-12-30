@@ -1,0 +1,77 @@
+.accordion {
+    margin-top: 20px;
+}
+
+.container {
+    margin: 0;
+}
+
+.btn {
+    color: black;
+    text-decoration: none;
+}
+
+/*#skupina1 {
+    background: #CB3B3B;
+}*/
+
+.accordion > button {
+    text-align: center !important;
+}
+
+.btn:hover {
+    text-decoration: none;
+    color: #cb3b3b;
+}
+
+.btn:visited {
+    text-decoration: none;
+}
+
+#dodaj1,
+#dodaj2 {
+    margin-top: 5px;
+}
+
+#dodaj1,
+#dodaj2 {
+    color: white;
+}
+
+#novaSkupina {
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    color: black;
+    background-color: ghostwhite;
+    border: 0;
+    padding: 0;
+    outline: none;
+}
+
+#novaSkupina:visited {
+    text-decoration: none;
+}
+
+svg:hover {
+    color: #cb3b3b;
+}
+
+#dodajHitro1,
+#dodajHitro2 {
+    text-decoration-color: white !important;
+    margin-top: 10px;
+}
+
+/*#družina:focus, #košarka:focus, #skupina:focus, #šeEnaSkupina:focus, #paŠeEna:focus {
+    background-color: red;
+}*/
+
+@media screen and (max-width: 800px) {
+    svg {
+        bottom: 55px;
+        margin-right: 0;
+        right: 0;
+        position: fixed;
+    }
+}

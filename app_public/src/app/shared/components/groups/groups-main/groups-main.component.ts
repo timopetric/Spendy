@@ -9,6 +9,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { GroupsModalUserAddComponent } from "../groups-modal-user-add/groups-modal-user-add.component";
 import { GroupsModalGroupAddComponent } from "../groups-modal-group-add/groups-modal-group-add.component";
 import { AuthenticationService } from "../../../services/authentication.service";
+import { Title } from "@angular/platform-browser";
 
 const MAX_GROUP_COUNT = 10;
 
@@ -22,8 +23,11 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         private groupsDataService: GroupsDataService,
         public dialog: MatDialog,
         private _snackBar: MatSnackBar,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Skupine");
+    }
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 
@@ -36,7 +40,6 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
 
     getUserId() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
-        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
         return _id;
     }
 
@@ -58,8 +61,10 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.groupSelected = data;
         });
-        this.groupsDataService.getGroupsByUser();
-        this.groupsDataService.getCurrentGroup();
+
+        // navbar avatar comp. calls for old data - with (true) we load new group data on init
+        this.groupsDataService.getGroupsByUser(true);
+        // this.groupsDataService.getCurrentGroup();
     }
 
     ngOnDestroy() {
@@ -99,7 +104,6 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         });
 
         dialogRef.afterClosed().subscribe((groupName?: string) => {
-            console.log("dobil nazaj iz modalnega za dodajanje skupine: " + groupName);
             if (groupName) {
                 this.groupsDataService.addGroup({ idUser: this.getUserId(), groupName: groupName });
             }

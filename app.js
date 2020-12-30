@@ -15,7 +15,7 @@ require("./app_api_v2/models/db");
 //za passport
 require("./app_api_v2/configuration/passport");
 
-var indexRouter = require("./app_server/routes/index");
+// var indexRouter = require("./app_server/routes/index");
 var indexApi = require("./app_api/routes/index");
 var indexApiV2 = require("./app_api_v2/routes/index");
 
@@ -32,23 +32,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, "app_public")));
+app.use(express.static(path.join(__dirname, "app_public", "build")));
 //za inicializacijo passporta
 app.use(passport.initialize());
 
 // CORS
 app.use("/api", (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT,OPTIONS");
     next();
 });
 
-app.use("/", indexRouter);
+//app.use("/api", indexApiV2);
+
+// app.use("/", indexRouter);
 app.use("/api/v1", indexApi);
 app.use("/api/v2", indexApiV2);
 
-app.use(express.static(path.join(__dirname, "public")));
+app.get(
+    /(\/overview)|(\/graphs)|(\/analysis)|(\/search)|(\/groups)|(\/first-page)|(\/profile)|(\/settings)|(\/login)|(\/signup)|(\/add_expenses)|(\/db)/,
+    (req, res, next) => {
+        res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
+    }
+);
+
+// app.use(express.static(path.join(__dirname, "public")));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -58,7 +67,7 @@ app.use(function (req, res, next) {
 // Obvladovanje napak zaradi avtentikacije
 app.use((err, req, res, next) => {
     if (err.name == "UnauthorizedError") {
-        res.status(401).json({ sporočilo: err.name + ": " + err.message });
+        res.status(401).json({ message: err.name + ": " + err.message });
     }
 });
 
