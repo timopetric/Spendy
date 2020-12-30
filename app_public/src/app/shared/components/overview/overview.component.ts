@@ -199,8 +199,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
                 }
             }
         });
-        this.groupsDataService.getGroupsByUser();
-        this.groupsDataService.getCurrentGroup();
+        // this.groupsDataService.getGroupsByUser();
+        // this.groupsDataService.getCurrentGroup();
         this.uporabnik.username = this.getUsernameFromToken() || "";
         this.getUser();
     }

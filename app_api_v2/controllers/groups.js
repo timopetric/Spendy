@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const SpendyError = require("./SpendyError");
+const ctrlCategories = require("../controllers/categories");
 const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
@@ -115,10 +116,19 @@ const createAndAddToUser = (req, res) => {
             });
         })
         .then((group) => {
-            return Group.findById(group._id)
-                .select("_id name balance userIds adminIds expenses")
-                .populate("userIds", "_id username name surname mail");
+            // create the group categories
+            return ctrlCategories.createGroupCategories(group._id).then((categories) => {
+                if (!categories) {
+                    throw new SpendyError("Cant create categories", 404);
+                } else {
+                    // console.log(categories);
+                    return Group.findById(group._id)
+                        .select("_id name balance userIds adminIds expenses")
+                        .populate("userIds", "_id username name surname mail");
+                }
+            });
         })
+
         .then((group) => {
             // console.log("4");
             res.status(200).json(group);
@@ -246,11 +256,33 @@ const updateGroup = (req, res) => {
         res.status(404).json({ message: "Parameter {idGroup} must be supplied" });
     }
 
+    let body = {};
+    if (req.body.userIds) {
+        body["userIds"] = req.body.userIds.split(",");
+    }
+    if (req.body.adminIds) {
+        body["adminIds"] = req.body.adminIds.split(",");
+    }
+    if (req.body.expenses) {
+        body["expenses"] = req.body.expenses.split(",");
+    }
+    if (req.body.balance) {
+        body["balance"] = req.body.balance;
+    }
+    if (req.body.name) {
+        body["name"] = req.body.name;
+    }
+    // console.log("###################");
+    // console.log(body);
+
     // DONE please ask before changing response selections and populations. lePigeon
-    Group.findByIdAndUpdate(idGroup, req.body)
+    Group.findByIdAndUpdate(idGroup, body)
         .then((groupUpdated) => {
             if (!groupUpdated) {
-                throw new SpendyError("Group with this id does not exist", 404);
+                throw new SpendyError(
+                    "Group with this id does not exist or could not be updated using the data in request body",
+                    404
+                );
             } else {
                 return Group.findById(idGroup)
                     .select("_id name balance userIds adminIds expenses")

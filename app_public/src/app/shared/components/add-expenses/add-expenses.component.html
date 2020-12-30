@@ -70,31 +70,44 @@
 
                             <div class="row">
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <select
+                                    <!--<select
                                         id="category_name"
                                         class="custom-select"
                                         name="category_name"
                                         [(ngModel)]="Expense.category_name"
                                         required
                                     >
-                                        <option value="Hrana">Hrana</option>
-                                        <option value="Avto">Avto</option>
-                                        <option value="Treningi">Treningi</option>
-                                        <option value="Igrice">Igrice</option>
-                                        <option value="Žepnina">Žepnina</option>
-                                        <option value="Plača">Plača</option>
-                                        <option value="Luksuz">Luksuz</option>
-                                    </select>
+                                        <option *ngFor="let category of categories;index as i" [value]="category.name">{{category.name}}</option>
+
+                                    </select> -->
+                                    <form class="example-form">
+                                        <mat-form-field class="example-full-width">
+                                            <input
+                                                type="text"
+                                                placeholder="Izberi Kategorijo"
+                                                aria-label="Number"
+                                                matInput
+                                                [(ngModel)]="Expense.category_name"
+                                                [formControl]="myControl"
+                                                [matAutocomplete]="auto"
+                                            />
+                                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                                <mat-option
+                                                    *ngFor="let category of filteredCategories | async"
+                                                    [value]="category.name"
+                                                >
+                                                    {{ category.name }}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                    </form>
                                     <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <ng-select
-                                        name="group"
-                                        *ngFor="let group of userGroupsData"
-                                        [(ngModel)]="selectedGroupId"
-                                        [clearable]="false"
-                                    >
-                                        <ng-option [value]="group._id">{{ group.name }}</ng-option>
+                                    <ng-select name="group" [(ngModel)]="selectedGroupId" [clearable]="false">
+                                        <ng-option *ngFor="let group of userGroupsData" [value]="group._id">{{
+                                            group.name
+                                        }}</ng-option>
                                     </ng-select>
                                 </div>
                             </div>

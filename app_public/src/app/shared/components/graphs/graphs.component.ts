@@ -170,8 +170,8 @@ export class GraphsComponent implements OnInit, OnDestroy {
                 this.makeGraphData(this.groupSelected);
             }
         });
-        this.groupsDataService.getGroupsByUser();
-        this.groupsDataService.getCurrentGroup();
+        // this.groupsDataService.getGroupsByUser();
+        // this.groupsDataService.getCurrentGroup();
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();

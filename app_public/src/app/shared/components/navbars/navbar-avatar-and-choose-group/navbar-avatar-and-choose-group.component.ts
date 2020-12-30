@@ -21,7 +21,6 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
 
     getUsernameFromToken() {
         let { username } = this.authenticationService.vrniTrenutnegaUporabnika();
-        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
         return username;
     }
 
