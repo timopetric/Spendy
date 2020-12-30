@@ -17,23 +17,36 @@ export class DetailModalComponent implements OnInit {
     ) {}
 
     public message: string;
+    public outputObj: object;
 
     @Input() activity: Expense;
 
     ngOnInit(): void {}
 
     public openModal(activityData) {
-        const modalRef = this.modalService.open(DetailModalUpdateComponent, { centered: true, size: "lg" });
+        const modalRef = this.modalService.open(DetailModalUpdateComponent, {
+            centered: true,
+            size: "lg",
+            backdrop: "static",
+        });
         modalRef.componentInstance.activity = activityData;
+
+        modalRef.result
+            .then(result => {
+                if (result.message === "Updating was successful") {
+                    this.activity = result.expense;
+                    this.outputObj = result;
+                }
+            })
+            .catch(err => {});
     }
 
     public deleteExpense() {
         this.expensesData
             .deleteExpenseByGroupId(this.activity.groupId, this.activity._id)
             .then(message => {
-                console.log(message);
-                this.message = message;
-                this.activeModal.close({ message, item: this.activity._id });
+                this.outputObj = { message: message["message"], item: this.activity._id };
+                this.activeModal.close(this.outputObj);
             })
             .catch(error => {
                 this.showError(error);

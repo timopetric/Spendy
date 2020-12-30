@@ -86,14 +86,30 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     public openModal(activityData) {
-        const modalRef = this.modalService.open(DetailModalComponent, { centered: true, size: "lg" });
-        modalRef.componentInstance.activity = activityData;
-        modalRef.result.then(result => {
-            if (result.message.message === "Deleting was successful") {
-                this.expenses = this.expenses.filter(item => item._id !== result.item);
-                console.log(this.expenses);
-            }
+        const modalRef = this.modalService.open(DetailModalComponent, {
+            centered: true,
+            size: "lg",
+            backdrop: "static",
         });
+        modalRef.componentInstance.activity = activityData;
+
+        modalRef.result
+            .then(result => {
+                if (result != null && result != undefined) {
+                    if (result.message === "Deleting was successful") {
+                        this.expenses = this.expenses.filter(item => item._id !== result.item);
+                    } else if (result.message === "Updating was successful") {
+                        const idExpense = result.expense._id;
+
+                        this.expenses = this.expenses.map(item => {
+                            if (item._id == idExpense) {
+                                return result.expense;
+                            } else return item;
+                        });
+                    }
+                }
+            })
+            .catch(err => {});
     }
 
     private showError = (napaka: any): void => {
