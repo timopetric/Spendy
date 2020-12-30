@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.p = 1;
             this.getExpensesByGroupId(data);
         });
-        this.groupsDataService.getCurrentGroup();
+        // this.groupsDataService.getCurrentGroup();
     }
 
     ngOnDestroy(): void {

@@ -23,7 +23,6 @@ export class GroupsDataService {
 
     getUserId() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
-        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
         return _id;
     }
 
@@ -38,7 +37,7 @@ export class GroupsDataService {
     getCategoriesOfGroup(groupId) {
         return this.http.get(`${API_URL_GROUPS}/${groupId}/categories`).toPromise();
     }
-    public addCategory(groupId, category) {
+    addCategory(groupId, category) {
         return this.http.post(`${API_URL_GROUPS}/${groupId}/categories`, { category_name: category }).toPromise();
     }
 

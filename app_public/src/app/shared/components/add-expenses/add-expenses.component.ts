@@ -41,7 +41,6 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     getIdFromToken() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();
-        // return "5fc44bd3f35a902b3000803c"; // todo: get from token
         return _id || "";
     }
     userGroupsData: GroupsPopulatedUsersModel[] = [];
@@ -133,7 +132,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
                     this.updateCategories();
                 });
             });
-        this.groupsDataService.getGroupsByUser();
+        // this.groupsDataService.getGroupsByUser();
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();
