@@ -24,7 +24,7 @@ const getGroupById = async (req, res) => {
     const idGroup = req.params.idGroup;
 
     if (!idGroup) {
-        return res.status(400).json({ message: "Parameter idGroup must be defind" });
+        return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
 
     // TODO: populate only needed fields in expenses
@@ -311,7 +311,7 @@ const updateGroup = (req, res) => {
 //
 //     if (!idGroup || !idUser) {
 //         return res.status(404).json({
-//             message: "Parameter idGroup and idUser must be defind",
+//             message: "Parameter idGroup and idUser must be defined",
 //         });
 //     }
 //
