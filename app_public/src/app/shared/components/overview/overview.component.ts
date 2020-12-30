@@ -7,6 +7,7 @@ import { GroupsDataService } from "../../services/groups-data.service";
 import { AuthenticationService } from "../../services/authentication.service";
 import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.model";
 import { Subscription } from "rxjs";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-overview",
@@ -17,8 +18,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
     constructor(
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Pregled");
+    }
 
     // todo: extract this to classes folder
     private userGroupsDataSub: Subscription;

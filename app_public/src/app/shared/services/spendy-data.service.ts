@@ -9,7 +9,7 @@ import { environment } from "../../../environments/environment";
 
 import { AuthenticationResult } from "../classes/authentication-result";
 
-const API_URL = environment.apiUrl + "/users";
+const API_URL = environment.apiUrl;
 
 @Injectable({
     providedIn: "root",
@@ -17,10 +17,9 @@ const API_URL = environment.apiUrl + "/users";
 export class SpendyDataService implements OnInit {
     constructor(private http: HttpClient) {}
     ngOnInit() {}
-    private apiUrl = "http://localhost:3000/api/v2";
 
     public getDropDatabase(): Promise<any> {
-        const url: string = `${this.apiUrl}/db/drop`;
+        const url: string = `${API_URL}/db/drop`;
         return this.http
             .get(url)
             .toPromise()
@@ -28,7 +27,7 @@ export class SpendyDataService implements OnInit {
             .catch(napaka => Promise.reject(napaka.error || napaka.message || napaka));
     }
     public getImportDatabase(): Promise<any> {
-        const url: string = `${this.apiUrl}/db/import`;
+        const url: string = `${API_URL}/db/import`;
         return this.http
             .get(url)
             .toPromise()
@@ -45,7 +44,7 @@ export class SpendyDataService implements OnInit {
     }
 
     private avtentikacija(urlNaslov: string, user: User): Promise<AuthenticationResult> {
-        const url: string = `${this.apiUrl}/${urlNaslov}`;
+        const url: string = `${API_URL}/${urlNaslov}`;
         return this.http
             .post(url, user)
             .toPromise()
@@ -54,7 +53,7 @@ export class SpendyDataService implements OnInit {
     }
 
     private avtentikacijaLogin(urlNaslov: string, userLogin: UserLogin): Promise<AuthenticationResult> {
-        const url: string = `${this.apiUrl}/${urlNaslov}`;
+        const url: string = `${API_URL}/${urlNaslov}`;
         return this.http
             .post(url, userLogin)
             .toPromise()
@@ -63,7 +62,7 @@ export class SpendyDataService implements OnInit {
     }
 
     private avtentikacijaSignup(urlNaslov: string, userSignup: UserSignup): Promise<AuthenticationResult> {
-        const url: string = `${this.apiUrl}/${urlNaslov}`;
+        const url: string = `${API_URL}/${urlNaslov}`;
         return this.http
             .post(url, userSignup)
             .toPromise()

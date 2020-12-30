@@ -9,6 +9,8 @@ import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.
 import { Observable, Subscription } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { map, startWith } from "rxjs/operators";
+import { Subscription } from "rxjs";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-add-expenses",
@@ -21,8 +23,11 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         private _snackBar: MatSnackBar,
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Poišči aktivnosti");
+    }
     private userGroupsDataSub: Subscription;
     public selectedGroupId = null;
 

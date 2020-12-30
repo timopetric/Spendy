@@ -7,6 +7,7 @@ import { Subscription } from "rxjs";
 import { GroupsPopulatedUsersModel } from "../../classes/groups-populated-users.model";
 import { ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import { Label } from "ng2-charts";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-graphs",
@@ -17,8 +18,11 @@ export class GraphsComponent implements OnInit, OnDestroy {
     constructor(
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Grafično");
+    }
 
     // todo: extract this to classes folder
     private userGroupsDataSub: Subscription;

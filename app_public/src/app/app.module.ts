@@ -55,6 +55,7 @@ import { ChangeColorPipe } from "./shared/pipes/change-color.pipe";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "./shared/components/search/modals/detail-modal/detail-modal.component";
 import { DetailModalUpdateComponent } from "./shared/components/search/modals/detail-modal-update/detail-modal-update.component";
+import { FormatirajZnesekPipe } from "./shared/pipes/formatiraj-znesek.pipe";
 
 @NgModule({
     declarations: [
@@ -87,6 +88,7 @@ import { DetailModalUpdateComponent } from "./shared/components/search/modals/de
         ChangeColorPipe,
         DetailModalComponent,
         DetailModalUpdateComponent,
+        FormatirajZnesekPipe,
     ],
     imports: [
         BrowserModule,
