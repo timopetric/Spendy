@@ -44,6 +44,8 @@ app.use("/api", (req, res, next) => {
     next();
 });
 
+// app.use("/api", indexApiV2);
+
 // app.use("/", indexRouter);
 app.use("/api/v1", indexApi);
 app.use("/api/v2", indexApiV2);
@@ -51,7 +53,6 @@ app.use("/api/v2", indexApiV2);
 app.get(
     /(\/overview)|(\/graphs)|(\/analysis)|(\/search)|(\/groups)|(\/first-page)|(\/profile)|(\/settings)|(\/login)|(\/signup)|(\/add_expenses)|(\/db)/,
     (req, res, next) => {
-        console.log("Dobil zahtevo za angular stran");
         res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
     }
 );

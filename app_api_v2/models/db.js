@@ -22,12 +22,16 @@ if (process.env.NODE_ENV === "production") {
     dbURI = "mongodb://sp-spendy-mongodb/SpendyDB";
 }
 
-mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-});
+mongoose
+    .connect(dbURI, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 mongoose.connection.on("connected", () => {
     console.log(`Mongoose je povezan na ${dbURI}.`);
@@ -38,7 +42,7 @@ mongoose.connection.on("error", () => {
 });
 
 mongoose.connection.on("disconnected", () => {
-    console.log("Mongoose ni povezan.");
+    console.log("Mongoose povezava prekinjena.");
 });
 
 const pravilnaZaustavitev = (message, callback) => {
