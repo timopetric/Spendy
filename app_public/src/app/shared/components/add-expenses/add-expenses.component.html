@@ -104,13 +104,10 @@
                                     <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <ng-select
-                                        name="group"
-                                        *ngFor="let group of userGroupsData"
-                                        [(ngModel)]="selectedGroupId"
-                                        [clearable]="false"
-                                    >
-                                        <ng-option [value]="group._id">{{ group.name }}</ng-option>
+                                    <ng-select name="group" [(ngModel)]="selectedGroupId" [clearable]="false">
+                                        <ng-option *ngFor="let group of userGroupsData" [value]="group._id">{{
+                                            group.name
+                                        }}</ng-option>
                                     </ng-select>
                                 </div>
                             </div>
