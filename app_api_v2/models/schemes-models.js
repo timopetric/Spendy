@@ -7,19 +7,16 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
 ////////////////////////////////////// CATEGORIES SCHEMA: /////////////////////////////////////////////////////////
-// todo: dodaj še eno shemo hranjenje kategorij
 const categoriesSchema = new mongoose.Schema(
     {
-        categories: [
-          {
-            name: {type: String}
-          },
-        ],
+        categories: [String],
+        // {
+        //   name: {type: String}
+        // },
         groupId: {
-          ref: "Group",
-          type: Schema.Types.ObjectId,
-        }
-
+            ref: "Group",
+            type: Schema.Types.ObjectId,
+        },
     },
     {
         timestamps: {

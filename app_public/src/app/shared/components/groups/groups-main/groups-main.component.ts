@@ -104,7 +104,6 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         });
 
         dialogRef.afterClosed().subscribe((groupName?: string) => {
-            console.log("dobil nazaj iz modalnega za dodajanje skupine: " + groupName);
             if (groupName) {
                 this.groupsDataService.addGroup({ idUser: this.getUserId(), groupName: groupName });
             }

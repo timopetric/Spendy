@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const SpendyError = require("./SpendyError");
+const ctrlCategories = require("../controllers/categories");
 const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
@@ -115,10 +116,19 @@ const createAndAddToUser = (req, res) => {
             });
         })
         .then((group) => {
-            return Group.findById(group._id)
-                .select("_id name balance userIds adminIds expenses")
-                .populate("userIds", "_id username name surname mail");
+            // create the group categories
+            return ctrlCategories.createGroupCategories(group._id).then((categories) => {
+                if (!categories) {
+                    throw new SpendyError("Cant create categories", 404);
+                } else {
+                    // console.log(categories);
+                    return Group.findById(group._id)
+                        .select("_id name balance userIds adminIds expenses")
+                        .populate("userIds", "_id username name surname mail");
+                }
+            });
         })
+
         .then((group) => {
             // console.log("4");
             res.status(200).json(group);
