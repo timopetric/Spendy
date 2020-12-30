@@ -10,6 +10,7 @@ import { Observable, Subscription } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { map, startWith } from "rxjs/operators";
 import { Title } from "@angular/platform-browser";
+import { Categories } from "../../classes/categories";
 
 @Component({
     selector: "app-add-expenses",
@@ -36,7 +37,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     private _filter(value: string): string[] {
         const filterValue = value.toLowerCase();
-        return this.categories.filter(options => options.name.toLowerCase().indexOf(filterValue) === 0);
+        return this.categories.filter(options => options.toLowerCase().indexOf(filterValue) === 0);
     }
 
     getIdFromToken() {
@@ -61,7 +62,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         isExpenditure: false,
         cost: 0,
         date: null,
-        category_name: "Hrana",
+        category_name: "",
         group: null,
         description: "",
         created_by: this.getIdFromToken(),
@@ -73,7 +74,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
             isExpenditure: false,
             cost: 0,
             date: null,
-            category_name: "Hrana",
+            category_name: "",
             group: "",
             description: "",
             created_by: this.getIdFromToken(),
@@ -101,9 +102,11 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
     }
 
     public postExpense() {
+        let categoryname = this.Expense.category_name;
+        categoryname = categoryname[0].toUpperCase() + categoryname.slice(1).toLowerCase();
         this.Expense.group = this.selectedGroupId;
-        this.groupsDataService.addCategory(this.Expense.group, this.Expense.category_name).then(() => {
-            this.categories.push({ name: this.Expense.category_name });
+        this.groupsDataService.addCategory(this.Expense.group, categoryname).then(() => {
+            this.categories.push(categoryname);
             this.updateCategories();
         });
         if (this.isFilled()) {
@@ -127,8 +130,10 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
                 this.selectedGroupId = this.userGroupsData[0]._id;
-                this.groupsDataService.getCategoriesOfGroup(this.selectedGroupId).then(res => {
-                    this.categories = res[0].categories;
+                this.groupsDataService.getCategoriesOfGroup(this.selectedGroupId).then(categoriesObj => {
+                    console.log(categoriesObj);
+                    this.categories = categoriesObj.categories;
+                    console.log(this.categories);
                     this.updateCategories();
                 });
             });

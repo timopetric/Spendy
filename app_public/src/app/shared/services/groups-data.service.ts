@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Group } from "../classes/group";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { GroupsPopulatedUsersModel } from "../classes/groups-populated-users.model";
 import { AuthenticationService } from "./authentication.service";
-import { group } from "@angular/animations";
+import { Categories } from "../classes/categories";
 
 const API_URL_GROUPS = environment.apiUrl + "/groups";
 const API_URL_USERS = environment.apiUrl + "/users";
@@ -35,7 +34,13 @@ export class GroupsDataService {
 
     //---------- get all categories of a group ------------
     getCategoriesOfGroup(groupId) {
-        return this.http.get(`${API_URL_GROUPS}/${groupId}/categories`).toPromise();
+        return this.http
+            .get(`${API_URL_GROUPS}/${groupId}/categories`)
+            .toPromise()
+            .then(res => {
+                return res as Categories;
+            })
+            .catch(GroupsDataService.handleError);
     }
     addCategory(groupId, category) {
         return this.http.post(`${API_URL_GROUPS}/${groupId}/categories`, { category_name: category }).toPromise();

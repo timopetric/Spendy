@@ -87,6 +87,16 @@ export class AnalysisComponent implements OnInit {
 
     ngOnInit(): void {
         this.getGraphs();
+
+        this.datum.zacetek = this.toDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+        this.datum.konec = this.toDate(new Date(Date.now()));
+    }
+
+    private toDate(datum) {
+        const d = datum.getDate();
+        const m = datum.getMonth() + 1;
+        const l = datum.getFullYear();
+        return `${l}-${m}-${d}`;
     }
 
     private toUnix(datum) {
