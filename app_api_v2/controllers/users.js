@@ -247,13 +247,14 @@ const getUserByName = (req, res) => {
     User.findOne()
         .where("name")
         .equals(name)
+        .select("_id groupIds username name surname mail balance")
         .exec((napaka, user) => {
             if (!user) {
                 return res.status(404).json({
                     Sporočilo: "Uporabnik s tem imenom ne obstaja",
                 });
             } else if (napaka) {
-                return res.status(500).json(napaka);
+                return res.status(500).json({ message: "Error in database", error: napaka });
             } else {
                 return res.status(200).json(user);
             }
