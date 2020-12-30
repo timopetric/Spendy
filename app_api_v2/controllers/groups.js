@@ -246,11 +246,33 @@ const updateGroup = (req, res) => {
         res.status(404).json({ message: "Parameter {idGroup} must be supplied" });
     }
 
+    let body = {};
+    if (req.body.userIds) {
+        body["userIds"] = req.body.userIds.split(",");
+    }
+    if (req.body.adminIds) {
+        body["adminIds"] = req.body.adminIds.split(",");
+    }
+    if (req.body.expenses) {
+        body["expenses"] = req.body.expenses.split(",");
+    }
+    if (req.body.balance) {
+        body["balance"] = req.body.balance;
+    }
+    if (req.body.name) {
+        body["name"] = req.body.name;
+    }
+    // console.log("###################");
+    // console.log(body);
+
     // DONE please ask before changing response selections and populations. lePigeon
-    Group.findByIdAndUpdate(idGroup, req.body)
+    Group.findByIdAndUpdate(idGroup, body)
         .then((groupUpdated) => {
             if (!groupUpdated) {
-                throw new SpendyError("Group with this id does not exist", 404);
+                throw new SpendyError(
+                    "Group with this id does not exist or could not be updated using the data in request body",
+                    404
+                );
             } else {
                 return Group.findById(idGroup)
                     .select("_id name balance userIds adminIds expenses")

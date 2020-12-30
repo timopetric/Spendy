@@ -36,7 +36,7 @@ paths:
       description: Create a new group and add it to user
       tags: [Groups]
       requestBody:
-        description: Podatki za registracijo
+        description: Data for group creation
         required: true
         content:
           application/x-www-form-urlencoded:
@@ -142,7 +142,7 @@ paths:
                 groupId is required:
                   $ref: "#/components/examples/Error_groupId_required"
                 group not found:
-                  $ref: "#/components/examples/Error_groupId"
+                  $ref: "#/components/examples/Error_group_update_error"
 
   /groups/{idGroup}/users/{idUser}:
     delete:
