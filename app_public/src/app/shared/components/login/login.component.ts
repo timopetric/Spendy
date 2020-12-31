@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication.service";
 import { HistoryService } from "../../services/history.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-login",
@@ -31,8 +32,11 @@ export class LoginComponent implements OnInit {
     constructor(
         private usmerjevalnik: Router,
         private authenticationService: AuthenticationService,
-        private historyService: HistoryService
-    ) {}
+        private historyService: HistoryService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Login");
+    }
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         if (!this.prijavniPodatki.mail || !this.prijavniPodatki.pass) {
