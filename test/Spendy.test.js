@@ -13,7 +13,7 @@
 
     require("chromedriver");
     var webdriver = require("selenium-webdriver");
-    var driver = new webdriver.Builder().forBrowser("chrome").build();
+    // var driver = new webdriver.Builder().forBrowser("chrome").build();
 
     // Parametri
     let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
@@ -48,13 +48,13 @@
         before(() => {
             brskalnik = new Builder()
                 .forBrowser("chrome")
-                // .setChromeOptions(
-                //     new chrome.Options()
-                //         .addArguments("start-maximized")
-                //         .addArguments("disable-infobars")
-                //         .addArguments("allow-insecure-localhost")
-                //         .addArguments("allow-running-insecure-content")
-                // )
+                .setChromeOptions(
+                    new chrome.Options()
+                        // .addArguments("start-maximized")
+                        .addArguments("disable-infobars")
+                        .addArguments("allow-insecure-localhost")
+                        .addArguments("allow-running-insecure-content")
+                )
                 // .usingServer(seleniumStreznikUrl)
                 .build();
         });
@@ -83,18 +83,20 @@
             // });
 
             it("izbriši uporabnika iz podatkovne baze", async function () {
-                // let dockerAtlasBrisiUporabnika =
-                //     "docker exec -i sp-spendy-mongodb bash -c " +
-                //     '"mongo ' +
-                //     '\\"mongodb+srv://spendy.3mzue.mongodb.net/SpendyDB?retryWrites=true&w=majority\\" ' +
-                //     "--username spendy_admin --password a0dfeVEcg4F6rYIf --eval " +
-                //     "'db.Users.remove({mail: \\\"janez@kranjski.net\\\"})'" +
-                //     '"';
-                // exec(dockerAtlasBrisiUporabnika).on("close", (koda) => {
-                //     expect(koda).to.be.equal(0);
-                // });
+                const DOCKER_CONTAINTER_NAME = "sp-spendy-mongodb";
+                // const DOCKER_CONTAINTER_NAME = "lp-02_mongo-db_run_40ef3b7f47e0";
+                let dockerAtlasUserRemove =
+                    "docker exec -i " +
+                    DOCKER_CONTAINTER_NAME +
+                    " bash -c " +
+                    '"mongo \\"mongodb+srv://spendy.3mzue.mongodb.net/SpendyDB\\" ' +
+                    "--username spendy_admin " +
+                    "--password a0dfeVEcg4F6rYIf " +
+                    '--eval \'db.Users.remove({mail: \\"janez@kranjski.net\\"})\'"';
+                exec(dockerAtlasUserRemove).on("close", (koda) => {
+                    expect(koda).to.be.equal(0);
+                });
             });
-            // docker exec -i sp-spendy-mongodb bash -c mongo mongodb+srv://spendy.3mzue.mongodb.net/SpendyDB?retryWrites=true&w=majority\\ --username spendy_admin --password a0dfeVEcg4F6rYIf --eval db.Users.remove({mail: "janez@kranjski.net\\\"})
 
             it("prijava uporabnika", async function () {
                 // let povezava = await brskalnik.findElement(By.xpath("//a[contains(text(), 'Prijava')]"));
@@ -126,7 +128,7 @@
                 priimek.sendKeys(priimek1);
                 let email = await brskalnik.findElement(By.css("input[name='email']"));
                 expect(email).to.not.be.empty;
-                email.sendKeys("ime41@priimek.net");
+                email.sendKeys("janez@kranjski.net");
                 let geslo = await brskalnik.findElement(By.css("input[name='password']"));
                 expect(geslo).to.not.be.empty;
                 geslo.sendKeys("test");
@@ -291,7 +293,7 @@
         // });
 
         after(async () => {
-            // brskalnik.quit();
+            brskalnik.quit();
         });
     } catch (napaka) {
         console.log("Med testom je prišlo do napake!");
