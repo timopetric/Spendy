@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt_2 = require("jsonwebtoken");
 
 // controllers
 const ctrlUser = require("../controllers/users");
@@ -14,13 +15,52 @@ const avtentikacija = jwt({
     secret: process.env.JWT_GESLO,
     userProperty: "payload",
     algorithms: ["HS256"],
+    requestProperty: "username",
 });
+
+console.log(avtentikacija);
+
+const authenticateJWT = (req, res, next) => {
+    console.log("###############");
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(" ")[1];
+
+        jwt_2.verify(token, process.env.JWT_GESLO, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+            console.log(user);
+            // {
+            //   _id: '5fe8ff7f67c57310401aca3c',
+            //   username: 'janez.novak@gmail.com',
+            //   mail: 'janez.novak@gmail.com',
+            //   name: 'Janez',
+            //   surname: 'Novak',
+            //   exp: 1610011277,
+            //   iat: 1609406477
+            // }
+
+            // user._id === id tega uporabnike
+            // preveri če ima dostop do željene skupine, itd.
+
+            router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
+
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
 
 /* Avtentikacija */
 router.post("/registracija", ctrlAuthentication.registracija);
 router.post("/prijava", ctrlAuthentication.prijava);
 
 //START--------------------------USERS-------------------------------START
+// router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/:idUser", ctrlUser.getUserById);
 router.put("/users/:idUser", ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
@@ -61,7 +101,6 @@ router.delete("/groups/:idGroup/categories", ctrlCategories.deleteCategoryForGro
 router.put("/groups/:idGroup/categories", ctrlCategories.updateCategoryForGroup);
 
 // END----------------------------CATEGORIES---------------------------------END
-
 
 // START--------------------------DB IMPORT-------------------------------START
 router.get("/db/import", ctrlDb.importDbData);
