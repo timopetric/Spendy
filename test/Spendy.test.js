@@ -126,7 +126,7 @@
                 priimek.sendKeys(priimek1);
                 let email = await brskalnik.findElement(By.css("input[name='email']"));
                 expect(email).to.not.be.empty;
-                email.sendKeys("ime40@priimek.net");
+                email.sendKeys("ime41@priimek.net");
                 let geslo = await brskalnik.findElement(By.css("input[name='password']"));
                 expect(geslo).to.not.be.empty;
                 geslo.sendKeys("test");
