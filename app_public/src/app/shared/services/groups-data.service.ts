@@ -25,6 +25,11 @@ export class GroupsDataService {
         return _id;
     }
 
+    clearSavedData() {
+        this.groups = null;
+        this.groupSelected = "";
+    }
+
     getGroupSelectionUpdateListener() {
         return this.groupSelectionUpdate.asObservable();
     }

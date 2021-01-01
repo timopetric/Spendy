@@ -22,6 +22,10 @@ export class UserDataService {
         return _id;
     }
 
+    clearSavedData() {
+        this.user = null;
+    }
+
     getUserUpdateListener() {
         return this.userUpdated.asObservable();
     }

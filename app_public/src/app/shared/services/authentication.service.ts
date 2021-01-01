@@ -66,13 +66,10 @@ export class AuthenticationService {
     }
 
     public vrniTrenutnegaUporabnika(): UserTokenData {
-        // console.log(this.jePrijavljen());
-
         if (this.jePrijavljen()) {
             const zeton: string = this.vrniZeton();
             const { _id, username, mail, name, surname } = JSON.parse(this.b64Utf8(zeton.split(".")[1]));
-            // console.log({ _id, username, mail, name, surname });
-            return { _id, username, mail, name, surname } as UserTokenData; // UserTokenData(_id, username, mail, name, surname);
+            return { _id, username, mail, name, surname } as UserTokenData;
         }
     }
 }
