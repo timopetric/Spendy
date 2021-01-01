@@ -30,7 +30,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
     }
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
-    public selectedGroupId = null;
+    public selectedGroupId = "";
 
     categories = [];
     filteredCategories: Observable<string[]>;
@@ -128,22 +128,25 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         );
     }
 
+    getCategoriesForSelectedGroup(selectedGroupid: string) {
+        this.groupsDataService.getCategoriesOfGroup(selectedGroupid).then(categoriesObj => {
+            console.log(categoriesObj);
+            this.categories = categoriesObj.categories;
+            console.log(this.categories);
+            this.updateCategories();
+        });
+    }
+
     ngOnInit(): void {
         this.userGroupsDataSub = this.groupsDataService
             .getUserGroupsUpdateListener()
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
-                //this.selectedGroupId = this.userGroupsData[0]._id;
-                this.groupsDataService.getCategoriesOfGroup(this.selectedGroupId).then(categoriesObj => {
-                    console.log(categoriesObj);
-                    this.categories = categoriesObj.categories;
-                    console.log(this.categories);
-                    this.updateCategories();
-                });
             });
 
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.selectedGroupId = data;
+            this.getCategoriesForSelectedGroup(data);
         });
         // this.groupsDataService.getGroupsByUser();
     }

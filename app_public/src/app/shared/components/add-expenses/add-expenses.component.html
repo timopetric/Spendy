@@ -104,7 +104,12 @@
                                     </form>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
-                                    <ng-select name="group" [(ngModel)]="selectedGroupId" [clearable]="false">
+                                    <ng-select
+                                        name="group"
+                                        [(ngModel)]="selectedGroupId"
+                                        (change)="getCategoriesForSelectedGroup(selectedGroupId)"
+                                        [clearable]="false"
+                                    >
                                         <ng-option *ngFor="let group of userGroupsData" [value]="group._id">{{
                                             group.name
                                         }}</ng-option>

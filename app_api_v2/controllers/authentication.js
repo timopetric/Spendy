@@ -2,6 +2,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const Group = mongoose.model("Group");
 const Uporabnik = mongoose.model("User");
+const ctrlCategories = require("../controllers/categories");
 
 const SpendyError = require("./SpendyError");
 
@@ -35,16 +36,23 @@ const registracija = (req, res) => {
         expenses: [],
     })
         .then((group) => {
-            // console.log("1");
-            const user = new Uporabnik();
-            user.name = reqName;
-            user.surname = reqSurname;
-            user.mail = reqMail;
-            user.balance = BALANCE_STARTING;
-            user.username = reqUsername;
-            user.groupIds = [group._id];
-            user.nastaviGeslo(reqPass);
-            return user.save();
+            return ctrlCategories.createGroupCategories(group._id).then((categories) => {
+                if (!categories) {
+                    throw new SpendyError("Cant create categories", 404);
+                } else {
+                    // console.log(categories);
+                    // console.log("1");
+                    const user = new Uporabnik();
+                    user.name = reqName;
+                    user.surname = reqSurname;
+                    user.mail = reqMail;
+                    user.balance = BALANCE_STARTING;
+                    user.username = reqUsername;
+                    user.groupIds = [group._id];
+                    user.nastaviGeslo(reqPass);
+                    return user.save();
+                }
+            });
         })
         .then((user) => {
             // console.log("3");
