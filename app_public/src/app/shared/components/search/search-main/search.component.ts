@@ -7,6 +7,7 @@ import { Subscription } from "rxjs";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "../modals/detail-modal/detail-modal.component";
 import { Title } from "@angular/platform-browser";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "app-search",
@@ -14,11 +15,14 @@ import { Title } from "@angular/platform-browser";
     styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+    sub: Subscription;
     constructor(
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
         private modalService: NgbModal,
-        private titleService: Title
+        private titleService: Title,
+        private _route: ActivatedRoute,
+        private _router: Router
     ) {
         this.titleService.setTitle("Stroški");
     }
@@ -41,9 +45,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.groupSelected = data;
-            this.p = 1;
             //if (data != null && data != undefined && data != "") {
             //console.log(data);
+
+            this.sub = this._route.queryParams.subscribe(params => {
+                // Defaults to 0 if no query param provided.
+                this.p = +params["page"] || 1;
+                this.navigateToPageNumber(this.p);
+            });
+
             this.getExpensesByGroupId(data);
             //}
         });
@@ -52,6 +62,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.groupSelectionSub.unsubscribe();
+        this.sub.unsubscribe();
     }
 
     private getExpensesByGroupId = (idGroup: string): void => {
@@ -76,6 +87,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     public inc(page) {
         this.p = page;
         this.getExpensesByGroupId(this.groupSelected);
+        this.navigateToPageNumber(page);
         console.log(page);
     }
 
@@ -121,6 +133,21 @@ export class SearchComponent implements OnInit, OnDestroy {
                 }
             })
             .catch(err => {});
+    }
+
+    navigateToPageNumber(page) {
+        // changes the route without moving from the current view or
+        // triggering a navigation event,
+        this._router.navigate([], {
+            relativeTo: this._route,
+            queryParams: {
+                page: page,
+            },
+            queryParamsHandling: "merge",
+            // preserve the existing query params in the route
+            //skipLocationChange: true,
+            // do not trigger navigation
+        });
     }
 
     private showError = (napaka: any): void => {
