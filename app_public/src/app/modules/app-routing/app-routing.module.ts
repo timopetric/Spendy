@@ -15,7 +15,7 @@ import { SettingsComponent } from "../../shared/components/settings/settings.com
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
 import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
-import { AuthGuard } from "./auth-guard";
+// import { AuthGuard } from "./auth-guard";
 
 const routes: Routes = [
     {
@@ -42,42 +42,42 @@ const routes: Routes = [
     {
         path: "overview",
         component: OverviewComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "graphs",
         component: GraphsComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "analysis",
         component: AnalysisComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "search",
         component: SearchComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "groups",
         component: GroupsMainComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "profile",
         component: ProfileComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "settings",
         component: SettingsComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: "add_expenses",
         component: AddExpensesComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
 
     // { path: '**', component: PageNotFoundComponent }
