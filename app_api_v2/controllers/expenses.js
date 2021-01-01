@@ -113,7 +113,6 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
     datum = datum != null || undefined ? { sort: { date: -1 } } : {};
     queryinput = queryinput != null || undefined ? { category_name: { $regex: new RegExp(queryinput, "i") } } : {};
 
-    const match = Object.assign(isExpenditure, cena, queryinput);
     const options = Object.assign(datum);
     //console.log(match);
     //console.log(req.params);
@@ -122,38 +121,10 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
     if (!idGroup) {
         return res.status(400).json({ message: "Parameter idGroup must be defined" });
     }
-    /*
-    const options = {
-        select: "expenses",
-        populate: {
-            path: "expenses",
-            select: "isExpenditure date _id",
-            match: match,
-            options: options2,
-        },
-        page: 1,
-        limit: 3,
-        options: { expenses: { $slice: [0, 3] } },
-        //offset: 1 * 10,
-    };
-    
-    */
+
     // prettier-ignore
     Group.findById(idGroup,"expenses")
         .then(expenses => {
-            /*
-            Expense.find({_id : {$in: expenses['expenses']}})
-            .skip((page-1)*4)
-            .limit(4)
-            .then(exp =>{
-                //console.log(exp)
-                res.status(200).json(exp)
-            })
-            .catch(error =>{
-                console.log(error)
-                res.status(500).json(error)
-            })
-            */
            const match = Object.assign({_id : {$in: expenses['expenses']}}, isExpenditure, cena, queryinput);
            Expense.paginate(match,{limit: 4, page: page ,options})
            .then(exp =>{

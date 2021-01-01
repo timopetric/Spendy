@@ -67,8 +67,12 @@
             <mat-spinner class="inner" *ngIf="loading"></mat-spinner>
             <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
         </div>
-
-        <section class="bg-mix py-3">
+        <section *ngIf="expenses?.length == 0" class="bg-mix py-3 px-3">
+            <div class="alert alert-warning" role="alert">
+                <strong>Opozorilo!</strong> Ta skupina še nima aktivnostni.
+            </div>
+        </section>
+        <section *ngIf="expenses?.length > 0" class="bg-mix py-3">
             <div
                 class="container-fluid"
                 *ngFor="let aktivnost of expenses | paginate: { itemsPerPage: 4, currentPage: p, totalItems: count }"

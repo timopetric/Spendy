@@ -31,11 +31,25 @@
             />
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="prihodek" formControlName="isExpenditure" value="false" />
+            <input
+                class="form-check-input"
+                type="radio"
+                id="prihodek"
+                formControlName="isExpenditure"
+                value="false"
+                [value]="false"
+            />
             <label class="form-check-label" for="radioProhodek">Prihodek</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="odhodek" formControlName="isExpenditure" value="true" />
+            <input
+                class="form-check-input"
+                type="radio"
+                id="odhodek"
+                formControlName="isExpenditure"
+                value="true"
+                [value]="true"
+            />
             <label class="form-check-label" for="radioOdhodek">Odhodek</label>
         </div>
 
