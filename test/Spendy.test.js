@@ -17,7 +17,7 @@
 
     // Parametri
     let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
-    // let aplikacijaUrl = "https://localhost:3000/";
+    // let aplikacijaUrl = "http://localhost:4200/";
     let seleniumStreznikUrl = "http://localhost:4445/wd/hub";
     let brskalnik, jwtZeton;
 
@@ -207,9 +207,9 @@
                     expect(datum).to.not.be.empty;
                     datum.sendKeys(date);
 
-                    // let tip = await brskalnik.findElement(By.css("input[name='category']"));
-                    // expect(tip).to.not.be.empty;
-                    // tip.sendKeys(category);
+                    let tip = await brskalnik.findElement(By.css("input[id='mat-input-0']"));
+                    expect(tip).to.not.be.empty;
+                    tip.sendKeys(category);
 
                     // let skupina = await brskalnik.findElement(By.css("input[name='group']"));
                     // expect(vnosVrednosti).to.not.be.empty;
@@ -223,35 +223,101 @@
                     let gumb = await brskalnik
                         .findElement(By.xpath('//*[@id="content"]/section[2]/div/div/div/form/button'))
                         .click();
+                    // brskalnik.wait(async function () {
+                    //     let keks = await brskalnik.findElement(By.className("mat-simple-snackbar")).then(() => {
+                    //         expect(keks).to.not.be.empty;
+                    //     });
+                    //     // expect(keks).to.not.be.empty;
+                    // }, 1000);
                 });
 
-                it("preglej dodajanje", function () {
-                    // await setTimeout(() => {}, 1000);
+                // it("preglej dodajanje", function () {
+                //     // await setTimeout(() => {}, 1000);
+                //
+                //     brskalnik.wait(async function () {
+                //         let keks = await brskalnik.findElement(By.className("mat-simple-snackbar")).then(() => {
+                //             // expect(keks).to.not.be.empty;
+                //         });
+                //         expect(keks).to.not.be.empty;
+                //     }, 1000);
+                //     // await expect(keks).to.not.be.empty;
+                // });
+            });
 
-                    brskalnik.wait(async function () {
-                        let keks = await brskalnik.findElement(By.className("mat-simple-snackbar")).then(() => {
-                            // expect(keks).to.not.be.empty;
-                        });
-                        expect(keks).to.not.be.empty;
-                    }, 1000);
-                    // await expect(keks).to.not.be.empty;
+            context("Preveri dodajanje prihodka", function () {
+                it("Prehod na stroške", async function () {
+                    // await brskalnik.wait(async function () {
+                    //     let gumb = brskalnik.findElement(By.css("a[href='/search']")).click();
+                    // }, 1000);
+                    // expect(gumb).getText().to.be.equal("Stroški");
+                    // await brskalnik.manage().setTimeouts({ implicit: 10000 });
+                    await brskalnik.sleep(50);
+                    let gumb = brskalnik.findElement(By.css("a[href='/search']")).click();
+                });
+
+                it("Prihodek je dodan", async function () {
+                    await pocakajStranNalozena(brskalnik, 10, "//h4");
+                    let poisciAktivnosti = await brskalnik.findElement(By.css("i[class='fas fa-arrow-up']"));
+                    expect(poisciAktivnosti).to.not.be.empty;
+                });
+            });
+            let price = 300;
+            context("Urejanje dohodka", async function () {
+                it("Spremeni ceno ", async function () {
+                    let pritiskNaDohodek = await brskalnik.findElement(By.css("i[class='fas fa-arrow-up']")).click();
+                    let pritiskNaUredi = await brskalnik.findElement(By.css("button[class='btn btn-warning']")).click();
+                    let cena = await brskalnik.findElement(By.css("input[id='znesek']"));
+                    expect(cena).to.not.be.empty;
+                    await cena.clear();
+                    cena.sendKeys(price);
+                    await brskalnik.sleep(50);
+                    let spremeniCeno = await brskalnik.findElement(By.css("button[id='formButtonSubmit']")).getText();
+                    expect(spremeniCeno).to.be.equal("Submit");
+                    spremeniCeno = await brskalnik.findElement(By.css("button[id='formButtonSubmit']")).click();
+                });
+                it("Preveri urejanje dohodka", async function () {
+                    // let preglejCeno = await brskalnik.findElement(By.css("div[class='cost']")).getText();
+                    let zapriOkno = await brskalnik.findElement(By.css("button[class='btn btn-secondary']")).click();
+                    let spremenjenaCena = await brskalnik
+                        .findElement(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[2]/h4'))
+                        .getText();
+                    expect(spremenjenaCena).to.be.equal(price.toString() + " €");
                 });
             });
 
             // context("dodaj odhodek", function () {
-            //     it("besedilo informacij o aplikaciji", async function () {
-            //         let besedilo = await brskalnik.findElement(
-            //             By.xpath("//div[contains(text(), 'lahko odpravite dolgčas')]")
+            //     it("spremeni v odhodek", async function () {
+            //         let gumb = await brskalnik.findElement(
+            //             By.xpath('//*[@id="content"]/section[2]/div/div/div/form/div[1]/div/ng-toggle/span/span[3]')
             //         );
-            //         expect(besedilo).to.not.be.empty;
-            //         expect(await besedilo.getText()).to.have.string(
-            //             "EduGeoCache se uporablja za " +
-            //                 "iskanje zanimivih lokacij v bližini, kjer lahko " +
-            //                 "odpravite dolgčas."
-            //         );
+            //         expect(gumb).to.not.be.empty;
+            //         await gumb.click();
+            //     });
+            //     it("vnosi", async function () {
+            //         let vnosVrednosti = await brskalnik.findElement(By.css("input[name='cost']"));
+            //         expect(vnosVrednosti).to.not.be.empty;
+            //         await vnosVrednosti.clear();
+            //         vnosVrednosti.sendKeys(cost);
+            //
+            //         let datum = await brskalnik.findElement(By.css("input[name='date']"));
+            //         expect(datum).to.not.be.empty;
+            //         datum.sendKeys(date);
+            //
+            //         // let tip = await brskalnik.findElement(By.css("input[name='category']"));
+            //         // expect(tip).to.not.be.empty;
+            //         // tip.sendKeys(category);
+            //
+            //         // let skupina = await brskalnik.findElement(By.css("input[name='group']"));
+            //         // expect(vnosVrednosti).to.not.be.empty;
+            //         // vnosVrednosti.sendKeys(cost);
+            //         let opis = await brskalnik.findElement(By.css("input[name='description']"));
+            //         expect(opis).to.not.be.empty;
+            //         opis.sendKeys(description);
             //     });
             // });
         });
+
+        describe("Skupine", function () {});
 
         // describe("Informacije o aplikaciji", function () {
         //     this.timeout(30 * 1000);
@@ -292,9 +358,9 @@
         //     });
         // });
 
-        after(async () => {
-            brskalnik.quit();
-        });
+        // after(async () => {
+        //     brskalnik.quit();
+        // });
     } catch (napaka) {
         console.log("Med testom je prišlo do napake!");
     }

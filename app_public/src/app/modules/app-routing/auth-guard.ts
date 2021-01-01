@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
             // redirect to some view explaining what happened
             // console.log(state.url);
             this.historyService.dodajUrl(state.url);
-            this.router.navigateByUrl("/login");
+            this.router.navigateByUrl("/first-page");
             return false;
         } else {
             return true;
