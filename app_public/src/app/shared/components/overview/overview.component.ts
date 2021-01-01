@@ -88,18 +88,22 @@ export class OverviewComponent implements OnInit, OnDestroy {
         },
     };
 
-    public zadnjih5: Expense[] = [];
+    public zadnjih5odhodkov: Expense[] = [];
+    public zadnjih5prihodkov: Expense[] = [];
+    public z5o;
+    public z5p;
     public vs;
     public zadnji;
     public zadnjih5cost;
+    public zadnjih5;
 
-    public last5() {
-        if (this.expenses.length == 0) {
+    public last5(array) {
+        if (array.length == 0) {
             return [];
-        } else if (this.expenses.length < 5) {
-            return this.expenses;
+        } else if (array.length < 5) {
+            return array;
         } else {
-            return this.expenses.slice(0, 5);
+            return array.slice(0, 5);
         }
     }
 
@@ -118,11 +122,17 @@ export class OverviewComponent implements OnInit, OnDestroy {
     public getExpenses(idGroup: string) {
         this.expensesData.getExpensesByGroupIdQuery(idGroup, "date=desc").then(res => {
             this.expenses = res;
-            this.zadnjih5 = this.last5();
-            this.zadnjih5cost = this.prihodkiVSodhodki(this.zadnjih5);
+            this.zadnjih5 = this.last5(this.expenses);
             this.vs = this.prihodkiVSodhodki(this.expenses);
             this.zadnji = this.expenses[this.expenses.length - 1];
         });
+    }
+    public zracuni5(array) {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+        return sum;
     }
 
     public makeGraphData(groupId: string) {
@@ -148,6 +158,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
                     borderColor: "rgb(104,255,99)",
                 };
                 this.barChartData.push(podatki);
+                this.zadnjih5prihodkov = this.last5(tmpData);
+                this.z5p = this.zracuni5(this.zadnjih5prihodkov);
             })
             .then(tmp12 => {
                 this.expensesData.getExpensesByGroupIdQuery(groupId, "isExpenditure=true&date=desc").then(res1 => {
@@ -173,6 +185,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
                     if (this.barChartData.length > 2) {
                         this.barChartData.splice(2, 2);
                     }
+                    this.zadnjih5odhodkov = this.last5(tmpData);
+                    this.z5o = this.zracuni5(this.zadnjih5odhodkov);
                 });
             });
     }

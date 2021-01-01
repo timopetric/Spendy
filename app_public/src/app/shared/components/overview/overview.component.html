@@ -29,7 +29,8 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Stanje</h6>
-                                        <h3 class="font-weight-bold">{{ skupinaBalance }} €</h3>
+                                        <h3 *ngIf="vs >= 0" class="font-weight-bold">+{{ vs }} €</h3>
+                                        <h3 *ngIf="vs < 0" class="font-weight-bold">{{ vs }} €</h3>
                                         <!--<h6 class="text-success">
                         <i class="icon ion-md-arrow-dropup-circle"></i> 50.50%
                       </h6>-->
@@ -49,21 +50,19 @@
                          </h6>-->
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Skupno Prihodki vs. Odhodki</h6>
-                                        <h3 *ngIf="vs >= 0" class="font-weight-bold">+{{ vs }} €</h3>
-                                        <h3 *ngIf="vs < 0" class="font-weight-bold">{{ vs }} €</h3>
+                                        <h6 class="text-muted">Cena zadnjih 5 prihodkov</h6>
+                                        <h3 class="font-weight-bold">+{{ z5p }} €</h3>
                                         <!--<h6 class="text-success">
-                           <i class="icon ion-md-arrow-dropup-circle"></i> 75.50%
+                           <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
                          </h6>-->
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
-                                        <h6 class="text-muted">Cena zadnjih 5 expensov</h6>
-                                        <h3 *ngIf="zadnjih5cost >= 0" class="font-weight-bold">+{{ zadnjih5cost }}</h3>
-                                        <h3 *ngIf="zadnjih5cost < 0" class="font-weight-bold">{{ zadnjih5cost }}</h3>
+                                        <h6 class="text-muted">Cena zadnjih 5 odhodkov</h6>
+                                        <h3 class="font-weight-bold">-{{ z5o }} €</h3>
                                         <!--<h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
                          </h6>-->

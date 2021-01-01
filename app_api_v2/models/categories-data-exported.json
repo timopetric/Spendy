@@ -1,0 +1,98 @@
+[
+    {
+        "_id": {
+            "$oid": "5fefa4ab1d06c61fe0679a6b"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe8ff7f67c57310401aca3b"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:39:39.555Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:39:39.555Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fefa4bef325ed47e8539ddc"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe8ff6c67c57310401aca39"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:39:58.811Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:39:58.811Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fefa4c1f325ed47e8539ddd"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe8ff5667c57310401aca37"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:40:01.289Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:40:01.289Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fefa4c3f325ed47e8539dde"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe8ff2367c57310401aca36"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:40:03.736Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:40:03.736Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fefa4c6f325ed47e8539ddf"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe8ff1f67c57310401aca35"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:40:06.19Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:40:06.19Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fefa4c8f325ed47e8539de0"
+        },
+        "categories": ["Car", "Beauty", "Leisure", "Salary", "Clothes"],
+        "groupId": {
+            "$oid": "5fe7cc18e0fe833da436fbdd"
+        },
+        "created_at": {
+            "$date": "2021-01-01T22:40:08.267Z"
+        },
+        "updated_at": {
+            "$date": "2021-01-01T22:40:08.267Z"
+        },
+        "__v": 0
+    }
+]

@@ -41,15 +41,14 @@ export class ExpensesDataService {
             .catch(this.proccesError);
     }
 
-    public getExpensesByGroupIdPaginated(
-        idGroup: string,
-        page: number,
-        query: string,
-        search: string
-    ): Promise<Expense[]> {
-        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/page/${page}?${query}${search}`;
+    public getExpensesByGroupIdPaginated(idGroup: string, queryParams: any): Promise<Expense[]> {
+        //const url: string = `${this.API_URL}/groups/${idGroup}/expenses/page/${page}?${query}${search}`;
+
+        const url: string = `${this.API_URL}/groups/${idGroup}/expenses/pages`;
         return this.http
-            .get(url)
+            .get(url, {
+                params: queryParams,
+            })
             .toPromise()
             .then(odgovor => {
                 let result = {

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Expense = mongoose.model("Expense");
 const Group = mongoose.model("Group");
+const Categories = mongoose.model("Category");
 const json2mongo = require("json2mongo");
 
 ////////////////////////////////////////////////////////////////////////////
@@ -12,16 +13,19 @@ const json2mongo = require("json2mongo");
 // docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Groups > ./app_api_v2/models/group-data-exported.json
 // Expenses:
 // docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Expenses > ./app_api_v2/models/expense-data-exported.json
+// Categories:
+// docker exec -it sp-spendy-mongodb mongoexport -h localhost -d SpendyDB --jsonArray --pretty --quiet -c Categories > ./app_api_v2/models/categories-data-exported.json
 // DONT FORGET TO CHECK FOR EMPTY FILES AND ADD "[]" TO THEM (W/O ")
 ////////////////////////////////////////////////////////////////////////////
 
 ////GET ALL EXPENSES OF GROUP
 const importDbData = async (req, res) => {
-    let userJson, groupJson, expenseJson;
+    let userJson, groupJson, expenseJson, categoriesJson;
     try {
         userJson = require("../models/user-data-exported.json");
         groupJson = require("../models/group-data-exported.json");
         expenseJson = require("../models/expense-data-exported.json");
+        categoriesJson = require("../models/categories-data-exported.json");
     } catch (err) {
         res.status(409).json(err);
         console.log(err);
@@ -30,6 +34,7 @@ const importDbData = async (req, res) => {
     const userData = json2mongo(userJson);
     const groupData = json2mongo(groupJson);
     const expenseData = json2mongo(expenseJson);
+    const categoriesData = json2mongo(categoriesJson);
 
     // const userData = require("../models/user-data.json");
     // const groupData = require("../models/groups-data.json");
@@ -102,7 +107,7 @@ const importDbData = async (req, res) => {
     Group.insertMany(groupData, function (err1, result) {
         if (err1) {
             console.log("### Group NOT Inserted " + err1);
-            resMessage.push({ Group: "db user import NOT ok", GroupErr: err1 });
+            resMessage.push({ Group: "db group import NOT ok", GroupErr: err1 });
             res.status(409).json(resMessage);
         } else {
             console.log("### Group Inserted");
@@ -120,13 +125,24 @@ const importDbData = async (req, res) => {
                     Expense.insertMany(expenseData, function (err2, result) {
                         if (err2) {
                             console.log("### Expense NOT Inserted " + err2);
-                            resMessage.push({ Expense: "db user import NOT ok", ExpenseErr: err2 });
+                            resMessage.push({ Expense: "db expense import NOT ok", ExpenseErr: err2 });
                             res.status(409).json(resMessage);
                         } else {
                             console.log("### Expense Inserted");
                             resMessage.push({ Expense: "success" });
 
-                            res.status(200).json(resMessage);
+                            Categories.insertMany(categoriesData, function (err3, result) {
+                                if (err3) {
+                                    console.log("### Categories NOT Inserted " + err3);
+                                    resMessage.push({ Categories: "db categories import NOT ok", CategoriesErr: err3 });
+                                    res.status(409).json(resMessage);
+                                } else {
+                                    console.log("### Categories Inserted");
+                                    resMessage.push({ Categories: "success" });
+
+                                    res.status(200).json(resMessage);
+                                }
+                            });
                         }
                     });
                 }

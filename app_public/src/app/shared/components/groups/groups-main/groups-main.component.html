@@ -21,7 +21,6 @@
                                 <mat-panel-title>
                                     <mat-icon class="mr-3">groups</mat-icon> {{ group.name }}
                                 </mat-panel-title>
-                                <mat-panel-description>{{ group.balance }}&nbsp;€</mat-panel-description>
                             </mat-expansion-panel-header>
 
                             <mat-divider></mat-divider>
@@ -49,10 +48,13 @@
                                         class="col-2"
                                         mat-button
                                         *ngIf="
-                                            group.adminIds.includes(getUserId()) &&
-                                            group.userIds.length > 1 &&
-                                            getUserId() !== user._id &&
-                                            !group.adminIds.includes(user._id)
+                                            (group.adminIds.includes(getUserId()) &&
+                                                group.userIds.length > 1 &&
+                                                user._id !== getUserId() &&
+                                                !group.adminIds.includes(user._id)) ||
+                                            (!group.adminIds.includes(getUserId()) &&
+                                                group.userIds.length > 1 &&
+                                                user._id === getUserId())
                                         "
                                         (click)="removeUserFromGroup(group, user._id)"
                                     >
@@ -66,6 +68,7 @@
                                     mat-raised-button
                                     color="primary"
                                     [value]="group._id"
+                                    [disabled]="!group.adminIds.includes(getUserId())"
                                     (click)="openModalGroupUserAdd(group)"
                                 >
                                     Dodaj uporabnika
@@ -73,6 +76,7 @@
                                 <button
                                     mat-raised-button
                                     color="accent"
+                                    [disabled]="!group.adminIds.includes(getUserId())"
                                     (click)="openModalGroupSettings({ group: group, userId: getUserId() })"
                                 >
                                     Nastavitve
