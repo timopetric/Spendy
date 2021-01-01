@@ -4,6 +4,7 @@ import { AuthenticationService } from "../../services/authentication.service";
 import { HistoryService } from "../../services/history.service";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { strict } from "assert";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: "app-signup",
@@ -38,8 +39,11 @@ export class SignupComponent implements OnInit {
     constructor(
         private usmerjevalnik: Router,
         private authenticationService: AuthenticationService,
-        private historyService: HistoryService
-    ) {}
+        private historyService: HistoryService,
+        private titleService: Title
+    ) {
+        this.titleService.setTitle("Signup");
+    }
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         this.prijavniPodatki.balance = 0;

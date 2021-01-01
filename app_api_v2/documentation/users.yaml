@@ -27,3 +27,143 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error"
+
+/users/{idUser}:
+  get:
+    summary: Get a specific user
+    description: Returns the user with requested id
+    tags: [Users]
+    parameters:
+      - in: path
+        name: idUser
+        description: id of the user
+        schema:
+          type: string
+        required: true
+        example: 5fe900054efb621cf4256378
+    responses:
+      "200":
+        description: The user
+        content:
+          application/json:
+            schema:
+              items:
+              $ref: "#/components/schemas/User_getUserById"
+      "404":
+        description: User with said id was not found
+        content:
+          application/json:
+            example:
+              message: "Could not find user with id: 5fe900054efb621cf4256376" #todo: spremeni id
+      "500":
+        description: Eror in database
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+  put: #todo: Potrebno je dodati še body i guess. Tisto kar sploh želiš spremeniti na uporabniku.
+    summary: Update a user
+    description: Update a user with id {idUser}
+    tags: [Users]
+    parameters:
+      - in: path
+        name: idUser
+        description: id of the user that you want to update
+        schema:
+          type: string
+        required: true
+        example: 5fe7cc18e0fe833da436fbdd
+    requestBody:
+      description: Changes to the user
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User_postBody" #todo: ni to še shema za updatanje uporabnika
+    responses:
+      "202":
+        description: Returns an updated user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User_getUserById"
+      "404":
+        description: User with said id was not found
+        content:
+          application/json:
+            example:
+              message: "Could not find user with id: 5fe7cc18e0fe833da436fbds"
+      "500":
+        description: Error in database
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+  delete:
+    summary: Remove a user from a database
+    description: Remove a user with id {idUser} from databse
+    tags: [Users]
+    parameters:
+      - in: path
+        name: idUser
+        description: id of the user you would like to delete
+        schema:
+          type: string
+        required: true
+        example: 5fe7cc18e0fe833da436fbdd #todo: spremeni id uporabnika v veljavnega
+    responses:
+      "204":
+        description: User with id {idUser} was successfully deleted
+#        content:
+#          application/json:
+#            schema:
+#              $ref: #todo: nisem ziher, da ta rabi shemo
+#            example: "User with id: {idUser} successfully deleted"
+      "404":
+        description: No user was found
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error_deleteUser"
+#            example: "User with id: {idUser} not found"
+      "500":
+        description: Error in database
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"
+
+/users/name/{name}:
+  get:
+    summary: Get a user by their name
+    description: Get a user by name {name}
+    tags: [Users]
+    parameters:
+      - in: path
+        name: name
+        description: Name of the user
+        schema:
+          type: string
+        required: true
+        example: France
+    responses:
+      "200":
+        description: A user
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User_getByName"
+      "404":
+        Description: User with this name does not exit
+        content:
+          application/json:
+            example:
+              sporočilo: Uporabnik s tem imenom ne obstaja
+      "500":
+        description: Error in database
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"

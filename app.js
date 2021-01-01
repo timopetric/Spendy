@@ -23,6 +23,14 @@ var app = express();
 
 hbs.registerPartials(path.join(__dirname, "app_server/views/partials")); // partials (navbar, ...)
 
+// Preusmeritev na HTTPS na Heroku
+if (process.env.NODE_ENV === "production") {
+    app.use((req, res, next) => {
+        if (req.header("x-forwarded-proto") !== "https") res.redirect(`https://${req.header("host")}${req.url}`);
+        else next();
+    });
+}
+
 // view engine setup
 app.set("views", path.join(__dirname, "app_server", "views"));
 app.set("view engine", "hbs");

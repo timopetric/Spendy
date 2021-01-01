@@ -61,7 +61,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
 
     private updateFieldsAndSaveUser(data: { message: string; user: User }) {
-        if (data.user !== null) {
+        if (data.message === "OK" || data.message === "UPDATED") {
             this.loading = false;
             this.userForm.name.patchValue(data.user.name);
             this.userForm.surname.patchValue(data.user.surname);
@@ -73,8 +73,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
                 this.openSnackBar("Podatki uspešno posodobljeni!");
             }
         } else {
-            console.log("Can not find user");
+            console.log("Could not update user");
             this.apiError = data.message;
+            this.openSnackBar(data.message);
             this.loading = true;
         }
     }

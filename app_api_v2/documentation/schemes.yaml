@@ -36,6 +36,19 @@ components:
         message: Error in database
         error: optional error describing the database error
 
+    Error_deleteUser:
+      type: object
+      description: Returns errors
+      required: -message
+      properties:
+        message:
+          type: string
+        error:
+          type: string
+      example:
+        message: User with id 5fe90ff7581ae033a4e26ed2 not found
+        error: null
+
     User:
       type: object
       description: \-
@@ -148,6 +161,65 @@ components:
           type: number
           description: Current balance of the user in €
           example: 100.9
+
+    User_getByName:
+      type: object
+      description: \-
+      required:
+        - username
+        - name
+        - surname
+        - mail
+        - pass
+        - balance
+      properties:
+        groupIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) group IDs
+          example: [ "5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713" ]
+        _id:
+          type: string
+          description: Internal database ID of the user
+          example: 5fe7cc18e0fe833da436fbde
+        name:
+          type: string
+          description: Name of the user
+          example: Janez
+        surname:
+          type: string
+          description: Surname of the user
+          example: Novak
+        mail:
+          type: boolean
+          description: Mail address of the user
+          example: j_novak@email.com
+        balance:
+          type: number
+          description: Current balance of the user
+          example: 100.9
+        username:
+          type: integer
+          description: Username of the user
+          example: janez123
+#        nakljucnaVrednost:
+#          type: string
+#          description: Random value of the user
+#          example: 59fffd8a019d242f2a48f253afc0050c
+#        zgoscenaVrednost:
+#          type: string
+#          description: Hash value of the user
+#          example: ee2abb81390cd40088a3e2c413ee3949cbd722fe75f7bb5238d12b1ba6b142e9d7a79edadcd0cc5644b081da4fbe912f73d8a7f723b01f277b53fc01439dfd13
+#        created_at:
+#          type: date
+#          description: Time of user creation(registration)
+#          example: 2020-12-21T20:53:26.019Z
+#        updated_at:
+#          type: date
+#          description: Time of users last update
+#          example: 2020-12-29T16:48:50.590Z
+
 
     User_selection_bare:
       type: object
@@ -532,3 +604,78 @@ components:
           type: string
           description: NEW category name to be added in group categories
           example: "Božičnica"
+          
+    User_getUserById:
+      type: object
+      description: Returns a user with specified id
+      properties:
+        groupIds:
+          type: array
+          items:
+            type: string
+          description: A list of valid(existing) group IDs
+          example: [ "5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713" ]
+        _id:
+          type: string
+          description: Internal database ID of the user
+          example: 5fe900054efb621cf4256378
+        name:
+          type: string
+          description: Name of the user
+          example: Janez
+        surname:
+          type: string
+          description: Surname of the user
+          example: Novak
+        mail:
+          type: boolean
+          description: Mail address of the user
+          example: j_novak@email.com
+        balance:
+          type: number
+          description: Current balance of the user in €
+          example: 100.9
+        username:
+          type: string
+          description: Username of the user
+          example: janez123
+
+    User_postBody:
+      type: object
+      description: body for updating a user
+      required:
+#        - isExpenditure
+#        - cost
+#        - date
+#        - category_name
+#        - created_by
+#        - groupId
+      properties:
+        name:
+          type: string
+          description: The name you want to give to the user
+          example: France
+        surname:
+          type: string
+          description: The surname you weant to give to the user
+          example: Prešeren
+#        password:
+#          type: string
+#          description: New password
+#          example: NekoGeslo todo: kako je z geslom?
+        balance:
+          type: number
+          description: Users new balance
+          example: 500.0
+#        created_by:
+#          type: string
+#          description: user ID
+#          example: "8fc0cca0cd9e25474436rd32"
+#        groupsIds:
+#          type: string
+#          description: A group you want to add the user in
+#          example: a very helpful description
+#        groupId:
+#          type: string
+#          description: A list of valid(existing) group IDs
+#          example: "5fc01ba0cd9e25474436be60"

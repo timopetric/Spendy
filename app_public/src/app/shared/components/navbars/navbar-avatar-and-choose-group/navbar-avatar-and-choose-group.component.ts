@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-users.model";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { HistoryService } from "../../../services/history.service";
+import { UserDataService } from "../../../services/user-data.service";
 
 @Component({
     selector: "app-navbar-avatar-and-choose-group",
@@ -13,22 +14,30 @@ import { HistoryService } from "../../../services/history.service";
 export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
     constructor(
         private groupsDataService: GroupsDataService,
+        private userDataService: UserDataService,
         private authenticationService: AuthenticationService,
         private historyService: HistoryService
     ) {}
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
 
-    getUsernameFromToken() {
-        let { username } = this.authenticationService.vrniTrenutnegaUporabnika();
-        return username;
-    }
-
     userGroupsData: GroupsPopulatedUsersModel[] = [];
     username: string = "";
     groupSelected = "";
     loading = true;
     apiError = "";
+
+    getUsernameFromToken() {
+        let { username } = this.authenticationService.vrniTrenutnegaUporabnika();
+        return username;
+    }
+
+    clearSavedData() {
+        this.userGroupsData = [];
+        this.username = "";
+        this.groupSelected = "";
+        this.apiError = "";
+    }
 
     ngOnInit() {
         this.loading = true;
@@ -57,6 +66,9 @@ export class NavbarAvatarAndChooseGroupComponent implements OnInit, OnDestroy {
     }
 
     public odjava(): void {
+        this.clearSavedData();
+        this.groupsDataService.clearSavedData();
+        this.userDataService.clearSavedData();
         this.authenticationService.odjava();
     }
 }

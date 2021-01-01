@@ -22,6 +22,10 @@ export class UserDataService {
         return _id;
     }
 
+    clearSavedData() {
+        this.user = null;
+    }
+
     getUserUpdateListener() {
         return this.userUpdated.asObservable();
     }
@@ -44,10 +48,12 @@ export class UserDataService {
     getUser(online?: boolean) {
         // todo: add update timer - when 1 minute is over get new data from api
         if (online == true || this.user == null) {
-            this.http.get(`${API_URL}/${this.getUserId()}`).subscribe(
-                data => this.handleUpdateUserData(data),
-                error => this.handleUpdateUserError(error)
-            );
+            let userId = this.getUserId();
+            if (userId)
+                this.http.get(`${API_URL}/${userId}`).subscribe(
+                    data => this.handleUpdateUserData(data),
+                    error => this.handleUpdateUserError(error)
+                );
         } else {
             // return cached user data
             this.userUpdated.next({
@@ -58,10 +64,12 @@ export class UserDataService {
     }
 
     updateUser(data: UserSettings) {
-        this.http.put(`${API_URL}/${this.getUserId()}`, data).subscribe(
-            data => this.handleUpdateUserData(data, "UPDATED"),
-            error => this.handleUpdateUserError(error)
-        );
+        let userId = this.getUserId();
+        if (userId)
+            this.http.put(`${API_URL}/${userId}`, data).subscribe(
+                data => this.handleUpdateUserData(data, "UPDATED"),
+                error => this.handleUpdateUserError(error)
+            );
     }
 
     deleteUser(idUser: string) {

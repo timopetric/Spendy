@@ -46,15 +46,33 @@ const updateUser = (req, res) => {
     if (!idUser) {
         res.status(404).json({ message: "Parameter {idUser} must be supplied" });
     }
+    if (!req.body.name || !req.body.surname || !req.body.pass)
+        res.status(404).json({ message: "Body elements name, surname, pass must be defined" });
 
-    User.findByIdAndUpdate(idUser, req.body)
-        .select("_id groupIds username name surname mail balance")
+    let body = {
+        name: req.body.name,
+        surname: req.body.surname,
+    };
+
+    let reqPass = req.body.pass;
+
+    User.findByIdAndUpdate(idUser, body)
         .then((userUpdated) => {
             if (!userUpdated) {
                 throw new SpendyError("User with this id does not exist", 404);
             } else {
-                res.status(200).json(userUpdated);
+                return userUpdated;
             }
+        })
+        .then((user) => {
+            user.nastaviGeslo(reqPass);
+            return user.save();
+        })
+        .then((user) => {
+            return User.findById(user._id).select("_id groupIds username name surname mail balance");
+        })
+        .then((user) => {
+            res.status(200).json(user);
         })
         .catch((error) => {
             if (error instanceof SpendyError) {
@@ -203,13 +221,14 @@ const getUserByName = (req, res) => {
     User.findOne()
         .where("name")
         .equals(name)
+        .select("_id groupIds username name surname mail balance")
         .exec((napaka, user) => {
             if (!user) {
                 return res.status(404).json({
                     Sporočilo: "Uporabnik s tem imenom ne obstaja",
                 });
             } else if (napaka) {
-                return res.status(500).json(napaka);
+                return res.status(500).json({ message: "Error in database", error: napaka });
             } else {
                 return res.status(200).json(user);
             }

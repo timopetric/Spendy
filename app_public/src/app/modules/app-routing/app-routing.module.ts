@@ -11,11 +11,11 @@ import { SignupComponent } from "../../shared/components/signup/signup.component
 import { FirstPageComponent } from "../../shared/components/first-page/first-page.component";
 import { GroupsMainComponent } from "../../shared/components/groups/groups-main/groups-main.component";
 import { ProfileComponent } from "../../shared/components/profile/profile.component";
-import { profilingEnabled } from "@angular-devkit/build-angular/src/utils/environment-options";
 import { SettingsComponent } from "../../shared/components/settings/settings.component";
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
 import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
+// import { AuthGuard } from "./auth-guard";
 
 const routes: Routes = [
     {
@@ -24,36 +24,8 @@ const routes: Routes = [
         redirectTo: "first-page",
     },
     {
-        path: "overview",
-        component: OverviewComponent,
-    },
-    {
-        path: "graphs",
-        component: GraphsComponent,
-    },
-    {
-        path: "analysis",
-        component: AnalysisComponent,
-    },
-    {
-        path: "search",
-        component: SearchComponent,
-    },
-    {
-        path: "groups",
-        component: GroupsMainComponent,
-    },
-    {
         path: "first-page",
         component: FirstPageComponent,
-    },
-    {
-        path: "profile",
-        component: ProfileComponent,
-    },
-    {
-        path: "settings",
-        component: SettingsComponent,
     },
     {
         path: "login",
@@ -64,12 +36,48 @@ const routes: Routes = [
         component: SignupComponent,
     },
     {
-        path: "add_expenses",
-        component: AddExpensesComponent,
-    },
-    {
         path: "db",
         component: DbImportDropComponent,
+    },
+    {
+        path: "overview",
+        component: OverviewComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "graphs",
+        component: GraphsComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "analysis",
+        component: AnalysisComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "search",
+        component: SearchComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "groups",
+        component: GroupsMainComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "profile",
+        component: ProfileComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "settings",
+        component: SettingsComponent,
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "add_expenses",
+        component: AddExpensesComponent,
+        // canActivate: [AuthGuard],
     },
 
     // { path: '**', component: PageNotFoundComponent }
