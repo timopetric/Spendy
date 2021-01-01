@@ -56,6 +56,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "./shared/components/search/modals/detail-modal/detail-modal.component";
 import { DetailModalUpdateComponent } from "./shared/components/search/modals/detail-modal-update/detail-modal-update.component";
 import { FormatirajZnesekPipe } from "./shared/pipes/formatiraj-znesek.pipe";
+import { ErrorComponent } from "./shared/components/error/error.component";
 
 @NgModule({
     declarations: [
@@ -89,6 +90,7 @@ import { FormatirajZnesekPipe } from "./shared/pipes/formatiraj-znesek.pipe";
         DetailModalComponent,
         DetailModalUpdateComponent,
         FormatirajZnesekPipe,
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,

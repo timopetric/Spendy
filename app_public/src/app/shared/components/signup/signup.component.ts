@@ -72,12 +72,16 @@ export class SignupComponent implements OnInit {
     private izvediRegistracijo(): void {
         this.authenticationService
             .registracija(this.prijavniPodatki)
-            .then(() => this.usmerjevalnik.navigateByUrl("/overview"))
+            .then(() =>
+                this.usmerjevalnik.navigateByUrl(
+                    this.historyService.vrniPredhodnjeUrlNasloveBrezPrijaveInRegistracije()
+                )
+            )
             .catch(sporocilo => (this.napakaNaObrazcu = sporocilo));
     }
     public emailTest(mail: string): boolean {
         const regularExpression = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        console.log("sem tle");
+        // console.log("sem tle");
         return regularExpression.test(String(mail).toLowerCase());
     }
 

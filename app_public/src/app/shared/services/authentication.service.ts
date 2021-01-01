@@ -70,6 +70,6 @@ export class AuthenticationService {
             const zeton: string = this.vrniZeton();
             const { _id, username, mail, name, surname } = JSON.parse(this.b64Utf8(zeton.split(".")[1]));
             return { _id, username, mail, name, surname } as UserTokenData;
-        }
+        } else return new UserTokenData("", "", "", "", "");
     }
 }

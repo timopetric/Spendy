@@ -12,26 +12,35 @@ export class HistoryService {
         this.usmerjevalnik.events
             .pipe(filter(dogodekUsmerjanja => dogodekUsmerjanja instanceof NavigationEnd))
             .subscribe((dogodekUsmerjanja: NavigationEnd) => {
-                console.log(dogodekUsmerjanja);
                 const url = dogodekUsmerjanja.urlAfterRedirects;
-                console.log("################");
-                console.log(this.urlNaslovi);
-                console.log(url);
-                this.urlNaslovi = [...this.urlNaslovi, url];
+                this.dodajUrl(url);
+                // console.log("################");
+                // console.log(dogodekUsmerjanja);
+                // console.log(url);
+                // console.log(this.urlNaslovi);
             });
     }
+
+    public dodajUrl(url) {
+        this.urlNaslovi = [...this.urlNaslovi, url];
+    }
+
     public vrniPredhodnjeUrlNaslove(): string {
         const dolzina = this.urlNaslovi.length;
-        console.log(this.urlNaslovi);
+        // console.log(this.urlNaslovi);
         return dolzina > 1 ? this.urlNaslovi[dolzina - 2] : "/";
     }
 
     public vrniPredhodnjeUrlNasloveBrezPrijaveInRegistracije(): string {
         const izloci: string[] = ["/signup", "/login", "/first-page"];
-        console.log(this.urlNaslovi);
+        // console.log(this.urlNaslovi);
         const filtrirano = this.urlNaslovi.filter(url => !izloci.includes(url));
         const dolzina = filtrirano.length;
         // console.log(filtrirano);
-        return dolzina > 1 ? filtrirano[dolzina - 1] : "/";
+        // console.log("#################################");
+        // console.log(filtrirano);
+        // console.log("THISSS:");
+        // console.log(dolzina > 1 ? filtrirano[dolzina - 1] : "/");
+        return dolzina >= 1 ? filtrirano[dolzina - 1] : "/";
     }
 }
