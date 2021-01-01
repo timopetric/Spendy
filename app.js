@@ -41,6 +41,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "app_public", "build")));
+app.use("/stylesheets", express.static(path.join(__dirname, "public", "stylesheets")));
+app.use("/javascripts", express.static(path.join(__dirname, "public", "javascripts")));
+app.use("/icons", express.static(path.join(__dirname, "public", "icons")));
+
 //za inicializacijo passporta
 app.use(passport.initialize());
 
@@ -59,7 +63,7 @@ app.use("/api/v1", indexApi);
 app.use("/api/v2", indexApiV2);
 
 app.get(
-    /(\/overview)|(\/graphs)|(\/analysis)|(\/search)|(\/groups)|(\/first-page)|(\/profile)|(\/settings)|(\/login)|(\/signup)|(\/add_expenses)|(\/db)/,
+    /(^\/overview$)|(^\/graphs$)|(^\/analysis$)|(^\/search$)|(^\/groups$)|(^\/first-page$)|(^\/profile$)|(^\/settings$)|(^\/login$)|(^\/signup$)|(^\/add_expenses$)|(^\/db$)/,
     (req, res, next) => {
         res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
     }
@@ -67,16 +71,18 @@ app.get(
 
 // app.use(express.static(path.join(__dirname, "public")));
 
+// Obvladovanje napak zaradi avtentikacije
+app.use((err, req, res, next) => {
+    if (err.name === "UnauthorizedError") {
+        res.status(401).json({ message: err.name + ": " + err.message });
+    } else {
+        next();
+    }
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
-});
-
-// Obvladovanje napak zaradi avtentikacije
-app.use((err, req, res, next) => {
-    if (err.name == "UnauthorizedError") {
-        res.status(401).json({ message: err.name + ": " + err.message });
-    }
 });
 
 // error handler

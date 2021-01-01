@@ -15,6 +15,7 @@ import { SettingsComponent } from "../../shared/components/settings/settings.com
 import { AddExpensesComponent } from "../../shared/components/add-expenses/add-expenses.component";
 import { SearchComponent } from "src/app/shared/components/search/search-main/search.component";
 import { DbImportDropComponent } from "../../shared/components/db-import-drop/db-import-drop.component";
+import { ErrorComponent } from "../../shared/components/error/error.component";
 // import { AuthGuard } from "./auth-guard";
 
 const routes: Routes = [
@@ -80,7 +81,7 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
     },
 
-    // { path: '**', component: PageNotFoundComponent }
+    { path: "**", component: ErrorComponent },
 ];
 
 @NgModule({
