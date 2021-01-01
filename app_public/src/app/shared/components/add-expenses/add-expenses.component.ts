@@ -29,6 +29,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         this.titleService.setTitle("Poišči aktivnosti");
     }
     private userGroupsDataSub: Subscription;
+    private groupSelectionSub: Subscription;
     public selectedGroupId = null;
 
     categories = [];
@@ -132,7 +133,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
             .getUserGroupsUpdateListener()
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
                 this.userGroupsData = data.groups;
-                this.selectedGroupId = this.userGroupsData[0]._id;
+                //this.selectedGroupId = this.userGroupsData[0]._id;
                 this.groupsDataService.getCategoriesOfGroup(this.selectedGroupId).then(categoriesObj => {
                     console.log(categoriesObj);
                     this.categories = categoriesObj.categories;
@@ -140,9 +141,14 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
                     this.updateCategories();
                 });
             });
+
+        this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
+            this.selectedGroupId = data;
+        });
         // this.groupsDataService.getGroupsByUser();
     }
     ngOnDestroy() {
         this.userGroupsDataSub.unsubscribe();
+        this.groupSelectionSub.unsubscribe();
     }
 }
