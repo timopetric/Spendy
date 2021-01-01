@@ -49,6 +49,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
     public dateError = false;
     public costError = false;
     public descriptionError = false;
+    public categoryError = false;
 
     toggler: any = {
         onColor: "danger",
@@ -70,6 +71,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     public ponastavi() {
         this.isFilled();
+        this.categoryError = false;
         this.Expense = {
             isExpenditure: false,
             cost: 0,
@@ -83,6 +85,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     private isFilled() {
         this.Expense.cost == 0 ? (this.costError = true) : (this.costError = false);
+        this.Expense.category_name == "" ? (this.categoryError = true) : this.categoryError == false;
         Math.floor(this.Expense.cost * 100) / 100 == 0 ? (this.costError = true) : (this.costError = false);
         this.Expense.description.length == 0 ? (this.descriptionError = true) : (this.descriptionError = false);
         this.Expense.date == null ? (this.dateError = true) : (this.dateError = false);
@@ -103,13 +106,13 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
 
     public postExpense() {
         let categoryname = this.Expense.category_name;
-        categoryname = categoryname[0].toUpperCase() + categoryname.slice(1).toLowerCase();
         this.Expense.group = this.selectedGroupId;
-        this.groupsDataService.addCategory(this.Expense.group, categoryname).then(() => {
-            this.categories.push(categoryname);
-            this.updateCategories();
-        });
         if (this.isFilled()) {
+            categoryname = categoryname[0].toUpperCase() + categoryname.slice(1).toLowerCase();
+            this.groupsDataService.addCategory(this.Expense.group, categoryname).then(() => {
+                this.categories.push(categoryname);
+                this.updateCategories();
+            });
             this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
                 this.ponastavi();
                 this.openSnackBar("Expense uspešno dodan!!!");
