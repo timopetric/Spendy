@@ -106,7 +106,7 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
     let cena = req.query.cena;
     let datum = req.query.date;
     let queryinput = req.query.search;
-    const page = req.params.page;
+    const page = req.query.page;
 
     isExpenditure = isExpenditure != null || undefined ? { isExpenditure: isExpenditure } : {};
     cena = cena != null || undefined ? { cost: { $gte: cena } } : {};

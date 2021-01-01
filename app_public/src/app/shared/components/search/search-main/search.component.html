@@ -29,7 +29,7 @@
                     [(ngModel)]="search"
                 />
                 <div class="input-group-append">
-                    <button class="btn btn-primary" (click)="filterActivities(p, query, search)" type="button">
+                    <button class="btn btn-primary" (click)="filterActivities(p, query, search, date)" type="button">
                         <i class="fa fa-search"></i>Search
                     </button>
                 </div>
@@ -48,13 +48,13 @@
                             Sortiraj
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button class="dropdown-item" (click)="filterActivities(p, 'isExpenditure=true', search)">
+                            <button class="dropdown-item" (click)="filterActivities(p, true, search, date)">
                                 Odhodki
                             </button>
-                            <button class="dropdown-item" (click)="filterActivities(p, 'isExpenditure=false', search)">
+                            <button class="dropdown-item" (click)="filterActivities(p, false, search, date)">
                                 Prihodki
                             </button>
-                            <button class="dropdown-item" (click)="filterActivities(p, 'date=desc', search)">
+                            <button class="dropdown-item" (click)="filterActivities(p, query, search, 'desc')">
                                 Datum
                             </button>
                         </div>
@@ -86,7 +86,7 @@
         </section>
 
         <div class="container-fluid d-flex">
-            <a href="/add_expenses" class="btn btn-success w-100 px-3"> Dodaj nove aktivnosti </a>
+            <a routerLink="/add_expenses" class="btn btn-success w-100 px-3"> Dodaj nove aktivnosti </a>
         </div>
     </div>
 </main>

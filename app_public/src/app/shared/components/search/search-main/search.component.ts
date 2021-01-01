@@ -35,9 +35,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     public p: number = 1;
     public count: number;
 
-    public query: string = "";
+    public queryParams: any = {};
+    public query: boolean = null;
     public search: string = "";
     public searchq: string = "";
+    public date: string = "";
 
     loading = true;
     apiError = "";
@@ -51,7 +53,10 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.sub = this._route.queryParams.subscribe(params => {
                 // Defaults to 0 if no query param provided.
                 this.p = +params["page"] || 1;
-                this.navigateToPageNumber(this.p);
+                this.query = params["isExpenditure"] || null;
+                this.search = params["search"] || "";
+                this.date = params["date"] || "";
+                this.navigateToPageNumber();
             });
 
             this.getExpensesByGroupId(data);
@@ -69,7 +74,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.loading = true;
         this.message = "Fetching expenses data";
         this.expensesData
-            .getExpensesByGroupIdPaginated(idGroup, this.p, this.query, this.searchq)
+            .getExpensesByGroupIdPaginated(idGroup, this.queryParams)
             .then(expenses => {
                 console.log(expenses);
                 this.message = expenses.length > 0 ? "" : "There are no expenses";
@@ -87,15 +92,17 @@ export class SearchComponent implements OnInit, OnDestroy {
     public inc(page) {
         this.p = page;
         this.getExpensesByGroupId(this.groupSelected);
-        this.navigateToPageNumber(page);
+        this.navigateToPageNumber();
         console.log(page);
     }
 
-    public filterActivities(page, query, search) {
+    public filterActivities(page, query, search, date) {
         this.p = page;
         this.query = query;
+        this.date = date;
         this.p = 1;
 
+        /*
         if (search != "") {
             this.searchq = query != "" ? `&search=${search}` : `search=${search}`;
         } else {
@@ -104,7 +111,8 @@ export class SearchComponent implements OnInit, OnDestroy {
         }
 
         if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
-
+        */
+        this.navigateToPageNumber();
         this.getExpensesByGroupId(this.groupSelected);
     }
 
@@ -135,17 +143,20 @@ export class SearchComponent implements OnInit, OnDestroy {
             .catch(err => {});
     }
 
-    navigateToPageNumber(page) {
+    navigateToPageNumber() {
         // changes the route without moving from the current view or
         // triggering a navigation event,
+        if (this.query != null) this.queryParams.isExpenditure = this.query;
+        if (this.search) this.queryParams.search = this.search;
+        if (this.date) this.queryParams.date = this.date;
+        this.queryParams.page = this.p;
+
         this._router.navigate([], {
             relativeTo: this._route,
-            queryParams: {
-                page: page,
-            },
+            queryParams: this.queryParams,
             queryParamsHandling: "merge",
             // preserve the existing query params in the route
-            //skipLocationChange: true,
+            skipLocationChange: true,
             // do not trigger navigation
         });
     }

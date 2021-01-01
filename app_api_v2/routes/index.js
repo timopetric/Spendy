@@ -79,7 +79,7 @@ router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
 // START--------------------------GROUPS-------------------------------START
 //router.get("/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
 router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
-router.get("/groups/:idGroup/expenses/page/:page", ctrlExpenses.getExpensesByGroupIdWithQueriesWithPagination);
+router.get("/groups/:idGroup/expenses/pages", ctrlExpenses.getExpensesByGroupIdWithQueriesWithPagination);
 router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
 router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
 router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
