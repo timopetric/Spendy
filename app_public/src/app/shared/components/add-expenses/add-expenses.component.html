@@ -100,8 +100,8 @@
                                                 </mat-option>
                                             </mat-autocomplete>
                                         </mat-form-field>
+                                        <div *ngIf="categoryError" style="color: red">Vpišite kategorijo!</div>
                                     </form>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
                                     <ng-select name="group" [(ngModel)]="selectedGroupId" [clearable]="false">
