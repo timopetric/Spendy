@@ -186,8 +186,11 @@ Dinamična spletna aplikacija s podatkovno bazo
 NAVODILA ZA NAMESTITEV IN ZAGON:
 -Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
 
-1. docker-compose up --no-start
-2. docker start sp-spendy-mongodb
+    docker-compose up --build
+
+[comment]: <> (1. docker-compose up --no-start)
+
+[comment]: <> (2. docker start sp-spendy-mongodb)
 
 -poskrbeti moramo, da se prenesejo vse odvisnosti definirane v package.json.
 
