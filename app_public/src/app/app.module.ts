@@ -21,7 +21,7 @@ import { LoginComponent } from "./shared/components/login/login.component";
 import { SignupComponent } from "./shared/components/signup/signup.component";
 import { AddExpensesComponent } from "./shared/components/add-expenses/add-expenses.component";
 import { AppRoutingModule } from "./modules/app-routing/app-routing.module";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from "@angular/common/http";
 import { MapDictToArrayPipe } from "./shared/pipes/map-dict-to-array.pipe";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -57,6 +57,7 @@ import { DetailModalComponent } from "./shared/components/search/modals/detail-m
 import { DetailModalUpdateComponent } from "./shared/components/search/modals/detail-modal-update/detail-modal-update.component";
 import { FormatirajZnesekPipe } from "./shared/pipes/formatiraj-znesek.pipe";
 import { ErrorComponent } from "./shared/components/error/error.component";
+import { TokenInterceptor } from "./shared/services/token.interceptor";
 
 @NgModule({
     declarations: [
@@ -119,7 +120,13 @@ import { ErrorComponent } from "./shared/components/error/error.component";
         NgbModule,
     ],
     entryComponents: [DetailModalComponent],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true,
+        },
+    ],
     bootstrap: [FrameComponent],
 })
 export class AppModule {}
