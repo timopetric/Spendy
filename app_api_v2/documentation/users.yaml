@@ -4,6 +4,7 @@
     summary: Get all users
     description: Returns a list of all users
     tags: [Users]
+
     responses:
       "200":
         description: An array of users
@@ -65,6 +66,8 @@
     summary: Update a user
     description: Update a user with id {idUser}
     tags: [Users]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idUser
@@ -114,11 +117,11 @@
     responses:
       "204":
         description: User with id {idUser} was successfully deleted
-#        content:
-#          application/json:
-#            schema:
-#              $ref: #todo: nisem ziher, da ta rabi shemo
-#            example: "User with id: {idUser} successfully deleted"
+      #        content:
+      #          application/json:
+      #            schema:
+      #              $ref: #todo: nisem ziher, da ta rabi shemo
+      #            example: "User with id: {idUser} successfully deleted"
       "404":
         description: No user was found
         content:
@@ -126,7 +129,7 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error_deleteUser"
-#            example: "User with id: {idUser} not found"
+      #            example: "User with id: {idUser} not found"
       "500":
         description: Error in database
         content:

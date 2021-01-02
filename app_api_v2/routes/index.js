@@ -18,7 +18,7 @@ const avtentikacija = jwt({
     requestProperty: "username",
 });
 
-console.log(avtentikacija);
+// console.log(avtentikacija);
 
 const authenticateJWT = (req, res, next) => {
     console.log("###############");
@@ -45,7 +45,7 @@ const authenticateJWT = (req, res, next) => {
             // user._id === id tega uporabnike
             // preveri če ima dostop do željene skupine, itd.
 
-            router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
+            // router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
 
             req.user = user;
             next();
@@ -53,6 +53,14 @@ const authenticateJWT = (req, res, next) => {
     } else {
         res.sendStatus(401);
     }
+};
+
+const securityGetAllUsers = (req, res, next) => {
+    console.log("dela middleware");
+    if (req.user) {
+        console.log(req.user);
+    }
+    next();
 };
 
 /* Avtentikacija */
@@ -63,7 +71,7 @@ router.post("/prijava", ctrlAuthentication.prijava);
 // router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/:idUser", ctrlUser.getUserById);
-router.put("/users/:idUser", ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
+router.put("/users/:idUser", authenticateJWT, securityGetAllUsers, ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
 router.delete("/users/:idUser", ctrlUser.deleteUser);
 // router.post("/users", ctrlUser.addUser);
 router.get("/users/name/:name", ctrlUser.getUserByName);
