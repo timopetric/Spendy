@@ -188,7 +188,8 @@ NAVODILA ZA NAMESTITEV IN ZAGON:
 
 ```bash
 # move to ./app_public, build angular app
-ng build --configuration=production,docker --output-path build
+ng build --configuration=production --output-path build
+#ng build --configuration=docker --output-path build
 
 # start docker compose:
 docker-compose up --build --force-recreate
