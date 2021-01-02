@@ -186,7 +186,14 @@ Dinamična spletna aplikacija s podatkovno bazo
 NAVODILA ZA NAMESTITEV IN ZAGON:
 -Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
 
-    docker-compose up --build
+```bash
+# move to ./app_public, build angular app
+ng build --configuration=production,docker --output-path build
+
+# start docker compose:
+docker-compose up --build --force-recreate
+
+```
 
 [comment]: <> (1. docker-compose up --no-start)
 
