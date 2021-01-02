@@ -8,30 +8,19 @@ const ctrlExpenses = require("../controllers/expenses");
 const ctrlGroups = require("../controllers/groups");
 const ctrlDb = require("../controllers/db");
 const ctrlCategories = require("../controllers/categories");
-var ctrlAuthentication = require("../controllers/authentication");
+const ctrlAuthentication = require("../controllers/authentication");
 
-const jwt = require("express-jwt");
-const avtentikacija = jwt({
-    secret: process.env.JWT_GESLO,
-    userProperty: "payload",
-    algorithms: ["HS256"],
-    requestProperty: "username",
-});
-
-// console.log(avtentikacija);
-
+//START-------------------------- Authentication middleware -------------------------------START
+// add jwt available information to req.user if he is authenticated correctly (jwt is signed by the server)
 const authenticateJWT = (req, res, next) => {
-    console.log("###############");
     const authHeader = req.headers.authorization;
-
     if (authHeader) {
         const token = authHeader.split(" ")[1];
-
         jwt_2.verify(token, process.env.JWT_GESLO, (err, user) => {
             if (err) {
                 return res.sendStatus(403);
             }
-            console.log(user);
+            // console.log(user);
             // {
             //   _id: '5fe8ff7f67c57310401aca3c',
             //   username: 'janez.novak@gmail.com',
@@ -41,12 +30,6 @@ const authenticateJWT = (req, res, next) => {
             //   exp: 1610011277,
             //   iat: 1609406477
             // }
-
-            // user._id === id tega uporabnike
-            // preveri če ima dostop do željene skupine, itd.
-
-            // router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
-
             req.user = user;
             next();
         });
@@ -55,13 +38,15 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
-const securityGetAllUsers = (req, res, next) => {
-    console.log("dela middleware");
-    if (req.user) {
-        console.log(req.user);
+// a user can only update himself, not other users
+const authUpdateUser = (req, res, next) => {
+    if (req.user && req.user._id && req.params.idUser === req.user._id) {
+        next();
+    } else {
+        res.sendStatus(401);
     }
-    next();
 };
+// END---------------------------- Authentication middleware ---------------------------------END
 
 /* Avtentikacija */
 router.post("/registracija", ctrlAuthentication.registracija);
@@ -71,7 +56,7 @@ router.post("/prijava", ctrlAuthentication.prijava);
 // router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
 router.get("/users", ctrlUser.getAllUsers);
 router.get("/users/:idUser", ctrlUser.getUserById);
-router.put("/users/:idUser", authenticateJWT, securityGetAllUsers, ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
+router.put("/users/:idUser", authenticateJWT, authUpdateUser, ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
 router.delete("/users/:idUser", ctrlUser.deleteUser);
 // router.post("/users", ctrlUser.addUser);
 router.get("/users/name/:name", ctrlUser.getUserByName);

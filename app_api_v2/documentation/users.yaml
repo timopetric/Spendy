@@ -62,6 +62,7 @@
           application/json:
             schema:
               $ref: "#/components/schemas/Error"
+
   put: #todo: Potrebno je dodati še body i guess. Tisto kar sploh želiš spremeniti na uporabniku.
     summary: Update a user
     description: Update a user with id {idUser}
@@ -102,6 +103,7 @@
           application/json:
             schema:
               $ref: "#/components/schemas/Error"
+
   delete:
     summary: Remove a user from a database
     description: Remove a user with id {idUser} from databse
