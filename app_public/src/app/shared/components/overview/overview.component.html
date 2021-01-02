@@ -6,7 +6,7 @@
     <div class="spinner-and-error-msg">
         <mat-spinner *ngIf="loading"></mat-spinner>
     </div>
-    <div *ngIf="!loading">
+    <div>
         <div class="container-fluid bg-grey px-3" id="content">
             <section class="bg-light py-3">
                 <div class="container-fluid">
@@ -31,6 +31,7 @@
                                         <h6 class="text-muted">Stanje</h6>
                                         <h3 *ngIf="vs >= 0" class="font-weight-bold">+{{ vs }} €</h3>
                                         <h3 *ngIf="vs < 0" class="font-weight-bold">{{ vs }} €</h3>
+                                        <h3 *ngIf="!vs" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                         <i class="icon ion-md-arrow-dropup-circle"></i> 50.50%
                       </h6>-->
@@ -44,6 +45,7 @@
                                                 <div *ngIf="zadnji.isExpenditure">-{{ zadnji.cost }} €</div>
                                                 <div *ngIf="!zadnji.isExpenditure">+{{ zadnji.cost }} €</div>
                                             </div>
+                                            <div *ngIf="!zadnji">Nalaganje...</div>
                                         </h3>
                                         <!-- <h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 25.50%
@@ -53,7 +55,8 @@
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cena zadnjih 5 prihodkov</h6>
-                                        <h3 class="font-weight-bold">+{{ z5p }} €</h3>
+                                        <h3 *ngIf="z5p" class="font-weight-bold">+{{ z5p }} €</h3>
+                                        <h3 *ngIf="!z5p" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
                          </h6>-->
@@ -62,7 +65,8 @@
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cena zadnjih 5 odhodkov</h6>
-                                        <h3 class="font-weight-bold">-{{ z5o }} €</h3>
+                                        <h3 *ngIf="z5o" class="font-weight-bold">-{{ z5o }} €</h3>
+                                        <h3 *ngIf="!z5o" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
                          </h6>-->
@@ -82,11 +86,12 @@
                                 <div class="card-header bg-light">
                                     <h6 class="font-weight-bold mb-0">Graficni prikaz porabe</h6>
                                 </div>
-                                <div class="card-body">
+                                <h1 class="card-body">
                                     <div class="spinner-and-error-msg">
                                         <mat-spinner *ngIf="loading"></mat-spinner>
                                     </div>
                                     <canvas
+                                        *ngIf="loading"
                                         baseChart
                                         height="150"
                                         id="graficniPrikazPorabe"
@@ -97,9 +102,9 @@
                                         [legend]="barChartLegend"
                                         [chartType]="barChartType"
                                     >
-                                        ></canvas
-                                    >
-                                </div>
+                                    </canvas>
+                                    <h1 *ngIf="loading">Graf se nalaga!</h1>
+                                </h1>
                             </div>
                         </div>
                         <div class="col-lg-4 my-3">

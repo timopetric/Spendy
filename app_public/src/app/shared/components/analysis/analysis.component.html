@@ -31,7 +31,7 @@
                                 <input id="dateEnd" required type="date" [(ngModel)]="datum.konec" />
                             </div>
                         </div>
-                        <button (click)="getGraphs()">Izpisi</button>
+                        <button (click)="navigate()">Izpisi</button>
                     </div>
                 </div>
             </div>
@@ -165,12 +165,15 @@
 
                         -->
 
+                        <h1 *ngIf="coins.length == 0">
+                            Grafi se nalagajo!
+                            <div class="spinner-and-error-msg">
+                                <mat-spinner></mat-spinner>
+                            </div>
+                        </h1>
                         <div *ngFor="let coin of coins" class="col-sm-12 col-lg-6 mb-5">
                             <div>
                                 <h1 class="container-fluid d-flex justify-content-center">
-                                    <div class="spinner-and-error-msg">
-                                        <mat-spinner *ngIf="loading"></mat-spinner>
-                                    </div>
                                     {{ coin.name }}
                                 </h1>
                                 <canvas

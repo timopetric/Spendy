@@ -10,8 +10,8 @@ tags:
 #  Varnostna shema dostopa
 components:
   securitySchemes:
-    jwt:
+    bearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
       in: header
-      bearerFormat: JWT
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes

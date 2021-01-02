@@ -1,21 +1,29 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { KriptoService } from "../../services/kripto.service";
 import { Color, Label } from "ng2-charts";
 import { ChartDataSets, ChartType } from "chart.js";
 import { Title } from "@angular/platform-browser";
+import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "app-analysis",
     templateUrl: "./analysis.component.html",
     styleUrls: ["./analysis.component.css"],
 })
-export class AnalysisComponent implements OnInit {
-    constructor(private kriptoService: KriptoService, private titleService: Title) {
+export class AnalysisComponent implements OnInit, OnDestroy {
+    constructor(
+        private kriptoService: KriptoService,
+        private titleService: Title,
+        private _route: ActivatedRoute,
+        private _router: Router
+    ) {
         this.titleService.setTitle("Analiza");
     }
+    sub: Subscription;
+    public queryParams: any = {};
+
     public loading = true;
-    public startDate = "";
-    public endDate = "";
     public bitcoinMeja = 15000;
     public bitcashMeja = 0.00045;
     public rippleMeja = 0.41;
@@ -40,7 +48,6 @@ export class AnalysisComponent implements OnInit {
             this.rippleInvest = true;
         } else this.rippleInvest = false;
     }
-
     public datum = {
         zacetek: "2020-12-01",
         konec: "2020-12-15",
@@ -80,15 +87,30 @@ export class AnalysisComponent implements OnInit {
     public getGraphs() {
         this.loading = true;
         this.coins = [];
+        console.log(this.coins.length);
+
         this.getGraphData("bitcoin");
         this.getGraphData("ripple");
         this.getGraphData("bitcash");
     }
 
     ngOnInit(): void {
-        this.getGraphs();
-        this.datum.zacetek = this.toDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
-        this.datum.konec = this.toDate(new Date(Date.now()));
+        this.sub = this._route.queryParams.subscribe(params => {
+            this.datum.zacetek = params["dateStart"] || this.toDate(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+            this.datum.konec = params["dateEnd"] || this.toDate(new Date(Date.now()));
+            this.getGraphs();
+        });
+    }
+
+    public navigate() {
+        this.queryParams.dateStart = this.datum.zacetek;
+        this.queryParams.dateEnd = this.datum.konec;
+        this._router.navigate([], {
+            relativeTo: this._route,
+            queryParams: this.queryParams,
+            queryParamsHandling: "merge",
+            skipLocationChange: false,
+        });
     }
 
     private toDate(datum) {
@@ -100,5 +122,8 @@ export class AnalysisComponent implements OnInit {
 
     private toUnix(datum) {
         return parseInt((new Date(datum).getTime() / 1000).toFixed(0));
+    }
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 }
