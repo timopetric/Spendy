@@ -148,3 +148,4 @@ app_public/typings
 # ------------------------- from angular app_public gitignore END ---------------------
 
 app_public/build/**
+app_public/src/index.html
