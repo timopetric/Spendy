@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const jwt_2 = require("jsonwebtoken");
 
+// db models
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
+const Group = mongoose.model("Group");
+
 // controllers
 const ctrlUser = require("../controllers/users");
 const ctrlExpenses = require("../controllers/expenses");
@@ -31,7 +36,7 @@ const authenticateJWT = (req, res, next) => {
             //   iat: 1609406477
             // }
             req.user = user;
-            next();
+            return next();
         });
     } else {
         res.sendStatus(401);
@@ -39,14 +44,84 @@ const authenticateJWT = (req, res, next) => {
 };
 
 // a user can only do actions to himself, not other users
-const authLimitToLoggedOnUser = (req, res, next) => {
+const authUserIsLoggedOnUser = (req, res, next) => {
     // console.log("Je: " + req.user._id);
     // console.log("Zeli: " + req.params.idUser);
     if (req.user && req.user._id && req.params.idUser === req.user._id) {
-        next();
+        return next();
     } else {
         res.sendStatus(401);
     }
+};
+
+// a user is a member of the group in params
+const authUserIsMemberInGroup = (req, res, next) => {
+    let idUser = req.user ? req.user._id.toString() : "-";
+    let idGroupParam = req.params.idGroup;
+
+    Group.findById(idGroupParam)
+        .then((group) => {
+            let idGroupDb = group._id.toString();
+
+            // console.log("############## users");
+            // console.log(group.userIds);
+            // console.log(idUser);
+            if (idGroupDb === idGroupParam && group.userIds.includes(idUser.toString())) return next();
+        })
+        .catch(() => {
+            res.sendStatus(401);
+        });
+};
+
+// a user is an admin of the group in params
+const authUserIsAdminInGroup = (req, res, next) => {
+    let idUser = req.user ? req.user._id.toString() : "-";
+    let idGroupParam = req.params.idGroup;
+
+    Group.findById(idGroupParam)
+        .then((group) => {
+            let idGroupDb = group._id.toString();
+            // console.log("############## admins");
+            // console.log(group.adminIds);
+            // console.log(idUser);
+            // console.log(group._id);
+            // console.log(idGroupParam);
+            // console.log(idGroupDb === idGroupParam);
+            // console.log("user is admin:" + (idGroupDb === idGroupParam && group.adminIds.includes(idUser)));
+            if (idGroupDb === idGroupParam && group.adminIds.includes(idUser)) return next();
+        })
+        .catch(() => {
+            res.sendStatus(401);
+        });
+};
+
+// a user is the user that wants to create a new group for himself
+const authCreateGroup = (req, res, next) => {
+    if (req.user && req.user._id && req.body.idUser === req.user._id) {
+        return next();
+    } else {
+        res.sendStatus(401);
+    }
+};
+
+// authorize if the requested expense id is in any of the groups a user belongs to
+const authUserCanAccessExpense = (req, res, next) => {
+    let idUser = req.user ? req.user._id.toString() : "-";
+    let idExpenseParam = req.params.idExpense;
+
+    User.findById(idUser)
+        .populate("groupIds")
+        .then((user) => {
+            let expensesList = user.groupIds.map((group) => group.expenses);
+            let expenseParamIsInOneOfTheGroupsAUserHas = expensesList.some((expenses) =>
+                expenses.includes(idExpenseParam)
+            );
+            if (expenseParamIsInOneOfTheGroupsAUserHas) return next();
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(401);
+        });
 };
 // END---------------------------- Authentication middleware ---------------------------------END
 
@@ -56,43 +131,88 @@ router.post("/prijava", ctrlAuthentication.prijava);
 
 //START--------------------------USERS-------------------------------START
 // router.get("/users", ctrlUser.getAllUsers);
-router.get("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.getUserById);
-router.put("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.updateUser);
-router.delete("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.deleteUser);
+router.get("/users/:idUser", authenticateJWT, authUserIsLoggedOnUser, ctrlUser.getUserById);
+router.put("/users/:idUser", authenticateJWT, authUserIsLoggedOnUser, ctrlUser.updateUser);
+router.delete("/users/:idUser", authenticateJWT, authUserIsLoggedOnUser, ctrlUser.deleteUser);
 // router.post("/users", ctrlUser.addUser);
-router.get("/users/name/:name", ctrlUser.getUserByName); // TODO: is this needed? @dsfsd
+// router.get("/users/name/:name", ctrlUser.getUserByName); // TODO: is this needed? @dsfsd
 
-router.get("/users/:idUser/groups", authenticateJWT, authLimitToLoggedOnUser, ctrlGroups.getGroupsByUserId);
+router.get("/users/:idUser/groups", authenticateJWT, authUserIsLoggedOnUser, ctrlGroups.getGroupsByUserId);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START
-router.get("/expenses", ctrlExpenses.getAllExpenses);
-router.get("/expenses/:idExpense", ctrlExpenses.getExpenseById);
+// router.get("/expenses", ctrlExpenses.getAllExpenses);
+router.get("/expenses/:idExpense", authenticateJWT, authUserCanAccessExpense, ctrlExpenses.getExpenseById);
 // END----------------------------EXPENSES---------------------------------END
 
 // START--------------------------GROUPS-------------------------------START
 //router.get("/groups/:id/expenses", ctrlExpenses.getExpensesByGroupId);
-router.get("/groups/:idGroup/expenses", ctrlExpenses.getExpensesByGroupIdWithQueries);
-router.get("/groups/:idGroup/expenses/pages", ctrlExpenses.getExpensesByGroupIdWithQueriesWithPagination);
-router.delete("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.deleteExpenseOfGroup);
-router.put("/groups/:idGroup/expenses/:idExpense", ctrlExpenses.updateExpense);
-router.post("/groups/:idGroup/expenses", ctrlExpenses.addExpenseToGroup);
-router.put("/groups/:idGroup", ctrlGroups.updateGroup);
+router.get(
+    "/groups/:idGroup/expenses",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlExpenses.getExpensesByGroupIdWithQueries
+);
+router.get(
+    "/groups/:idGroup/expenses/pages",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlExpenses.getExpensesByGroupIdWithQueriesWithPagination
+);
+router.delete(
+    "/groups/:idGroup/expenses/:idExpense",
+    authenticateJWT,
+    authUserIsMemberInGroup, // TODO: pogledamo tud expense creator_id == toked.user.id?
+    ctrlExpenses.deleteExpenseOfGroup
+);
+router.put(
+    "/groups/:idGroup/expenses/:idExpense",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlExpenses.updateExpense
+);
+router.post("/groups/:idGroup/expenses", authenticateJWT, authUserIsMemberInGroup, ctrlExpenses.addExpenseToGroup);
+router.put("/groups/:idGroup", authenticateJWT, authUserIsAdminInGroup, ctrlGroups.updateGroup);
 
-router.get("/groups", ctrlGroups.getAllGroups);
-router.post("/groups", ctrlGroups.createAndAddToUser);
-router.get("/groups/:idGroup", ctrlGroups.getGroupById);
-router.post("/groups/:idGroup/users", ctrlGroups.addUserToGroup);
-router.delete("/groups/:idGroup/users/:idUser", ctrlGroups.removeUserFromGroup);
-router.delete("/groups/:idGroup", ctrlGroups.removeGroupById);
+// router.get("/groups", ctrlGroups.getAllGroups);
+router.post("/groups", authenticateJWT, authCreateGroup, ctrlGroups.createAndAddToUser);
+router.get("/groups/:idGroup", authenticateJWT, authUserIsMemberInGroup, ctrlGroups.getGroupById);
+router.post("/groups/:idGroup/users", authenticateJWT, authUserIsAdminInGroup, ctrlGroups.addUserToGroup);
+router.delete(
+    "/groups/:idGroup/users/:idUser",
+    authenticateJWT,
+    authUserIsAdminInGroup,
+    ctrlGroups.removeUserFromGroup
+);
+router.delete("/groups/:idGroup", authenticateJWT, authUserIsAdminInGroup, ctrlGroups.removeGroupById);
 // END----------------------------GROUPS---------------------------------END
 
 // START--------------------------CATEGORIES-------------------------------START
-router.post("/groups/:idGroup/categories/add", ctrlCategories.createCategoriesForGroup);
-router.post("/groups/:idGroup/categories", ctrlCategories.createCategoryAndAddToGroup);
-router.get("/groups/:idGroup/categories", ctrlCategories.getCategoriesByGroupId);
-router.delete("/groups/:idGroup/categories", ctrlCategories.deleteCategoryForGroup);
-router.put("/groups/:idGroup/categories", ctrlCategories.updateCategoryForGroup);
+// router.post("/groups/:idGroup/categories/add", ctrlCategories.createCategoriesForGroup);
+router.post(
+    "/groups/:idGroup/categories",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlCategories.createCategoryAndAddToGroup
+);
+router.get(
+    "/groups/:idGroup/categories",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlCategories.getCategoriesByGroupId
+);
+router.delete(
+    "/groups/:idGroup/categories",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlCategories.deleteCategoryForGroup
+);
+router.put(
+    "/groups/:idGroup/categories",
+    authenticateJWT,
+    authUserIsMemberInGroup,
+    ctrlCategories.updateCategoryForGroup
+);
 
 // END----------------------------CATEGORIES---------------------------------END
 
