@@ -40,6 +40,8 @@ const authenticateJWT = (req, res, next) => {
 
 // a user can only do actions to himself, not other users
 const authLimitToLoggedOnUser = (req, res, next) => {
+    // console.log("Je: " + req.user._id);
+    // console.log("Zeli: " + req.params.idUser);
     if (req.user && req.user._id && req.params.idUser === req.user._id) {
         next();
     } else {
