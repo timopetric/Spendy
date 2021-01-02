@@ -39,7 +39,7 @@
   get:
     summary: Get expenses by group ID
     description: Return array of Expenses
-    tags: [Groups]
+    tags: [Expenses]
     parameters:
       - in: path
         name: idGroup
@@ -74,7 +74,7 @@
   post:
     summary: Add expense to group
     description: Add new expense to group
-    tags: [Groups]
+    tags: [Expenses]
     parameters:
       - in: path
         name: idGroup
@@ -113,12 +113,11 @@
               items:
                 $ref: "#/components/schemas/Error"
 
-#GET /api/v2/group/{idGroup}/expenses/page/{page}
-/groups/{idGroup}/expenses/page/{page}:
-  get:
-    summary: Get expenses by group ID
-    description: Return array of Expenses
-    tags: [Groups]
+/groups/{idGroup}/expenses/{idExpense}:
+  delete:
+    summary: Delete expense from group
+    description: Delete expense from group
+    tags: [Expenses]
     parameters:
       - in: path
         name: idGroup
@@ -128,6 +127,98 @@
         required: true
         example: 5ded18eb51386c3799833191
       - in: path
+        name: idExpense
+        description: unique identifier of Expense
+        schema:
+          type: string
+        required: true
+        example: 5ded18eb51386c3799833191
+    responses:
+      "200":
+        description: "Deleting was successful"
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Deleting was successful"
+      "500":
+        description: Error in database
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"
+      "404":
+        description: Expense was not found
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"
+  put:
+    summary: Update expense from group
+    description: Update expense from group
+    tags: [Expenses]
+    parameters:
+      - in: path
+        name: idGroup
+        description: unique identifier of Group
+        schema:
+          type: string
+        required: true
+        example: 5ded18eb51386c3799833191
+      - in: path
+        name: idExpense
+        description: unique identifier of Expense
+        schema:
+          type: string
+        required: true
+        example: 5ded18eb51386c3799833191
+    requestBody:
+      description: New expense which will be added to group
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Expense"
+    responses:
+      "200":
+        description: "Updating was successful"
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Updating was successful"
+      "500":
+        description: Error in database
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"
+      "404":
+        description: Expense was not found
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/Error"
+
+#GET /api/v2/group/{idGroup}/expenses/pages
+/groups/{idGroup}/expenses/pages:
+  get:
+    summary: Get expenses by group ID
+    description: Return array of Expenses
+    tags: [Expenses]
+    parameters:
+      - in: path
+        name: idGroup
+        description: unique identifier of Group
+        schema:
+          type: string
+        required: true
+        example: 5ded18eb51386c3799833191
+      - in: query
         name: page
         description: page number of expenses that you would like to get
         schema:
@@ -153,25 +244,22 @@
         schema:
           type: string
         required: false
-        examples:
-          example: Rdec avto
+        example: Rdec avto
       - in: query
         name: date
         description: Get only Activites sorted by date in descending order
         schema:
           type: string
         required: false
-        examples:
-          example: desc
+        example: desc
     responses:
       "200":
-        description: Array of group Expenses
+        description: Object of paginated group expenses
         content:
           application/json:
             schema:
-              type: array
               items:
-                $ref: "#/components/schemas/Expense"
+                $ref: "#/components/schemas/ExpenesWithQueriesPagination"
       "500":
         description: Error in database
         content:
