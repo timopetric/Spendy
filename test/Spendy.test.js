@@ -76,7 +76,30 @@
             });
         });
 
-        describe("Registracija novega uporabnika", function () {
+        // describe("Probava", function () {
+        //     this.timeout(30 * 1000);
+        //     before(async function () {
+        //         await brskalnik.get(aplikacijaUrl);
+        //     });
+        //     it("izbriši uporabnika iz podatkovne baze", async function () {
+        //         const DOCKER_CONTAINTER_NAME = "sp-spendy-mongodb";
+        //         // const DOCKER_CONTAINTER_NAME = "lp-02_mongo-db_run_40ef3b7f47e0";
+        //         let dockerAtlasUserRemove =
+        //             "docker exec -i " +
+        //             DOCKER_CONTAINTER_NAME +
+        //             " bash -c " +
+        //             '"mongo \\"mongodb+srv://spendy.3mzue.mongodb.net/SpendyDB\\" ' +
+        //             "--username spendy_admin " +
+        //             "--password a0dfeVEcg4F6rYIf " +
+        //             '--eval \'db.Users.remove({mail: \\"janez@kranjski.net\\"})\'"';
+        //         exec(dockerAtlasUserRemove).on("close", (koda) => {
+        //             expect(koda).to.be.equal(0);
+        //         });
+        //         await brskalnik.sleep(1700);
+        //     });
+        // });
+
+        describe("Registracija novega uporabnika", async function () {
             // this.timeout(30 * 1000);
             // before(async function () {
             //     await brskalnik.get(aplikacijaUrl);
@@ -96,6 +119,7 @@
                 exec(dockerAtlasUserRemove).on("close", (koda) => {
                     expect(koda).to.be.equal(0);
                 });
+                await brskalnik.sleep(1700);
             });
 
             it("prijava uporabnika", async function () {
@@ -317,7 +341,61 @@
             // });
         });
 
-        describe("Skupine", function () {});
+        // const DOCKER_CONTAINTER_NAME = "lp-02_mongo-db_run_40ef3b7f47e0";
+        let imeSkupine = "Nova skupina";
+        describe("Skupine", function () {
+            context("Dodajanje skupine", async function () {
+                it("Premik na skupine ", async function () {
+                    // await brskalnik.sleep(50);
+                    let gumb = brskalnik.findElement(By.css("a[href='/groups']")).click();
+                    await pocakajStranNalozena(brskalnik, 10, "//h2");
+                });
+
+                it("Dodaj skupino", async function () {
+                    await brskalnik.wait(
+                        until.elementLocated(
+                            By.xpath(
+                                "/html/body/app-frame/app-groups-main/main/mat-card/mat-card-content/mat-action-row/button/span[1]"
+                            )
+                        ),
+                        10000
+                    );
+                    let gumb = await brskalnik
+                        .findElement(
+                            By.xpath(
+                                "/html/body/app-frame/app-groups-main/main/mat-card/mat-card-content/mat-action-row/button/span[1]"
+                            )
+                        )
+                        .click();
+
+                    let vnosVrednosti = await brskalnik.findElement(By.css('input[title="Vnesite željeno ime"]'));
+                    expect(vnosVrednosti).to.not.be.empty;
+                    vnosVrednosti.sendKeys(imeSkupine);
+
+                    let pritiskGumbaZaSpremembo = await brskalnik
+                        .findElement(
+                            By.xpath(
+                                '//*[@id="mat-dialog-0"]/app-groups-modal-group-add/mat-card/mat-card-content/form/mat-action-row/button/span[1]'
+                            )
+                        )
+                        .click();
+                });
+
+                it("Preveri novo skupino", async function () {
+                    await brskalnik.wait(
+                        until.elementLocated(
+                            By.xpath('//*[@id="mat-expansion-panel-header-2"]/span[1]/mat-panel-title')
+                        ),
+                        10000
+                    );
+                    let novaSkupina = await brskalnik
+                        .findElement(By.xpath('//*[@id="mat-expansion-panel-header-2"]/span[1]/mat-panel-title'))
+                        .getText();
+                    // novaSkupina = novaSkupina.split("groups\n}");
+                    expect(novaSkupina.substring(7)).to.be.equal(imeSkupine);
+                });
+            });
+        });
 
         // describe("Informacije o aplikaciji", function () {
         //     this.timeout(30 * 1000);
