@@ -15,6 +15,7 @@
                     <mat-label>Vnesite email uporabnika, ki ga želite dodati skupini</mat-label>
                     <input
                         matInput
+                        class="skupinaDodajUporabnikaMail"
                         [formControl]="dataForm.mail"
                         required
                         name="name"
@@ -27,7 +28,13 @@
             </div>
 
             <mat-action-row>
-                <button mat-raised-button color="primary" (click)="addUser()" [disabled]="dataForm.mail.invalid">
+                <button
+                    class="skupinaDodajUporabnikaGumb"
+                    mat-raised-button
+                    color="primary"
+                    (click)="addUser()"
+                    [disabled]="dataForm.mail.invalid"
+                >
                     Dodaj uporabnika&nbsp;&nbsp;&nbsp;<mat-icon>person_add</mat-icon>
                 </button>
             </mat-action-row>

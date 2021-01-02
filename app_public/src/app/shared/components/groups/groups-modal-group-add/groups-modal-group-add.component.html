@@ -14,6 +14,7 @@
                 <mat-form-field appearance="outline" class="col-12">
                     <mat-label>Vnesite ime nove skupine</mat-label>
                     <input
+                        class="dodajSkupinoIme"
                         matInput
                         [formControl]="dataForm.groupName"
                         required
@@ -27,7 +28,13 @@
             </div>
 
             <mat-action-row>
-                <button mat-raised-button color="primary" (click)="addUser()" [disabled]="dataForm.groupName.invalid">
+                <button
+                    class="dodajSkupinoGumb"
+                    mat-raised-button
+                    color="primary"
+                    (click)="addUser()"
+                    [disabled]="dataForm.groupName.invalid"
+                >
                     Dodaj skupino&nbsp;&nbsp;&nbsp;<mat-icon>person_add</mat-icon>
                 </button>
             </mat-action-row>
