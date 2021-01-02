@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
 } else if (process.env.NODE_ENV === "docker") {
     dbURI = "mongodb://sp-spendy-mongodb/SpendyDB";
 }
+console.log("dbURI set to: " + dbURI);
 
 mongoose
     .connect(dbURI, {

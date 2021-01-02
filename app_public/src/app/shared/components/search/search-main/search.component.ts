@@ -49,19 +49,24 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.groupSelected = data;
             //if (data != null && data != undefined && data != "") {
             //console.log(data);
-
-            this.sub = this._route.queryParams.subscribe(params => {
-                // Defaults to 0 if no query param provided.
-                this.p = +params["page"] || 1;
-                this.query = params["isExpenditure"] || null;
-                this.search = params["search"] || "";
-                this.date = params["date"] || "";
-                this.navigateToPageNumber();
-            });
-
-            this.getExpensesByGroupId(data);
+            this.getExpensesByGroupId(this.groupSelected);
             //}
         });
+        this.sub = this._route.queryParams.subscribe(params => {
+            // Defaults to 0 if no query param provided.
+            this.p = +params["page"] || 1;
+            this.query = params["isExpenditure"] || null;
+            this.search = params["search"] || "";
+            this.date = params["date"] || "";
+
+            if (this.query != null) this.queryParams.isExpenditure = this.query;
+            if (this.search) this.queryParams.search = this.search;
+            if (this.date) this.queryParams.date = this.date;
+            this.queryParams.page = this.p;
+
+            if (this.groupSelected) this.getExpensesByGroupId(this.groupSelected);
+        });
+
         // this.groupsDataService.getCurrentGroup();
     }
 
@@ -73,6 +78,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     private getExpensesByGroupId = (idGroup: string): void => {
         this.loading = true;
         this.message = "Fetching expenses data";
+        console.log(this.queryParams);
         this.expensesData
             .getExpensesByGroupIdPaginated(idGroup, this.queryParams)
             .then(expenses => {
@@ -91,8 +97,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     public inc(page) {
         this.p = page;
-        this.getExpensesByGroupId(this.groupSelected);
-        this.navigateToPageNumber();
+        this.navigateToPageNumberWithNavigation();
+        //this.getExpensesByGroupId(this.groupSelected);
         console.log(page);
     }
 
@@ -112,8 +118,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
         if (this.searchq == "search=" || this.searchq == "&search=") this.searchq = "";
         */
-        this.navigateToPageNumber();
-        this.getExpensesByGroupId(this.groupSelected);
+        this.navigateToPageNumberWithNavigation();
+        //this.getExpensesByGroupId(this.groupSelected);
     }
 
     public openModal(activityData) {
@@ -143,7 +149,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             .catch(err => {});
     }
 
-    navigateToPageNumber() {
+    navigateToPageNumberWithNavigation() {
         // changes the route without moving from the current view or
         // triggering a navigation event,
         if (this.query != null) this.queryParams.isExpenditure = this.query;
@@ -155,6 +161,24 @@ export class SearchComponent implements OnInit, OnDestroy {
             relativeTo: this._route,
             queryParams: this.queryParams,
             queryParamsHandling: "merge",
+            // preserve the existing query params in the route
+            skipLocationChange: false,
+            // do not trigger navigation
+        });
+    }
+
+    navigateToPageNumberWithoutNavigation() {
+        // changes the route without moving from the current view or
+        // triggering a navigation event,
+        if (this.query != null) this.queryParams.isExpenditure = this.query;
+        if (this.search) this.queryParams.search = this.search;
+        if (this.date) this.queryParams.date = this.date;
+        this.queryParams.page = this.p;
+
+        this._router.navigate([], {
+            relativeTo: this._route,
+            queryParams: this.queryParams,
+            queryParamsHandling: null,
             // preserve the existing query params in the route
             skipLocationChange: true,
             // do not trigger navigation

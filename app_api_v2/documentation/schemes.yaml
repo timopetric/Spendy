@@ -91,7 +91,7 @@ components:
           description: A list of valid(existing) group IDs
           example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
 
-    ####### GET api/v2/users [User_getAllUsers] ######
+    #    ####### GET api/v2/users [User_getAllUsers] ######
     User_getAllUsers:
       type: object
       description: Returns all users in the database
@@ -178,7 +178,7 @@ components:
           items:
             type: string
           description: A list of valid(existing) group IDs
-          example: [ "5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713" ]
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
         _id:
           type: string
           description: Internal database ID of the user
@@ -203,23 +203,22 @@ components:
           type: integer
           description: Username of the user
           example: janez123
-#        nakljucnaVrednost:
-#          type: string
-#          description: Random value of the user
-#          example: 59fffd8a019d242f2a48f253afc0050c
-#        zgoscenaVrednost:
-#          type: string
-#          description: Hash value of the user
-#          example: ee2abb81390cd40088a3e2c413ee3949cbd722fe75f7bb5238d12b1ba6b142e9d7a79edadcd0cc5644b081da4fbe912f73d8a7f723b01f277b53fc01439dfd13
-#        created_at:
-#          type: date
-#          description: Time of user creation(registration)
-#          example: 2020-12-21T20:53:26.019Z
-#        updated_at:
-#          type: date
-#          description: Time of users last update
-#          example: 2020-12-29T16:48:50.590Z
-
+    #        nakljucnaVrednost:
+    #          type: string
+    #          description: Random value of the user
+    #          example: 59fffd8a019d242f2a48f253afc0050c
+    #        zgoscenaVrednost:
+    #          type: string
+    #          description: Hash value of the user
+    #          example: ee2abb81390cd40088a3e2c413ee3949cbd722fe75f7bb5238d12b1ba6b142e9d7a79edadcd0cc5644b081da4fbe912f73d8a7f723b01f277b53fc01439dfd13
+    #        created_at:
+    #          type: date
+    #          description: Time of user creation(registration)
+    #          example: 2020-12-21T20:53:26.019Z
+    #        updated_at:
+    #          type: date
+    #          description: Time of users last update
+    #          example: 2020-12-29T16:48:50.590Z
 
     User_selection_bare:
       type: object
@@ -447,6 +446,52 @@ components:
       type: object
       description: Expense object
       required:
+        - _id
+        - isExpenditure
+        - cost
+        - date
+        - category_name
+        - created_by
+        - groupId
+      properties:
+        _id:
+          type: string
+          description: ID of expense
+          example: "5fc01ba0cd9e25474436be60"
+        isExpenditure:
+          type: boolean
+          description: Marks if the expense is an expenditure or a cash inflow
+          example: true
+        cost:
+          type: number
+          description: The cost in eur
+          example: 89.99
+        date:
+          type: string
+          format: date-time
+          description: Date when the expense was created
+          example: 2017-07-21T17:32:28Z
+        category_name:
+          type: string
+          description: Name of the category
+          example:
+        created_by:
+          type: string
+          description: user ID
+          example: "8fc0cca0cd9e25474436rd32"
+        description:
+          type: string
+          description: A description od the expense
+          example: a very helpful description
+        groupId:
+          type: string
+          description: group ID
+          example: "5fc01ba0cd9e25474436be60"
+
+    Expense_for_update:
+      type: object
+      description: Expense object
+      required:
         - isExpenditure
         - cost
         - date
@@ -481,8 +526,65 @@ components:
           example: a very helpful description
         groupId:
           type: string
-          description: A list of valid(existing) group IDs
+          description: group ID
           example: "5fc01ba0cd9e25474436be60"
+
+    ExpenesWithQueriesPagination:
+      type: object
+      description: Object returned for proper pagination
+      required:
+        - docs
+        - totalDocs
+        - limit
+        - totalPages
+        - page
+        - pagingCounter
+        - hasPrevPage
+        - hasNextPage
+        - prevPage
+        - nextPage
+      properties:
+        docs:
+          type: array
+          description: array of expenses returned from api
+          items:
+            $ref: "#/components/schemas/Expense"
+        totalDocs:
+          type: number
+          description: number of all elements that can be returned from api with this criteria
+          example: 40
+        limit:
+          type: number
+          description: number of elements that will be returned
+          example: 10
+        totalPages:
+          type: number
+          description: total number of pages that totalDocs / limit
+          example: 4
+        page:
+          type: number
+          description: current page
+          example: 2
+        pagingCounter:
+          type: number
+          description: The starting sl. number of first document.
+          example: 11
+        hasPrevPage:
+          type: boolean
+          description: boolean representing if current page has previous page
+          example: true
+        hasNextPage:
+          type: boolan
+          description: boolean representing if current page has next page
+          example: true
+        prevPage:
+          type: number
+          description: page number of previous page
+          example: 1
+        nextPage:
+          type: number
+          description: page number of previous page
+          example: 3
 
     Expense_selection:
       type: object
@@ -604,7 +706,7 @@ components:
           type: string
           description: NEW category name to be added in group categories
           example: "Božičnica"
-          
+
     User_getUserById:
       type: object
       description: Returns a user with specified id
@@ -614,7 +716,7 @@ components:
           items:
             type: string
           description: A list of valid(existing) group IDs
-          example: [ "5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713" ]
+          example: ["5fc01ba0cd9e25474436be60", "5fba7cb28a41eb7ee6452713"]
         _id:
           type: string
           description: Internal database ID of the user
@@ -644,12 +746,12 @@ components:
       type: object
       description: body for updating a user
       required:
-#        - isExpenditure
-#        - cost
-#        - date
-#        - category_name
-#        - created_by
-#        - groupId
+      #        - isExpenditure
+      #        - cost
+      #        - date
+      #        - category_name
+      #        - created_by
+      #        - groupId
       properties:
         name:
           type: string
@@ -659,10 +761,10 @@ components:
           type: string
           description: The surname you weant to give to the user
           example: Prešeren
-#        password:
-#          type: string
-#          description: New password
-#          example: NekoGeslo todo: kako je z geslom?
+        #        password:
+        #          type: string
+        #          description: New password
+        #          example: NekoGeslo todo: kako je z geslom?
         balance:
           type: number
           description: Users new balance

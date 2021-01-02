@@ -21,6 +21,12 @@ var indexApiV2 = require("./app_api_v2/routes/index");
 
 var app = express();
 
+if (process.env.NODE_ENV === "docker") {
+    const nocache = require("nocache");
+    app.use(nocache());
+    console.log("USING NOCACHE");
+}
+
 hbs.registerPartials(path.join(__dirname, "app_server/views/partials")); // partials (navbar, ...)
 
 // Preusmeritev na HTTPS na Heroku
