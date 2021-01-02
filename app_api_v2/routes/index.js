@@ -38,8 +38,8 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
-// a user can only update himself, not other users
-const authUpdateUser = (req, res, next) => {
+// a user can only do actions to himself, not other users
+const authLimitToLoggedOnUser = (req, res, next) => {
     if (req.user && req.user._id && req.params.idUser === req.user._id) {
         next();
     } else {
@@ -53,15 +53,14 @@ router.post("/registracija", ctrlAuthentication.registracija);
 router.post("/prijava", ctrlAuthentication.prijava);
 
 //START--------------------------USERS-------------------------------START
-// router.get("/users", authenticateJWT, ctrlUser.getAllUsers);
-router.get("/users", ctrlUser.getAllUsers);
-router.get("/users/:idUser", ctrlUser.getUserById);
-router.put("/users/:idUser", authenticateJWT, authUpdateUser, ctrlUser.updateUser); //pri teh se lahko doda avtentikacija spredaj. Primer: router.post("/users/:idUser", avtentikacija, ctrlUser.updateUser);
-router.delete("/users/:idUser", ctrlUser.deleteUser);
+// router.get("/users", ctrlUser.getAllUsers);
+router.get("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.getUserById);
+router.put("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.updateUser);
+router.delete("/users/:idUser", authenticateJWT, authLimitToLoggedOnUser, ctrlUser.deleteUser);
 // router.post("/users", ctrlUser.addUser);
-router.get("/users/name/:name", ctrlUser.getUserByName);
+router.get("/users/name/:name", ctrlUser.getUserByName); // TODO: is this needed? @dsfsd
 
-router.get("/users/:idUser/groups", ctrlGroups.getGroupsByUserId);
+router.get("/users/:idUser/groups", authenticateJWT, authLimitToLoggedOnUser, ctrlGroups.getGroupsByUserId);
 // END----------------------------USERS---------------------------------END
 
 // START--------------------------EXPENSES-------------------------------START
