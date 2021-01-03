@@ -464,13 +464,17 @@ components:
       type: object
       description: Expense object
       required:
+        - date
         - _id
         - isExpenditure
         - cost
-        - date
         - category_name
-        - created_by
         - groupId
+        - created_by
+        - description
+        - created_at
+        - updated_at
+        - __v
       properties:
         _id:
           type: string
@@ -505,7 +509,53 @@ components:
           type: string
           description: group ID
           example: "5fc01ba0cd9e25474436be60"
-
+        created_at:
+          type: string
+          description: Date, when it was created
+          example: "2020-12-29T19:20:36.568Z"
+        updated_at:
+          type: string
+          description: Date, when it was updated
+          example: "2020-12-29T19:20:36.568Z"
+        __v:
+          type: string
+          description: version key
+          example: 0
+    CategoryAdded:
+      type: object
+      description: returns successful message
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: return message
+          example: Category added
+    CategoryUpdated:
+      type: object
+      description: returns successful message
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: return message
+          example: Category updated
+    CategoriesElement:
+      type: object
+      description: Categories of a group
+      required:
+        - categories
+        - _id
+      properties:
+        _id:
+          type: string
+          description: group categories id
+          example: 5fefa4ab1d06c61fe0679a6b
+        categories:
+          type: array
+          description: group categories
+          example: ["Car", "Beauty", "Leisure", "Salary", "Clothes"]
     Expense_for_adding:
       type: object
       description: Expense object
