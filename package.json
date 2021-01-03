@@ -13,6 +13,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "axios": "0.21.0",
+    "compression": "^1.7.4",
     "cookie-parser": "*",
     "debug": "4.3.1",
     "dotenv": "^8.2.0",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chromedriver": "^87.0.4",
+    "express-static-gzip": "^2.1.1",
     "faker": "^5.1.0",
     "mocha": "^8.2.1",
     "mochawesome": "^6.2.1",

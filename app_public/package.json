@@ -8,7 +8,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-docker-test": "ng build --configuration=production,docker --output-path build && cd build && http-server",
+    "build-heroku-test": "ng build --prod --output-path build && cd build && http-server",
+    "build-docker": "ng build --configuration=production,docker --output-path build",
+    "build-heroku": "ng build --prod --output-path build",
+    "postbuild": "gulp compress"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +27,7 @@
     "@angular/platform-browser": "~11.0.3",
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
+    "@angular/service-worker": "~11.0.3",
     "@material/snackbar": "^8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "@ng-select/ng-select": "^5.0.9",
@@ -41,6 +47,9 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-gzip": "^1.4.2",
+    "gzipper": "^4.3.0",
     "husky": "4.3.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

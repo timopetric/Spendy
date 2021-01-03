@@ -2,12 +2,14 @@ require("dotenv").config();
 
 var createError = require("http-errors");
 var express = require("express");
+var expressStaticGzip = require("express-static-gzip");
 var hbs = require("hbs");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 //za passport
 var passport = require("passport");
+var compression = require("compression");
 
 require("./app_server/views/helpers/hbsh.js");
 
@@ -20,6 +22,19 @@ var indexApi = require("./app_api/routes/index");
 var indexApiV2 = require("./app_api_v2/routes/index");
 
 var app = express();
+
+app.use(
+    compression({
+        level: 6,
+    })
+);
+// Preusmeritev na HTTPS na Heroku
+if (process.env.NODE_ENV === "production") {
+    app.use((req, res, next) => {
+        if (req.header("x-forwarded-proto") !== "https") res.redirect(`https://${req.header("host")}${req.url}`);
+        else next();
+    });
+}
 
 if (process.env.NODE_ENV === "docker") {
     const nocache = require("nocache");
@@ -46,10 +61,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, "app_public", "build")));
-app.use("/stylesheets", express.static(path.join(__dirname, "public", "stylesheets")));
-app.use("/javascripts", express.static(path.join(__dirname, "public", "javascripts")));
-app.use("/icons", express.static(path.join(__dirname, "public", "icons")));
+app.use(expressStaticGzip(path.join(__dirname, "app_public", "build")));
+app.use("/stylesheets", expressStaticGzip(path.join(__dirname, "public", "stylesheets")));
+app.use("/javascripts", expressStaticGzip(path.join(__dirname, "public", "javascripts")));
+app.use("/icons", expressStaticGzip(path.join(__dirname, "public", "icons")));
 
 //za inicializacijo passporta
 app.use(passport.initialize());
@@ -75,7 +90,7 @@ app.get(
     }
 );
 
-// app.use(express.static(path.join(__dirname, "public")));
+// app.use(expressStaticGzip(path.join(__dirname, "public")));
 
 // Obvladovanje napak zaradi avtentikacije
 app.use((err, req, res, next) => {
