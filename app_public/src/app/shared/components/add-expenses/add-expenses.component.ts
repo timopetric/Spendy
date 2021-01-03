@@ -83,6 +83,14 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
             created_by: this.getIdFromToken(),
         };
     }
+    public isGood() {
+        let categoryRegExp = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
+        if (this.Expense.cost !== 0) this.costError = false;
+        if (!categoryRegExp.test(this.Expense.description)) this.descriptionError = false;
+        if (!categoryRegExp.test(this.Expense.category_name)) this.categoryError = false;
+        if (this.Expense.date !== null) this.dateError = false;
+        return !(this.costError || this.descriptionError || this.dateError || this.categoryError);
+    }
 
     private isFilled() {
         let categoryRegExp = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
