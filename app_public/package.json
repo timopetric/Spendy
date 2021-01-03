@@ -9,11 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-docker-test": "ng build --configuration=production,docker --output-path build && cd build && http-server",
-    "build-heroku-test": "ng build --prod --output-path build && cd build && http-server",
-    "build-docker": "ng build --configuration=production,docker --output-path build",
-    "build-heroku": "ng build --prod --output-path build",
-    "postbuild": "gulp compress"
+    "build-docker-test": "ng build --configuration=production,docker --build-optimizer --aot --output-path build && cd build && http-server",
+    "build-heroku-test": "ng build --prod --build-optimizer --aot --output-path build && cd build && http-server",
+    "build-docker": "ng build --configuration=production,docker --build-optimizer --aot --output-path build",
+    "build-heroku": "ng build --prod --build-optimizer --aot --output-path build"
   },
   "private": true,
   "dependencies": {
@@ -47,9 +46,6 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-gzip": "^1.4.2",
-    "gzipper": "^4.3.0",
     "husky": "4.3.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
