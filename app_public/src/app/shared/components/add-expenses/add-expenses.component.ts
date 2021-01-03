@@ -30,6 +30,7 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
     ) {
         this.titleService.setTitle("Poišči aktivnosti");
     }
+    public napaka = "";
     isOnline(): boolean {
         return this.conectionService.isOnline;
     }
@@ -121,14 +122,21 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         this.Expense.group = this.selectedGroupId;
         if (this.isFilled()) {
             categoryname = categoryname[0].toUpperCase() + categoryname.slice(1).toLowerCase();
-            this.groupsDataService.addCategory(this.Expense.group, categoryname).then(() => {
-                this.categories.push(categoryname);
-                this.updateCategories();
-            });
-            this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
-                this.ponastavi();
-                this.openSnackBar("Expense uspešno dodan!!!");
-            });
+            this.groupsDataService
+                .addCategory(this.Expense.group, categoryname)
+                .then(() => {
+                    this.categories.push(categoryname);
+                    this.updateCategories();
+                })
+                .catch(sporocilo => (this.napaka = sporocilo));
+            this.expensesData
+                .addExpenseToGroup(this.Expense.group, this.Expense)
+                .then(res => {
+                    this.ponastavi();
+                    this.openSnackBar("Expense uspešno dodan!!!");
+                    this.napaka = "";
+                })
+                .catch(sporocilo => (this.napaka = sporocilo));
         }
     }
 
