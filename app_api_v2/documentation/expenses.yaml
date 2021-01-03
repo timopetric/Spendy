@@ -161,7 +161,7 @@
         schema:
           type: string
         required: true
-        example: 5feb818418ade71fc465135b
+        example: 5feb818718ade71fc46513ee
     responses:
       "200":
         description: "Deleting was successful"
