@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
 import { FormControl, Validators } from "@angular/forms";
+import { ConnectionService } from "../../../services/connection.service";
 
 @Component({
     selector: "app-groups-modal-group-add",
@@ -8,7 +9,14 @@ import { FormControl, Validators } from "@angular/forms";
     styleUrls: ["./groups-modal-group-add.component.css"],
 })
 export class GroupsModalGroupAddComponent implements OnInit {
-    constructor(public dialogRef: MatDialogRef<GroupsModalGroupAddComponent>) {}
+    constructor(
+        public dialogRef: MatDialogRef<GroupsModalGroupAddComponent>,
+        private connectionService: ConnectionService
+    ) {}
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
 
     ngOnInit() {}
 

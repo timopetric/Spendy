@@ -10,6 +10,7 @@ import { GroupsModalUserAddComponent } from "../groups-modal-user-add/groups-mod
 import { GroupsModalGroupAddComponent } from "../groups-modal-group-add/groups-modal-group-add.component";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { Title } from "@angular/platform-browser";
+import { ConnectionService } from "../../../services/connection.service";
 
 const MAX_GROUP_COUNT = 10;
 
@@ -24,7 +25,8 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         public dialog: MatDialog,
         private _snackBar: MatSnackBar,
         private authenticationService: AuthenticationService,
-        private titleService: Title
+        private titleService: Title,
+        private connectionService: ConnectionService
     ) {
         this.titleService.setTitle("Skupine");
     }
@@ -37,6 +39,10 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
     apiError = "";
     groupCount = 0;
     MAX_GROUP_COUNT = 10;
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
 
     getUserId() {
         let { _id } = this.authenticationService.vrniTrenutnegaUporabnika();

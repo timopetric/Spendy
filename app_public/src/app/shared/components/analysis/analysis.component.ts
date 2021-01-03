@@ -5,6 +5,7 @@ import { ChartDataSets, ChartType } from "chart.js";
 import { Title } from "@angular/platform-browser";
 import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ConnectionService } from "../../services/connection.service";
 
 @Component({
     selector: "app-analysis",
@@ -16,7 +17,8 @@ export class AnalysisComponent implements OnInit, OnDestroy {
         private kriptoService: KriptoService,
         private titleService: Title,
         private _route: ActivatedRoute,
-        private _router: Router
+        private _router: Router,
+        private connectionService: ConnectionService
     ) {
         this.titleService.setTitle("Analiza");
     }
@@ -30,6 +32,10 @@ export class AnalysisComponent implements OnInit, OnDestroy {
     public bitcoinInvest = false;
     public bitcashInvest = false;
     public rippleInvest = false;
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
 
     public changeMeja() {
         let bitcoin = this.coins.find(x => x.name == "Bitcoin");
