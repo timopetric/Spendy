@@ -98,13 +98,6 @@
             $ref: "#/components/schemas/Expense_for_adding"
     responses:
       400":
-        description: Category name is not allowed (does not contain only chars, nums and whitespaces
-        content:
-          application/json:
-            schema:
-              type: string
-              example: "Category name is not allowed (does not contain only chars, nums and whitespaces"
-      400":
         description: Description is not allowed (does not contain only chars, nums and whitespaces
         content:
           application/json:
