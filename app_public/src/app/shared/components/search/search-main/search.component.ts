@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Expense } from "../../../classes/expense";
 import { ExpensesDataService } from "../../../services/expenses-data.service";
-import { AuthenticationService } from "../../../services/authentication.service";
 import { GroupsDataService } from "../../../services/groups-data.service";
 import { Subscription } from "rxjs";
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DetailModalComponent } from "../modals/detail-modal/detail-modal.component";
 import { Title } from "@angular/platform-browser";
 import { Router, ActivatedRoute } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
     selector: "app-search",
@@ -22,7 +22,8 @@ export class SearchComponent implements OnInit, OnDestroy {
         private modalService: NgbModal,
         private titleService: Title,
         private _route: ActivatedRoute,
-        private _router: Router
+        private _router: Router,
+        private _snackBar: MatSnackBar
     ) {
         this.titleService.setTitle("Stroški");
     }
@@ -146,7 +147,10 @@ export class SearchComponent implements OnInit, OnDestroy {
                     }
                 }
             })
-            .catch(err => {});
+            .catch(err => {
+                this.showError(err);
+                this.openSnackBar("Prišlo je do napake");
+            });
     }
 
     navigateToPageNumberWithNavigation() {
@@ -182,6 +186,12 @@ export class SearchComponent implements OnInit, OnDestroy {
             // preserve the existing query params in the route
             skipLocationChange: true,
             // do not trigger navigation
+        });
+    }
+
+    private openSnackBar(message: string) {
+        this._snackBar.open(message, "skrij", {
+            duration: 10000,
         });
     }
 
