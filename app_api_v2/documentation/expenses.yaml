@@ -4,6 +4,8 @@
     summary: Get expense by ID
     description: Returns expense
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idExpense
@@ -11,7 +13,7 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5feb818418ade71fc465135b
     responses:
       "200":
         description: Expense element
@@ -40,6 +42,8 @@
     summary: Get expenses by group ID
     description: Return array of Expenses
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idGroup
@@ -47,7 +51,7 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5fe8ff7f67c57310401aca3b
     responses:
       "200":
         description: Array of group Expenses
@@ -75,6 +79,8 @@
     summary: Add expense to group
     description: Add new expense to group
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idGroup
@@ -82,14 +88,14 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5fe8ff7f67c57310401aca3b
     requestBody:
       description: New expense which will be added to group
       required: true
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Expense"
+            $ref: "#/components/schemas/Expense_for_adding"
     responses:
       "200":
         description: "Adding was successful"
@@ -118,6 +124,8 @@
     summary: Delete expense from group
     description: Delete expense from group
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idGroup
@@ -125,14 +133,14 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5fe8ff7f67c57310401aca3b
       - in: path
         name: idExpense
         description: unique identifier of Expense
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5feb818418ade71fc465135b
     responses:
       "200":
         description: "Deleting was successful"
@@ -159,6 +167,8 @@
     summary: Update expense from group
     description: Update expense from group
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idGroup
@@ -166,21 +176,21 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5fe8ff7f67c57310401aca3b
       - in: path
         name: idExpense
         description: unique identifier of Expense
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5feb818418ade71fc465135b
     requestBody:
       description: New expense which will be added to group
       required: false
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Expense"
+            $ref: "#/components/schemas/Expense_for_update"
     responses:
       "200":
         description: "Updating was successful"
@@ -210,6 +220,8 @@
     summary: Get expenses by group ID
     description: Return array of Expenses
     tags: [Expenses]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idGroup
@@ -217,7 +229,7 @@
         schema:
           type: string
         required: true
-        example: 5ded18eb51386c3799833191
+        example: 5fe8ff7f67c57310401aca3b
       - in: query
         name: page
         description: page number of expenses that you would like to get
@@ -244,7 +256,7 @@
         schema:
           type: string
         required: false
-        example: Rdec avto
+        example: tools
       - in: query
         name: date
         description: Get only Activites sorted by date in descending order

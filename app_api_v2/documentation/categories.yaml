@@ -4,7 +4,9 @@ paths:
     get:
       summary: Get categories by groupId
       description: Returns categories of a group
-      tags: [ Categories ]
+      tags: [Categories]
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: idGroup
@@ -12,14 +14,15 @@ paths:
           schema:
             type: string
           required: true
-          example: 5fe7cc18e0fe833da436fbdd
+          example: 5fe8ff7f67c57310401aca3b
       responses:
         "200":
           description: Categories element
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Categories"
+                items:
+                  $ref: "#/components/schemas/Categories"
         "500":
           description: Error in database
           content:
@@ -34,12 +37,12 @@ paths:
               schema:
                 items:
                   $ref: "#/components/schemas/Error"
-
-
     post:
       summary: Post one category in group with specified groupId
       description: Posts another category (if not already existing) into group, specified by groupId, categories
-      tags: [ Categories ]
+      tags: [Categories]
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: idGroup
@@ -47,7 +50,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 5fe7cc18e0fe833da436fbdd
+          example: 5fe8ff7f67c57310401aca3b
       requestBody:
         description: unique name for a category
         required: true
@@ -88,7 +91,9 @@ paths:
     put:
       summary: Updates category name with another name provided
       description: Updates specified category name with a given new name, if the new one doesn't exist in categories yet.
-      tags: [ Categories ]
+      tags: [Categories]
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: idGroup
@@ -96,7 +101,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 5fe7cc18e0fe833da436fbdd
+          example: 5fe8ff7f67c57310401aca3b
       requestBody:
         description: Category to be updated and new name for that category
         required: true
@@ -119,7 +124,6 @@ paths:
               schema:
                 items:
                   $ref: "#/components/schemas/Error"
-
         "409":
           description: Category with such name already exists (for new_category_name)
           content:
@@ -137,7 +141,9 @@ paths:
     delete:
       summary: Deletes category from group categories
       description: Deletes specified category from group categories.
-      tags: [ Categories ]
+      tags: [Categories]
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: idGroup
@@ -145,7 +151,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 5fe7cc18e0fe833da436fbdd
+          example: 5fe8ff7f67c57310401aca3b
       requestBody:
         description: unique name for a category
         required: true
@@ -153,7 +159,6 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/deleteCategory"
-
       responses:
         "204":
           description: Category successfully deleted
@@ -175,4 +180,3 @@ paths:
               schema:
                 items:
                   $ref: "#/components/schemas/Error"
-
