@@ -254,8 +254,11 @@ var swaggerOptions = {
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);
+const swaggerSetup = swaggerUi.setup(swaggerDocument);
+router.get("/docs/index.html", swaggerSetup);
+router.use("/docs", swaggerUi.serve);
+router.get("/docs", swaggerSetup);
 
-router.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.get("/swagger.json", (req, res) => {
     res.status(200).json(swaggerDocument);
 });
