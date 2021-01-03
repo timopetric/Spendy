@@ -90,12 +90,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
     public zadnjih5odhodkov: Expense[] = [];
     public zadnjih5prihodkov: Expense[] = [];
-    public z5o;
-    public z5p;
-    public vs;
-    public zadnji;
-    public zadnjih5cost;
-    public zadnjih5;
+    public z5o = null;
+    public z5p = null;
+    public vs = null;
+    public zadnji = null;
+    public zadnjih5cost = null;
+    public zadnjih5 = null;
 
     public last5(array) {
         if (array.length == 0) {
@@ -116,7 +116,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
                 sum = sum + expenses[i].cost;
             }
         }
-        return sum;
+        return Math.round((sum + Number.EPSILON) * 100) / 100;
     }
 
     public getExpenses(idGroup: string) {

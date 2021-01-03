@@ -23,7 +23,8 @@ const authenticateJWT = (req, res, next) => {
         const token = authHeader.split(" ")[1];
         jwt_2.verify(token, process.env.JWT_GESLO, (err, user) => {
             if (err) {
-                return res.sendStatus(403);
+                // return res.sendStatus(403);
+                return res.status(401).json({ message: "Unauthorized" });
             }
             // console.log(user);
             // {
@@ -39,7 +40,7 @@ const authenticateJWT = (req, res, next) => {
             return next();
         });
     } else {
-        res.sendStatus(401);
+        res.status(401).json({ message: "Unauthorized" });
     }
 };
 
@@ -47,10 +48,11 @@ const authenticateJWT = (req, res, next) => {
 const authUserIsLoggedOnUser = (req, res, next) => {
     // console.log("Je: " + req.user._id);
     // console.log("Zeli: " + req.params.idUser);
+
     if (req.user && req.user._id && req.params.idUser === req.user._id) {
         return next();
     } else {
-        res.sendStatus(401);
+        res.status(401).json({ message: "Unauthorized" });
     }
 };
 
@@ -79,7 +81,7 @@ const authUserIsMemberInGroup = (req, res, next) => {
         .then(() => {
             if (notAuthorized) {
                 // console.log("send 401");
-                res.sendStatus(401);
+                res.status(401).json({ message: "Unauthorized" });
             }
         });
 };
@@ -109,7 +111,7 @@ const authUserIsAdminInGroup = (req, res, next) => {
         .then(() => {
             if (notAuthorized) {
                 // console.log("send 401");
-                res.sendStatus(401);
+                res.status(401).json({ message: "Unauthorized" });
             }
         });
 };
@@ -119,7 +121,7 @@ const authCreateGroup = (req, res, next) => {
     if (req.user && req.user._id && req.body.idUser === req.user._id) {
         return next();
     } else {
-        res.sendStatus(401);
+        res.status(401).json({ message: "Unauthorized" });
     }
 };
 
@@ -146,7 +148,7 @@ const authUserCanAccessExpense = (req, res, next) => {
         .then(() => {
             if (notAuthorized) {
                 // console.log("send 401");
-                res.sendStatus(401);
+                res.status(401).json({ message: "Unauthorized" });
             }
         });
 };

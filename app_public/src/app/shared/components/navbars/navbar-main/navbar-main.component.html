@@ -2,7 +2,14 @@
     <ul class="navbar-nav navbar-spendy">
         <li class="logo navbar-spendy">
             <a class="nav-link navbar-spendy">
-                <img alt="logo" class="logo-img navbar-spendy" src="/assets/icons/logo.png" />
+                <img *ngIf="isOnline()" alt="logo" class="logo-img navbar-spendy" src="/assets/icons/logo.png" />
+                <img hidden alt="logoOffline" src="/assets/icons/logoOffline.png" />
+                <img
+                    *ngIf="!isOnline()"
+                    alt="logo"
+                    class="logo-img navbar-spendy"
+                    src="/assets/icons/logoOffline.png"
+                />
                 <span class="logo-text navbar-spendy">Spendy</span>
             </a>
         </li>

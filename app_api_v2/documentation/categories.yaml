@@ -22,7 +22,15 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Categories"
+                $ref: "#/components/schemas/CategoriesElement"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
         "500":
           description: Error in database
           content:
@@ -64,14 +72,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Categories"
+                $ref: "#/components/schemas/CategoryAdded"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
         "400":
           description: GroupId parameter not provided or Category name not provided
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Error"
 
         "409":
           description: Category with such name already exists
@@ -79,7 +95,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Error"
         "500":
           description: Error in database
           content:
@@ -116,28 +132,36 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Categories"
+                $ref: "#/components/schemas/CategoryUpdated"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
         "400":
           description: GroupId, new_category_name or category_name not provided.
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Error"
         "409":
           description: Category with such name already exists (for new_category_name)
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Error"
         "500":
           description: Error in database
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Error"
     delete:
       summary: Deletes category from group categories
       description: Deletes specified category from group categories.
@@ -162,10 +186,14 @@ paths:
       responses:
         "204":
           description: Category successfully deleted
+        "401":
+          description: User is not authenticated
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Categories"
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
         "400":
           description: GroupId or which category you want to delete is not specified.
           content:

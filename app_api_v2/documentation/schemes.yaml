@@ -1,6 +1,14 @@
 ############# ERROR: [500] "Error in database" ##########
 components:
   examples:
+    Error_Description:
+      summary: Description not in correct form
+      value:
+        message: Description not in correct form, must comply with regex (nums, chars, whitespaces)
+    Error_Category:
+      summary: Category not in correct form
+      value:
+        message: Category not in correct form, must comply with regex (nums, chars, whitespaces)
     Error_groupId:
       summary: Group not found
       value:
@@ -13,6 +21,10 @@ components:
       summary: User with this mail not found
       value:
         message: User with this mail does not exist
+    Error_mail_invalid:
+      summary: Invalid email
+      value:
+        message: Email is invalid
     Error_groupId_required:
       summary: groupId is required
       value:
@@ -21,12 +33,25 @@ components:
       summary: Group could not be found/updated
       value:
         message: Group with this id does not exist or could not be updated using the data in request body
+    Update_params_are_invalid:
+      summary: Update params are invalid
+      value:
+        message: Updating body params are in invalid form
+    Request_params_are_missing:
+      summary: Request params are missing
+      value:
+        message: Parameters idGroup and idExpense must be defined
+  #    Error_unauthorized:
+  #      summary: User is not authenticated
+  #      value:
+  #        message: Unauthorized
 
   schemas:
     Error:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -39,7 +64,8 @@ components:
     Error_deleteUser:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -134,7 +160,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         groupIds:
           type: array
           items:
@@ -182,7 +208,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         name:
           type: string
           description: Name of the user
@@ -227,7 +253,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         name:
           type: string
           description: Name of the user
@@ -358,7 +384,7 @@ components:
           items:
             type: string
           description: A list of valid(existing) user IDs
-          example: [5fe7cc18e0fe833da436fbde, 5fe8ff5667c57310401aca38]
+          example: [5fe8ff7f67c57310401aca3c, 5fe8ff5667c57310401aca38]
         adminIds:
           type: array
           items:
@@ -375,6 +401,10 @@ components:
           type: string
           description: New name of the group
           example: Skupina 42
+        _id:
+          type: string
+          description: Internal database ID of the group
+          example: 5fe8ff7f67c57310401aca3b
 
     Group_createNew_response:
       type: object
@@ -446,13 +476,17 @@ components:
       type: object
       description: Expense object
       required:
+        - date
         - _id
         - isExpenditure
         - cost
-        - date
         - category_name
-        - created_by
         - groupId
+        - created_by
+        - description
+        - created_at
+        - updated_at
+        - __v
       properties:
         _id:
           type: string
@@ -487,7 +521,53 @@ components:
           type: string
           description: group ID
           example: "5fc01ba0cd9e25474436be60"
-
+        created_at:
+          type: string
+          description: Date, when it was created
+          example: "2020-12-29T19:20:36.568Z"
+        updated_at:
+          type: string
+          description: Date, when it was updated
+          example: "2020-12-29T19:20:36.568Z"
+        __v:
+          type: string
+          description: version key
+          example: 0
+    CategoryAdded:
+      type: object
+      description: returns successful message
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: return message
+          example: Category added
+    CategoryUpdated:
+      type: object
+      description: returns successful message
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: return message
+          example: Category updated
+    CategoriesElement:
+      type: object
+      description: Categories of a group
+      required:
+        - categories
+        - _id
+      properties:
+        _id:
+          type: string
+          description: group categories id
+          example: 5fefa4ab1d06c61fe0679a6b
+        categories:
+          type: array
+          description: group categories
+          example: ["Car", "Beauty", "Leisure", "Salary", "Clothes"]
     Expense_for_adding:
       type: object
       description: Expense object
@@ -554,6 +634,17 @@ components:
           type: string
           description: A description od the expense
           example: a very helpful description
+
+    Update_expense_update:
+      type: object
+      description: Put request response
+      properties:
+        message:
+          type: string
+          description: message if updating was ok
+          example: "Updating was successful"
+        expense:
+          $ref: "#/components/schemas/Expense_for_update"
 
     ExpenesWithQueriesPagination:
       type: object
@@ -647,7 +738,7 @@ components:
         created_by:
           type: string
           description: user ID of the one that created the expense
-          example: "5fe7cc18e0fe833da436fbde"
+          example: "5fe8ff7f67c57310401aca3c"
         description:
           type: string
           description: A description od the expense
@@ -667,7 +758,7 @@ components:
         idUser:
           type: string
           description: ID of the user that will be the owner of the gorup
-          example: "5fe7cc18e0fe833da436fbde"
+          example: "5fe8ff7f67c57310401aca3c"
         groupName:
           type: string
           description: A name to give to the group

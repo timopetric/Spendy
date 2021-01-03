@@ -124,9 +124,9 @@ img.current-page-img {
     }
 
     /* hide logo link in bottom row */
-    .logo.navbar-spendy {
-        display: none;
-    }
+    /*.logo.navbar-spendy {*/
+    /*    display: none;*/
+    /*}*/
 
     .navbar-nav.navbar-spendy {
         flex-direction: row;

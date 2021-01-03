@@ -67,6 +67,22 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "User with this id not found"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
+        "400":
+          description: Invalid group name (permitted all letters, numbers) (length between 3 and 30)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Name of the group is invalid
 
   # DONE
   /groups/{idGroup}:
@@ -105,6 +121,14 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "Group with id: 5fe7cc18e0fe833da436fbds not found"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
     put:
       summary: Update a group
@@ -151,6 +175,66 @@ paths:
                   $ref: "#/components/examples/Error_groupId_required"
                 group not found:
                   $ref: "#/components/examples/Error_group_update_error"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
+        "400":
+          description: Invalid group name (permitted all letters, numbers) (length between 3 and 30)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Name of the group is invalid
+
+    delete:
+      summary: Delete a group
+      description: Deletes a group with id {idGroup} and all its categories, expenses. Also removes the group from all users that were a member of it
+      tags: [Groups]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe8ff7f67c57310401aca3b
+      responses:
+        "200":
+          description: A group that was deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_update"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Invalid prameters error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Group with this id does not exist.
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
   /groups/{idGroup}/users/{idUser}:
     delete:
@@ -198,12 +282,20 @@ paths:
                   $ref: "#/components/examples/Error_groupId"
                 user not found:
                   $ref: "#/components/examples/Error_userId"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
   /groups/{idGroup}/users:
     post:
       summary: Add a user to a group
       description: Add a user with id {idUser} to the group with id {idGroup}
-      tags: [Users]
+      tags: [Groups]
       security:
         - bearerAuth: []
       parameters:
@@ -245,3 +337,19 @@ paths:
                   $ref: "#/components/examples/Error_groupId"
                 user not found:
                   $ref: "#/components/examples/Error_mail"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
+        "400":
+          description: Invalid email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Email is invalid

@@ -129,18 +129,17 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
            Expense.paginate(match,{limit: 4, page: page ,options})
            .then(exp =>{
             //console.log(exp)
-                res.status(200).json(exp)
+                res.status(200).json(exp);
             })
             .catch(error =>{
-                console.log(error)
-                res.status(500).json(error)
-            })
+                res.status(500).json(error);
+            });
         })
         .catch(error => {
             //console.log(error)
 
-            res.status(500).json(error)
-        })
+            res.status(500).json(error);
+        });
 };
 
 //DODAJ EXPENSE GROUPI
@@ -171,6 +170,14 @@ const createExpenseAndAddToGroup = (req, res, group) => {
     const description = req.body.description;
     const created_by = req.body.created_by;
 
+    let RegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
+    let descRegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,130}$");
+    if (!descRegEx.test(description)) {
+        return res.status(400).json({ message: "Description not in line with regex" });
+    }
+    if (!RegEx.test(category_name)) {
+        return res.status(400).json({ message: "Category name not in line with regex" });
+    }
     if (typeof cost !== "number") {
         return res.status(400).json({ message: "Body element cost must be a number" });
     }
@@ -279,6 +286,20 @@ const deleteExpenseOfGroupHelper = (req, res, group) => {
 const updateExpense = (req, res) => {
     const idGroup = req.params.idGroup;
     const idExpense = req.params.idExpense;
+
+    const isExpenditure = req.body.isExpenditure;
+    const cost = parseFloat(req.body.cost);
+    const category_name = req.body.category_name;
+    const description = req.body.description;
+    //prettier-ignore
+    let RegExdesc = RegExp("([a-zA-Z0-9,. ]{3,120})");
+    //prettier-ignore
+    let RegNumb = RegExp("[0-9]{1,16}\.{0,1}[0-9]*");
+
+    if (!RegNumb.test(cost) || !RegExdesc.test(category_name) || !RegExdesc.test(description)) {
+        return res.status(400).json({ message: "Updating body params are in invalid form" });
+    }
+
     if (!idExpense || !idGroup) {
         return res.status(400).json({ message: "Parameters idGroup and idExpense must be defined" });
     }
