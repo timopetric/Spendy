@@ -75,6 +75,14 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "Unauthorized"
+        "400":
+          description: Invalid group name (permitted all letters, numbers) (length between 3 and 30)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Name of the group is invalid
 
   # DONE
   /groups/{idGroup}:
@@ -175,6 +183,14 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "Unauthorized"
+        "400":
+          description: Invalid group name (permitted all letters, numbers) (length between 3 and 30)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Name of the group is invalid
 
     delete:
       summary: Delete a group
@@ -329,3 +345,11 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "Unauthorized"
+        "400":
+          description: Invalid email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Email is invalid

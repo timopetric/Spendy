@@ -172,14 +172,11 @@ const createExpenseAndAddToGroup = (req, res, group) => {
 
     let RegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
     let descRegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,130}$");
+    if (!descRegEx.test(description)) {
+        return res.status(400).json({ message: "Description not in line with regex" });
+    }
     if (!RegEx.test(category_name)) {
-        return res.status(400).json({ message: "Category not in line with regex" });
-    }
-    if (!descRegEx.test(category_name)) {
-        return res.status(400).json({ message: "Description not in line with regex" });
-    }
-    if (!RegEx.test(description)) {
-        return res.status(400).json({ message: "Description not in line with regex" });
+        return res.status(400).json({ message: "Category name not in line with regex" });
     }
     if (typeof cost !== "number") {
         return res.status(400).json({ message: "Body element cost must be a number" });
