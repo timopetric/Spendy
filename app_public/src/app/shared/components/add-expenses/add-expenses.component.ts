@@ -11,6 +11,7 @@ import { FormControl } from "@angular/forms";
 import { map, startWith } from "rxjs/operators";
 import { Title } from "@angular/platform-browser";
 import { Categories } from "../../classes/categories";
+import { ConnectionService } from "../../services/connection.service";
 
 @Component({
     selector: "app-add-expenses",
@@ -24,10 +25,15 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
         private authenticationService: AuthenticationService,
-        private titleService: Title
+        private titleService: Title,
+        private conectionService: ConnectionService
     ) {
         this.titleService.setTitle("Poišči aktivnosti");
     }
+    isOnline(): boolean {
+        return this.conectionService.isOnline;
+    }
+
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
     public selectedGroupId = "";

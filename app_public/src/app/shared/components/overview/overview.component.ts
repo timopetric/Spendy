@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ExpensesDataService } from "../../services/expenses-data.service";
+import { ConnectionService } from "../../services/connection.service";
 import { Expense } from "../../classes/expense";
 import { ChartData, ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import { Color, Label } from "ng2-charts";
@@ -19,11 +20,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
         private authenticationService: AuthenticationService,
-        private titleService: Title
+        private titleService: Title,
+        private conectionService: ConnectionService
     ) {
         this.titleService.setTitle("Pregled");
     }
-
+    isOnline(): boolean {
+        return this.conectionService.isOnline;
+    }
     // todo: extract this to classes folder
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;

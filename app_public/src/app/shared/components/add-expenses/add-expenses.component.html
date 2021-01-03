@@ -136,7 +136,11 @@
                             </div>
 
                             <input id="uporabnikTrenutni" style="visibility: hidden" name="created_by" />
-                            <button class="container-fluid d-flex justify-content-center btn btn-primary" type="submit">
+                            <button
+                                [disabled]="!isOnline()"
+                                class="container-fluid d-flex justify-content-center btn btn-primary"
+                                type="submit"
+                            >
                                 Shrani Expense
                             </button>
                         </form>
