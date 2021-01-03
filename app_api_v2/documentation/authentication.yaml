@@ -1,0 +1,100 @@
+paths:
+  /registracija:
+    post:
+      summary: Registering a new user
+      description: Registration of a new user with data about name, surname, email and passeord
+      tags: [Authentication]
+      requestBody:
+        description: Registration data
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/UporabnikRegistracija"
+      responses:
+        "200":
+          description: Successfull registration with JWT in result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AvtentikacijaOdgovor"
+        "400":
+          description: Error, name, surname, email and password are required when registrating
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Napaka"
+              examples:
+                All data is required:
+                  $ref: "#/components/schemas/AllData"
+                Email not valid:
+                  $ref: "#/components/schemas/EmailNotValid"
+                Password not valid:
+                  $ref: "#/components/schemas/PasswordNotValid"
+                Name Wrong:
+                  $ref: "#/components/schemas/NameNotValid"
+                Surname wrong:
+                  $ref: "#/components/schemas/SurnameNotValid"
+                Username wrong:
+                  $ref: "#/components/schemas/UsernameNotValid"
+
+        "409":
+          description: Error, user already exists
+          content:
+            application/json:
+              shema:
+                $ref: "#/components/schemas/Napaka"
+              example:
+                sporočilo: Uporabnik s tem elektronskim naslovom že obstaja
+        "500":
+          description: Server errror when traying to register
+  /prijava:
+    post:
+      summary: User login
+      descritpion: Login of an existing user with email and password
+      tags: [Authentication]
+      requestBody:
+        descritpion: Login data
+        required: true
+        content:
+          x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/UporabnikPrijava"
+      responses:
+        "200":
+          description: Successfull login with JWT in result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AvtentikacijaOdgovor"
+        "400":
+          description: Error when loging in. Email and password are required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Napaka"
+              examples:
+                All data is required:
+                  value:
+                    sporočilo: Zahtevani so vsi podatki
+                Email not valid:
+                  $ref: "#/components/schemas/EmailNotValid"
+                Password not valid:
+                  $ref: "#/components/schemas/PasswordNotValid"
+        "401":
+          description: Error when loging in a user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Napaka"
+            examples:
+              username:
+                value:
+                  sporočilo: Napačno uporabniško ime ali geslo
+                summary: Wrong email or password
+              password:
+                value:
+                  sporočilo: Napačno uporabniško ime ali geslo
+                summary: Wrong email or password
+        "500":
+          description: Error on server when authenticating a user

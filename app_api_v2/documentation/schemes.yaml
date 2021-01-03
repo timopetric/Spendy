@@ -915,3 +915,113 @@ components:
           type: string
           description: new password for user
           example: "superGeslo123"
+
+    UporabnikRegistracija:
+      type: object
+      description: User data for registration
+      properties:
+        name:
+          type: string
+          description: name of the user
+          writeOnly: true
+          example: Janez
+        surname:
+          type: string
+          description: surname of the user
+          writeOnly: true
+          example: Novak
+        mail:
+          type: string
+          description: users email
+          example: janez123.novak@gmail.com
+        pass:
+          type: string
+          format: password
+          example: test123
+        balance:
+          type: number
+          description: Startin balance of a user
+          example: 100
+        username:
+          type: string
+          description: Users username
+          example: janez123.novak@gmail.com
+      required:
+        - name
+        - surname
+        - mail
+        - pass
+        - balance
+        - username
+
+    AvtentikacijaOdgovor:
+      type: object
+      description: Response of a successfull user authentication
+      properties:
+        žeton:
+          type: string
+          description: JWT token
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGZhMjBlZDlhZGM0MzIyNmY0NjhkZjMiLCJlbGVrdHJvbnNraU5hc2xvdiI6ImRlamFuQGxhdmJpYy5uZXQiLCJpbWUiOiJEZWphbiBMYXZiacSNIiwiZGF0dW1Qb3Rla2EiOjE1Nzc5NTU2NjMsImlhdCI6MTU3NzM1MDg2M30.PgSpqjK8qD2dHUsXKwmqzhcBOJXUUwtIOHP3Xt6tbBA
+      required:
+        - žeton
+    Napaka:
+      type: object
+      description: Error detail
+      required:
+        - sporočilo
+      properties:
+        sporočilo:
+          type: string
+      example:
+        message: "Parameters username, name, surname, mail, pass must be supplied in the body"
+
+    VsiPodatki:
+      summary: All the data is required
+      value:
+        sporočilo: Zahtevani so vsi podatki
+
+    EmailNotValid:
+      summary: Email is not valid
+      value:
+        sporočilo: Elektronski naslov ni ustrezen!
+
+    PasswordNotValid:
+      summary: Password is not valid
+      value:
+        sporočilo: Geslo je napačne oblike!
+
+    UporabnikPrijava:
+      type: object
+      description: Data of the user that is loging in
+      properties:
+        mail:
+          type: string
+          description: email
+          example: janez.novak@gmail.com
+        pass:
+          type: string
+          format: password
+          example: test123
+      required:
+        - email
+        - password
+
+    AllData:
+      summary: All data is required
+      value:
+        message: Parameters username, name, surname, mail, pass must be supplied in the body
+
+    NameNotValid:
+      summary: Name is wrong
+      value:
+        sporočilo: Ime je napačne oblike!
+
+    SurnameNotValid:
+      summary: Surname is wrong
+      value:
+        sporočilo: Priimek je napačne oblike!
+
+    UsernameNotValid:
+      summary: Illegal username
+      value:
+        sporočilo: Uporabniško ime je napačno!

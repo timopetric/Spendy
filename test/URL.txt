@@ -1,0 +1,12 @@
+http://localhost:3000/
+http://localhost:3000/first-page
+http://localhost:3000/login
+http://localhost:3000/signup
+http://localhost:3000/overview
+http://localhost:3000/graphs
+http://localhost:3000/analysis
+http://localhost:3000/search
+http://localhost:3000/groups
+http://localhost:3000/settings
+http://localhost:3000/profile
+http://localhost:3000/add_expenses

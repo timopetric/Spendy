@@ -280,6 +280,7 @@ var swaggerOptions = {
         "app_api_v2/documentation/basics.yaml",
         "app_api_v2/documentation/schemes.yaml",
         "app_api_v2/documentation/categories.yaml",
+        "app_api_v2/documentation/authentication.yaml",
     ],
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);
