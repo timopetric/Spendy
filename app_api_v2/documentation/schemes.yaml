@@ -21,6 +21,10 @@ components:
       summary: Group could not be found/updated
       value:
         message: Group with this id does not exist or could not be updated using the data in request body
+  #    Error_unauthorized:
+  #      summary: User is not authenticated
+  #      value:
+  #        message: Unauthorized
 
   schemas:
     Error:
