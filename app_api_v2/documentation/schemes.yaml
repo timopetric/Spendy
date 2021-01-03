@@ -21,6 +21,10 @@ components:
       summary: User with this mail not found
       value:
         message: User with this mail does not exist
+    Error_mail_invalid:
+      summary: Invalid email
+      value:
+        message: Email is invalid
     Error_groupId_required:
       summary: groupId is required
       value:
