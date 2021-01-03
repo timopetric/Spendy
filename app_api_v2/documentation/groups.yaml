@@ -279,7 +279,7 @@ paths:
     post:
       summary: Add a user to a group
       description: Add a user with id {idUser} to the group with id {idGroup}
-      tags: [Users]
+      tags: [Groups]
       security:
         - bearerAuth: []
       parameters:
