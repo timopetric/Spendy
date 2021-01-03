@@ -21,11 +21,12 @@ export class GroupsModalSettingsComponent implements OnInit {
         name: new FormControl(this.data.group.name, [
             Validators.required,
             Validators.minLength(3),
-            Validators.maxLength(25),
+            Validators.maxLength(30),
         ]),
         // limit: new FormControl(this.group.balance, [Validators.required, Validators.min(0)]),
     };
-    nameError = "Ime mora biti dolgo med 3 in 25 znakov";
+    nameError =
+        "Ime mora biti dolgo med 3 in 30 znakov, sestavljeno iz velikih, malih črk ter številk 0 do 9, ter znaka . in @";
     // limitError = "Limit mora biti nenegativen";
 
     deleteGroup() {
