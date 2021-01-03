@@ -488,7 +488,7 @@ components:
           description: group ID
           example: "5fc01ba0cd9e25474436be60"
 
-    Expense_for_update:
+    Expense_for_adding:
       type: object
       description: Expense object
       required:
@@ -511,15 +511,15 @@ components:
           type: string
           format: date-time
           description: Date when the expense was created
-          example: 2017-07-21T17:32:28Z
+          example: 2021-01-03T17:32:28Z
         category_name:
           type: string
           description: Name of the category
-          example:
+          example: Avto
         created_by:
           type: string
           description: user ID
-          example: "8fc0cca0cd9e25474436rd32"
+          example: "5fe8ff7f67c57310401aca3c"
         description:
           type: string
           description: A description od the expense
@@ -527,7 +527,33 @@ components:
         groupId:
           type: string
           description: group ID
-          example: "5fc01ba0cd9e25474436be60"
+          example: "5fe8ff7f67c57310401aca3b"
+
+    Expense_for_update:
+      type: object
+      description: Expense object
+      properties:
+        isExpenditure:
+          type: boolean
+          description: Marks if the expense is an expenditure or a cash inflow
+          example: true
+        cost:
+          type: number
+          description: The cost in eur
+          example: 90
+        date:
+          type: string
+          format: date-time
+          description: Date when the expense was created
+          example: 2021-01-03T17:32:28Z
+        category_name:
+          type: string
+          description: Name of the category
+          example: Avto2
+        description:
+          type: string
+          description: A description od the expense
+          example: a very helpful description
 
     ExpenesWithQueriesPagination:
       type: object
@@ -689,7 +715,7 @@ components:
         category_name:
           type: string
           description: Category name to be deleted from group categories
-          example: "Hrana"
+          example: "Car"
 
     updateCategory:
       type: object
@@ -701,11 +727,11 @@ components:
         category_name:
           type: string
           description: OLD category name to be changed in group categories
-          example: "Hrana"
+          example: "Beauty"
         new_category_name:
           type: string
           description: NEW category name to be added in group categories
-          example: "Božičnica"
+          example: "Neki Novega"
 
     User_getUserById:
       type: object
@@ -765,19 +791,36 @@ components:
         #          type: string
         #          description: New password
         #          example: NekoGeslo todo: kako je z geslom?
-        balance:
-          type: number
-          description: Users new balance
-          example: 500.0
-#        created_by:
-#          type: string
-#          description: user ID
-#          example: "8fc0cca0cd9e25474436rd32"
-#        groupsIds:
-#          type: string
-#          description: A group you want to add the user in
-#          example: a very helpful description
-#        groupId:
-#          type: string
-#          description: A list of valid(existing) group IDs
-#          example: "5fc01ba0cd9e25474436be60"
+        pass:
+          type: string
+          description: new password for user
+          example: "superGeslo123"
+    #        created_by:
+    #          type: string
+    #          description: user ID
+    #          example: "8fc0cca0cd9e25474436rd32"
+    #        groupsIds:
+    #          type: string
+    #          description: A group you want to add the user in
+    #          example: a very helpful description
+    #        groupId:
+    #          type: string
+    #          description: A list of valid(existing) group IDs
+    #          example: "5fc01ba0cd9e25474436be60"
+
+    User_put:
+      type: object
+      description: body for updating a user
+      properties:
+        name:
+          type: string
+          description: The name you want to give to the user
+          example: France
+        surname:
+          type: string
+          description: The surname you weant to give to the user
+          example: Prešeren
+        pass:
+          type: string
+          description: new password for user
+          example: "superGeslo123"

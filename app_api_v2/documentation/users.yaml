@@ -1,39 +1,41 @@
 # GET /api/v2/users
-/users:
-  get:
-    summary: Get all users
-    description: Returns a list of all users
-    tags: [Users]
+# /users:
+#   get:
+#     summary: Get all users
+#     description: Returns a list of all users
+#     tags: [Users]
 
-    responses:
-      "200":
-        description: An array of users
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: "#/components/schemas/User_getAllUsers"
-      "500":
-        description: Error in database
-        content:
-          application/json:
-            schema:
-              items:
-                $ref: "#/components/schemas/Error"
-      "404":
-        description: No user was found
-        content:
-          application/json:
-            schema:
-              items:
-                $ref: "#/components/schemas/Error"
+#     responses:
+#       "200":
+#         description: An array of users
+#         content:
+#           application/json:
+#             schema:
+#               type: array
+#               items:
+#                 $ref: "#/components/schemas/User_getAllUsers"
+#       "500":
+#         description: Error in database
+#         content:
+#           application/json:
+#             schema:
+#               items:
+#                 $ref: "#/components/schemas/Error"
+#       "404":
+#         description: No user was found
+#         content:
+#           application/json:
+#             schema:
+#               items:
+#                 $ref: "#/components/schemas/Error"
 
 /users/{idUser}:
   get:
     summary: Get a specific user
     description: Returns the user with requested id
     tags: [Users]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idUser
@@ -41,7 +43,7 @@
         schema:
           type: string
         required: true
-        example: 5fe900054efb621cf4256378
+        example: 5fe8ff7f67c57310401aca3c
     responses:
       "200":
         description: The user
@@ -55,7 +57,7 @@
         content:
           application/json:
             example:
-              message: "Could not find user with id: 5fe900054efb621cf4256376" #todo: spremeni id
+              message: "Could not find user with id: 5fe8ff7f67c57310401aca3c" #todo: spremeni id
       "500":
         description: Eror in database
         content:
@@ -76,14 +78,14 @@
         schema:
           type: string
         required: true
-        example: 5fe7cc18e0fe833da436fbdd
+        example: 5fe8ff7f67c57310401aca3c
     requestBody:
       description: Changes to the user
       required: true
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/User_postBody" #todo: ni to še shema za updatanje uporabnika
+            $ref: "#/components/schemas/User_put"
     responses:
       "202":
         description: Returns an updated user
@@ -96,7 +98,7 @@
         content:
           application/json:
             example:
-              message: "Could not find user with id: 5fe7cc18e0fe833da436fbds"
+              message: "Could not find user with id: 5fe8ff7f67c57310401aca3c"
       "500":
         description: Error in database
         content:
@@ -108,6 +110,8 @@
     summary: Remove a user from a database
     description: Remove a user with id {idUser} from databse
     tags: [Users]
+    security:
+      - bearerAuth: []
     parameters:
       - in: path
         name: idUser
@@ -115,7 +119,7 @@
         schema:
           type: string
         required: true
-        example: 5fe7cc18e0fe833da436fbdd #todo: spremeni id uporabnika v veljavnega
+        example: 5fe8ff7f67c57310401aca3c #todo: spremeni id uporabnika v veljavnega
     responses:
       "204":
         description: User with id {idUser} was successfully deleted
@@ -139,36 +143,35 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error"
-
-/users/name/{name}:
-  get:
-    summary: Get a user by their name
-    description: Get a user by name {name}
-    tags: [Users]
-    parameters:
-      - in: path
-        name: name
-        description: Name of the user
-        schema:
-          type: string
-        required: true
-        example: France
-    responses:
-      "200":
-        description: A user
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/User_getByName"
-      "404":
-        Description: User with this name does not exit
-        content:
-          application/json:
-            example:
-              sporočilo: Uporabnik s tem imenom ne obstaja
-      "500":
-        description: Error in database
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Error"
+# /users/name/{name}:
+#   get:
+#     summary: Get a user by their name
+#     description: Get a user by name {name}
+#     tags: [Users]
+#     parameters:
+#       - in: path
+#         name: name
+#         description: Name of the user
+#         schema:
+#           type: string
+#         required: true
+#         example: France
+#     responses:
+#       "200":
+#         description: A user
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/User_getByName"
+#       "404":
+#         Description: User with this name does not exit
+#         content:
+#           application/json:
+#             example:
+#               sporočilo: Uporabnik s tem imenom ne obstaja
+#       "500":
+#         description: Error in database
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/Error"
