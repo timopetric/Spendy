@@ -16,8 +16,8 @@
     // var driver = new webdriver.Builder().forBrowser("chrome").build();
 
     // Parametri
-    // let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
-    let aplikacijaUrl = "http://localhost:4200/";
+    let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
+    // let aplikacijaUrl = "http://localhost:4200/";
     let seleniumStreznikUrl = "http://localhost:4445/wd/hub";
     let brskalnik, jwtZeton;
 
@@ -202,6 +202,10 @@
 
             it("premik na dodajanje", async function () {
                 await pocakajStranNalozena(brskalnik, 10, '//*[@id="content"]/section[1]/div/div/div/h1');
+                await brskalnik.wait(
+                    until.elementLocated(By.xpath('//*[@id="content"]/section[3]/div/div/div[2]/div/div[2]/a[2]')),
+                    10000
+                );
                 let gumb = await brskalnik
                     .findElement(By.xpath('//*[@id="content"]/section[3]/div/div/div[2]/div/div[2]/a[2]'))
                     .click();
@@ -209,6 +213,10 @@
 
             it("preveri stran", async function () {
                 await pocakajStranNalozena(brskalnik, 10, '//*[@id="content"]/section[1]/div/div/div/h1');
+                await brskalnik.wait(
+                    until.elementLocated(By.xpath('//*[@id="content"]/section[1]/div/div/div/h1')),
+                    10000
+                );
                 let nekej = await brskalnik
                     .findElement(By.xpath('//*[@id="content"]/section[1]/div/div/div/h1'))
                     .getText();
@@ -258,6 +266,7 @@
                 let category2 = "Podkupnina še Gecu";
                 let cost2 = 50;
                 it("vnosi2", async function () {
+                    await brskalnik.sleep(500);
                     let vnosVrednosti = await brskalnik.findElement(By.css("input[name='cost']"));
                     expect(vnosVrednosti).to.not.be.empty;
                     await vnosVrednosti.clear();
@@ -324,7 +333,8 @@
             let price = 300;
             context("Urejanje dohodka", async function () {
                 it("Spremeni ceno ", async function () {
-                    let pritiskNaDohodek = await brskalnik.findElement(By.css("i[class='fas fa-arrow-up']")).click();
+                    await brskalnik.wait(until.elementLocated(By.xpath('//*[@id="modal1"]/div')), 10000);
+                    let pritiskNaDohodek = await brskalnik.findElement(By.xpath('//*[@id="modal1"]/div')).click();
                     let pritiskNaUredi = await brskalnik.findElement(By.css("button[class='btn btn-warning']")).click();
                     let cena = await brskalnik.findElement(By.css("input[id='znesek']"));
                     expect(cena).to.not.be.empty;
@@ -360,6 +370,8 @@
                             until.elementLocated(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[1]/h4')),
                             10000
                         );
+
+                        await brskalnik.sleep(500);
                         let sandi = await brskalnik
                             .findElement(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[1]/h4'))
                             .getText();
