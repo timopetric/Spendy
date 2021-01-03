@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ExpensesDataService } from "../../services/expenses-data.service";
+import { ConnectionService } from "../../services/connection.service";
 import { Expense } from "../../classes/expense";
 import { ChartData, ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import { Color, Label } from "ng2-charts";
@@ -19,11 +20,15 @@ export class OverviewComponent implements OnInit, OnDestroy {
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
         private authenticationService: AuthenticationService,
-        private titleService: Title
+        private titleService: Title,
+        private conectionService: ConnectionService
     ) {
         this.titleService.setTitle("Pregled");
     }
-
+    public napaka = "";
+    isOnline(): boolean {
+        return this.conectionService.isOnline;
+    }
     // todo: extract this to classes folder
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
@@ -120,12 +125,15 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
 
     public getExpenses(idGroup: string) {
-        this.expensesData.getExpensesByGroupIdQuery(idGroup, "date=desc").then(res => {
-            this.expenses = res;
-            this.zadnjih5 = this.last5(this.expenses);
-            this.vs = this.prihodkiVSodhodki(this.expenses);
-            this.zadnji = this.expenses[this.expenses.length - 1];
-        });
+        this.expensesData
+            .getExpensesByGroupIdQuery(idGroup, "date=desc")
+            .then(res => {
+                this.expenses = res;
+                this.zadnjih5 = this.last5(this.expenses);
+                this.vs = this.prihodkiVSodhodki(this.expenses);
+                this.zadnji = this.expenses[this.expenses.length - 1];
+            })
+            .then(() => (this.loading = false));
     }
     public zracuni5(array) {
         let sum = 0;
@@ -187,8 +195,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
                     }
                     this.zadnjih5odhodkov = this.last5(tmpData);
                     this.z5o = this.zracuni5(this.zadnjih5odhodkov);
+                    this.napaka = "";
                 });
-            });
+            })
+            .catch(sporocilo => (this.napaka = sporocilo));
     }
 
     ngOnInit(): void {
@@ -199,7 +209,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
                 this.userGroupsData = data.groups;
             });
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
-            this.loading = false;
             this.groupSelected = data;
             this.barChartData = [];
             this.barChartLabels = [];

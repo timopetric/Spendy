@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Expense } from "src/app/shared/classes/expense";
+import { ConnectionService } from "src/app/shared/services/connection.service";
 import { ExpensesDataService } from "src/app/shared/services/expenses-data.service";
 import { DetailModalUpdateComponent } from "../detail-modal-update/detail-modal-update.component";
 
@@ -15,7 +16,8 @@ export class DetailModalComponent implements OnInit {
         private expensesData: ExpensesDataService,
         private modalService: NgbModal,
         public activeModal: NgbActiveModal,
-        private _snackBar: MatSnackBar
+        private _snackBar: MatSnackBar,
+        private connectionService: ConnectionService
     ) {}
 
     public message: string;
@@ -66,6 +68,10 @@ export class DetailModalComponent implements OnInit {
         this._snackBar.open(message, "skrij", {
             duration: 10000,
         });
+    }
+
+    jePovezava(): boolean {
+        return this.connectionService.isOnline;
     }
 
     private showError = (napaka: any): void => {

@@ -27,9 +27,15 @@
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                     [(ngModel)]="search"
+                    [disabled]="!jePovezava()"
                 />
                 <div class="input-group-append">
-                    <button class="btn btn-primary" (click)="filterActivities(p, query, search, date)" type="button">
+                    <button
+                        class="btn btn-primary"
+                        (click)="filterActivities(p, query, search, date)"
+                        [disabled]="!jePovezava()"
+                        type="button"
+                    >
                         <i class="fa fa-search"></i>Search
                     </button>
                 </div>
@@ -44,6 +50,7 @@
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
+                            [disabled]="!jePovezava()"
                         >
                             Sortiraj
                         </button>
@@ -64,12 +71,17 @@
         </div>
 
         <div id="spinner-and-error-msg" class="wrapper">
-            <mat-spinner class="inner" *ngIf="loading"></mat-spinner>
-            <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+            <mat-spinner class="inner" *ngIf="loading && !jePovezava()"></mat-spinner>
+            <mat-error *ngIf="apiError && !jePovezava()">{{ apiError }}</mat-error>
         </div>
         <section *ngIf="expenses?.length == 0" class="bg-mix py-3 px-3">
             <div class="alert alert-warning" role="alert">
                 <strong>Opozorilo!</strong> Ta skupina še nima aktivnostni.
+            </div>
+        </section>
+        <section *ngIf="!jePovezava()" class="bg-mix py-3 px-3">
+            <div class="alert alert-warning" role="alert">
+                <strong>Opozorilo!</strong> Trenutno ni povezave zato nemorate brskati po vseh aktivnostih
             </div>
         </section>
         <section *ngIf="expenses?.length > 0" class="bg-mix py-3">
@@ -80,7 +92,7 @@
                 <app-expense *ngIf="aktivnost" [aktivnost]="aktivnost" (click)="openModal(aktivnost)"></app-expense>
             </div>
 
-            <div class="paginate">
+            <div class="paginate" *ngIf="jePovezava()">
                 <pagination-controls (pageChange)="inc($event)" autoHide="true"></pagination-controls>
             </div>
         </section>

@@ -41,10 +41,18 @@
         data-toggle="modal"
         data-target="#urediModal"
         (click)="openModal(activity)"
+        [disabled]="!jePovezava()"
     >
         Uredi
     </button>
-    <button id="deleteButton" type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteExpense()">
+    <button
+        id="deleteButton"
+        type="button"
+        class="btn btn-danger"
+        data-dismiss="modal"
+        [disabled]="!jePovezava()"
+        (click)="deleteExpense()"
+    >
         Izbriši
     </button>
 </div>
