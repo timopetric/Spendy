@@ -294,11 +294,12 @@ const updateExpense = (req, res) => {
     const cost = parseFloat(req.body.cost);
     const category_name = req.body.category_name;
     const description = req.body.description;
+    //prettier-ignore
+    let RegExdesc = RegExp("([a-zA-Z0-9,. ]{3,120})");
+    //prettier-ignore
+    let RegNumb = RegExp("[0-9]{1,16}\.{0,1}[0-9]*");
 
-    let RegExdesc = RegExp("([a-zA-Z0-9,. ]{120})");
-    let RegNumb = RegExp("[0-9]{16}.*[0-9]{2}");
-
-    if (!RegNumb.test(cost) || !RegNumb.test(category_name) || !RegNumb.test(description)) {
+    if (!RegNumb.test(cost) || !RegExdesc.test(category_name) || !RegExdesc.test(description)) {
         return res.status(400).json({ message: "Updating body params are in invalid form" });
     }
 
