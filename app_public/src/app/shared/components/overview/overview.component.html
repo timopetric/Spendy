@@ -8,6 +8,7 @@
     </div>
     <div>
         <div class="container-fluid bg-grey px-3" id="content">
+            <div role="alert" *ngIf="napaka" class="alert alert-danger">{{ napaka }}</div>
             <section class="bg-light py-3">
                 <div class="container-fluid">
                     <div class="row">
@@ -29,8 +30,10 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Stanje</h6>
-                                        <h3 *ngIf="vs >= 0" class="font-weight-bold">+{{ vs }} €</h3>
-                                        <h3 *ngIf="vs < 0" class="font-weight-bold">{{ vs }} €</h3>
+                                        <div *ngIf="!loading">
+                                            <h3 *ngIf="vs >= 0" class="font-weight-bold">+{{ vs }} €</h3>
+                                            <h3 *ngIf="vs < 0" class="font-weight-bold">{{ vs }} €</h3>
+                                        </div>
                                         <h3 *ngIf="loading" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                         <i class="icon ion-md-arrow-dropup-circle"></i> 50.50%
@@ -41,11 +44,13 @@
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Zadnji expense</h6>
                                         <h3 id="ZadnjiExpense" class="font-weight-bold">
-                                            <div *ngIf="zadnji">
-                                                <div *ngIf="zadnji.isExpenditure">-{{ zadnji.cost }} €</div>
-                                                <div *ngIf="!zadnji.isExpenditure">+{{ zadnji.cost }} €</div>
+                                            <div *ngIf="!loading">
+                                                <div *ngIf="zadnji">
+                                                    <div *ngIf="zadnji.isExpenditure">-{{ zadnji.cost }} €</div>
+                                                    <div *ngIf="!zadnji.isExpenditure">+{{ zadnji.cost }} €</div>
+                                                </div>
+                                                <div *ngIf="!zadnji">Ni še expensov</div>
                                             </div>
-                                            <div *ngIf="!zadnji">Ni še expensov</div>
                                             <div *ngIf="loading">Nalaganje...</div>
                                         </h3>
                                         <!-- <h6 class="text-success">
@@ -56,8 +61,10 @@
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cena zadnjih 5 prihodkov</h6>
-                                        <h3 *ngIf="z5p" class="font-weight-bold">+{{ z5p }} €</h3>
-                                        <h3 *ngIf="!z5p" class="font-weight-bold">Ni prihodkov</h3>
+                                        <div *ngIf="!loading">
+                                            <h3 *ngIf="z5p" class="font-weight-bold">+{{ z5p }} €</h3>
+                                            <h3 *ngIf="!z5p" class="font-weight-bold">Ni prihodkov</h3>
+                                        </div>
                                         <h3 *ngIf="loading" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
@@ -67,8 +74,10 @@
                                 <div class="col-lg-3 col-md-6 d-flex my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cena zadnjih 5 odhodkov</h6>
-                                        <h3 *ngIf="z5o" class="font-weight-bold">-{{ z5o }} €</h3>
-                                        <h3 *ngIf="!z5o" class="font-weight-bold">Ni odhodkov</h3>
+                                        <div *ngIf="!loading">
+                                            <h3 *ngIf="z5o" class="font-weight-bold">-{{ z5o }} €</h3>
+                                            <h3 *ngIf="!z5o" class="font-weight-bold">Ni odhodkov</h3>
+                                        </div>
                                         <h3 *ngIf="loading" class="font-weight-bold">Nalaganje...</h3>
                                         <!--<h6 class="text-success">
                            <i class="icon ion-md-arrow-dropup-circle"></i> 15.50%
@@ -147,9 +156,9 @@
                                         </div>
                                     </div>
 
-                                    <a class="btn btn-primary w-100" routerLink="/search"> Oglej si aktivnosti </a>
+                                    <a class="btn btn-primary w-100" routerLink="/search">Oglej si aktivnosti </a>
                                     <br /><br />
-                                    <a class="btn btn-primary w-100" routerLink="/add_expenses"> Dodaj expense</a>
+                                    <a class="btn btn-primary w-100" routerLink="/add_expenses">Dodaj expense</a>
                                 </div>
                             </div>
                         </div>

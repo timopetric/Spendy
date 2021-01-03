@@ -30,6 +30,7 @@ export class GraphsComponent implements OnInit, OnDestroy {
     groupSelected = "";
     userGroupsData: GroupsPopulatedUsersModel[] = [];
     loading = false;
+    public napaka = "";
 
     public prihodkiChartData: ChartDataSets[] = [];
     public prihodkiChartLabels: Label[] = [];
@@ -143,8 +144,10 @@ export class GraphsComponent implements OnInit, OnDestroy {
                         borderColor: ["rgb(104,255,99)", "rgb(255, 99, 132)"],
                     };
                     this.pieChartData.push(podatkiPie);
+                    this.loading = false;
                 });
-            });
+            })
+            .catch(sporocilo => (this.napaka = sporocilo));
     }
 
     ngOnInit(): void {
@@ -155,7 +158,6 @@ export class GraphsComponent implements OnInit, OnDestroy {
                 this.userGroupsData = data.groups;
             });
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
-            this.loading = false;
             this.groupSelected = data;
 
             this.prihodkiChartData = [];

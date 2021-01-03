@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { GroupsPopulatedUsersModel } from "../../../classes/groups-populated-users.model";
 import { FormControl, Validators } from "@angular/forms";
 import { GroupSettings } from "../../../classes/GroupSettings";
+import { ConnectionService } from "../../../services/connection.service";
 
 @Component({
     selector: "app-groups-modal-settings",
@@ -12,8 +13,13 @@ import { GroupSettings } from "../../../classes/GroupSettings";
 export class GroupsModalSettingsComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<GroupsModalSettingsComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: { group: GroupsPopulatedUsersModel; userId: string }
+        @Inject(MAT_DIALOG_DATA) public data: { group: GroupsPopulatedUsersModel; userId: string },
+        private connectionService: ConnectionService
     ) {}
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
 
     ngOnInit() {}
 

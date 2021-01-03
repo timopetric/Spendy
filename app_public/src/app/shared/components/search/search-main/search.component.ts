@@ -8,6 +8,7 @@ import { DetailModalComponent } from "../modals/detail-modal/detail-modal.compon
 import { Title } from "@angular/platform-browser";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { ConnectionService } from "src/app/shared/services/connection.service";
 
 @Component({
     selector: "app-search",
@@ -23,7 +24,8 @@ export class SearchComponent implements OnInit, OnDestroy {
         private titleService: Title,
         private _route: ActivatedRoute,
         private _router: Router,
-        private _snackBar: MatSnackBar
+        private _snackBar: MatSnackBar,
+        private connectionService: ConnectionService
     ) {
         this.titleService.setTitle("Stroški");
     }
@@ -193,6 +195,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         this._snackBar.open(message, "skrij", {
             duration: 10000,
         });
+    }
+
+    jePovezava(): boolean {
+        return this.connectionService.isOnline;
     }
 
     private showError = (napaka: any): void => {

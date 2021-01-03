@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication.service";
 import { HistoryService } from "../../services/history.service";
 import { Title } from "@angular/platform-browser";
+import { ConnectionService } from "../../services/connection.service";
 
 @Component({
     selector: "app-login",
@@ -33,10 +34,16 @@ export class LoginComponent implements OnInit {
         private usmerjevalnik: Router,
         private authenticationService: AuthenticationService,
         private historyService: HistoryService,
-        private titleService: Title
+        private titleService: Title,
+        private connectionService: ConnectionService
     ) {
         this.titleService.setTitle("Login");
     }
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
+
     public posiljanjePodatkov(): void {
         this.napakaNaObrazcu = "";
         if (!this.prijavniPodatki.mail || !this.prijavniPodatki.pass) {

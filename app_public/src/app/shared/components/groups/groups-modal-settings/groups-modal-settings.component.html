@@ -22,6 +22,7 @@
                         placeholder="Družina"
                         title="Vnesite željeno ime"
                         type="text"
+                        [attr.disabled]="!isOnline() ? '' : null"
                     />
                     <mat-error *ngIf="dataForm.name.invalid">{{ nameError }}</mat-error>
                 </mat-form-field>
@@ -51,7 +52,7 @@
                     cdkFocusInitial
                     color="primary"
                     (click)="updateGroup()"
-                    [disabled]="dataForm.name.invalid"
+                    [disabled]="dataForm.name.invalid || !isOnline()"
                 >
                     POTRDI SPREMEMBE&nbsp;&nbsp;&nbsp;<mat-icon>check</mat-icon>
                 </button>
@@ -59,7 +60,7 @@
                     class="skupinaNastavitveIzbrisi"
                     mat-raised-button
                     color="warn"
-                    [disabled]="!data.group.adminIds.includes(data.userId)"
+                    [disabled]="!data.group.adminIds.includes(data.userId) || !isOnline()"
                     (click)="deleteGroup()"
                 >
                     IZBRIŠI&nbsp;&nbsp;&nbsp;<mat-icon>delete</mat-icon>

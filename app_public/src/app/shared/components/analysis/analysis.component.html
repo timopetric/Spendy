@@ -21,17 +21,29 @@
                         <div class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center">
                             <span class="mr-3 font-weight-bold">Od:</span>
                             <div>
-                                <input id="dateStart" required type="date" [(ngModel)]="datum.zacetek" />
+                                <input
+                                    [disabled]="!isOnline()"
+                                    id="dateStart"
+                                    required
+                                    type="date"
+                                    [(ngModel)]="datum.zacetek"
+                                />
                             </div>
                         </div>
 
                         <div class="input-group-text col-12 col-lg-6 container-fluid d-flex justify-content-center">
                             <span class="mr-3 font-weight-bold">Do:</span>
                             <div>
-                                <input id="dateEnd" required type="date" [(ngModel)]="datum.konec" />
+                                <input
+                                    [disabled]="!isOnline()"
+                                    id="dateEnd"
+                                    required
+                                    type="date"
+                                    [(ngModel)]="datum.konec"
+                                />
                             </div>
                         </div>
-                        <button (click)="navigate()">Izpisi</button>
+                        <button (click)="navigate()" [disabled]="!isOnline()">Izpisi</button>
                     </div>
                 </div>
             </div>
@@ -48,6 +60,7 @@
                                     <span class="input-group-text">Ripple meja</span>
                                 </div>
                                 <input
+                                    [disabled]="!isOnline()"
                                     name="rippleMeja"
                                     [(ngModel)]="rippleMeja"
                                     (change)="changeMeja()"
@@ -67,6 +80,7 @@
                                     <span class="input-group-text">Bitcoin meja</span>
                                 </div>
                                 <input
+                                    [disabled]="!isOnline()"
                                     name="bitcoinMeja"
                                     (change)="changeMeja()"
                                     [(ngModel)]="bitcoinMeja"
@@ -86,6 +100,7 @@
                                     <span class="input-group-text">Bitcash meja</span>
                                 </div>
                                 <input
+                                    [disabled]="!isOnline()"
                                     name="bitcashMeja"
                                     [(ngModel)]="bitcashMeja"
                                     (change)="changeMeja()"

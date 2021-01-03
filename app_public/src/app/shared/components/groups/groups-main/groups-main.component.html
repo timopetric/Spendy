@@ -73,7 +73,7 @@
                                     mat-raised-button
                                     color="primary"
                                     [value]="group._id"
-                                    [disabled]="!group.adminIds.includes(getUserId())"
+                                    [disabled]="!group.adminIds.includes(getUserId()) || !isOnline()"
                                     (click)="openModalGroupUserAdd(group)"
                                 >
                                     Dodaj uporabnika
@@ -82,7 +82,7 @@
                                     class="nastavitveSkupine"
                                     mat-raised-button
                                     color="accent"
-                                    [disabled]="!group.adminIds.includes(getUserId())"
+                                    [disabled]="!group.adminIds.includes(getUserId()) || !isOnline()"
                                     (click)="openModalGroupSettings({ group: group, userId: getUserId() })"
                                 >
                                     Nastavitve
@@ -97,7 +97,7 @@
                 <button
                     class="dodajSkupino"
                     (click)="openModalGroupAdd()"
-                    [disabled]="groupCount >= MAX_GROUP_COUNT"
+                    [disabled]="groupCount >= MAX_GROUP_COUNT || !isOnline()"
                     mat-raised-button
                     color="primary"
                 >

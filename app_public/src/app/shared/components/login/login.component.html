@@ -22,8 +22,8 @@
                 [(ngModel)]="prijavniPodatki.pass"
                 name="password"
             />
-            <button class="btn btn-primary" id="PrijavaGumb" type="submit">Prijava</button>
-            <a class="nav-link" routerLink="/signup">Registracija</a>
+            <button class="btn btn-primary" id="PrijavaGumb" type="submit" [disabled]="!isOnline()">Prijava</button>
+            <a *ngIf="isOnline()" class="nav-link" routerLink="/signup">Registracija</a>
         </form>
     </div>
 </main>

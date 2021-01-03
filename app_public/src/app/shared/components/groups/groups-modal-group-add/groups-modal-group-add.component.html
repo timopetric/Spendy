@@ -22,6 +22,7 @@
                         placeholder="Skupina 3"
                         title="Vnesite željeno ime"
                         type="text"
+                        [attr.disabled]="!isOnline() ? '' : null"
                     />
                     <mat-error *ngIf="dataForm.groupName.invalid">{{ groupNameError }}</mat-error>
                 </mat-form-field>
@@ -33,7 +34,7 @@
                     mat-raised-button
                     color="primary"
                     (click)="addUser()"
-                    [disabled]="dataForm.groupName.invalid"
+                    [disabled]="dataForm.groupName.invalid || !isOnline()"
                 >
                     Dodaj skupino&nbsp;&nbsp;&nbsp;<mat-icon>person_add</mat-icon>
                 </button>
