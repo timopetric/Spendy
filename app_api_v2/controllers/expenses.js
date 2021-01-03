@@ -285,6 +285,19 @@ const deleteExpenseOfGroupHelper = (req, res, group) => {
 const updateExpense = (req, res) => {
     const idGroup = req.params.idGroup;
     const idExpense = req.params.idExpense;
+
+    const isExpenditure = req.body.isExpenditure;
+    const cost = parseFloat(req.body.cost);
+    const category_name = req.body.category_name;
+    const description = req.body.description;
+
+    let RegExdesc = RegExp("([a-zA-Z0-9,. ]{120})");
+    let RegNumb = RegExp("[0-9]{16}.*[0-9]{2}");
+
+    if (!RegNumb.test(cost) || !RegNumb.test(category_name) || !RegNumb.test(description)) {
+        return res.status(400).json({ message: "Updating body params are in invalid form" });
+    }
+
     if (!idExpense || !idGroup) {
         return res.status(400).json({ message: "Parameters idGroup and idExpense must be defined" });
     }
