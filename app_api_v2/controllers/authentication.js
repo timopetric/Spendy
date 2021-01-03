@@ -17,8 +17,25 @@ const registracija = (req, res) => {
         return res.status(404).json({
             message: "Parameters username, name, surname, mail, pass must be supplied in the body",
         });
+    } else if (
+        !/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+            reqMail
+        )
+    ) {
+        return res.status(400).json({ sporočilo: "Elektronski naslov je napačne oblike!" });
+    } else if (
+        !/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+            reqUsername
+        )
+    ) {
+        return res.status(400).json({ sporočilo: "Uporabniško ime je napačno!" });
+    } else if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 ]+/.test(reqPass)) {
+        res.status(400).json({ sporočilo: "Geslo je napačne oblike!" });
+    } else if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 ]+/.test(reqName)) {
+        res.status(400).json({ sporočilo: "Ime je napačne oblike!" });
+    } else if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 ]+/.test(reqSurname)) {
+        res.status(400).json({ sporočilo: "Priimek je napačne oblike!" });
     }
-
     if (req.body.groupIds !== undefined) {
         return res.status(404).json({
             message: "groupIds must not be defined",
@@ -74,7 +91,6 @@ const registracija = (req, res) => {
                     // message: `User with fields: ${JSON.stringify(error.keyValue)} already exists`,
                     // TODO: TO SEM SPREMENIL. VPRAŠAJ TIMOTA, ČE JE KUL.
                     sporočilo: "Uporabnik s to elektronsko pošto že obstaja!",
-                    error: error,
                 });
             } else {
                 console.log(error);
@@ -86,6 +102,14 @@ const registracija = (req, res) => {
 const prijava = (req, res) => {
     if (!req.body.mail || !req.body.pass) {
         return res.status(400).json({ sporočilo: "Zahtevani so vsi podatki" });
+    } else if (
+        !/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+            req.body.mail
+        )
+    ) {
+        return res.status(400).json({ sporočilo: "Elektronski naslov je napačne oblike!" });
+    } else if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 ]+/.test(req.body.pass)) {
+        res.status(400).json({ sporočilo: "Geslo je napačne oblike!" });
     }
     passport.authenticate("local", (napaka, uporabnik, informacije) => {
         if (napaka) return res.status(500).json(napaka);
