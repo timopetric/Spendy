@@ -58,6 +58,8 @@ import { DetailModalUpdateComponent } from "./shared/components/search/modals/de
 import { FormatirajZnesekPipe } from "./shared/pipes/formatiraj-znesek.pipe";
 import { ErrorComponent } from "./shared/components/error/error.component";
 import { TokenInterceptor } from "./shared/services/token.interceptor";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 
 @NgModule({
     declarations: [
@@ -118,6 +120,10 @@ import { TokenInterceptor } from "./shared/services/token.interceptor";
         MatDialogModule,
         NgxPaginationModule,
         NgbModule,
+        ServiceWorkerModule.register("ngsw-worker.js", {
+            enabled: environment.production,
+            registrationStrategy: "registerImmediately",
+        }),
     ],
     entryComponents: [DetailModalComponent],
     providers: [

@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-docker-test": "ng build --configuration=production,docker --build-optimizer --aot --output-path build && cd build && http-server",
+    "build-heroku-test": "ng build --prod --build-optimizer --aot --output-path build && cd build && http-server",
+    "build-docker": "ng build --configuration=production,docker --build-optimizer --aot --output-path build",
+    "build-heroku": "ng build --prod --build-optimizer --aot --output-path build"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +26,7 @@
     "@angular/platform-browser": "~11.0.3",
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
+    "@angular/service-worker": "~11.0.3",
     "@material/snackbar": "^8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "@ng-select/ng-select": "^5.0.9",
