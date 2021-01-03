@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Expense } from "src/app/shared/classes/expense";
 import { ExpensesDataService } from "src/app/shared/services/expenses-data.service";
@@ -17,13 +17,42 @@ export class DetailModalUpdateComponent implements OnInit {
     ) {}
 
     @Input() activity: Expense;
+    //prettier-ignore
+    public activityForm = new FormGroup(
+        {
+            description: new FormControl("", {validators:[
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(240),
+                Validators.pattern("([a-zA-Z0-9,. ]+)"),
+            ],updateOn: "blur"}),
+            cost: new FormControl("", {
+                validators: [
+                    Validators.required,
+                    Validators.minLength(1),
+                    Validators.maxLength(16),
+                    Validators.pattern("[0-9]+\.*[0-9]{2}"),
+                ],
+                updateOn: "blur",
+            }),
+            category_name: new FormControl("", {
+                validators: [
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(64),
+                    Validators.pattern("([a-zA-Z0-9,. ]+)"),
+                ],
+                updateOn: "blur",
+            }),
+            isExpenditure: new FormControl(""),
+        },
+        { updateOn: "change" }
+    );
 
-    activityForm = new FormGroup({
-        description: new FormControl(""),
-        cost: new FormControl(""),
-        category_name: new FormControl(""),
-        isExpenditure: new FormControl(""),
-    });
+    costError = "Cena mora biti številka in krajša od 16 znakov";
+    descriptionError =
+        "Description mora biti med dolg vsaj 3 znake in krajši od 240 in nesme vsebovati posebnih znakov";
+    categoryError = "Kategorija mora biti  dolga vsaj 3 znake in krajša od 64 in nesme vsebovati posebnih znakov";
 
     ngOnInit(): void {
         this.activityForm.patchValue({
@@ -32,6 +61,8 @@ export class DetailModalUpdateComponent implements OnInit {
             category_name: this.activity.category_name,
             isExpenditure: this.activity.isExpenditure,
         });
+
+        //this.activityForm.get("cost")
     }
 
     public submit() {
