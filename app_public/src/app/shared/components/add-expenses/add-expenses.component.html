@@ -100,7 +100,9 @@
                                                 </mat-option>
                                             </mat-autocomplete>
                                         </mat-form-field>
-                                        <div *ngIf="categoryError" style="color: red">Vpišite kategorijo!</div>
+                                        <div *ngIf="categoryError" style="color: red">
+                                            Vpišite črke, številke in presledke dolžine 3 do 25!
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6">
@@ -129,7 +131,7 @@
                                     required
                                 />
                                 <div *ngIf="descriptionError" style="color: red">
-                                    Vnesite opis dolžine vsaj treh znakov!
+                                    Vpišite črke, številke in presledke dolžine 3 do 25!
                                 </div>
                             </div>
 
