@@ -203,6 +203,13 @@ docker-compose up --build
 docker-compose down
 ```
 
+```bash
+#to test you must have selenium docker:
+docker run -d -p 4445:4444 --shm-size=2g selenium/standalone-chrome-debug
+# if you have selenium docker you can run:
+npm test
+```
+
 [comment]: <> (1. docker-compose up --no-start)
 
 [comment]: <> (2. docker start sp-spendy-mongodb)

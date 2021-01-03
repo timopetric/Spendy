@@ -50,12 +50,12 @@
                 .forBrowser("chrome")
                 .setChromeOptions(
                     new chrome.Options()
-                        // .addArguments("start-maximized")
+                        .addArguments("start-maximized")
                         .addArguments("disable-infobars")
                         .addArguments("allow-insecure-localhost")
                         .addArguments("allow-running-insecure-content")
                 )
-                // .usingServer(seleniumStreznikUrl)
+                .usingServer(seleniumStreznikUrl)
                 .build();
         });
 
@@ -100,6 +100,7 @@
         // });
 
         describe("Registracija novega uporabnika", async function () {
+            this.timeout(15000);
             // this.timeout(30 * 1000);
             // before(async function () {
             //     await brskalnik.get(aplikacijaUrl);
@@ -356,6 +357,7 @@
             });
 
             describe("Iskanje", function () {
+                this.timeout(15000);
                 context("Search by category", function () {
                     it("Vpis kategorije ", async function () {
                         let opis = await brskalnik.findElement(By.css("input[id='searchLogin']"));
@@ -416,6 +418,7 @@
         // const DOCKER_CONTAINTER_NAME = "lp-02_mongo-db_run_40ef3b7f47e0";
         let imeSkupine = "Nova skupina";
         describe("Skupine", function () {
+            this.timeout(15000);
             context("Dodajanje skupine", async function () {
                 it("Premik na skupine ", async function () {
                     // await brskalnik.sleep(50);
@@ -508,9 +511,9 @@
         //     });
         // });
 
-        // after(async () => {
-        //     brskalnik.quit();
-        // });
+        after(async () => {
+            brskalnik.quit();
+        });
     } catch (napaka) {
         console.log("Med testom je prišlo do napake!");
     }
