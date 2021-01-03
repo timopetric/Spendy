@@ -11,6 +11,7 @@ import { FormControl } from "@angular/forms";
 import { map, startWith } from "rxjs/operators";
 import { Title } from "@angular/platform-browser";
 import { Categories } from "../../classes/categories";
+import { ConnectionService } from "../../services/connection.service";
 
 @Component({
     selector: "app-add-expenses",
@@ -24,10 +25,16 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         private expensesData: ExpensesDataService,
         private groupsDataService: GroupsDataService,
         private authenticationService: AuthenticationService,
-        private titleService: Title
+        private titleService: Title,
+        private conectionService: ConnectionService
     ) {
         this.titleService.setTitle("Poišči aktivnosti");
     }
+    public napaka = "";
+    isOnline(): boolean {
+        return this.conectionService.isOnline;
+    }
+
     private userGroupsDataSub: Subscription;
     private groupSelectionSub: Subscription;
     public selectedGroupId = "";
@@ -115,14 +122,21 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
         this.Expense.group = this.selectedGroupId;
         if (this.isFilled()) {
             categoryname = categoryname[0].toUpperCase() + categoryname.slice(1).toLowerCase();
-            this.groupsDataService.addCategory(this.Expense.group, categoryname).then(() => {
-                this.categories.push(categoryname);
-                this.updateCategories();
-            });
-            this.expensesData.addExpenseToGroup(this.Expense.group, this.Expense).then(res => {
-                this.ponastavi();
-                this.openSnackBar("Expense uspešno dodan!!!");
-            });
+            this.groupsDataService
+                .addCategory(this.Expense.group, categoryname)
+                .then(() => {
+                    this.categories.push(categoryname);
+                    this.updateCategories();
+                })
+                .catch(sporocilo => (this.napaka = sporocilo));
+            this.expensesData
+                .addExpenseToGroup(this.Expense.group, this.Expense)
+                .then(res => {
+                    this.ponastavi();
+                    this.openSnackBar("Expense uspešno dodan!!!");
+                    this.napaka = "";
+                })
+                .catch(sporocilo => (this.napaka = sporocilo));
         }
     }
 

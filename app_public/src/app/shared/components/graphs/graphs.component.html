@@ -22,6 +22,7 @@
         </section>
 
         <section class="bg-mix py-3">
+            <div role="alert" *ngIf="napaka" class="alert alert-danger">{{ napaka }}</div>
             <div class="container-fluid">
                 <div class="card rounded-0">
                     <div class="card-body row">
