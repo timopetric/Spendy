@@ -58,6 +58,9 @@ const authUserIsLoggedOnUser = (req, res, next) => {
 const authUserIsMemberInGroup = (req, res, next) => {
     let idUser = req.user ? req.user._id.toString() : "-";
     let idGroupParam = req.params.idGroup;
+    let notAuthorized = false;
+
+    // console.log("v user is member in group");
 
     Group.findById(idGroupParam)
         .then((group) => {
@@ -66,10 +69,18 @@ const authUserIsMemberInGroup = (req, res, next) => {
             // console.log("############## users");
             // console.log(group.userIds);
             // console.log(idUser);
+            // console.log(idGroupDb === idGroupParam && group.userIds.includes(idUser.toString()));
             if (idGroupDb === idGroupParam && group.userIds.includes(idUser.toString())) return next();
+            else notAuthorized = true;
         })
         .catch(() => {
-            res.sendStatus(401);
+            notAuthorized = true;
+        })
+        .then(() => {
+            if (notAuthorized) {
+                // console.log("send 401");
+                res.sendStatus(401);
+            }
         });
 };
 
@@ -77,6 +88,7 @@ const authUserIsMemberInGroup = (req, res, next) => {
 const authUserIsAdminInGroup = (req, res, next) => {
     let idUser = req.user ? req.user._id.toString() : "-";
     let idGroupParam = req.params.idGroup;
+    let notAuthorized = false;
 
     Group.findById(idGroupParam)
         .then((group) => {
@@ -89,9 +101,16 @@ const authUserIsAdminInGroup = (req, res, next) => {
             // console.log(idGroupDb === idGroupParam);
             // console.log("user is admin:" + (idGroupDb === idGroupParam && group.adminIds.includes(idUser)));
             if (idGroupDb === idGroupParam && group.adminIds.includes(idUser)) return next();
+            else notAuthorized = true;
         })
         .catch(() => {
-            res.sendStatus(401);
+            notAuthorized = true;
+        })
+        .then(() => {
+            if (notAuthorized) {
+                // console.log("send 401");
+                res.sendStatus(401);
+            }
         });
 };
 
@@ -108,6 +127,7 @@ const authCreateGroup = (req, res, next) => {
 const authUserCanAccessExpense = (req, res, next) => {
     let idUser = req.user ? req.user._id.toString() : "-";
     let idExpenseParam = req.params.idExpense;
+    let notAuthorized = false;
 
     User.findById(idUser)
         .populate("groupIds")
@@ -117,10 +137,17 @@ const authUserCanAccessExpense = (req, res, next) => {
                 expenses.includes(idExpenseParam)
             );
             if (expenseParamIsInOneOfTheGroupsAUserHas) return next();
+            else notAuthorized = true;
         })
         .catch((err) => {
             console.log(err);
-            res.sendStatus(401);
+            notAuthorized = true;
+        })
+        .then(() => {
+            if (notAuthorized) {
+                // console.log("send 401");
+                res.sendStatus(401);
+            }
         });
 };
 // END---------------------------- Authentication middleware ---------------------------------END
