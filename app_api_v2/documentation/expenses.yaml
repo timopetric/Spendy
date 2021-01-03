@@ -116,6 +116,15 @@
             schema:
               type: string
               example: "Adding was successful"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
+
       "500":
         description: Error in database
         content:
@@ -161,6 +170,16 @@
             schema:
               type: string
               example: "Deleting was successful"
+
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
+
       "500":
         description: Error in database
         content:
@@ -210,6 +229,14 @@
           application/json:
             schema:
               $ref: "#/components/schemas/Update_expense_update"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
       "500":
         description: Error in database
         content:
@@ -295,6 +322,14 @@
             schema:
               items:
                 $ref: "#/components/schemas/ExpenesWithQueriesPagination"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
       "500":
         description: Error in database
         content:

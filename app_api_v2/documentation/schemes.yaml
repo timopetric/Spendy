@@ -46,7 +46,8 @@ components:
     Error:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -59,7 +60,8 @@ components:
     Error_deleteUser:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -154,7 +156,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         groupIds:
           type: array
           items:
@@ -202,7 +204,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         name:
           type: string
           description: Name of the user
@@ -247,7 +249,7 @@ components:
         _id:
           type: string
           description: Internal database ID of the user
-          example: 5fe7cc18e0fe833da436fbde
+          example: 5fe8ff7f67c57310401aca3c
         name:
           type: string
           description: Name of the user
@@ -378,7 +380,7 @@ components:
           items:
             type: string
           description: A list of valid(existing) user IDs
-          example: [5fe7cc18e0fe833da436fbde, 5fe8ff5667c57310401aca38]
+          example: [5fe8ff7f67c57310401aca3c, 5fe8ff5667c57310401aca38]
         adminIds:
           type: array
           items:
@@ -395,6 +397,10 @@ components:
           type: string
           description: New name of the group
           example: Skupina 42
+        _id:
+          type: string
+          description: Internal database ID of the group
+          example: 5fe8ff7f67c57310401aca3b
 
     Group_createNew_response:
       type: object
@@ -678,7 +684,7 @@ components:
         created_by:
           type: string
           description: user ID of the one that created the expense
-          example: "5fe7cc18e0fe833da436fbde"
+          example: "5fe8ff7f67c57310401aca3c"
         description:
           type: string
           description: A description od the expense
@@ -698,7 +704,7 @@ components:
         idUser:
           type: string
           description: ID of the user that will be the owner of the gorup
-          example: "5fe7cc18e0fe833da436fbde"
+          example: "5fe8ff7f67c57310401aca3c"
         groupName:
           type: string
           description: A name to give to the group

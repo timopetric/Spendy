@@ -270,7 +270,7 @@ const removeGroupById = (req, res) => {
     }
 
     Group.findByIdAndDelete(idGroup)
-        .select("name balance userIds adminIds expenses")
+        .select("name balance userIds adminIds expenses _id")
         .then(async (deletedGroup) => {
             if (!deletedGroup) {
                 throw new SpendyError("Group with this id does not exist.", 404);
@@ -305,7 +305,7 @@ const removeGroupById = (req, res) => {
                 return deletedGroup;
             } catch (error) {
                 // console.log(error);
-                throw new SpendyError("Cant update users of group", 404);
+                // throw new SpendyError("Cant update users of group", 404);
             }
         })
         .then((deletedGroup) => {

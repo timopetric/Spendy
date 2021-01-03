@@ -52,6 +52,14 @@
             schema:
               items:
               $ref: "#/components/schemas/User_getUserById"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
       "404":
         description: User with said id was not found
         content:
@@ -93,6 +101,14 @@
           application/json:
             schema:
               $ref: "#/components/schemas/User_getUserById"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
       "404":
         description: User with said id was not found
         content:
@@ -128,6 +144,14 @@
       #            schema:
       #              $ref: #todo: nisem ziher, da ta rabi shemo
       #            example: "User with id: {idUser} successfully deleted"
+      "401":
+        description: User is not authenticated
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Error"
+            example:
+              message: "Unauthorized"
       "404":
         description: No user was found
         content:
