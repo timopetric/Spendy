@@ -16,8 +16,8 @@
     // var driver = new webdriver.Builder().forBrowser("chrome").build();
 
     // Parametri
-    let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
-    // let aplikacijaUrl = "http://localhost:4200/";
+    // let aplikacijaUrl = "https://sp-spendy.herokuapp.com/";
+    let aplikacijaUrl = "http://localhost:4200/";
     let seleniumStreznikUrl = "http://localhost:4445/wd/hub";
     let brskalnik, jwtZeton;
 
@@ -216,7 +216,7 @@
                 expect(nekej).to.be.equal("Dodaj stroške/prihodke");
             });
 
-            let cost = 200.2;
+            let cost = 2002;
             let date = 20122020;
             let category = "Podkupnina profesorju";
             let description = "Podkupnina za 10ko pri SP";
@@ -234,6 +234,42 @@
                     let tip = await brskalnik.findElement(By.css("input[id='mat-input-0']"));
                     expect(tip).to.not.be.empty;
                     tip.sendKeys(category);
+
+                    // let skupina = await brskalnik.findElement(By.css("input[name='group']"));
+                    // expect(vnosVrednosti).to.not.be.empty;
+                    // vnosVrednosti.sendKeys(cost);
+                    let opis = await brskalnik.findElement(By.css("input[name='description']"));
+                    expect(opis).to.not.be.empty;
+                    opis.sendKeys(description);
+                });
+
+                it("pritisk na gumb shrani", async function () {
+                    let gumb = await brskalnik
+                        .findElement(By.xpath('//*[@id="content"]/section[2]/div/div/div/form/button'))
+                        .click();
+                    // brskalnik.wait(async function () {
+                    //     let keks = await brskalnik.findElement(By.className("mat-simple-snackbar")).then(() => {
+                    //         expect(keks).to.not.be.empty;
+                    //     });
+                    //     // expect(keks).to.not.be.empty;
+                    // }, 1000);
+                });
+
+                let category2 = "Podkupnina še Gecu";
+                let cost2 = 50;
+                it("vnosi2", async function () {
+                    let vnosVrednosti = await brskalnik.findElement(By.css("input[name='cost']"));
+                    expect(vnosVrednosti).to.not.be.empty;
+                    await vnosVrednosti.clear();
+                    vnosVrednosti.sendKeys(cost2);
+
+                    let datum = await brskalnik.findElement(By.css("input[name='date']"));
+                    expect(datum).to.not.be.empty;
+                    datum.sendKeys(date);
+
+                    let tip = await brskalnik.findElement(By.css("input[id='mat-input-0']"));
+                    expect(tip).to.not.be.empty;
+                    tip.sendKeys(category2);
 
                     // let skupina = await brskalnik.findElement(By.css("input[name='group']"));
                     // expect(vnosVrednosti).to.not.be.empty;
@@ -306,6 +342,30 @@
                         .findElement(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[2]/h4'))
                         .getText();
                     expect(spremenjenaCena).to.be.equal(price.toString() + " €");
+                });
+            });
+
+            describe("Iskanje", function () {
+                context("Search by category", function () {
+                    it("Vpis kategorije ", async function () {
+                        let opis = await brskalnik.findElement(By.css("input[id='searchLogin']"));
+                        expect(opis).to.not.be.empty;
+                        opis.sendKeys("Podkupnina še Gecu");
+                        let gumb = await brskalnik.findElement(By.xpath('//*[@id="content"]/div[1]/div[1]/div/button'));
+                        gumb.click();
+                    });
+
+                    it("Preveri iskanje", async function () {
+                        await brskalnik.wait(
+                            until.elementLocated(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[1]/h4')),
+                            10000
+                        );
+                        let sandi = await brskalnik
+                            .findElement(By.xpath('//*[@id="modal1"]/div/div/div[2]/div[2]/div[1]/h4'))
+                            .getText();
+                        expect(sandi).to.be.equal("Podkupnina še Gecu");
+                        console.log(sandi);
+                    });
                 });
             });
 
