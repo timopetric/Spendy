@@ -165,7 +165,7 @@ const addUserToGroup = async (req, res) => {
             mailOfUser
         )
     ) {
-        return res.status(400).json({ message: "Elektronski naslov ni ustrezen!" });
+        return res.status(400).json({ message: "Email is invalid" });
     }
 
     // console.log("#################################");
