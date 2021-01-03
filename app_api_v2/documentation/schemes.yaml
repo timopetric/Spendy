@@ -29,6 +29,14 @@ components:
       summary: Group could not be found/updated
       value:
         message: Group with this id does not exist or could not be updated using the data in request body
+    Update_params_are_invalid:
+      summary: Update params are invalid
+      value:
+        message: Updating body params are in invalid form
+    Request_params_are_missing:
+      summary: Request params are missing
+      value:
+        message: Parameters idGroup and idExpense must be defined
   #    Error_unauthorized:
   #      summary: User is not authenticated
   #      value:
@@ -566,6 +574,17 @@ components:
           type: string
           description: A description od the expense
           example: a very helpful description
+
+    Update_expense_update:
+      type: object
+      description: Put request response
+      properties:
+        message:
+          type: string
+          description: message if updating was ok
+          example: "Updating was successful"
+        expense:
+          $ref: "#/components/schemas/Expense_for_update"
 
     ExpenesWithQueriesPagination:
       type: object
