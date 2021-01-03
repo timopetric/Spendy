@@ -14,6 +14,7 @@
                 id="kategorija"
                 placeholder="Vnesite kategorijo"
                 formControlName="category_name"
+                [attr.disabled]="!jePovezava() ? '' : null"
             />
         </div>
         <div
@@ -27,7 +28,14 @@
         </div>
         <div class="form-group">
             <label for="znesek">Znesek</label>
-            <input type="text" class="form-control" id="znesek" placeholder="Vnesite znesek" formControlName="cost" />
+            <input
+                type="text"
+                class="form-control"
+                id="znesek"
+                placeholder="Vnesite znesek"
+                [attr.disabled]="!jePovezava() ? '' : null"
+                formControlName="cost"
+            />
         </div>
         <div
             *ngIf="
@@ -45,6 +53,7 @@
                 id="opis"
                 placeholder="Vnesite opis aktivnosti"
                 formControlName="description"
+                [attr.disabled]="!jePovezava() ? '' : null"
             />
         </div>
         <div
@@ -64,6 +73,7 @@
                 formControlName="isExpenditure"
                 value="false"
                 [value]="false"
+                [attr.disabled]="!jePovezava() ? '' : null"
             />
             <label class="form-check-label" for="radioProhodek">Prihodek</label>
         </div>
@@ -75,12 +85,19 @@
                 formControlName="isExpenditure"
                 value="true"
                 [value]="true"
+                [attr.disabled]="!jePovezava() ? '' : null"
             />
             <label class="form-check-label" for="radioOdhodek">Odhodek</label>
         </div>
 
         <div class="modal-footer">
-            <button id="formButtonSubmit" type="submit" [disabled]="!activityForm.valid" class="btn btn-primary">
+            <button
+                id="formButtonSubmit"
+                type="submit"
+                [disabled]="!jePovezava()"
+                [disabled]="!activityForm.valid"
+                class="btn btn-primary"
+            >
                 Submit
             </button>
         </div>

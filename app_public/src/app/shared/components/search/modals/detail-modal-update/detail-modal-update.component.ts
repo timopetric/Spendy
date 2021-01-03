@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Expense } from "src/app/shared/classes/expense";
+import { ConnectionService } from "src/app/shared/services/connection.service";
 import { ExpensesDataService } from "src/app/shared/services/expenses-data.service";
 
 @Component({
@@ -13,7 +14,8 @@ export class DetailModalUpdateComponent implements OnInit {
     constructor(
         private modalService: NgbModal,
         public activeModal: NgbActiveModal,
-        private expensesData: ExpensesDataService
+        private expensesData: ExpensesDataService,
+        private connectionService: ConnectionService
     ) {}
 
     @Input() activity: Expense;
@@ -73,5 +75,9 @@ export class DetailModalUpdateComponent implements OnInit {
                 this.activeModal.close({ message: result["message"], expense: result["expense"] });
             })
             .catch(error => {});
+    }
+
+    jePovezava(): boolean {
+        return this.connectionService.isOnline;
     }
 }
