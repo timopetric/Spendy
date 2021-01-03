@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ConnectionService } from "../../../services/connection.service";
 
 @Component({
     selector: "app-first-page-navbar",
@@ -9,7 +10,9 @@ import { Component, OnInit } from "@angular/core";
     ],
 })
 export class FirstPageNavbarComponent implements OnInit {
-    constructor() {}
-
+    constructor(private connectionService: ConnectionService) {}
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
     ngOnInit(): void {}
 }

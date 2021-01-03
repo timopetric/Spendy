@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ConnectionService } from "../../../services/connection.service";
 
 @Component({
     selector: "app-navbar-login-signup",
@@ -6,7 +7,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./navbar-login-signup.component.css"],
 })
 export class NavbarLoginSignupComponent implements OnInit {
-    constructor() {}
-
+    constructor(private connectionService: ConnectionService) {}
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
     ngOnInit(): void {}
 }
