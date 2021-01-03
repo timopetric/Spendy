@@ -38,7 +38,8 @@ components:
     Error:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -51,7 +52,8 @@ components:
     Error_deleteUser:
       type: object
       description: Returns errors
-      required: -message
+      required:
+        - message
       properties:
         message:
           type: string
@@ -387,6 +389,10 @@ components:
           type: string
           description: New name of the group
           example: Skupina 42
+        _id:
+          type: string
+          description: Internal database ID of the group
+          example: 5fe8ff7f67c57310401aca3b
 
     Group_createNew_response:
       type: object

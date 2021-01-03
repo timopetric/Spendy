@@ -176,6 +176,50 @@ paths:
               example:
                 message: "Unauthorized"
 
+    delete:
+      summary: Delete a group
+      description: Deletes a group with id {idGroup} and all its categories, expenses. Also removes the group from all users that were a member of it
+      tags: [Groups]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: idGroup
+          description: id of the group
+          schema:
+            type: string
+          required: true
+          example: 5fe8ff7f67c57310401aca3b
+      responses:
+        "200":
+          description: A group that was deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group_update"
+        "500":
+          description: Error in database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Invalid prameters error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: Group with this id does not exist.
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
+
   /groups/{idGroup}/users/{idUser}:
     delete:
       summary: Remove a user from a group
