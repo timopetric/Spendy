@@ -67,6 +67,14 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "User with this id not found"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
   # DONE
   /groups/{idGroup}:
@@ -105,6 +113,14 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 message: "Group with id: 5fe7cc18e0fe833da436fbds not found"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
     put:
       summary: Update a group
@@ -151,6 +167,14 @@ paths:
                   $ref: "#/components/examples/Error_groupId_required"
                 group not found:
                   $ref: "#/components/examples/Error_group_update_error"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
   /groups/{idGroup}/users/{idUser}:
     delete:
@@ -198,6 +222,14 @@ paths:
                   $ref: "#/components/examples/Error_groupId"
                 user not found:
                   $ref: "#/components/examples/Error_userId"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"
 
   /groups/{idGroup}/users:
     post:
@@ -245,3 +277,11 @@ paths:
                   $ref: "#/components/examples/Error_groupId"
                 user not found:
                   $ref: "#/components/examples/Error_mail"
+        "401":
+          description: User is not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "Unauthorized"

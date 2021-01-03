@@ -20,7 +20,7 @@ export class GroupsModalUserAddComponent implements OnInit {
     public dataForm = {
         mail: new FormControl("", [Validators.required, Validators.email]),
     };
-    mailError = "Email mora biti veljavne oblike";
+    mailError = "Email mora biti veljavne oblike in sestavljen iz samih malih črk";
 
     addUser() {
         console.log("UPDATE");

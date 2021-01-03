@@ -53,6 +53,8 @@ const createAndAddToUser = (req, res) => {
         return res.status(404).json({
             message: "idUser and groupName must present present in the body",
         });
+    } else if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 @.]{3,30}$/.test(groupName)) {
+        return res.status(400).json({ message: "Name of the group is invalid" });
     }
 
     // create one man group and add it to the user
@@ -158,6 +160,12 @@ const addUserToGroup = async (req, res) => {
 
     if (!idGroup || !mailOfUser) {
         return res.status(400).json({ message: "Parameter idGroup and mailOfUser must be defined" });
+    } else if (
+        !/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)])/.test(
+            mailOfUser
+        )
+    ) {
+        return res.status(400).json({ message: "Elektronski naslov ni ustrezen!" });
     }
 
     // console.log("#################################");
@@ -215,6 +223,9 @@ const updateGroup = (req, res) => {
     }
     if (req.body.name) {
         body["name"] = req.body.name;
+        if (!/^[A-Za-zčćžđšČĆŽĐŠ0-9 @.]{3,30}$/.test(req.body.name)) {
+            return res.status(400).json({ message: "Name of the group is invalid" });
+        }
     }
     // console.log("###################");
     // console.log(body);
@@ -261,20 +272,24 @@ const removeGroupById = (req, res) => {
     Group.findByIdAndDelete(idGroup)
         .select("name balance userIds adminIds expenses")
         .then(async (deletedGroup) => {
-            //console.log(deletedGroup._id);
-            //console.log(deletedGroup.expenses);
-            try {
-                const deleted = await Expense.deleteMany({ _id: { $in: deletedGroup.expenses } });
-                await ctrlCategories.deleteCategoriesOfGroup(idGroup).exec((error, category) => {
-                    // if (error) throw new SpendyError("Could not find and delete category for this group", 404);
-                });
-                // console.log(deleted);
-                // console.log(deletedGroup);
-                return deletedGroup;
-            } catch (error) {
-                //console.log("nek error je kao");
-                // console.log(error);
-                // throw new SpendyError("Cant delete expenses of group", 404);
+            if (!deletedGroup) {
+                throw new SpendyError("Group with this id does not exist.", 404);
+            } else {
+                //console.log(deletedGroup._id);
+                //console.log(deletedGroup.expenses);
+                try {
+                    const deleted = await Expense.deleteMany({ _id: { $in: deletedGroup.expenses } });
+                    await ctrlCategories.deleteCategoriesOfGroup(idGroup).exec((error, category) => {
+                        // if (error) throw new SpendyError("Could not find and delete category for this group", 404);
+                    });
+                    // console.log(deleted);
+                    // console.log(deletedGroup);
+                    return deletedGroup;
+                } catch (error) {
+                    //console.log("nek error je kao");
+                    // console.log(error);
+                    // throw new SpendyError("Cant delete expenses of group", 404);
+                }
             }
         })
         .then(async (deletedGroup) => {
@@ -297,7 +312,11 @@ const removeGroupById = (req, res) => {
             return res.status(200).json(deletedGroup);
         })
         .catch((error) => {
-            return res.status(404).json({ message: error });
+            if (error instanceof SpendyError) {
+                res.status(error.respCode).json({ message: error.message });
+            } else {
+                res.status(500).json({ message: "Error in database", error: error });
+            }
         });
 };
 

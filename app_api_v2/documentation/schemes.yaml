@@ -1,6 +1,14 @@
 ############# ERROR: [500] "Error in database" ##########
 components:
   examples:
+    Error_Description:
+      summary: Description not in correct form
+      value:
+        message: Description not in correct form, must comply with regex (nums, chars, whitespaces)
+    Error_Category:
+      summary: Category not in correct form
+      value:
+        message: Category not in correct form, must comply with regex (nums, chars, whitespaces)
     Error_groupId:
       summary: Group not found
       value:
@@ -21,6 +29,10 @@ components:
       summary: Group could not be found/updated
       value:
         message: Group with this id does not exist or could not be updated using the data in request body
+  #    Error_unauthorized:
+  #      summary: User is not authenticated
+  #      value:
+  #        message: Unauthorized
 
   schemas:
     Error:
