@@ -161,7 +161,7 @@
         schema:
           type: string
         required: true
-        example: 5feb818418ade71fc465135b
+        example: 5feb818718ade71fc46513ee
     responses:
       "200":
         description: "Deleting was successful"
@@ -228,8 +228,7 @@
         content:
           application/json:
             schema:
-              type: string
-              example: "Updating was successful"
+              $ref: "#/components/schemas/Update_expense_update"
       "401":
         description: User is not authenticated
         content:
@@ -252,6 +251,18 @@
             schema:
               items:
                 $ref: "#/components/schemas/Error"
+      "400":
+        description: request params or body params are missing or invalid
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Description is not allowed (does not contain only chars, nums and whitespaces"
+            examples:
+              Update params are invalid:
+                $ref: "#/components/examples/Update_params_are_invalid"
+              Request params are missing:
+                $ref: "#/components/examples/Request_params_are_missing"
 
 #GET /api/v2/group/{idGroup}/expenses/pages
 /groups/{idGroup}/expenses/pages:

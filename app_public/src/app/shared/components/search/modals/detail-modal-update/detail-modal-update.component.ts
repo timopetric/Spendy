@@ -24,7 +24,7 @@ export class DetailModalUpdateComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(3),
                 Validators.maxLength(240),
-                Validators.pattern("([a-zA-Z0-9,. ]+)"),
+                Validators.pattern("([a-zA-Z0-9,.\\-\\&\\? ]+)"),
             ],updateOn: "blur"}),
             cost: new FormControl("", {
                 validators: [
@@ -40,7 +40,7 @@ export class DetailModalUpdateComponent implements OnInit {
                     Validators.required,
                     Validators.minLength(3),
                     Validators.maxLength(64),
-                    Validators.pattern("([a-zA-Z0-9,. ]+)"),
+                    Validators.pattern("([a-zA-Z0-9,.\\-\\&\\? ]+)"),
                 ],
                 updateOn: "blur",
             }),

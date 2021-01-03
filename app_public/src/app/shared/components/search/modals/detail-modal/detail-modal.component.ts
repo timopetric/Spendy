@@ -41,7 +41,10 @@ export class DetailModalComponent implements OnInit {
                     this.openSnackBar(result["message"]);
                 }
             })
-            .catch(err => {});
+            .catch(err => {
+                this.showError(err);
+                this.openSnackBar("Prišlo je do napake pri posodabljanju");
+            });
     }
 
     public deleteExpense() {
@@ -54,6 +57,7 @@ export class DetailModalComponent implements OnInit {
             })
             .catch(error => {
                 this.showError(error);
+                this.openSnackBar("Prišlo je do napake pri brisanju");
                 this.activeModal.close(error);
             });
     }
