@@ -12,10 +12,13 @@
             },
             {
                 "$oid": "5fe8ff2367c57310401aca36"
+            },
+            {
+                "$oid": "5fe8ff7f67c57310401aca3b"
             }
         ],
-        "name": "a",
-        "surname": "a",
+        "name": "Domen",
+        "surname": "Hrovatič",
         "mail": "a@a.a",
         "balance": 0,
         "username": "a@a.a",
@@ -71,7 +74,7 @@
                 "$oid": "5fe8ff1f67c57310401aca35"
             }
         ],
-        "name": "Janez",
+        "name": "Marjetka",
         "surname": "Novak",
         "mail": "c@c.c",
         "balance": 0,
