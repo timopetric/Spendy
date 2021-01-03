@@ -97,6 +97,18 @@
           schema:
             $ref: "#/components/schemas/Expense_for_adding"
     responses:
+      "400":
+        description: Category or description not in correct form
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Description is not allowed (does not contain only chars, nums and whitespaces"
+            examples:
+              Category not correct:
+                $ref: "#/components/examples/Error_Category"
+              Description not correct:
+                $ref: "#/components/examples/Error_Description"
       "200":
         description: "Adding was successful"
         content:

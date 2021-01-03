@@ -16,9 +16,26 @@
                 formControlName="category_name"
             />
         </div>
+        <div
+            *ngIf="
+                activityForm.get('category_name').invalid &&
+                (activityForm.get('category_name').touched || activityForm.get('category_name').dirty)
+            "
+            class="cross-validation-error-message alert alert-danger"
+        >
+            {{ categoryError }}
+        </div>
         <div class="form-group">
             <label for="znesek">Znesek</label>
             <input type="text" class="form-control" id="znesek" placeholder="Vnesite znesek" formControlName="cost" />
+        </div>
+        <div
+            *ngIf="
+                activityForm.get('cost').invalid && (activityForm.get('cost').touched || activityForm.get('cost').dirty)
+            "
+            class="cross-validation-error-message alert alert-danger"
+        >
+            {{ costError }}
         </div>
         <div class="form-group">
             <label for="opis">Opis</label>
@@ -29,6 +46,15 @@
                 placeholder="Vnesite opis aktivnosti"
                 formControlName="description"
             />
+        </div>
+        <div
+            *ngIf="
+                activityForm.get('description').invalid &&
+                (activityForm.get('description').touched || activityForm.get('description').dirty)
+            "
+            class="cross-validation-error-message alert alert-danger"
+        >
+            {{ descriptionError }}
         </div>
         <div class="form-check form-check-inline">
             <input
@@ -54,7 +80,9 @@
         </div>
 
         <div class="modal-footer">
-            <button id="formButtonSubmit" type="submit" class="btn btn-primary">Submit</button>
+            <button id="formButtonSubmit" type="submit" [disabled]="!activityForm.valid" class="btn btn-primary">
+                Submit
+            </button>
         </div>
     </form>
 </div>

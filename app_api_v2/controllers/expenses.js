@@ -129,18 +129,17 @@ const getExpensesByGroupIdWithQueriesWithPagination = (req, res) => {
            Expense.paginate(match,{limit: 4, page: page ,options})
            .then(exp =>{
             //console.log(exp)
-                res.status(200).json(exp)
+                res.status(200).json(exp);
             })
             .catch(error =>{
-                console.log(error)
-                res.status(500).json(error)
-            })
+                res.status(500).json(error);
+            });
         })
         .catch(error => {
             //console.log(error)
 
-            res.status(500).json(error)
-        })
+            res.status(500).json(error);
+        });
 };
 
 //DODAJ EXPENSE GROUPI
@@ -171,6 +170,17 @@ const createExpenseAndAddToGroup = (req, res, group) => {
     const description = req.body.description;
     const created_by = req.body.created_by;
 
+    let RegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
+    let descRegEx = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,130}$");
+    if (!RegEx.test(category_name)) {
+        return res.status(400).json({ message: "Category not in line with regex" });
+    }
+    if (!descRegEx.test(category_name)) {
+        return res.status(400).json({ message: "Description not in line with regex" });
+    }
+    if (!RegEx.test(description)) {
+        return res.status(400).json({ message: "Description not in line with regex" });
+    }
     if (typeof cost !== "number") {
         return res.status(400).json({ message: "Body element cost must be a number" });
     }
