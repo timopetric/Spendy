@@ -83,20 +83,23 @@ export class AddExpensesComponent implements OnInit, OnDestroy {
             created_by: this.getIdFromToken(),
         };
     }
-
-    private isFilled() {
-        this.Expense.cost == 0 ? (this.costError = true) : (this.costError = false);
-        this.Expense.category_name == "" ? (this.categoryError = true) : this.categoryError == false;
-        Math.floor(this.Expense.cost * 100) / 100 == 0 ? (this.costError = true) : (this.costError = false);
-        this.Expense.description.length == 0 ? (this.descriptionError = true) : (this.descriptionError = false);
-        this.Expense.date == null ? (this.dateError = true) : (this.dateError = false);
-        return !(this.costError || this.descriptionError || this.dateError);
+    public isGood() {
+        let categoryRegExp = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
+        if (this.Expense.cost !== 0) this.costError = false;
+        if (!categoryRegExp.test(this.Expense.description)) this.descriptionError = false;
+        if (!categoryRegExp.test(this.Expense.category_name)) this.categoryError = false;
+        if (this.Expense.date !== null) this.dateError = false;
+        return !(this.costError || this.descriptionError || this.dateError || this.categoryError);
     }
 
-    public isGood() {
-        if (this.Expense.cost !== 0) this.costError = false;
-        if (this.Expense.description.length >= 3) this.descriptionError = false;
-        if (this.Expense.date !== null) this.dateError = false;
+    private isFilled() {
+        let categoryRegExp = RegExp("^[A-Za-zčćžđšČĆŽĐŠ0-9 ]{3,25}$");
+        this.Expense.cost == 0 ? (this.costError = true) : (this.costError = false);
+        this.categoryError = !categoryRegExp.test(this.Expense.category_name);
+        this.descriptionError = !categoryRegExp.test(this.Expense.description);
+        Math.floor(this.Expense.cost * 100) / 100 == 0 ? (this.costError = true) : (this.costError = false);
+        this.Expense.date == null ? (this.dateError = true) : (this.dateError = false);
+        return !(this.costError || this.descriptionError || this.dateError || this.categoryError);
     }
 
     private openSnackBar(message: string) {
