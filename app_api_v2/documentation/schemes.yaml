@@ -1,6 +1,14 @@
 ############# ERROR: [500] "Error in database" ##########
 components:
   examples:
+    Error_Description:
+      summary: Description not in correct form
+      value:
+        message: Description not in correct form, must comply with regex (nums, chars, whitespaces)
+    Error_Category:
+      summary: Category not in correct form
+      value:
+        message: Category not in correct form, must comply with regex (nums, chars, whitespaces)
     Error_groupId:
       summary: Group not found
       value:
