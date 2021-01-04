@@ -77,6 +77,12 @@ app.use("/api", (req, res, next) => {
     next();
 });
 
+//Handles robots.txt
+app.all("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.send("User-agent: *Allow: /");
+});
+
 //app.use("/api", indexApiV2);
 
 // app.use("/", indexRouter);
