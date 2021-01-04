@@ -61,6 +61,7 @@
                                                 user._id === getUserId())
                                         "
                                         (click)="removeUserFromGroup(group, user._id)"
+                                        [disabled]="!isOnline()"
                                     >
                                         <mat-icon color="warn">remove_circle</mat-icon>
                                     </button>
