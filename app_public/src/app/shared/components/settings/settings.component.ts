@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { UserSettings } from "../../classes/UserSettings";
 import { Subscription } from "rxjs";
 import { Title } from "@angular/platform-browser";
+import { ConnectionService } from "../../services/connection.service";
 
 @Component({
     selector: "app-settings",
@@ -18,7 +19,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
         public userDataService: UserDataService,
         private _snackBar: MatSnackBar,
         private router: Router,
-        private titleService: Title
+        private titleService: Title,
+        private connectionService: ConnectionService
     ) {
         this.titleService.setTitle("Nastavitve");
     }
@@ -30,6 +32,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
     apiError = "";
     userData: User = new User();
     userGroupsNumber = 0;
+
+    isOnline(): boolean {
+        return this.connectionService.isOnline;
+    }
 
     public userForm = {
         name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),

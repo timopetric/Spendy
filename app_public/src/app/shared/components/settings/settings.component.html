@@ -61,6 +61,7 @@
                                                 placeholder="Janez"
                                                 title="Vnesite željeno ime"
                                                 type="text"
+                                                [attr.disabled]="!isOnline() ? '' : null"
                                             />
                                             <mat-error *ngIf="userForm.name.invalid">{{ nameError }}</mat-error>
                                         </mat-form-field>
@@ -79,6 +80,7 @@
                                                 placeholder="Novak"
                                                 title="Vnesite željen priimek"
                                                 type="text"
+                                                [attr.disabled]="!isOnline() ? '' : null"
                                             />
                                             <mat-error *ngIf="userForm.surname.invalid">{{ surnameError }}</mat-error>
                                         </mat-form-field>
@@ -102,6 +104,7 @@
                                                 title="Vnesite svoje novo geslo"
                                                 type="password"
                                                 [type]="passwordHide ? 'password' : 'text'"
+                                                [attr.disabled]="!isOnline() ? '' : null"
                                             />
                                             <button
                                                 mat-icon-button
@@ -109,6 +112,7 @@
                                                 (click)="passwordHide = !passwordHide"
                                                 [attr.aria-label]="'Hide password'"
                                                 [attr.aria-pressed]="passwordHide"
+                                                [disabled]="!isOnline()"
                                             >
                                                 <mat-icon>{{
                                                     passwordHide ? "visibility_off" : "visibility"
@@ -143,13 +147,21 @@
                                         [disabled]="
                                             userForm.name.invalid ||
                                             userForm.surname.invalid ||
-                                            userForm.password.invalid
+                                            userForm.password.invalid ||
+                                            !isOnline()
                                         "
                                     >
                                         POTRDI SPREMEMBE
                                     </button>
                                     &nbsp;
-                                    <button mat-raised-button color="warn" (click)="deleteUser()">IZBRIS RAČUNA</button>
+                                    <button
+                                        mat-raised-button
+                                        color="warn"
+                                        (click)="deleteUser()"
+                                        [disabled]="!isOnline()"
+                                    >
+                                        IZBRIS RAČUNA
+                                    </button>
                                     <mat-error *ngIf="deleteError">{{ deleteError }}</mat-error>
 
                                     <!--<button-->

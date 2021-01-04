@@ -183,8 +183,13 @@ Z njim pa smo lahko tudi testirali api klice, in tako preverjali njihovo delovan
 
 Dinamična spletna aplikacija s podatkovno bazo
 
-NAVODILA ZA NAMESTITEV IN ZAGON:
--Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
+NAVODILA ZA NAMESTITEV IN ZAGON == glej točko LP4
+
+## 4. LP
+
+SPA aplikacija na eni strani
+
+POVEZAVA NA HEROKU: [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
 
 ```bash
 # Move to ./app_public, build angular app with one of the following:
@@ -209,7 +214,6 @@ docker run -d -p 4445:4444 --shm-size=2g selenium/standalone-chrome-debug
 # if you have selenium docker you can run:
 npm test
 ```
-
 [comment]: <> (1. docker-compose up --no-start)
 
 [comment]: <> (2. docker start sp-spendy-mongodb)
@@ -219,12 +223,35 @@ npm test
 1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: npm install
 2. npm start za zagon aplikacije (če imamo lahko tudi z nodemon)
    [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
-
-## 4. LP
-
-SPA aplikacija na eni strani
-//ne pozabit pri vspostavljanju lokalnega okolja treba nastavit okoljsko spremenljivko za JWT žeton
+   
 
 ## 5. LP
 
 Varnostno zaščitena progresivna aplikacija
+
+V aplikaciji imamo 3 vrste uporabnikov:
+1. gost: gost ima zelo omejen dostop. Na voljo ima samo strani Prijava in Registracija, dostopati pa ne more do nobenih podatkov
+2. prijavljen uporabnik: prijavljen uporabnik lahko dostopa do vseh svojih podatkov (skupine, expensi, kategorije skupin)....Izjema je le BRISANJE in DODAJANJE skupin.
+3. prijavljen uporabnik-admin skupine: Kot admin ima dostop do vseh funkcij dodajanja, ažuriranja in brisanja v skupinah, v katerih je admin.
+
+Argumentacija testov OWASP ZAP PO popravkih:
+Cross-Domain Misconfiguration: Vse navedene povezave niso del naše aplikacije temveč so fonti
+in zunanji apiji.
+
+Cookie Without Secure Flag:
+Tudi tu je povezava zunanji font, s katero naša aplikacija ni bolj ranljiva.
+
+Cross Site Scripting Weakness (Reflected in JSON Response): 
+S poskusom GET GROUPS {...isExpenditure: "<script>alert(1);</script>"} ne bo težav, saj naš api preveri
+ali je isExpenditure boolean. Če ni, vrača napako, da vrednost ni boolean in izpiše sporočilo,
+da tako vstavljanje v bazo ni mogoče, saj "<script>alert(1);</script>" ni boolean. (morda OWASP misli, da mu je uspelo)
+
+Incomplete or No Cache-control and Pragma HTTP Header Set:
+Ponovno zunanji apiji, ki naše aplikacije ne naredijo bolj ranljive.
+
+X-Content-Type-Options Header Missing:
+ponovno zunanji apiji, ne vplivajo na ranljivost.
+
+
+
+
