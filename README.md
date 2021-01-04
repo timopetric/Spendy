@@ -183,48 +183,62 @@ Z njim pa smo lahko tudi testirali api klice, in tako preverjali njihovo delovan
 
 Dinamična spletna aplikacija s podatkovno bazo
 
-NAVODILA ZA NAMESTITEV IN ZAGON:
--Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
-
-```bash
-# Move to ./app_public, build angular app with one of the following:
-
-# 1.) build production version for heroku (uses mongo atlas db - hosted online)
-npm run build-heroku
-# 2.) build production version for docker (uses local mongo db - run in docker)
-npm run build-docker
-
-# After building move to the project root and start docker compose:
-docker-compose up --build
-
-# If you want to stop docker containers use ctrl+c
-
-# To remove the containers use:
-docker-compose down
-```
-
-```bash
-#to test you must have selenium docker:
-docker run -d -p 4445:4444 --shm-size=2g selenium/standalone-chrome-debug
-# if you have selenium docker you can run:
-npm test
-```
-
-[comment]: <> (1. docker-compose up --no-start)
-
-[comment]: <> (2. docker start sp-spendy-mongodb)
-
--poskrbeti moramo, da se prenesejo vse odvisnosti definirane v package.json.
-
-1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: npm install
-2. npm start za zagon aplikacije (če imamo lahko tudi z nodemon)
-   [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
+### Za zagon applikacije s pomočjo docker mongo-db baze in lokalnega projekta
+1. `docker-compose up -d mongo-db`
+1. premaknemo se v mapo, kjer se nahaja naš projekt in poženemo: `npm install`
+2. `npm start` za zagon aplikacije (če imamo lahko tudi z nodemon)
+3. odpremo http://localhost:3000/
+4. Še [delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
 
 ## 4. LP
 
 SPA aplikacija na eni strani
-//ne pozabit pri vspostavljanju lokalnega okolja treba nastavit okoljsko spremenljivko za JWT žeton
+
+POVEZAVA NA HEROKU: [Delujoča povezava na Heroku](https://sp-spendy.herokuapp.com/login)
+
+### Za zagon applikacije s pomočjo docker
+1. Smo v korenu projekta
+1. `npm install`
+1. `cd app_public`
+1. `npm install`
+1. `npm run build-docker`
+1. Za vsak slučaj: `docker-compose down`
+1. `docker-compose up --build`
+1. Na http://localhost:3000/db uvozimo podatke v bazo
+1. na http://localhost:3000/login se prijavimo
 
 ## 5. LP
 
 Varnostno zaščitena progresivna aplikacija
+
+### Za zagon testov:
+1. V korenski mapi projekta zaženemo `docker-compose up -d mongo-db`
+1. `docker run -d -p 4445:4444 --shm-size=2g selenium/standalone-chrome-debug`
+1. `npm test`
+
+V aplikaciji imamo 3 vrste uporabnikov:
+1. gost: gost ima zelo omejen dostop. Na voljo ima samo strani Prijava in Registracija, dostopati pa ne more do nobenih podatkov
+2. prijavljen uporabnik: prijavljen uporabnik lahko dostopa do vseh svojih podatkov (skupine, expensi, kategorije skupin)....Izjema je le BRISANJE in DODAJANJE skupin.
+3. prijavljen uporabnik-admin skupine: Kot admin ima dostop do vseh funkcij dodajanja, ažuriranja in brisanja v skupinah, v katerih je admin.
+
+Argumentacija testov OWASP ZAP PO popravkih:
+Cross-Domain Misconfiguration: Vse navedene povezave niso del naše aplikacije temveč so fonti
+in zunanji apiji.
+
+Cookie Without Secure Flag:
+Tudi tu je povezava zunanji font, s katero naša aplikacija ni bolj ranljiva.
+
+Cross Site Scripting Weakness (Reflected in JSON Response):
+S poskusom GET GROUPS {...isExpenditure: "<script>alert(1);</script>"} ne bo težav, saj naš api preveri
+ali je isExpenditure boolean. Če ni, vrača napako, da vrednost ni boolean in izpiše sporočilo,
+da tako vstavljanje v bazo ni mogoče, saj "<script>alert(1);</script>" ni boolean. (morda OWASP misli, da mu je uspelo)
+
+Incomplete or No Cache-control and Pragma HTTP Header Set:
+Ponovno zunanji apiji, ki naše aplikacije ne naredijo bolj ranljive.
+
+X-Content-Type-Options Header Missing:
+ponovno zunanji apiji, ne vplivajo na ranljivost.
+
+
+
+
