@@ -22,7 +22,12 @@
     "dataGroups": [
         {
             "name": "spendy-api",
-            "urls": ["http://localhost:3000/**", "http://localhost:8080/api/**"],
+            "urls": [
+                "http://localhost:3000/**",
+                "http://localhost:8080/api/**",
+                "https://api.coingecko.com/**",
+                "https://sp-spendy.herokuapp.com/**"
+            ],
             "cacheConfig": {
                 "strategy": "freshness",
                 "maxSize": 20,
