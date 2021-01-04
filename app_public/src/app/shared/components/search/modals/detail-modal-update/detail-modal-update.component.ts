@@ -33,7 +33,7 @@ export class DetailModalUpdateComponent implements OnInit {
                     Validators.required,
                     Validators.minLength(1),
                     Validators.maxLength(16),
-                    Validators.pattern("[0-9]+\.*[0-9]{2}"),
+                    Validators.pattern("[0-9]+\.*[0-9]{1,2}"),
                 ],
                 updateOn: "blur",
             }),

@@ -71,15 +71,15 @@
         </div>
 
         <div id="spinner-and-error-msg" class="wrapper">
-            <mat-spinner class="inner" *ngIf="loading && !jePovezava()"></mat-spinner>
-            <mat-error *ngIf="apiError && !jePovezava()">{{ apiError }}</mat-error>
+            <mat-spinner class="inner" *ngIf="loading && jePovezava()"></mat-spinner>
+            <mat-error *ngIf="apiError && jePovezava()">{{ apiError }}</mat-error>
         </div>
         <section *ngIf="expenses?.length == 0" class="bg-mix py-3 px-3">
             <div class="alert alert-warning" role="alert">
                 <strong>Opozorilo!</strong> Ta skupina še nima aktivnostni.
             </div>
         </section>
-        <section *ngIf="!jePovezava()" class="bg-mix py-3 px-3">
+        <section *ngIf="!jePovezava() && expenses?.length == 0" class="bg-mix py-3 px-3">
             <div class="alert alert-warning" role="alert">
                 <strong>Opozorilo!</strong> Trenutno ni povezave zato nemorate brskati po vseh aktivnostih
             </div>
