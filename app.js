@@ -52,6 +52,16 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
+// Odprava varnostnih pomanjkljivosti
+app.disable("x-powered-by");
+app.use((req, res, next) => {
+    res.header("X-Frame-Options", "DENY");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    // res.header("Content-Security-Policy", "default-src 'self'");
+    next();
+});
+
 // view engine setup
 app.set("views", path.join(__dirname, "app_server", "views"));
 app.set("view engine", "hbs");
@@ -71,7 +81,7 @@ app.use(passport.initialize());
 
 // CORS
 app.use("/api", (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*"); // http://localhost:3000/ https://sp-spendy.herokuapp.com,
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT,OPTIONS");
     next();
