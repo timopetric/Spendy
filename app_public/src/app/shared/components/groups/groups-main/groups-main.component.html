@@ -13,7 +13,11 @@
         </mat-card-header>
 
         <mat-card-content>
-            <div class="container row">
+            <div id="spinner-and-error-msg">
+                <mat-spinner *ngIf="loading"></mat-spinner>
+                <mat-error *ngIf="apiError">{{ apiError }}</mat-error>
+            </div>
+            <div class="container row" *ngIf="!loading">
                 <div class="col-sm-12 col-md-6 col-xl-4 pb-3 pr-0" *ngFor="let group of userGroupsData">
                     <mat-accordion>
                         <mat-expansion-panel [expanded]="group._id === groupSelected">
@@ -89,7 +93,7 @@
                 </div>
             </div>
 
-            <mat-action-row>
+            <mat-action-row *ngIf="!loading">
                 <button
                     class="dodajSkupino"
                     (click)="openModalGroupAdd()"

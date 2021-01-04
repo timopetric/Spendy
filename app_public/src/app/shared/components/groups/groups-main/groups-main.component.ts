@@ -54,15 +54,21 @@ export class GroupsMainComponent implements OnInit, OnDestroy {
         this.userGroupsDataSub = this.groupsDataService
             .getUserGroupsUpdateListener()
             .subscribe((data: { message: string; groups: GroupsPopulatedUsersModel[] }) => {
+                // console.log("###############$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                // console.log(data);
                 this.userGroupsData = data.groups;
                 this.groupCount = data.groups.length;
-                if (data.message === "UPDATED") {
+                if (data.message === "OK") {
+                    this.loading = false;
+                    // this.openSnackBar("Podatki uspešno pridobljeni!");
+                } else if (data.message === "UPDATED") {
+                    this.loading = false;
                     this.openSnackBar("Podatki uspešno posodobljeni!");
                 } else if (data.message !== "OK") {
-                    console.log(data.message);
-                    this.openSnackBar(data.message);
+                    // console.log(data.message);
+                    if (data.message) this.openSnackBar(data.message);
                 }
-                this.loading = false;
+                // this.loading = false;
             });
         this.groupSelectionSub = this.groupsDataService.getGroupSelectionUpdateListener().subscribe((data: string) => {
             this.groupSelected = data;

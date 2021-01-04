@@ -187,13 +187,27 @@ NAVODILA ZA NAMESTITEV IN ZAGON:
 -Najprej zaženemo docker-compose datoteko za zagon baze lokalno.
 
 ```bash
-# move to ./app_public, build angular app
-ng build --configuration=production --output-path build
-#ng build --configuration=docker --output-path build
+# Move to ./app_public, build angular app with one of the following:
 
-# start docker compose:
-docker-compose up --build --force-recreate
+# 1.) build production version for heroku (uses mongo atlas db - hosted online)
+npm run build-heroku
+# 2.) build production version for docker (uses local mongo db - run in docker)
+npm run build-docker
 
+# After building move to the project root and start docker compose:
+docker-compose up --build
+
+# If you want to stop docker containers use ctrl+c
+
+# To remove the containers use:
+docker-compose down
+```
+
+```bash
+#to test you must have selenium docker:
+docker run -d -p 4445:4444 --shm-size=2g selenium/standalone-chrome-debug
+# if you have selenium docker you can run:
+npm test
 ```
 
 [comment]: <> (1. docker-compose up --no-start)

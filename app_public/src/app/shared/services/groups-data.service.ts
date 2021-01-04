@@ -53,7 +53,6 @@ export class GroupsDataService {
 
     // --------- get all groups of user ---------
     getGroupsByUser(online?: boolean) {
-        // todo: add update timer - when 1 minute is over get new data from api
         if (online == true || this.groups == null) {
             let url = `${API_URL_USERS}/${this.getUserId()}/groups?populate=userIds`;
             this.http.get(url).subscribe(
@@ -78,9 +77,10 @@ export class GroupsDataService {
         }
     }
     private handleUpdateUserGroupsError(error) {
+        // console.log("%%%%%%%%%%%%%%");
         this.groupsUpdated.next({
             message: error.error["message"],
-            groups: [],
+            groups: [...this.groups],
         });
         return GroupsDataService.handleError(error);
     }

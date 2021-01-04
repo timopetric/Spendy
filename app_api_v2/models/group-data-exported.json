@@ -743,6 +743,9 @@
         "userIds": [
             {
                 "$oid": "5fe8ff7f67c57310401aca3c"
+            },
+            {
+                "$oid": "5fe7cc18e0fe833da436fbde"
             }
         ],
         "adminIds": [
@@ -872,7 +875,7 @@
                 "$oid": "5feb818718ade71fc4651413"
             }
         ],
-        "name": "Skupina d@d.d",
+        "name": "Skupina Oreščki",
         "created_at": {
             "$date": "2020-12-27T21:41:19.25Z"
         },
