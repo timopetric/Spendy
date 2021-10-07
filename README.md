@@ -1,5 +1,7 @@
 # Spletno programiranje 2020/2021
 
+**This project was created, build upon on and used as a learning tool for Web Programming 2020/2021 course at Faculty of Computer and Information Science, University of Ljubljana**
+
 Lastni projekt pri predmetu **Spletno programiranje** v študijskem letu **2020/2021**.
 
 ## 1. LP
